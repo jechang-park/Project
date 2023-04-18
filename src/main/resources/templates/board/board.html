@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="ko"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>게시판</title>
+</head>
+<body>
+<h3>게시판</h3>
+<hr>
+<ul>
+  <button onclick="saveReq()">글작성</button>
+  <a href="/board/save">글작성</a>
+</ul>
+  <button onclick="listReq()">글목록</button>
+<button onclick="pagingReq()">페이징목록</button>
+
+</body>
+<script>
+  const saveReq = () => {
+  location.href = "/board/save"
+  }
+    const listReq = () => {
+  location.href = "/board/list"
+  }
+      const pagingReq = () => {
+  location.href = "/board/paging"
+  }
+
+</script>
+</html>

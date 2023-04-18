@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="ko"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title th:text="${pageTitle}">건강상태</title>
+  <link rel="stylesheet" href="" th:href="@{/css/Analysis.css}">
+  <link rel="stylesheet" href="" th:href="@{/css/closeModal.css}">
+  <style>
+
+/*질문외부 간격*/
+.question-answer-wrap .label-question {
+  padding-left: 44px;
+  line-height: 24px;
+}
+/*질문내부 규격*/
+.question-answer-wrap li {
+  margin-top: 20px;
+}
+input[type='checkbox'] {
+  display: none;
+}
+#num1:checked + span {
+  background-image: url(/img/icon-checkbox-on.png);
+}
+#num1 + span {
+  position: absolute;
+  left: 14%;
+  width: 24px;
+  height: 24px;
+  background-image: url(/img/icon-checkbox-off.png);
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+  background-size: 24px;
+}
+#num2:checked + span {
+  background-image: url(/img/icon-checkbox-on.png);
+}
+#num2 + span {
+  position: absolute;
+  left: 14%;
+  width: 24px;
+  height: 24px;
+  background-image: url(/img/icon-checkbox-off.png);
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+  background-size: 24px;
+}
+#num3:checked + span {
+  background-image: url(/img/icon-checkbox-on.png);
+}
+#num3 + span {
+  position: absolute;
+  left: 14%;
+  width: 24px;
+  height: 24px;
+  background-image: url(/img/icon-checkbox-off.png);
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+  background-size: 24px;
+}
+#num4:checked + span {
+  background-image: url(/img/icon-checkbox-on.png);
+}
+#num4 + span {
+  position: absolute;
+  left: 14%;
+  width: 24px;
+  height: 24px;
+  background-image: url(/img/icon-checkbox-off.png);
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+  background-size: 24px;
+}
+#num5:checked + span {
+  background-image: url(/img/icon-checkbox-on.png);
+}
+#num5 + span {
+  position: absolute;
+  left: 14%;
+  width: 24px;
+  height: 24px;
+  background-image: url(/img/icon-checkbox-off.png);
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+  background-size: 24px;
+}
+#num6:checked + span {
+  background-image: url(/img/icon-checkbox-on.png);
+}
+#num6 + span {
+  position: absolute;
+  left: 14%;
+  width: 24px;
+  height: 24px;
+  background-image: url(/img/icon-checkbox-off.png);
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+  background-size: 24px;
+}
+#none:checked + span {
+  background-image: url(/img/icon-checkbox-on.png);
+}
+#none + span {
+  position: absolute;
+  left: 14%;
+  width: 24px;
+  height: 24px;
+  background-image: url(/img/icon-checkbox-off.png);
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+  background-size: 24px;
+}
+  </style>
+</head>
+<body>
+<div id="survey">
+  <div class="survey-wrap">
+    <div class="survey-contents">
+      <div class="survey-contents-inner">
+        <!-- HTML code for the modal -->
+        <div id="myModal" class="modal">
+          <div class="modal-content">
+            <span class="close">&times;</span>
+            <p>분석을 종료하시겠습니까?</p>
+            <button id="yes-btn">Yes</button>
+            <button id="no-btn">No</button>
+          </div>
+        </div>
+        <a href="#" class="close-survey" onclick="openModal(); return false;">
+          <img th:src="@{/img/close2.png}" alt="close" />
+        </a>
+        <div class="survey-test">
+          <nav class="survey-test-header">
+            <ul class="step-list-wrap">
+              <li data="기본정보">
+                <span>기본정보</span>
+              </li>
+              <img src="/img/right2.png" />
+              <li data="증상/불편">
+                <span>증상/불편</span>
+              </li>
+              <img src="/img/right2.png" />
+              <li data="생활습관" class="on">
+                <span>생활습관</span>
+              </li>
+              <img src="/img/right2.png" />
+              <li data="기타">
+                <span>기타</span>
+              </li>
+            </ul>
+          </nav>
+          <div class="survey-progress">
+            <div id="survey-progress-rate" style="width: 80%"></div>
+          </div>
+          <div class="survey-question-contens">
+            <section class="question-section">
+              <em id="qNum">질문 14</em>
+              <h2 id="qTitle" maxallowed="99" class>
+                <p>고객님에게 해당하는것을 모두 선택하세요</p>
+                <span class></span>
+              </h2>
+              <p id="qContent"></p>
+              <ul class="question-answer-wrap">
+                <li>
+                  <label class="label-radio label-question">
+                    <input
+                        id="num1"
+                        type="checkbox"
+                        class="input-checkbox input-answer"
+                        name="answer"
+                        value="370"
+                        data-only="null"
+                    />
+                    <span></span>
+                    술을 많이 마신다(일주일에 소주 3병 이상 또는
+                    맥주5000cc이상)
+                  </label>
+                </li>
+                <li>
+                  <label class="label-radio label-question">
+                    <input
+                        id="num2"
+                        type="checkbox"
+                        class="input-checkbox input-answer"
+                        name="answer"
+                        value="375"
+                        data-only="null"
+                    />
+                    <span></span>
+                    하루 12시간 이상의 업무 또는 학업을 주 3일 이상
+                  </label>
+                </li>
+                <li>
+                  <label class="label-radio label-question">
+                    <input
+                        id="num3"
+                        type="checkbox"
+                        class="input-checkbox input-answer"
+                        name="answer"
+                        value="376"
+                        data-only="null"
+                    />
+                    <span></span>
+                    하루에 6시간 이상 핸드폰 또는 모니터 화면을 본다.
+                  </label>
+                </li>
+                <li>
+                  <label class="label-radio label-question">
+                    <input
+                        id="num4"
+                        type="checkbox"
+                        class="input-checkbox input-answer"
+                        name="answer"
+                        value="480"
+                        data-only="null"
+                    />
+                    <span></span>
+                    목이 자주 건조해지거나 칼칼해 진다.
+                  </label>
+                </li>
+                <li>
+                  <label class="label-radio label-question">
+                    <input
+                        id="num5"
+                        type="checkbox"
+                        class="input-checkbox input-answer"
+                        name="answer"
+                        value="378"
+                        data-only="null"
+                    />
+                    <span></span>
+                    식사량을 줄이며 다이어트 중이다.
+                  </label>
+                </li>
+                <li>
+                  <label class="label-radio label-question">
+                    <input
+                        id="num6"
+                        type="checkbox"
+                        class="input-checkbox input-answer"
+                        name="answer"
+                        value="481"
+                        data-only="null"
+                    />
+                    <span></span>
+                    입안에 구내염이 자주 생긴다.
+                  </label>
+                </li>
+                <li>
+                  <label class="label-radio label-question">
+                    <input
+                        type="checkbox"
+                        class="input-checkbox input-answer"
+                        name="answer"
+                        id="none"
+                        value="379"
+                        data-only="1"
+                    />
+                    <span></span>
+                    선택할 것이 없음
+                  </label>
+                </li>
+              </ul>
+            </section>
+          </div>
+          <div class="survey-errormsg"></div>
+          <div class="survey-question-footer">
+            <button
+                id="btn-prev"
+                class="btn btn-radius"
+                onclick="window.location.href='http://localhost:9080/smoking'"
+            >
+              이전
+            </button>
+            <button
+                id="btn-next"
+                class="btn btn-radius btn-dark"
+                onclick="handleNextClick()"
+            >
+              다음
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<script>
+      const noneCheckbox = document.getElementById('none');
+      const otherCheckboxes = document.querySelectorAll(
+        "input[name='answer']:not(#none)",
+      );
+
+      otherCheckboxes.forEach(checkbox => {
+        checkbox.addEventListener('change', () => {
+          if (noneCheckbox.checked) {
+            noneCheckbox.checked = false;
+          }
+        });
+      });
+
+      noneCheckbox.addEventListener('change', () => {
+        if (noneCheckbox.checked) {
+          otherCheckboxes.forEach(checkbox => {
+            checkbox.checked = false;
+          });
+        }
+      });
+      function handleNextClick() {
+        const num1Radio = document.getElementById('num1');
+        const num2Radio = document.getElementById('num2');
+        const num3Radio = document.getElementById('num3');
+        const num4Radio = document.getElementById('num4');
+        const num5Radio = document.getElementById('num5');
+        const num6Radio = document.getElementById('num6');
+        const noneRadio = document.getElementById('none');
+        const errorMsg = document.querySelector('.survey-errormsg');
+
+        if (
+          !num1Radio.checked &&
+          !num2Radio.checked &&
+          !num3Radio.checked &&
+          !num4Radio.checked &&
+          !num5Radio.checked &&
+          !num6Radio.checked &&
+          !noneRadio.checked
+        ) {
+          errorMsg.textContent = '답변을 입력하세요!';
+        } else {
+          // Clear error message and navigate to the next page
+          errorMsg.textContent = '';
+          window.location.href = 'http://localhost:9080/men';
+        }
+      }
+    // 모달
+          let modal = document.getElementById("myModal");
+
+          // Get the <span> element that closes the modal
+          let span = document.getElementsByClassName("close")[0];
+
+          // Get the Yes and No buttons
+          let yesBtn = document.getElementById("yes-btn");
+
+          let noBtn = document.getElementById("no-btn");
+
+          // Open the modal
+          function openModal() {
+            modal.style.display = "block";
+          }
+
+          // When the user clicks on <span> (x), close the modal
+          span.onclick = function() {
+            modal.style.display = "none";
+          }
+
+          // When the user clicks on Yes or No, close the modal and redirect if necessary
+          yesBtn.onclick = function() {
+            modal.style.display = "none";
+            window.location.href = 'http://localhost:9080';
+          }
+
+          noBtn.onclick = function() {
+            modal.style.display = "none";
+          }
+        </script>
+</body>
+</html>

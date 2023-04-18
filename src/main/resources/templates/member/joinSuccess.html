@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="ko"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>가입성공화면</title>
+</head>
+<style>
+  @charset "UTF-8";\
+* {
+  padding: 0px;
+  margin: 0px;
+  text-decoration: none;
+  list-style: none;
+  color: inherit;
+font-family: 'pretendard', sans-serif;
+}
+
+a{
+background-color: #007bff;
+  border: none;
+  border-radius: 4px;
+  color: #fff;
+  cursor: pointer;
+  text-decoration: none;
+  transition: background-color 0.3s ease;}
+  img{
+  width:100px;
+  height:100px;
+  }
+  .wrapper{
+  margin:0 auto;
+  width:1280px;
+  text-align:center}
+  .success_box{
+  margin-top:250px;
+  }
+  .success_box{
+  text-align:center;}
+.text{
+margin:40px;
+font-weight:500;
+font-size:50px;
+font-family: 'pretendard', sans-serif;
+}
+.login{
+margin-top:20px;
+font-family: 'pretendard', sans-serif;
+font-weight:600;
+}
+   .login a {
+
+   display:inline-block;
+   line-height:50px;
+  width:200px;
+  height:50px;
+  font-size:20px;
+  }
+</style>
+<body>
+<div class="wrapper">
+  <div class="success_box">
+<img src="../img/success.png" alt="">
+    <div class="text"><span style="font-weight:800">YAGIYO의 회원</span>이 되신것을 환영합니다 !</div>
+  <div class="login"><a href="" th:href="@{/login}">로그인</a></div>
+  </div>
+</div>
+<script>
+  (function (d) {
+  var config = {
+      kitId: 'nac5uey',
+      scriptTimeout: 3000,
+      async: true,
+    },
+    h = d.documentElement,
+    t = setTimeout(function () {
+      h.className = h.className.replace(/\bwf-loading\b/g, '') + ' wf-inactive';
+    }, config.scriptTimeout),
+    tk = d.createElement('script'),
+    f = false,
+    s = d.getElementsByTagName('script')[0],
+    a;
+  h.className += ' wf-loading';
+  tk.src = 'https://use.typekit.net/' + config.kitId + '.js';
+  tk.async = true;
+  tk.onload = tk.onreadystatechange = function () {
+    a = this.readyState;
+    if (f || (a && a != 'complete' && a != 'loaded')) return;
+    f = true;
+    clearTimeout(t);
+    try {
+      Typekit.load(config);
+    } catch (e) {}
+  };
+  s.parentNode.insertBefore(tk, s);
+})(document);
+</script>
+</body>
+</html>

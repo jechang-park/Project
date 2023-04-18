@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="ko"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title th:text="${pageTitle}">성별</title>
+  <link rel="stylesheet" href="" th:href="@{/css/test1.css}">
+  <style>
+
+
+
+/*질문외부 간격*/
+.question-answer-wrap .label-question {
+  padding-left: 44px;
+  line-height: 24px;
+}
+/*질문내부 규격*/
+.question-answer-wrap li {
+  margin-top: 28px;
+}
+/* 질문위아래 간격 */
+.question-answer-wrap {
+  padding: 28px 0;
+}
+input[type='radio'] {
+  display: none;
+}
+
+#male:checked + span {
+  background-image: url(/images/icon-radio-on.png);
+}
+#male + span {
+  position: absolute;
+  left: 15%;
+  width: 24px;
+  height: 24px;
+  background-image: url(/images/icon-radio-off.png);
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+  background-size: 24px;
+}
+#female:checked + span {
+  background-image: url(/images/icon-radio-on.png);
+}
+#female + span {
+  position: absolute;
+  left: 15%;
+  width: 24px;
+  height: 24px;
+  background-image: url(/images/icon-radio-off.png);
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+  background-size: 24px;
+}
+  </style>
+</head>
+<body>
+<div id="survey">
+  <div class="survey-wrap">
+    <div class="survey-contents">
+      <div class="survey-contents-inner">
+        <a href="#" class="close-survey" onclick="if(confirm('분석을 종료하시겠습니까?')){ window.location.href='http://localhost:9080'; } return false;">
+          <img th:src="@{/images/close2.png}" alt="close" />
+        </a>
+        <div class="survey-test">
+          <nav class="survey-test-header">
+            <ul class="step-list-wrap">
+              <li data="기본정보" class="on">
+                <span>기본정보</span>
+              </li>
+              <img src="/images/right2.png" />
+              <li data="증상/불편">
+                <span>증상/불편</span>
+              </li>
+              <img src="/images/right2.png" />
+              <li data="생활습관">
+                <span>생활습관</span>
+              </li>
+              <img src="/images/right2.png" />
+              <li data="기타">
+                <span>기타</span>
+              </li>
+            </ul>
+          </nav>
+          <div class="survey-progress">
+            <div id="survey-progress-rate" style="width: 10%"></div>
+          </div>
+          <div class="survey-question-contens">
+            <section class="question-section">
+              <em id="qNum">질문 2</em>
+              <h2 id="qTitle" maxallowed="1" class>
+                <p>고객님의 성별을 알려주세요</p>
+                <span class></span>
+              </h2>
+              <p id="qContent"></p>
+              <ul class="question-answer-wrap">
+                <li>
+                  <label class="label-radio label-question">
+                    <input
+                        id="male"
+                        type="radio"
+                        class="input-radio input-answer"
+                        name="answer"
+                        value="284"
+                        data-only="null"
+                    />
+                    <span></span>
+                    남성
+                  </label>
+                </li>
+                <li>
+                  <label class="label-radio label-question">
+                    <input
+                        id="female"
+                        type="radio"
+                        class="input-radio input-answer"
+                        name="answer"
+                        value="285"
+                        data-only="null"
+                    />
+                    <span></span>
+                    여성
+                  </label>
+                </li>
+              </ul>
+            </section>
+          </div>
+          <div class="survey-errormsg"></div>
+          <div class="survey-question-footer">
+            <button
+                id="btn-prev"
+                class="btn btn-radius"
+                th:onclick="|window.location.href='http://localhost:9080/name';|"
+            >
+              이전
+            </button>
+            <button
+                id="btn-next"
+                class="btn btn-radius btn-dark"
+                onclick="handleNextClick()"
+            >
+              다음
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<script>
+          function handleNextClick() {
+            const maleRadio = document.getElementById('male');
+            const femaleRadio = document.getElementById('female');
+            const errorMsg = document.querySelector('.survey-errormsg');
+
+            if (!maleRadio.checked && !femaleRadio.checked) {
+              errorMsg.textContent = '답변을 입력하세요!';
+            } else {
+              // Clear error message and navigate to the next page
+              errorMsg.textContent = '';
+              window.location.href =
+                'http://localhost:9080/age';
+            }
+          }
+        </script>
+
+</body>
+</html>

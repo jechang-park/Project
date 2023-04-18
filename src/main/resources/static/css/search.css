@@ -1,0 +1,276 @@
+@charset "UTF-8";
+* {
+  padding: 0px;
+  margin: 0px;
+  text-decoration: none;
+  list-style: none;
+  color: inherit;
+  font-family: 'pretendard', sans-serif;
+}
+#apple-header,
+#apple-footer {
+  display: none;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Gowun+Dodum&display=swap');
+
+body {
+  width: 100%;
+}
+
+.wrapper {
+  width: 100%;
+  margin: 0 auto;
+}
+
+/* Header */
+
+header {
+  width: 100%;
+  position: fixed;
+  z-index: 999;
+  background-color: #fff;
+  top: 0;
+}
+.top {
+  width: 1280px;
+  height: 100px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* 로고이미지 */
+.logo {
+  margin-top: 15px;
+}
+.top .logo > a img {
+  width: 150px;
+}
+
+/* 검색 */
+.top .search_box {
+  display: flex;
+  height: 30px;
+}
+.search_box form {
+  display: inline-block;
+  position: relative;
+  width: 553px;
+  height: 48px;
+  border-radius: 24px;
+  border: 2px solid #067dfd;
+  box-sizing: border-box;
+  vertical-align: top;
+}
+.search_box input {
+  width: 400px;
+  height: 20px;
+  outline: transparent;
+  border: 0;
+  margin: 12px 17px 17px 17px;
+  padding-left: 5px;
+}
+.search_box button {
+  left: 510px;
+  bottom: 8px;
+  right: 0px;
+  background-color: inherit;
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  border: none;
+  box-shadow: none;
+  cursor: pointer;
+  background-image: url(../img/search.png);
+  background-size: cover;
+}
+
+/* 탑메뉴 */
+.top .gnb_box {
+  display: flex;
+  position: relative;
+  font-weight: 600;
+  height: 30px;
+  margin-top: 20px;
+}
+
+.gnb_box > a {
+  position: relative;
+  margin-left: 40px;
+}
+.gnb_box .login,
+.logout {
+  margin-left: 40px;
+}
+
+.gnb_box .login a::before {
+  padding-top: 5px;
+  content: '';
+  position: absolute;
+  width: 0;
+  bottom: 0;
+  background-color: #000;
+  transition: width 0.25s ease;
+}
+.gnb_box .login a:hover::before {
+  width: 40px;
+}
+.gnb_box .logout a::before {
+  padding-top: 5px;
+  content: '';
+  position: absolute;
+  width: 0;
+  bottom: 0;
+  background-color: #000;
+  transition: width 0.25s ease;
+}
+.gnb_box .logout a:hover::before {
+  width: 55px;
+}
+.gnb_box > a::before {
+  padding-top: 5px;
+  content: '';
+  position: absolute;
+  width: 0;
+  bottom: 0;
+  left: 0;
+  background-color: #000;
+  transition: width 0.25s ease;
+}
+
+.gnb_box > a:hover::before {
+  width: 100%;
+}
+/* banner */
+.banner {
+  width: 1280px;
+  height: 500px;
+  margin: 0 auto;
+}
+.banner .banner_text {
+  margin: 0 auto;
+  width: 1280px;
+  margin-top: 150px;
+  background: #ffffff;
+  display: block;
+  border: 1px solid #e6e9ed;
+  box-shadow: 0px 2px 10px rgba(70, 56, 147, 0.1);
+  border-radius: 20px;
+  height: 153px;
+  padding: 30px 65px 0px 30px;
+  color: black;
+}
+
+
+
+.main {
+  margin-top: 50px;
+  width: 1280px;
+  margin: 30px auto 0px auto;
+}
+.item_cards{
+width:1280px;
+flex-wrap: wrap;
+justify-content:center;
+}
+
+.item_cards .item_box{
+text-align:center;
+width:400px;
+margin:20px;
+}
+.item_cards a img{
+  width: 300px;
+  height: 300px;
+}
+.item_box a .text_1 {
+font-size:20px;
+border-radius: 15px;
+    color: #535968;
+}
+
+
+
+
+/* footer */
+
+footer {
+  width: 100%;
+  background-color: #2d3142;
+}
+.item_cards .item_box{
+        border: 5px solid #fffff;
+        box-shadow: 0px 2px 10px rgba(70, 56, 147, 0.1);
+        border-radius: 20px;
+        background: #fff;
+}
+.footer_area {
+  width: 1280px;
+  color: #999;
+  margin: 0 auto;
+}
+
+/* footer top */
+
+.footer_area .top {
+  width: 100%;
+  display: flex;
+  margin: 0 auto;
+}
+
+/* 푸터 로고 이미지 */
+.footer_img {
+  width: 150px;
+  display: flex;
+  margin: 10px;
+}
+.footer_menu {
+  display: flex;
+  margin-top: 20px;
+}
+.footer_menu a {
+  display: flex;
+  padding-left: 10px;
+}
+
+/* footer - bottom */
+.footer_area .bottom {
+  margin-left: 20px;
+}
+/* .footer_area .bottom::before {
+  width: 100%;
+  position: absolute;
+  height: 1px;
+  content: '';
+  background-color: #bbbbbb;
+} */
+.footer_area .bottom .info {
+  width: 1280px;
+  text-align: left;
+}
+.bottom .info .title {
+  font-size: 20px;
+}
+
+/* copyright */
+.footer_area .copyright {
+  margin-left: 20px;
+}
+
+/* .footer_area .copyright::before {
+  width: 100%;
+  position: absolute;
+  height: 1px;
+  content: '';
+  background-color: #bbbbbb;
+} */
+.footer_area .copyright p {
+  width: 100%;
+  text-align: left;
+}
+.swiper {
+  width: 100%;
+  height: 100%;
+}

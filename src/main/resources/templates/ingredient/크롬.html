@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link rel="stylesheet" th:href="@{../css/ingredient.css}"/>
+    <title>크롬</title>
+</head>
+<body>
+<div class="wrapper">
+    <header>
+        <div class="top">
+            <div class="logo">
+                <a href="/index.html" th:href="@{/}">
+                    <img src="/img/black-yagiyo.png" alt=""
+                    /></a>
+            </div>
+            <div class="search_box">
+                <input
+                        class="searchbar"
+                        type="text"
+                        placeholder="영양제 성분 검색을 해보세요💊 ! "
+                />
+                <div class="search_btn">
+                    <img src="/img/search_div_icn.png" alt=""/>
+                </div>
+            </div>
+            <nav class="gnb_box">
+                <a href="">AI분석</a>
+                <a href="">커뮤니티</a>
+                <a href="">약국정보</a>
+                <a href="">로그인</a>
+            </nav>
+        </div>
+    </header>
+    <main>
+        <div class="banner">
+            <p>크롬</p>
+        </div>
+        <div class="contents">
+            <article>
+                <div class="row row1">
+                    <span class="title">💬 크롬</span>
+                    <p>
+                        혈당을 조절하는 '인슐린'의 작용을 도와준다는 연구 결과가 있어서, 당뇨를 개선하는 효과를 기대해 볼 수 있어요.
+
+                    </p>
+                </div>
+                <div class="row row2">
+                    <span class="title">▪ 크로뮴</span>
+
+                </div>
+                <div class="row row3">
+                    <span class="title">▪ 제품에서 추천하고 있는 섭취량을 따르고, 내 몸의 반응에 따라 조절하세요</span>
+                    <p>✅[영양제]로서 일일섭취량은 9~9000μg로 범위가 넓어요.<br>
+                        ✅[한국인 영양소 섭취기준]에 따르면 하루 30μg이상 섭취하도록 권장하고 있어요. 나이와 성별에 따라 범위가 달라져요.<br>
+                        ✅인슐린 및 혈당 관련 연구들은 하루 200-1000μg정도 사용했어요.<br>
+                    </p>
+                </div>
+                <div class="row row4">
+                    <span class="title">❗ 부작용 및 주의사항</span>
+                    <p>고용량 복용 시 신장 기능이 저하될 수 있으므로, 신장 질환이 있는 경우 전문가와 상담 필요</p>
+                </div>
+            </article>
+        </div>
+    </main>
+</div>
+</body>
+</html>

@@ -1,0 +1,681 @@
+@charset "UTF-8";
+
+    body, dd, div, dl, dt, em, footer, form, h1, h2, h3, h4, h5,
+    header, hr, html, i, img, label, li, menu, nav, p, progress, q, section,
+    span, sub, tbody, td, th, tr, tt, u, ul, var, {
+      margin: 0;
+      padding: 0;
+      border: 0;
+      vertical-align: baseline;
+      font-size: 100%;
+    }
+    footer,
+    header,
+    main,
+    menu,
+    nav,
+    section {
+      display: block;
+    }
+    li,
+    ol,
+    ul {
+      list-style: none;
+    }
+    body,
+    html {
+      height: 100%;
+      width: 100%;
+    }
+    div{
+    margin: 0;
+          padding: 0;
+          border: 0;
+          vertical-align: baseline;
+          font-size: 100%;
+    }
+    body {
+      font-size: 14px;
+      word-break: keep-all;
+      line-height: 1.2;
+      color: #333;
+    }
+    ul {
+      display: block;
+      list-style-type: disc;
+      margin: 0;
+      padding: 0;
+      border: 0;
+
+    }
+    #app {
+      position: relative;
+      height: 100%;
+    }
+    /* 헤더 */
+    #header.store.depth1 {
+      height: 65px;
+      padding: 20px;
+    }
+    #header.store.depth1 {
+      position: relative;
+      box-sizing: border-box;
+      display: flex;
+      flex-direction: row;
+      flex-wrap: nowrap;
+    }
+     * {
+      text-decoration: none;
+      list-style: none;
+      color: inherit;
+      font-family: 'pretendard', sans-serif;
+    }
+
+    @import url('https://fonts.googleapis.com/css2?family=Gowun+Dodum&display=swap');
+    /* Header */
+    header {
+      width: 100%;
+      position: fixed;
+      z-index: 999;
+      background-color: #fff;
+      top: 0;
+    }
+    .top {
+      width: 1280px;
+      height: 100%;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    /* 로고이미지 */
+
+    .top .logo > img {
+      width: 150px;
+    }
+    .logo a img {
+      width: 150px;
+      height: 63.49px;
+    }
+    /* 검색 */
+    .top .search_box {
+      display: flex;
+      height: 30px;
+    }
+    .top .search_box .searchbar {
+      width: 300px;
+      height: 30px;
+      padding-left: 4px;
+      outline: 2px solid #999;
+      border: none;
+    }
+    .search_btn {
+      display: flex;
+      width: 20px;
+      height: 100%;
+      border: none;
+      box-shadow: none;
+      cursor: pointer;
+    }
+
+    /* 탑메뉴 */
+    .top .gnb_box {
+      display: flex;
+      position: relative;
+      font-weight: 600;
+      height: 30px;
+    }
+
+    .gnb_box > a {
+      position: relative;
+      margin-left: 40px;
+    }
+
+    .gnb_box > a::before {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 2px;
+      bottom: 0;
+      left: 0;
+      background-color: #000;
+      transition: width 0.25s ease;
+    }
+
+    .gnb_box > a:hover::before {
+      width: 100%;
+    }
+
+    #surveyv3.surveyv3-result {
+      width: 100%;
+    }
+    /* result top */
+    #surveyv3.surveyv3-result > .result-top{
+      background-image: linear-gradient(to top, rgb(250, 241, 177), rgb(241, 209, 169));
+    }
+    /* result top 위아래 폭*/
+    #surveyv3.surveyv3-result > .result-top {
+      padding-top: 95px;
+      padding-bottom: 20px;
+    }
+    #surveyv3.surveyv3-result {
+      position: relative;
+      box-sizing: border-box;
+      min-height: 100%;
+      background-color: #f2f2f2;
+      word-break: keep-all;
+      section{
+
+      }
+      }
+
+    #surveyv3.surveyv3-result section {
+      padding: 0;
+      width: 100%;
+    }
+    #surveyv3.surveyv3-result section {
+      box-sizing: border-box;
+      margin: 0 auto;
+    }
+    /*inner 내부 위치*/
+    #surveyv3.surveyv3-result > .result-top .inner {
+      box-sizing: border-box;
+      padding: 0 16px;
+      text-align: center;
+    }
+    #surveyv3.surveyv3-result > .result-top .inner {
+      position: relative;
+    }
+    /*이름 폰트크기*/
+    #surveyv3.surveyv3-result > .result-top .inner > h3 {
+      font-size: 22px;
+      font-weight: 700;
+    }
+    #surveyv3.surveyv3-result > .result-top .inner > dl {
+      font-size: 14px;
+    }
+    /*성별 나이 BMI 위치, 크기*/
+    #surveyv3.surveyv3-result > .result-top .inner > dl {
+      margin-top: 23px;
+    }
+    #surveyv3.surveyv3-result > .result-top .inner > dl {
+      font-size: 14px;
+    }
+
+    dl {
+      display: block;
+      margin-block-start: 1em;
+      margin-block-end: 1em;
+      margin-inline-start: 0px;
+      margin-inline-end: 0px;
+    }
+    #surveyv3.surveyv3-result > .result-top .inner > dl dt:first-child {
+      padding-left: 0;
+    }
+
+    #surveyv3.surveyv3-result > .result-top .inner > dl dt {
+      display: inline-block;
+    }
+    dt {
+      font-weight: 700;
+    }
+    #surveyv3.surveyv3-result > .result-top .inner > dl dd {
+      display: inline-block;
+      padding-left: 6px;
+      vertical-align: -1px;
+    }
+    /*---------------------------------------------------------------------------------------------------------------*/
+    /*BMI 위치*/
+    #surveyv3.surveyv3-result > .result-top .inner > .bmi-wrap {
+      position: absolute;
+      top: 0;
+      right: 40px;
+    }
+    #surveyv3.surveyv3-result > .result-top .inner > .bmi-wrap {
+      position: relative;
+      left: 0;
+      margin-top: 16px;
+    }
+    /*BMI 그래프*/
+   #surveyv3.surveyv3-result > .result-top .inner > .bmi-wrap .graph {
+   background-color: #fff;
+   height: 28px;
+   border-radius: 14px;
+   width: 100%; /*그래프 너비를 100%로 지정 */
+   box-sizing: border-box; /*박스 모델을 border-box로 지정 */
+   }
+    #surveyv3.surveyv3-result
+      > .result-top
+      .inner
+      > .bmi-wrap
+      .graph
+      ul.data
+      li.active {
+      position: relative;
+    }
+    .graph ul.data {
+      font-size: 0;
+    }
+
+    .graph ul.data li {
+      box-sizing: border-box;
+      display: inline-block;
+      width: 20%;
+      text-align: center;
+      font-size: 12px;
+      line-height: 28px;
+      z-index: 1;
+      margin: 0;
+      padding: 0;
+    }
+
+    .graph ul.data li {
+      box-sizing: border-box;
+      display: inline-block;
+      width: 20%;
+      text-align: center;
+      font-size: 12px;
+      line-height: 28px;
+      z-index: 1;
+      margin: 0;
+     padding: 0;
+    }
+    .graph ul.data li .active {
+      position: relative;
+    }
+   .graph ul.data li.active::before {
+     position: absolute;
+     z-index: -1;
+     content: '';
+     top: 12px;
+     left: 10%;
+     width: 80%;
+     height: 6px;
+   }
+
+   .graph ul.data li.active.lv1::before {
+     background-color: #d4edfc;
+   }
+
+   .graph ul.data li.active.lv2::before {
+     background-color: #cdf9a5;
+   }
+
+   .graph ul.data li.active.lv3::before {
+     background-color: #f5f4aa;
+   }
+
+   .graph ul.data li.active.lv4::before {
+     background-color: #fdd4b4;
+   }
+
+   .graph ul.data li.active.lv5::before {
+     background-color: #ffc4d87b;
+   }
+    element.style {
+      display: block;
+    }
+    /*BMI 위치 점*/
+    #surveyv3.surveyv3-result > .result-top .inner > .bmi-wrap .graph span.dot {
+      display: none;
+      margin-top: -5px;
+      content: '';
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background-color: #000;
+    }
+    #surveyv3.surveyv3-result > .result-top .inner > .bmi-wrap .graph ul.label {
+      width: 100%;
+      padding-top: 2px;
+    }
+    /*BMI 수치 */
+    .graph ul.label {
+          font-size: 0;
+        }
+    #surveyv3.surveyv3-result > .result-top .inner > .bmi-wrap .graph .label li {
+      display: inline-block;
+      width: 20%;
+      text-align: left;
+      font-size: 12px;
+    }
+    #surveyv3.surveyv3-result > .result-top .inner > .bmi-wrap .graph .label li {
+      display: inline-block;
+      text-align: left;
+      font-size: 12px;
+    }
+    #surveyv3.surveyv3-result > .result-top .inner > .bmi-wrap p {
+      margin-top: 44px;
+      font-size: 12px;
+      text-align: center;
+    }
+
+    /*---------------------------------------------------------------------------------------------------------------*/
+    /*결과상단 분석설명*/
+    #surveyv3.surveyv3-result > .result-top .inner > .recommend-wrap {
+      box-sizing: border-box;
+      width: 100%;
+      margin: 26px 0 20px;
+      padding: 20px 40px 30px 40px;
+      border-radius: 20px;
+      box-shadow: 0 5px 4px 0 rgb(0 0 0/ 2%);
+      background-color: #fff;
+      text-align: center;
+    }
+    #surveyv3.surveyv3-result > .result-top .inner > .recommend-wrap {
+      margin: 26px 0 20px;
+      padding: 20px 8px;
+      width: 100%;
+    }
+    #surveyv3.surveyv3-result > .result-top .inner > .recommend-wrap > h4 {
+      font-size: 20px;
+      font-weight: 700;
+      text-align: center;
+    }
+    #surveyv3.surveyv3-result > .result-top .inner > .recommend-wrap.BAD h4 {
+      color: #ff5c35;
+    }
+    /*추천영양성분 BOX*/
+    #surveyv3.surveyv3-result > .survey-nav {
+      position: fixed;
+      top: 90px;
+      left: calc(50%-640px);
+      height: calc(100% - 90px);
+      background-color: #fff;
+      width: 234px;
+    }
+    #surveyv3.surveyv3-result > .survey-nav {
+      position: relative;
+      box-sizing: border-box;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: auto;
+      background-color: #fff;
+      padding: 30px 0 20px 6px;
+    }
+    #surveyv3.surveyv3-result > .survey-nav > h2 {
+      text-align: center;
+      font-size: 24px 0;
+      padding: 16px;
+      font-weight: 700;
+    }
+    #surveyv3.surveyv3-result > .survey-nav > h2 {
+      text-align: left;
+      font-size: 20px;
+      padding: 0 0 0 16px;
+    }
+    #surveyv3.surveyv3-result > .survey-nav > h2 em {
+      padding-left: 10px;
+      color: #ff5c35;
+      font-weight: 700;
+    }
+    #surveyv3.surveyv3-result > .survey-nav > ul {
+      border-top: 1px solid #ddd;
+      padding: 10px 20px;
+      max-height: calc(100% - 180px);
+      overflow: auto;
+    }
+    #surveyv3.surveyv3-result > .survey-nav > ul {
+      width: 90%;
+      overflow-x: auto;
+      overflow-y: hidden;
+      white-space: nowrap;
+      border-top: 0;
+      padding: 20px 10px 0;
+    }
+    #surveyv3.surveyv3-result > .survey-nav > ul li {
+      vertical-align: top;
+      padding: 10px 0;
+      height: 36px;
+      cursor: pointer;
+    }
+    #surveyv3.surveyv3-result > .survey-nav > ul li {
+      position: relative;
+      display: inline-block;
+      padding: 10px 0;
+      width: 80px;
+      height: 96px;
+    }
+    #surveyv3.surveyv3-result > .survey-nav > ul li:first-child {
+      padding-left: 0;
+    }
+    element.style {
+      background-color: #b1d9f2;
+    }
+    #surveyv3.surveyv3-result > .survey-nav > ul li .img-wrap {
+      display: inline-block;
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+    }
+    #surveyv3.surveyv3-result > .survey-nav > ul li .img-wrap {
+      position: absolute;
+      left: 10px;
+      display: block;
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+    }
+    #surveyv3.surveyv3-result > .survey-nav > ul li .img-wrap img {
+      width: 36px;
+    }
+    #surveyv3.surveyv3-result > .survey-nav > ul li .img-wrap img {
+      width: 60px;
+    }
+
+    img {
+      max-width: 100%;
+      height: auto;
+    }
+    #surveyv3.surveyv3-result > .survey-nav > ul li .text-wrap {
+      display: inline-block;
+      vertical-align: top;
+      padding-left: 12px;
+      font-size: 13px;
+      width: 100%;
+      height: 36px;
+    }
+    #surveyv3.surveyv3-result > .survey-nav > ul li .text-wrap {
+      position: absolute;
+      top: 70px;
+      display: block;
+      padding-top: 10px;
+      padding-left: 0;
+      font-size: 11px;
+      width: 100%;
+      height: auto;
+    }
+    #surveyv3.surveyv3-result > .survey-nav > ul li .text-wrap p {
+      display: -webkit-box;
+      display: flex;
+      -webkit-box-align: center;
+      height: 36px;
+      width: 120px;
+    }
+    #surveyv3.surveyv3-result > .survey-nav > ul li .text-wrap p {
+      display: block;
+      text-align: center;
+      width: 100%;
+      height: auto;
+      white-space: break-spaces;
+    }
+    #surveyv3.surveyv3-result > .result-content {
+      margin-top: 30px;
+    }
+    #surveyv3.surveyv3-result section {
+      box-sizing: border-box;
+      margin: 0 auto;
+      padding: 0 0 0 20px;
+      width: 1280px;
+    }
+    /*성분별 설명 -오메가-*/
+    #surveyv3.surveyv3-result section {
+      padding: 0;
+      width: 100%;
+    }
+    #surveyv3.surveyv3-result .inner {
+      -webkit-box-sizing: border-box;
+      box-sizing: border-box;
+      margin-left: calc(100% - 1046px);
+      width: 1046px;
+    }
+    #surveyv3.surveyv3-result .inner {
+      margin-left: 0;
+      width: 100%;
+    }
+    element.style {
+      background-color: rgba(177, 217, 242, 0.5);
+    }
+    #surveyv3.surveyv3-result > .result-content .inner > .header {
+      position: relative;
+      padding: 30px 40px;
+    }
+    #surveyv3.surveyv3-result > .result-content .inner > .header {
+      padding: 30px 16px;
+    }
+    #surveyv3.surveyv3-result > .result-content .inner > .header .left {
+      display: block;
+      width: 100%;
+    }
+
+    #surveyv3.surveyv3-result > .result-content .inner > .header .left {
+      display: inline-block;
+      vertical-align: top;
+      width: 65%;
+    }
+    #surveyv3.surveyv3-result > .result-content .inner > .header .left h4 {
+      font-size: 20px;
+      font-weight: 700;
+    }
+    #surveyv3.surveyv3-result > .result-content .inner > .header .left ul {
+      min-height: 0;
+    }
+    #surveyv3.surveyv3-result > .result-content .inner > .header .left ul {
+      margin-top: 10px;
+      min-height: 130px;
+    }
+    #surveyv3.surveyv3-result > .result-content .inner > .header .left ul li {
+      font-size: 18px;
+      font-weight: 700;
+      line-height: 23px;
+    }
+    #surveyv3.surveyv3-result > .result-content .inner > .header .left span {
+      display: block;
+      padding-top: 20px;
+      padding-bottom: 10px;
+      font-size: 14px;
+    }
+    #surveyv3.surveyv3-result > .result-content .inner > .header .right {
+      display: block;
+      width: 100%;
+      position: relative;
+      padding-top: 15px;
+    }
+    #surveyv3.surveyv3-result > .result-content .inner > .header .right {
+      display: inline-block;
+      vertical-align: top;
+    }
+    #surveyv3.surveyv3-result > .result-content .inner > .header .right .tag {
+      position: relative;
+      text-align: left;
+      width: 100%;
+      top: 0;
+      left: 0;
+      right: 0;
+    }
+    #surveyv3.surveyv3-result
+      > .result-content
+      .inner
+      > .header
+      .right
+      .tag
+      li:first-child {
+      padding-left: 0;
+    }
+    #surveyv3.surveyv3-result > .result-content .inner > .header .right .tag li {
+      padding-left: 0;
+      padding-right: 20px;
+    }
+    #surveyv3.surveyv3-result > .result-content .inner > .header .right .tag li {
+      display: inline-block;
+      vertical-align: top;
+      width: 48px;
+      text-align: center;
+      padding-left: 20px;
+    }
+    .icon.icon-eye {
+      width: 34px;
+      height: 34px;
+      background-size: 34px;
+      background-image: url(/img/icon-eye.png);
+    }
+
+    .icon {
+      display: inline-block;
+      background-repeat: no-repeat;
+      background-position: 50% 50%;
+      vertical-align: top;
+    }
+    #surveyv3.surveyv3-result > .result-content .inner > .header .right .tag li p {
+      padding-top: 5px;
+      font-size: 11px;
+    }
+    #surveyv3.surveyv3-result > .result-content .inner > .header .right .tag li p {
+      padding-top: 5px;
+      font-size: 11px;
+    }
+    .icon.icon-heart {
+      width: 34px;
+      height: 34px;
+      background-size: 34px;
+      background-image: url(/img/icon-heart.png);
+    }
+    #surveyv3.surveyv3-result > .result-content .inner > .header .right .rating {
+      position: absolute;
+      bottom: 15px;
+      right: 20px;
+    }
+    #surveyv3.surveyv3-result
+      > .result-content
+      .inner
+      > .header
+      .right
+      .rating
+      .value {
+      position: absolute;
+      top: 0;
+      left: 0;
+      text-align: center;
+      width: 100%;
+      line-height: 40px;
+    }
+
+    #surveyv3.surveyv3-result
+      > .result-content
+      .inner
+      > .header
+      .right
+      .rating
+      .value {
+      position: absolute;
+      top: 0;
+      left: 0;
+      text-align: center;
+      width: 100%;
+      line-height: 40px;
+    }
+    #surveyv3.surveyv3-result
+      > .result-content
+      .inner
+      > .header
+      .right
+      .rating-label {
+      position: absolute;
+      bottom: 0;
+      right: 20px;
+      width: 40px;
+      text-align: center;
+      font-size: 11px;
+    }

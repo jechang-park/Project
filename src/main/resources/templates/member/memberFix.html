@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="ko"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>회원정보수정</title>
+</head>
+<body>
+<h1>회원정보수정</h1>
+
+<form th:object="${memberFixForm}" method="post" action="">
+<input type="hidden" th:name="id" th:value="${session.loginMember.id}">
+<input type="hidden" th:name="nick" th:value="${session.loginMember.nick}">
+<input type="hidden" th:name="email" th:value="${session.loginMember.email}">
+<div>
+    <label for="memberId">멤버번호 :</label>
+    <span th:text="${session.loginMember.memberId}"></span>
+</div>
+    <br>
+    <div>
+    <label for="id">아이디 :</label>
+    <span th:text="${session.loginMember.id}"></span>
+    </div>
+    <br>
+    <div>
+    <label for="pw">비밀번호</label>
+    <input type="password" id="pw" name="pw" th:value="${session.loginMember.pw}" placeholder="수정할 비밀번호를 입력해주세요"/>
+    <div id="pwError"></div>
+    </div>
+    <br>
+    <div>
+    <label for="nick">닉네임 :</label>
+    <span th:text="${session.loginMember.nick}"></span>
+    </div>
+    <br>
+    <div>
+    <label for="email">이메일</label>
+    <span th:text="${session.loginMember.email}"></span>
+    </div>
+    <br>
+    <div>
+    <label for="gender">성별 :</label>
+    <span th:text="${session.loginMember.gender}"></span>
+    </div>
+    <br>
+    <div>
+    <label for="age">나이 :</label>
+    <span th:text="${session.loginMember.age}"></span>
+    </div>
+    <br>
+    <div><button type="submit" th:text="#{button.update}">수정</button></div>
+    <div><button type="button" id="addBtn">마이페이지</button></div>
+</form>
+<script>
+
+{
+//마이페이지 이동
+
+// id 값이 하나일때는 documnet 해서 변수 지정할 필요 없음
+   addBtn.addEventListener('click', () => {
+  window.location.href = '/mypage';
+});
+}
+
+{
+//비밀번호 허용길이 체크
+const $pwError = document.getElementById('pwError');
+const $pw = document.getElementById('pw');
+function pwLengthChk() {
+  const pwValue = $pw.value;
+  if (pwValue.length > 7 && pwValue.length < 21) {
+    $pwError.style.color = 'green';
+    $pwError.innerHTML = 'Success';
+  } else if (pwValue.length < 7 && pwValue.length > 0) {
+    $pwError.style.color = 'red';
+    $pwError.innerHTML = '패스워드 길이가 너무 짧습니다.';
+  } else if (pwValue.length > 21) {
+    $pwError.style.color = 'red';
+    $pwError.innerHTML = '패스워드 길이가 너무 깁니다.';
+  } else if (pwValue == '') {
+    $pwError.innerHTML = '';
+  }
+}
+$pw.addEventListener('input', pwLengthChk);
+}
+
+{
+//비밀번호 허용문자 체크
+
+const $pw = document.getElementById('pw');
+const $pwError = document.getElementById('pwError');
+$pw.addEventListener('input', function () {
+  const inputValue = $pw.value;
+  const regex = /[^A-Za-z0-9]/g;
+  if (regex.test(inputValue)) {
+    $pwError.style.color = 'red';
+    $pwError.innerHTML = '잘못된입력입니다.';
+  }
+});
+}
+
+</script>
+</body>
+</html>

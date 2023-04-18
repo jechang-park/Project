@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link rel="stylesheet" th:href="@{../css/ingredient.css}"/>
+    <title>오메가3</title>
+</head>
+<body>
+<div class="wrapper">
+    <header>
+        <div class="top">
+            <div class="logo">
+                <a href="/index.html" th:href="@{/}">
+                    <img src="/img/black-yagiyo.png" alt=""
+                    /></a>
+            </div>
+            <div class="search_box">
+                <input
+                        class="searchbar"
+                        type="text"
+                        placeholder="영양제 성분 검색을 해보세요💊 ! "
+                />
+                <div class="search_btn">
+                    <img src="/img/search_div_icn.png" alt=""/>
+                </div>
+            </div>
+            <nav class="gnb_box">
+                <a href="">AI분석</a>
+                <a href="">커뮤니티</a>
+                <a href="">약국정보</a>
+                <a href="">로그인</a>
+            </nav>
+        </div>
+    </header>
+    <main>
+        <div class="banner">
+            <p>오메가3</p>
+        </div>
+        <div class="contents">
+            <article>
+                <div class="row row1">
+                    <span class="title">💬 오메가3</span>
+                    <p>
+                        오메가3는 생선이나 해조류에서 추출한 여러 종류의 불포화지방산을
+                        부르는 말이에요. 그 중 가장 중요한 것은 EPA와 DHA에요.<br/>
+                        EPA는 간에서 중성지방 합성을 줄여 혈중 중성지방 농도를 낮춰주고,
+                        혈액순환 개선에 도움을 줘요.
+                        <br/>
+                        DHA는 뇌, 신경 조직, 망막의 중요 구성 성분으로 뇌세포를
+                        손상시키는 물질을 감소시켜, 기억력을 높이는 데 도움을 줄 수
+                        있어요. 또, 건조한 눈을 개선해줘요.
+                        <br/>
+                    </p>
+                </div>
+                <div class="row row2">
+                    <span class="title">▪ 이런 이름으로도 불려요</span>
+                    <p>에이코사펜타엔산(EPA) ㅣ 도코사헥사엔산(DHA)</p>
+                </div>
+                <div class="row row3">
+                    <span class="title">▪ 목적에 따라 하루 권장 섭취량이 달라져요</span>
+                    <p>✅기억력 개선: 0.9~2g<br>
+                        ✅건조한 눈 개선 : 0.6~2.24g<br>
+                        ✅혈액순환 개선: 0.5~2g<br>
+                        ✅혈중 중성지방 개선: 0.5~2g
+                    </p>
+                </div>
+                <div class="row row4">
+                    <span class="title">❗ 부작용 및 주의사항</span>
+                    <p>수술 전후 지혈을 늦출 수 있음
+                        양극성 장애 증상을 악화시킬 수 있으므로 전문가와 상담필요
+                        간 질환이 있는 경우 출혈 부작용 위험이 증가할 수 있으므로 전문가와 상담 필요
+                        삽입형 제세동기를 사용하는 환자의 경우 불규칙적인 심박 위험이 높아질 수 있으므로 전문가와 상담필요</p>
+                </div>
+            </article>
+        </div>
+    </main>
+</div>
+</body>
+</html>

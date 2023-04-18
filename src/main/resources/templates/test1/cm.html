@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="ko"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title th:text="${pageTitle}">키</title>
+  <link rel="stylesheet" href="" th:href="@{/css/test1.css}">
+  <style>
+
+/* 질문외부 규격 */
+.question-answer-wrap {
+  padding: 28px 0;
+}
+.input-full {
+  width: 100%;
+}
+.input-small {
+  padding: 0 25px;
+  height: 50px;
+}
+/* input cm */
+.question-answer-wrap .question-input-field .unit {
+  position: absolute;
+  display: block;
+  z-index: 9;
+  right: 20px;
+  top: 16px;
+  color: #999;
+}
+/*cm 위치*/
+.question-answer-wrap li:first-child {
+  margin-top: 0;
+}
+.question-answer-wrap .question-input-field {
+  position: relative;
+}
+/*input 글자크기, 배경색*/
+.input-text {
+  font-size: 16px;
+  border: 1px solid #d7d7d7;
+  border-radius: 4px;
+  outline: 0;
+  background-color: #fff;
+  box-sizing: border-box;
+}
+  </style>
+</head>
+<body>
+<div id="survey">
+  <div class="survey-wrap">
+    <div class="survey-contents">
+      <div class="survey-contents-inner">
+        <a href="#" class="close-survey" onclick="if(confirm('분석을 종료하시겠습니까?')){ window.location.href='http://localhost:9080'; } return false;">
+          <img th:src="@{/images/close2.png}" alt="close" />
+        </a>
+        <div class="survey-test">
+          <nav class="survey-test-header">
+            <ul class="step-list-wrap">
+              <li data="기본정보">
+                <span>기본정보</span>
+              </li>
+              <img src="/images/right2.png" />
+              <li data="증상/불편">
+                <span>증상/불편</span>
+              </li>
+              <img src="/images/right2.png" />
+              <li data="생활습관" class="on">
+                <span>생활습관</span>
+              </li>
+              <img src="/images/right2.png" />
+              <li data="기타">
+                <span>기타</span>
+              </li>
+            </ul>
+          </nav>
+          <div class="survey-progress">
+            <div id="survey-progress-rate" style="width: 45%"></div>
+          </div>
+          <div class="survey-question-contens">
+            <section class="question-section">
+              <em id="qNum">질문 7</em>
+              <h2 id="qTitle" maxallowed="1" class>
+                <p>고객님의 키를 적어주세요</p>
+                <span class></span>
+              </h2>
+              <p id="qContent">
+                영양성분 추천에 체질량지수(BMI)를 활용합니다
+              </p>
+              <ul class="question-answer-wrap">
+                <li>
+                  <div class="question-input-field" style="padding-left: 0">
+                    <input
+                        type="radio"
+                        class="input-radio input-answer"
+                        name="answer"
+                        value="350"
+                        data-only="1"
+                        checked
+                        style="display: none"
+                    />
+                    <input
+                        id="content"
+                        type="text"
+                        class="input-text input-small input-full"
+                        placeholder="키"
+                        maxlength="6"
+                        min="100"
+                        max="250"
+                        required="true"
+                        oninput="checkNumber(this)"
+                    />
+                    <span class="unit"> cm </span>
+                  </div>
+                </li>
+              </ul>
+            </section>
+          </div>
+          <div id="next-error" class="survey-errormsg"></div>
+          <div class="survey-question-footer">
+            <button
+                id="btn-prev"
+                class="btn btn-radius"
+                onclick="window.location.href='http://localhost:9080/point'"
+            >
+              이전
+            </button>
+            <button
+                id="btn-next"
+                class="btn btn-radius btn-dark"
+                onclick="nextBtn();"
+            >
+              다음
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<script>
+          function nextBtn() {
+            let nextInput = document.getElementById('content');
+            let nextError = document.getElementById('next-error');
+            let inputValue = nextInput.value.trim();
+
+            if (inputValue === '') {
+              nextError.innerHTML = '답변을 입력하세요';
+              return false;
+            } else if (!/^\d+$/.test(inputValue)) {
+              nextError.innerHTML = '숫자만 입력해주세요';
+              return false;
+            } else if (inputValue < 100 || inputValue > 250) {
+              nextError.innerHTML = '100부터 250까지만 입력할 수 있습니다';
+              return false;
+            } else {
+              nextError.innerHTML = '';
+              window.location.href =
+                'http://localhost:9080/kg';
+              return true;
+            }
+          }
+        </script>
+
+</body>
+</html>

@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="ko"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Mypage</title>
+</head>
+<body>
+
+<li><a th:href="@{|/mypage/${session.loginMember.memberId}/fix|}">회원정보수정 </a></li>
+
+<li><a th:href="@{|/mypage/${session.loginMember.memberId}/delete|}">탈퇴 </a></li>
+
+</body>
+
+</html>

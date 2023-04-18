@@ -1,0 +1,139 @@
+* {
+  padding: 0px;
+  margin: 0px;
+  text-decoration: none;
+  list-style: none;
+  color: inherit;
+  font-family: 'Noto Sans KR', sans-serif;
+}
+@import url('https://fonts.googleapis.com/css2?family=Gowun+Dodum&display=swap');
+
+body {
+  width: 100%;
+}
+
+.wrapper {
+  width: 100%;
+  margin: 0 auto;
+}
+
+#health-research {
+  position: fixed;
+  bottom: 10px;
+}
+
+/* Header */
+
+header {
+  width: 1280px;
+  margin: 20px auto;
+}
+.top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* 로고이미지 */
+
+.top .logo > a > img {
+  width: 150px;
+}
+.top .search_box {
+  display: flex;
+  height: 30px;
+}
+
+.top .search_box .searchbar {
+  width: 300px;
+  height: 30px;
+  padding-left: 4px;
+}
+.search_btn {
+  display: flex;
+  width: 20px;
+  height: 100%;
+  border: none;
+  box-shadow: none;
+  cursor: pointer;
+}
+
+.top .gnb_box {
+  display: flex;
+  position: relative;
+  font-weight: 600;
+  height: 30px;
+}
+
+.gnb_box > a {
+  position: relative;
+  margin-left: 40px;
+}
+
+.gnb_box > a::before {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: 0;
+  left: 0;
+  background-color: #000;
+  transition: width 0.25s ease;
+}
+
+.gnb_box > a:hover::before {
+  width: 100%;
+}
+main::before {
+  width: 100%;
+  position: absolute;
+  height: 1px;
+  content: '';
+  background-color: #bbbbbb;
+  margin-top: -15px;
+  opacity: 50%;
+}
+/* m a i n */
+
+main {
+  width: 100%;
+}
+.banner {
+  display: flex;
+  margin: 0 auto;
+  width: 1600px;
+  height: 300px;
+  background: #4eb8ff;
+  border-radius: 20px;
+  justify-content: center;
+  align-items: center;
+}
+.banner p {
+  font-size: 100px;
+}
+.contents {
+  width: 1280px;
+  margin: 0 auto;
+}
+article {
+  outline: 1px solid #000;
+  border-radius: 10px;
+  width: 100%;
+  margin-top: 20px;
+}
+.row {
+  border-top: 1px solid #e6e9ed;
+  margin: 50px;
+  padding: 30px;
+}
+.row {
+  margin: 50px;
+  padding: 30px;
+}
+.row .title {
+  font-size: 35px;
+}
+.row p {
+  margin-top: 10px;
+}
+

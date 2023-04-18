@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link rel="stylesheet" th:href="@{../css/ingredient.css}"/>
+    <title>엽산</title>
+</head>
+<body>
+<div class="wrapper">
+    <header>
+        <div class="top">
+            <div class="logo">
+                <a href="/index.html" th:href="@{/}">
+                    <img src="/img/black-yagiyo.png" alt=""
+                    /></a>
+            </div>
+            <div class="search_box">
+                <input
+                        class="searchbar"
+                        type="text"
+                        placeholder="영양제 성분 검색을 해보세요💊 ! "
+                />
+                <div class="search_btn">
+                    <img src="/img/search_div_icn.png" alt=""/>
+                </div>
+            </div>
+            <nav class="gnb_box">
+                <a href="">AI분석</a>
+                <a href="">커뮤니티</a>
+                <a href="">약국정보</a>
+                <a href="">로그인</a>
+            </nav>
+        </div>
+    </header>
+    <main>
+        <div class="banner">
+            <p>엽산</p>
+        </div>
+        <div class="contents">
+            <article>
+                <div class="row row1">
+                    <span class="title">💬 엽산</span>
+                    <p>
+                        · 우리 몸의 기본인 세포와 혈액을 만드는 데 꼭 필요한 영양소에요.<br>
+                        · 혈관을 손상시킬 수 있는 '호모시스테인'이 너무 많아지지 않도록 조절해줘요.
+                    </p>
+                </div>
+                <div class="row row2">
+                    <span class="title">▪ 이런 이름으로도 불려요</span>
+                    <p>비타민B9 ㅣ 폴레이트 | 폴산 | 쿼트라폴릭</p>
+                </div>
+                <div class="row row3">
+                    <span class="title">▪ 상황에 따라 필요량이 달라질 수 있어요</span>
+                    <p>✅식사와 영양제를 모두 포함하여 400~1000μg을 섭취하도록 권장하고 있어요.<br>
+                        ✅임산부에게는 620μg 이상 섭취하도록 권장하고 있어요.<br>
+                        수용성 비타민으로 몸에 잘 남아있지 않고 쉽게 배출되는 성질을 가지고 있는 편이에요.
+                    </p>
+                </div>
+
+            </article>
+        </div>
+    </main>
+</div>
+</body>
+</html>

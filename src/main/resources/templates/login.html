@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="ko"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link
+      rel="stylesheet"
+      th:href="@{../css/login.css}"
+  />
+  <title>로그인</title>
+</head>
+<body>
+
+<div class="wrapper">
+  <div class="login-info">
+
+    <div class="logo"><a th:src="@{/}"><img th:src="@{../img/black-yagiyo.png}"></a></div>
+
+    <form class="content" action="" th:method="post" th:object="${loginForm}">
+
+      <!--        global error-->
+      <div th:if="${#fields.hasGlobalErrors()}">
+        <p th:each="err:${#fields.globalErrors()}" th:text="${err}"></p>
+      </div>
+      <div class="id">
+        <input type="text" name="id" placeholder="이메일 입력" maxlength="50" th:field="*{id}">
+        <div><span th:errors="*{id}"></span></div>
+      </div>
+      <div class="passwd">
+        <input type="password" name="pw" placeholder="비밀번호 입력" maxlength="12" th:field="*{pw}">
+        <div><span th:errors="*{pw}"></span></div>
+      </div>
+      <div class="btn">
+        <button>로그인</button>
+      </div>
+      <div class="text-box">
+        <span class="idfind"><a th:href="@{/findId}">아이디찾기</a></span>
+        <span class="pwfind"><a th:href="@{/findPW}">비밀번호찾기</a></span>
+        <span class="signup"><a th:href="@{members/add}">회원가입</a></span>
+      </div>
+    </form>
+  </div>
+</div>
+</body>
+</html>

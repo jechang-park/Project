@@ -1,0 +1,300 @@
+@charset "UTF-8";
+/* reset.css */
+html,
+body,
+div,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+input {
+  margin: 5px;
+}
+/* * {
+  outline: 1px solid red;
+} */
+.wrap {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  width: minmax(100%, 1280px);
+  height: 100vh;
+  display: grid;
+  grid-template-columns: 1fr 2fr 1fr;
+  grid-template-rows: 50px 1fr;
+  grid-template-areas:
+    'top top top'
+    'main-l main main-r';
+  justify-content: center;
+  /* outline: 1px solid red; */
+}
+/* 팀장님 코드 */
+@import url('https://fonts.googleapis.com/css2?family=Gowun+Dodum&display=swap');
+
+body {
+  width: 100%;
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin: 0 auto;
+}
+
+/* Header */
+
+header {
+  width: 100%;
+  position: fixed;
+  z-index: 999;
+  background-color: #fff;
+  top: 0;
+}
+.top {
+  width: minmax(auto, 1280px);
+  height: 100%;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* 로고이미지 */
+
+.top .logo > img {
+  width: 150px;
+}
+
+/* 검색 */
+.top .search_box {
+  display: flex;
+  height: 30px;
+}
+
+.top .search_box .searchbar {
+  width: 300px;
+  height: 30px;
+  padding-left: 4px;
+  outline: 2px solid #999;
+  border: none;
+}
+.search_btn {
+  display: flex;
+  width: 20px;
+  height: 100%;
+  border: none;
+  box-shadow: none;
+  cursor: pointer;
+}
+
+/* 탑메뉴 */
+.top .gnb_box {
+  display: flex;
+  position: relative;
+  font-weight: 600;
+  height: 30px;
+}
+
+.gnb_box > a {
+  position: relative;
+  margin-left: 40px;
+}
+
+.gnb_box > a::before {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: 0;
+  left: 0;
+  background-color: #000;
+  transition: width 0.25s ease;
+}
+
+.gnb_box > a:hover::before {
+  width: 100%;
+}
+/* 팀장님 코드 */
+
+.header {
+  display: grid;
+  grid-area: top;
+  text-align: center;
+}
+.main {
+  display: grid;
+  grid-area: main;
+  justify-content: center;
+}
+.container {
+  width: 500px;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  margin: 100px;
+  border-radius: 1%;
+  border: 1px solid gray;
+  text-align: center;
+}
+.container_title {
+  letter-spacing: 10px;
+  margin: 10px;
+  font-size: x-large;
+  font-weight: bolder;
+}
+.container_contents {
+  display: flex;
+  flex-direction: column;
+  margin: 20px;
+}
+.container_contents_item {
+  text-align: start;
+  margin: 10px;
+  float: left;
+  font-weight: bolder;
+}
+.container_contents_item_input {
+  height: 30px;
+  font-weight: bolder;
+}
+/* 이메일 위치 */
+#email {
+  float: left;
+}
+.container_contents_submitBtn {
+  position: relative;
+  left: -40px;
+  width: 200px;
+  margin: 50px;
+  height: 50px;
+  /* background-color: ; */
+}
+.container_contents_cancelBtn {
+  width: 100px;
+  height: 50px;
+}
+.container_contents_email {
+  position: relative;
+  top: 5px;
+  left: -70px;
+  width: 120px;
+  height: 37px;
+}
+#codeBtn {
+  height: 37px;
+  float: right;
+  position: relative;
+  top: -31px;
+  left: -10px;
+}
+/* 이메일 인증 타이머 */
+.timer div {
+  position: relative;
+  width: 40%;
+  text-align: center;
+  font-weight: 700;
+  font-size: 37px;
+  left: 38%;
+  top: -50px;
+}
+
+.timer button {
+  float: right;
+  position: relative;
+  top: -90px;
+  left: -11px;
+  width: 95px;
+  height: 37px;
+}
+.icon_google {
+  float: left;
+}
+.icon_naver {
+  float: left;
+  margin: 0px 30px;
+  width: 40px;
+}
+.icon_daum {
+  float: left;
+  width: 40px;
+}

@@ -1,0 +1,161 @@
+* {
+  padding: 0px;
+  margin: 0px;
+  text-decoration: none;
+  list-style: none;
+  color: inherit;
+  font-family: 'Noto Sans KR', sans-serif;
+}
+@import url('https://fonts.googleapis.com/css2?family=Gowun+Dodum&display=swap');
+
+@keyframes titleMotion {
+  0% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  1% {
+    opacity: 1; /* keep opacity at 100% */
+    transform: translateY(0);
+    animation-delay: 1s; /* add more delay when opacity is 0 */
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(100%);
+  }
+}
+
+@keyframes bounce-effect {
+  0% {
+    transform: translateY(0);
+    animation-timing-function: ease-in;
+  }
+  50% {
+    transform: translateY(-7px);
+    animation-timing-function: ease-out;
+  }
+  100% {
+    transform: translateY(0);
+    animation-timing-function: ease-in;
+  }
+}
+
+body {
+  width: 100%;
+}
+
+.wrapper {
+  width: 100%;
+  margin: 0 auto;
+}
+
+#health-research {
+  position: fixed;
+  bottom: 10px;
+}
+
+/* Header */
+
+header {
+  width: 1280px;
+  margin: 20px auto;
+}
+.top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* 로고이미지 */
+
+.top .logo a > img {
+  width: 150px;
+}
+.top .search_box {
+  display: flex;
+  height: 30px;
+}
+
+.top .search_box .searchbar {
+  width: 300px;
+  height: 30px;
+  padding-left: 4px;
+}
+.search_btn {
+  display: flex;
+  width: 20px;
+  height: 100%;
+  border: none;
+  box-shadow: none;
+  cursor: pointer;
+}
+
+.top .gnb_box {
+  display: flex;
+  position: relative;
+  font-weight: 600;
+  height: 30px;
+}
+
+.gnb_box > a {
+  position: relative;
+  margin-left: 40px;
+}
+
+.gnb_box > a::before {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: 0;
+  left: 0;
+  background-color: #000;
+  transition: width 0.25s ease;
+}
+
+.gnb_box > a:hover::before {
+  width: 100%;
+}
+main::before {
+  width: 100%;
+  position: absolute;
+  height: 1px;
+  content: '';
+  background-color: #bbbbbb;
+  margin-top: -15px;
+  opacity: 50%;
+}
+/* m a i n */
+
+main {
+  width: 100%;
+}
+.banner {
+  margin: 0 auto;
+  width: 1280px;
+  height: 300px;
+  background: #fff4bc;
+  border-radius: 20px;
+}
+
+/* Contents */
+.nutrients {
+  width: 1280px;
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0 auto;
+}
+.nutrients a {
+  display: flex;
+  width: 180px;
+  height: 150px;
+  background-color: #e6e9ed;
+  border-radius: 10px;
+  color: #000;
+  border: 1px solid #e6e9ed;
+  margin: 20px auto;
+  padding: 10px;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0px 2px 10px rgba(70, 56, 147, 0.1);
+  font-weight: bold;
+}

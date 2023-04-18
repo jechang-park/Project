@@ -1,0 +1,22 @@
+@charset "UTF-8";
+/*input 위아래 공백*/
+    .question-answer-wrap {
+      padding: 28px 0;
+    }
+    /*input 크기*/
+    .input-full {
+      width: 100%;
+    }
+    .input-small {
+      padding: 0 25px;
+      height: 50px;
+    }
+    /*input 글자크기, 배경색*/
+    .input-text {
+      font-size: 16px;
+      border: 1px solid #d7d7d7;
+      border-radius: 4px;
+      outline: 0;
+      background-color: #fff;
+      box-sizing: border-box;
+    }

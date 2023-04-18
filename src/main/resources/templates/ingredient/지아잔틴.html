@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8"/>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <link rel="stylesheet" th:href="@{../css/ingredient.css}"/>
+  <title>지아잔틴</title>
+</head>
+<body>
+<div class="wrapper">
+  <header>
+    <div class="top">
+      <div class="logo">
+        <a href="/index.html">
+          <img src="/img/black-yagiyo.png" alt=""
+          /></a>
+      </div>
+      <div class="search_box">
+        <input
+            class="searchbar"
+            type="text"
+            placeholder="영양제 성분 검색을 해보세요💊 ! "
+        />
+        <div class="search_btn">
+          <img src="/img/search_div_icn.png" alt=""/>
+        </div>
+      </div>
+      <nav class="gnb_box">
+        <a href="">AI분석</a>
+        <a href="">커뮤니티</a>
+        <a href="">약국정보</a>
+        <a href="">로그인</a>
+      </nav>
+    </div>
+  </header>
+  <main>
+    <div class="banner">
+      <p>지아잔틴</p>
+    </div>
+    <div class="contents">
+      <article>
+        <div class="row row1">
+          <span class="title">💬 지아잔틴</span>
+          <p>
+            오메가3는 생선이나 해조류에서 추출한 여러 종류의 불포화지방산을
+            부르는 말이에요. 그 중 가장 중요한 것은 EPA와 DHA에요.<br/>
+            EPA는 간에서 중성지방 합성을 줄여 혈중 중성지방 농도를 낮춰주고,
+            혈액순환 개선에 도움을 줘요.
+            <br/>
+            DHA는 뇌, 신경 조직, 망막의 중요 구성 성분으로 뇌세포를
+            손상시키는 물질을 감소시켜, 기억력을 높이는 데 도움을 줄 수
+            있어요. 또, 건조한 눈을 개선해줘요.
+            <br/>
+          </p>
+        </div>
+        <div class="row row2">
+          <span class="title">▪ 0.9mg 이상 섭취하시는 게 가장 좋아요!</span>
+          <p>✅자외선 때문에 시력이 손상되는 것을 막아줄 수 있고 식후에 흡수율이 높으니, 아침 식후에 드시는 걸 추천해요.<br>
+
+          </p>
+        </div>
+        <div class="row row3" th:href="@{/}">
+          <span class="title">❗ 부작용 및 주의사항</span>
+          <p>임산부 대상 연구가 부족하므로 전문가와 상담 필요<br>
+            수유부 대상 연구가 부족하므로 전문가와 상담 필요<br>
+            장기간 고용량 복용시 흡연자 폐암 위험이 증가할 수 있음</p>
+        </div>
+      </article>
+    </div>
+  </main>
+</div>
+</body>
+</html>

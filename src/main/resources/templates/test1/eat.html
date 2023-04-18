@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="ko"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>식생활</title>
+  <link rel="stylesheet" href="" th:href="@{/css/test1.css}">
+  <style>
+    /*질문외부 간격*/
+.question-answer-wrap .label-question {
+padding-left: 44px;
+line-height: 24px;
+}
+/*질문내부 규격*/
+.question-answer-wrap li {
+margin-top: 20px;
+}
+/*질문 위아래 간격*/
+.question-answer-wrap {
+padding: 28px 0;
+}
+input[type='checkbox'] {
+display: none;
+}
+#num1:checked + span {
+background-image: url(/images/icon-checkbox-on.png);
+}
+#num1 + span {
+position: absolute;
+left: 14%;
+width: 24px;
+height: 24px;
+background-image: url(/images/icon-checkbox-off.png);
+background-repeat: no-repeat;
+background-position: 50% 50%;
+background-size: 24px;
+}
+#num2:checked + span {
+background-image: url(/images/icon-checkbox-on.png);
+}
+#num2 + span {
+position: absolute;
+left: 14%;
+width: 24px;
+height: 24px;
+background-image: url(/images/icon-checkbox-off.png);
+background-repeat: no-repeat;
+background-position: 50% 50%;
+background-size: 24px;
+}
+#num3:checked + span {
+background-image: url(/images/icon-checkbox-on.png);
+}
+#num3 + span {
+position: absolute;
+left: 14%;
+width: 24px;
+height: 24px;
+background-image: url(/images/icon-checkbox-off.png);
+background-repeat: no-repeat;
+background-position: 50% 50%;
+background-size: 24px;
+}
+#num4:checked + span {
+background-image: url(/images/icon-checkbox-on.png);
+}
+#num4 + span {
+position: absolute;
+left: 14%;
+width: 24px;
+height: 24px;
+background-image: url(/images/icon-checkbox-off.png);
+background-repeat: no-repeat;
+background-position: 50% 50%;
+background-size: 24px;
+}
+#num5:checked + span {
+background-image: url(/images/icon-checkbox-on.png);
+}
+#num5 + span {
+position: absolute;
+left: 14%;
+width: 24px;
+height: 24px;
+background-image: url(/images/icon-checkbox-off.png);
+background-repeat: no-repeat;
+background-position: 50% 50%;
+background-size: 24px;
+}
+#num6:checked + span {
+background-image: url(/images/icon-checkbox-on.png);
+}
+#num6 + span {
+position: absolute;
+left: 14%;
+width: 24px;
+height: 24px;
+background-image: url(/images/icon-checkbox-off.png);
+background-repeat: no-repeat;
+background-position: 50% 50%;
+background-size: 24px;
+}
+#none:checked + span {
+background-image: url(/images/icon-checkbox-on.png);
+}
+#none + span {
+position: absolute;
+left: 14%;
+width: 24px;
+height: 24px;
+background-image: url(/images/icon-checkbox-off.png);
+background-repeat: no-repeat;
+background-position: 50% 50%;
+background-size: 24px;
+}
+  </style>
+</head>
+<body>
+<div id="survey">
+  <div class="survey-wrap">
+    <div class="survey-contents">
+      <div class="survey-contents-inner">
+        <a href="#" class="close-survey" onclick="if(confirm('분석을 종료하시겠습니까?')){ window.location.href='http://localhost:9080'; } return false;">
+          <img th:src="@{/images/close2.png}" alt="close" />
+        </a>
+        <div class="survey-test">
+          <nav class="survey-test-header">
+            <ul class="step-list-wrap">
+              <li data="기본정보">
+                <span>기본정보</span>
+              </li>
+              <img src="/images/right2.png" />
+              <li data="증상/불편">
+                <span>증상/불편</span>
+              </li>
+              <img src="/images/right2.png" />
+              <li data="생활습관" class="on">
+                <span>생활습관</span>
+              </li>
+              <img src="/images/right2.png" />
+              <li data="기타">
+                <span>기타</span>
+              </li>
+            </ul>
+          </nav>
+          <div class="survey-progress">
+            <div id="survey-progress-rate" style="width: 70%"></div>
+          </div>
+          <div class="survey-question-contens">
+            <section class="question-section">
+              <em id="qNum">질문 12</em>
+              <h2 id="qTitle" maxallowed="99" class>
+                <p>고객님의 식습관을 모두 선택하세요</p>
+                <span class></span>
+              </h2>
+              <p id="qContent"></p>
+              <ul class="question-answer-wrap">
+                <li>
+                  <label class="label-radio label-question">
+                    <input
+                        id="num1"
+                        type="checkbox"
+                        class="input-checkbox input-answer"
+                        name="answer"
+                        value="363"
+                        data-only="null"
+                    />
+                    <span></span>
+                    생선을 일주일에 3회 이상 먹는다
+                  </label>
+                </li>
+                <li>
+                  <label class="label-radio label-question">
+                    <input
+                        id="num2"
+                        type="checkbox"
+                        class="input-checkbox input-answer"
+                        name="answer"
+                        value="364"
+                        data-only="null"
+                    />
+                    <span></span>
+                    녹황색 채소를 자주 먹는다
+                  </label>
+                </li>
+                <li>
+                  <label class="label-radio label-question">
+                    <input
+                        id="num3"
+                        type="checkbox"
+                        class="input-checkbox input-answer"
+                        name="answer"
+                        value="365"
+                        data-only="null"
+                    />
+                    <span></span>
+                    과일을 주 4개 이상 먹는다.
+                  </label>
+                </li>
+                <li>
+                  <label class="label-radio label-question">
+                    <input
+                        id="num4"
+                        type="checkbox"
+                        class="input-checkbox input-answer"
+                        name="answer"
+                        value="366"
+                        data-only="null"
+                    />
+                    <span></span>
+                    고기를 주 4회 이상 섭취한다.
+                  </label>
+                </li>
+                <li>
+                  <label class="label-radio label-question">
+                    <input
+                        id="num5"
+                        type="checkbox"
+                        class="input-checkbox input-answer"
+                        name="answer"
+                        value="367"
+                        data-only="null"
+                    />
+                    <span></span>
+                    단 음식(초콜릿, 아이스크림, 빵/과자, 음료수)을 자주
+                    먹는다
+                  </label>
+                </li>
+                <li>
+                  <label class="label-radio label-question">
+                    <input
+                        id="num6"
+                        type="checkbox"
+                        class="input-checkbox input-answer"
+                        name="answer"
+                        value="368"
+                        data-only="null"
+                    />
+                    <span></span>
+                    식사를 5회 이상 거른다
+                  </label>
+                </li>
+                <li>
+                  <label class="label-radio label-question">
+                    <input
+                        type="checkbox"
+                        class="input-checkbox input-answer"
+                        name="answer"
+                        id="none"
+                        value="369"
+                        data-only="1"
+                    />
+                    <span></span>
+                    선택할 것이 없음
+                  </label>
+                </li>
+              </ul>
+            </section>
+          </div>
+          <div class="survey-errormsg"></div>
+          <div class="survey-question-footer">
+            <button
+                id="btn-prev"
+                class="btn btn-radius"
+                onclick="window.location.href='http://localhost:9080/sun'"
+            >
+              이전
+            </button>
+            <button
+                id="btn-next"
+                class="btn btn-radius btn-dark"
+                onclick="handleNextClick()"
+            >
+              다음
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<script>
+      const noneCheckbox = document.getElementById('none');
+      const otherCheckboxes = document.querySelectorAll(
+        "input[name='answer']:not(#none)",
+      );
+
+      otherCheckboxes.forEach(checkbox => {
+        checkbox.addEventListener('change', () => {
+          if (noneCheckbox.checked) {
+            noneCheckbox.checked = false;
+          }
+        });
+      });
+
+      noneCheckbox.addEventListener('change', () => {
+        if (noneCheckbox.checked) {
+          otherCheckboxes.forEach(checkbox => {
+            checkbox.checked = false;
+          });
+        }
+      });
+      function handleNextClick() {
+        const num1Radio = document.getElementById('num1');
+        const num2Radio = document.getElementById('num2');
+        const num3Radio = document.getElementById('num3');
+        const num4Radio = document.getElementById('num4');
+        const num5Radio = document.getElementById('num5');
+        const num6Radio = document.getElementById('num6');
+        const noneRadio = document.getElementById('none');
+        const errorMsg = document.querySelector('.survey-errormsg');
+
+        if (
+          !num1Radio.checked &&
+          !num2Radio.checked &&
+          !num3Radio.checked &&
+          !num4Radio.checked &&
+          !num5Radio.checked &&
+          !num6Radio.checked &&
+          !noneRadio.checked
+        ) {
+          errorMsg.textContent = '답변을 입력하세요!';
+        } else {
+          // Clear error message and navigate to the next page
+          errorMsg.textContent = '';
+          window.location.href =
+            'http://localhost:9080/smoking';
+        }
+      }
+    </script>
+  </body>
+</html>

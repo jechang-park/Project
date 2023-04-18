@@ -1,0 +1,166 @@
+@charset "UTF-8";
+* {
+  padding: 0px;
+  margin: 0px;
+  text-decoration: none;
+  list-style: none;
+  color: inherit;
+  font-family: 'pretendard', sans-serif;
+  outline: none;
+}
+input{
+     border: 1px solid #ccc;
+
+}
+body {
+  width: 100%;
+}
+
+.wrapper {
+  width: 100%;
+  margin: 0 auto;
+
+}
+.btmline {
+  border-bottom: 1px solid #dfe2e6;
+}
+.logo {
+  width: 1280px;
+  height: 100%;
+  margin: 0 auto;
+  text-align: center;
+}
+.logo a img {
+  width: 200px;
+  height: 100%;
+}
+.main {
+margin:50px auto 0px auto;
+display:flex;
+justify-content:center;
+}
+.area_contents{
+margin-left:90px;}
+.container .title{
+display:flex;
+justify-content:center;
+font-size:30px;
+}
+.idArea{
+position:relative;
+margin:20px 0px 20px 0px;
+}
+
+.idArea input {
+  width: 500px;
+  height: 40px;
+  padding-left:10px;
+}
+.positive{
+font-size:30px;
+position:absolute;
+margin:-45px 0px 0px 480px;
+}
+.negative{
+font-size:15px;
+}
+
+.pwArea{
+margin:20px 0px 20px 0px;
+}
+.pwArea input {
+  width: 500px;
+  height: 40px;
+  padding-left:10px;
+}
+.nickArea input{
+  width: 500px;
+  height: 40px;
+  padding-left:10px;
+}
+.emailArea div input{
+  width: 250px;
+  height: 40px;
+  padding-left:10px;
+}
+.emailArea .dropdown{
+  width: 240px;
+  height: 40px;
+
+}
+.genderArea .select_m{
+    appearance: none;
+    -webkit-appearance: none;
+    width: 250px;
+    height: 50px;
+    outline: none;
+}
+.genderArea .select_m:checked{
+        border: 2px solid #f27935;
+        font-weight: 700;
+        color: #f27935;
+}
+.genderArea .select_w{
+     appearance: none;
+     -webkit-appearance: none;
+     width: 250px;
+     height: 50px;
+ }
+ .genderArea .select_w:checked{
+         border: 2px solid #f27935;
+         font-weight: 700;
+  }
+  .genderArea form{
+  position:relative;
+  }
+  .genderArea form label{
+  position:absolute;
+  }
+  .genderArea .m {
+  left:110px;
+  line-height:50px;
+    }
+  .genderArea .f {
+    left:370px;
+    line-height:50px;
+   }
+
+.ageArea input{
+width:200px;
+height:50px;
+}
+.date-selectors select{
+text-align:center;
+width:165px;
+height:50px;
+}
+.check_term{
+text-align:center;
+margin-top:20px;
+height:100px;
+font-size:20px;
+}
+.check_term div{
+display:flex;
+justify-content:center;
+margin-top:10px;
+}
+.check_term div input{
+width:25px;
+}
+
+.join_btn{
+margin-top:20px;
+text-align:center;
+}
+.join_btn button{
+  background-color: #007bff;
+  border: none;
+  border-radius: 4px;
+  color: #fff;
+  cursor: pointer;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+width:500px;
+height:60px;
+}

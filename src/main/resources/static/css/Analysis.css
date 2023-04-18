@@ -1,0 +1,156 @@
+@charset "UTF-8";
+li,
+ol,
+ul {
+  list-style: none;
+}
+
+ @font-face {
+  font-family: 'Pretendard-Regular';
+  src: url('https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff')
+    format('woff');
+  font-weight: 400;
+  font-style: normal;
+}
+body {
+  font-family: 'Pretendard-Regular', sans-serif;
+}
+
+/* 레이아웃 비율, 배경색 */
+#survey .survey-wrap {
+  position: relative;
+  background-color: #fafafa;
+  display: table;
+  width: 100%;
+  height: 100%;
+}
+/* 내부 */
+#survey .survey-wrap .survey-contents {
+  padding: 40px 0 140px;
+  display: table-cell;
+  vertical-align: top;
+}
+/* 내부 +그림자효과 */
+#survey .survey-wrap .survey-contents .survey-contents-inner {
+  position: relative;
+  margin: 0 auto;
+  padding-bottom: 30px;
+  width: 940px;
+  background-color: #fff;
+  box-shadow: 0 2px 3px 0 rgba(0, 0, 0, 0.2);
+}
+/* 헤드부분 위치 */
+.step-list-wrap {
+  align-items: center;
+}
+/*헤드 높이*/
+#survey .survey-contents-inner .survey-test .survey-test-header {
+  height: 91px;
+  box-sizing: border-box;
+}
+/* 헤드 내부 */
+#survey .survey-contents-inner .survey-test .step-list-wrap {
+  display: flex;
+  margin: 0 auto;
+  width: 670px;
+  flex-direction: row;
+  justify-content: space-between;
+  font-weight: 700;
+  font-size: 18px;
+  color: #bdbdbd;
+}
+/*헤더글자 색깔*/
+#survey .survey-contents-inner .survey-test .step-list-wrap li.on {
+  color: #ff5c35;
+}
+/* close */
+.close-survey {
+  position: absolute;
+  right: -25px;
+  top: -25px;
+  width: 50px;
+  height: 50px;
+  line-height: 50px;
+  text-align: center;
+  border-radius: 50%;
+  background-color: #fff;
+  box-shadow: 0 2px 3px 0 rgb(0 0 0 / 8%);
+  z-index: 9;
+}
+/*헤더 라인색1*/
+#survey .survey-contents-inner .survey-test .survey-progress {
+  height: 4px;
+  background-color: #eee;
+}
+/*헤더 라인색2*/
+#survey-progress-rate {
+  height: 4px;
+  background-color: #ff5c35;
+}
+/*질문내부 크기*/
+#survey .survey-contents-inner .survey-test .survey-question-contens {
+  padding-top: 36px;
+  margin: auto;
+  width: 670px;
+}
+/*질문글자 색깔*/
+.question-section em {
+  font-size: 16px;
+  font-weight: 700;
+  color: #999;
+}
+/*질문 언더라인*/
+.question-section > ul {
+  border-top: 1px solid #eee;
+}
+
+/*에러메시지*/
+#survey .survey-contents-inner .survey-test .survey-errormsg {
+  color: #f1574b;
+  font-weight: 700;
+  font-size: 16px;
+  margin: 0 auto;
+  width: 670px;
+}
+/*푸터*/
+#survey .survey-contents-inner .survey-test .survey-question-footer {
+  overflow: hidden;
+  margin: 20px auto 0;
+  width: 670px;
+}
+/*이전*/
+.btn:first-child {
+  float: left;
+  width: 250px;
+  background-color: #fff;
+}
+/*다음*/
+.btn:last-child {
+  float: right;
+  width: 250px;
+  background-color: #333;
+  border: none;
+  color: #fff;
+}
+/*버튼 테두리곡선*/
+.btn-radius {
+  border-radius: 25px;
+}
+/*버튼 크기, 글자크기*/
+.btn {
+  appearance: none;
+  display: inline-block;
+  padding: 0 36px;
+  min-width: 74px;
+  height: 50px;
+  font-size: 16px;
+  font-weight: 700;
+  text-align: center;
+  outline: 0;
+  vertical-align: middle;
+  box-sizing: border-box;
+  letter-spacing: 0.5em;
+}
+button {
+  cursor: pointer;
+}

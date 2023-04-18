@@ -1,0 +1,90 @@
+@charset "UTF-8";
+* {
+  padding: 0px;
+  margin: 0px;
+  text-decoration: none;
+  list-style: none;
+  color: inherit;
+  font-family: 'pretendard', sans-serif;
+}
+
+body {
+  width: 100%;
+ background-color:#f7f7f7;
+
+}
+
+.wrapper {
+  width: 1280px;
+  margin: 0 auto;
+}
+.logo{
+margin:0 auto;
+width:150px;
+}
+.logo > a img{
+width:200px;
+height:100%;
+}
+.login-info{
+margin-top:200px;}
+
+.content{
+text-align:center;
+margin:0 auto;
+}
+.content .id{
+padding-left:40px;
+width:100%;
+text-align:center;
+margin:0 auto;
+}
+.content .id > input{
+border-radius:10px;
+width:340px;
+height:50px;
+padding-left:5px;
+}
+.content .passwd{
+padding-left:40px;
+width:100%;
+text-align:center;
+margin-top:20px;
+margin:0 auto;
+}
+.passwd input{
+border-radius:10px;
+margin-top:10px;
+width:340px;
+height:50px;
+padding-left:5px;
+}
+
+
+.btn{
+padding-left:75px;
+}
+.btn button{
+background-color:#5b1a7c;
+border-radius:10px;
+ border: none;
+ cursor: pointer;
+margin-top:30px;
+width: 350px;
+height: 50px;
+color:#fff;
+font-size:20px;
+}
+
+
+.text-box{
+margin:10px 0px 0px 60px;
+}
+.pwfind::after{
+content:"|";
+padding:3px;
+}
+.idfind::after{
+content:"|";
+padding:3px;
+}

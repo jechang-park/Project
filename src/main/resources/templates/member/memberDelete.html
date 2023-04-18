@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>탈퇴화면</title>
+</head>
+<body>
+<h3>회원을 탈퇴하실려면 비밀번호를 입력해주세요.</h3>
+<form th:object="${memberDeleteForm}" method="post" action="">
+    <input type="password" id="pw" name="pw" placeholder="패스워드를 입력해주세요" >
+    <div id="pwError"></div>
+    <button disabled="true" type="submit" id="buttonDel">탈퇴</button>
+</form>
+<script th:inline="javascript">
+    const pwError = document.getElementById("pwError");
+    const pw = document.getElementById("pw");
+    const buttonDel = document.getElementById("buttonDel");
+    pw.addEventListener("input", function(e) {
+        if(pw.value == /*[[${session.loginMember.pw}]]*/ ''){
+        pwError.style.color = 'green';
+        pwError.innerHTML = "비밀번호가 일치합니다."
+            buttonDel.disabled = false;
+        }else{
+        pwError.style.color = 'red';
+        pwError.innerHTML = "비밀번호가 일치하지 않습니다.";
+        buttonDel.disabled = true;
+        }
+    });
+</script>
+</body>
+</html>

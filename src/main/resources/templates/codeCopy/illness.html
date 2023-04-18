@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="ko"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title th:text="${pageTitle}">건강카테고리</title>
+  <link rel="stylesheet" href="" th:href="@{/css/Analysis.css}">
+  <link rel="stylesheet" href="" th:href="@{/css/illness.css}">
+  <link rel="stylesheet" href="" th:href="@{/css/closeModal.css}">
+</head>
+<body>
+<div id="survey">
+  <div class="survey-wrap">
+    <div class="survey-contents">
+      <div class="survey-contents-inner">
+        <div class="survey-test">
+          <nav class="survey-test-header"></nav>
+          <div class="survey-progress">
+            <div id="survey-progress-rate" style="width: 20%"></div>
+          </div>
+          <div class="survey-question-contens">
+            <section class="question-section">
+              <em id="qNum">질문 4</em>
+              <h2 id="qTitle" maxallowed="1" class>
+                <p>고객님이 불편하시거나 걱정되는 3가지를 선택하세요</p>
+                <span class></span>
+              </h2>
+              <p id="qContent"></p>
+              <ul class="question-answer-wrap">
+                <li class="category">
+                  <label class="label-checkbox label-question">
+                    <input
+                        id="purpose-1"
+                        type="checkbox"
+                        value="blood"
+                        class="input-checkbox input-answer"
+                        name="answer"
+                        data-only="null"
+                    />
+                    <img src="/img/혈관혈액.png" alt="" />
+                    <span>혈액순환</span>
+                  </label>
+                </li>
+                <li class="category">
+                  <label class="label-checkbox label-question">
+                    <input
+                        id="purpose-2"
+                        type="checkbox"
+                        value="digestion"
+                        class="input-checkbox input-answer"
+                        name="answer"
+                        data-only="null"
+                    />
+                    <img src="/img/소화.png" alt="" />
+                    <span>소화/장</span>
+                  </label>
+                </li>
+                <li class="category">
+                  <label
+                      for="purpose-3"
+                      class="label-checkbox label-question"
+                  >
+                    <input
+                        id="purpose-3"
+                        type="checkbox"
+                        value="skin"
+                        class="input-checkbox input-answer"
+                        name="answer"
+                        data-only="null"
+                    />
+                    <img src="/img/피부.png" alt="" />
+                    <span>피부</span>
+                  </label>
+                </li>
+                <li class="category">
+                  <label
+                      for="purpose-4"
+                      class="label-checkbox label-question"
+                  >
+                    <input
+                        id="purpose-4"
+                        type="checkbox"
+                        value="eyes"
+                        class="input-checkbox input-answer"
+                        name="answer"
+                        data-only="null"
+                    />
+                    <img src="/img/눈.png" alt="" />
+                    <span>눈</span>
+                  </label>
+                </li>
+                <li class="category">
+                  <label
+                      for="purpose-5"
+                      class="label-checkbox label-question"
+                  >
+                    <input
+                        id="purpose-5"
+                        type="checkbox"
+                        value="brain"
+                        class="input-checkbox input-answer"
+                        name="answer"
+                        data-only="null"
+                    />
+                    <img src="/img/두뇌.png" alt="" />
+                    <span>두뇌활동</span>
+                  </label>
+                </li>
+                <li class="category">
+                  <label
+                      for="purpose-6"
+                      class="label-checkbox label-question"
+                  >
+                    <input
+                        id="purpose-6"
+                        type="checkbox"
+                        value="stamina"
+                        class="input-checkbox input-answer"
+                        name="answer"
+                        data-only="null"
+                    />
+                    <img src="/img/피로회복.png" alt="" />
+                    <span>피로회복</span>
+                  </label>
+                </li>
+                <li class="category">
+                  <label
+                      for="purpose-7"
+                      class="label-checkbox label-question"
+                  >
+                    <input
+                        id="purpose-7"
+                        type="checkbox"
+                        value="joint"
+                        class="input-checkbox input-answer"
+                        name="answer"
+                        data-only="null"
+                    />
+                    <img src="/img/관절.png" alt="" />
+                    <span>뼈/관절</span>
+                  </label>
+                </li>
+                <li class="category">
+                  <label
+                      for="purpose-8"
+                      class="label-checkbox label-question"
+                  >
+                    <input
+                        id="purpose-8"
+                        type="checkbox"
+                        value="immunity"
+                        class="input-checkbox input-answer"
+                        name="answer"
+                        data-only="null"
+                    />
+                    <img src="/img/면역.png" alt="" />
+                    <span>면역</span>
+                  </label>
+                </li>
+                <li class="category">
+                  <label
+                      for="purpose-9"
+                      class="label-checkbox label-question"
+                  >
+                    <input
+                        id="purpose-9"
+                        type="checkbox"
+                        value="hair"
+                        class="input-checkbox input-answer"
+                        name="answer"
+                        data-only="null"
+                    />
+                    <img src=" /img/모발2.png" alt="" />
+                    <span>모발</span>
+                  </label>
+                </li>
+                <li class="category">
+                  <label
+                      for="purpose-10"
+                      class="label-checkbox label-question"
+                  >
+                    <input
+                        id="purpose-10"
+                        type="checkbox"
+                        value="antioxidation"
+                        class="input-checkbox input-answer"
+                        name="answer"
+                        data-only="null"
+                    />
+                    <img src="/img/항산화.png" alt="" />
+                    <span>항산화</span>
+                  </label>
+                </li>
+              </ul>
+            </section>
+          </div>
+          <div class="survey-errormsg"></div>
+          <div class="survey-question-footer">
+            <button
+                id="btn-prev"
+                class="btn btn-radius"
+                onclick="window.location.href='http://localhost:9080/age'"
+            >
+              이전
+            </button>
+            <button
+                id="btn-next"
+                class="btn btn-radius btn-dark"
+                onclick="handleNextClick('{{gender}}', '{{name}}', '{{age}}')"
+            >
+              다음
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<script>
+// 최대 3개 선택
+const checkboxes = document.getElementsByName('answer');
+let checkedCount = 0;
+checkboxes.forEach(checkbox => {
+  checkbox.addEventListener('click', event => {
+    if (event.target.checked) {
+      checkedCount++;
+    } else {
+      checkedCount--;
+    }
+    if (checkedCount > 3) {
+      event.target.checked = false;
+      checkedCount--;
+    }
+  });
+});
+
+// 카테고리 색상
+const categories = document.querySelectorAll('.category');
+categories.forEach(category => {
+  const checkbox = category.querySelector('input[type="checkbox"]');
+  checkbox.addEventListener('click', () => {
+    if (checkbox.checked) {
+      category.style.border = '2px solid #ff5c35';
+    } else {
+      category.style.border = 'none';
+    }
+  });
+});
+
+// 카테고리에 따라 정보 표시
+const urlParams = new URLSearchParams(window.location.search);
+const categoriesParam = urlParams.get('category');
+const categoryValues = categoriesParam ? categoriesParam.split(',') : [];
+
+const categoryInfo = {
+  blood: '혈액순환',
+  digestion: '소화/장',
+  skin: '피부',
+  // Add more category-value pairs here
+};
+
+categoryValues.forEach(category => {
+  switch (category) {
+    case 'blood':
+      // Display information about blood circulation
+      console.log(categoryInfo.blood);
+      break;
+    case 'digestion':
+      // Display information about digestion
+      console.log(categoryInfo.digestion);
+      break;
+    case 'skin':
+      // Display information about skin health
+      console.log(categoryInfo.skin);
+      break;
+    // Add more cases for other categories
+  }
+});
+
+function handleNextClick(defaultGender, defaultName, defaultAge) {
+  // check if at least one checkbox is selected
+  const checkboxes = document.getElementsByName('answer');
+  let isChecked = false;
+  let selectedAnswers = []; // Define an empty array to store the selected answers
+  for (let i = 0; i < checkboxes.length; i++) {
+    if (checkboxes[i].checked) {
+      isChecked = true;
+      selectedAnswers.push(checkboxes[i].value); // Add the value of the selected checkbox to the array
+    }
+  }
+  // display error message if no checkbox is selected
+  if (!isChecked) {
+    const errorMsg = document.querySelector('.survey-errormsg');
+    errorMsg.innerText = '답변을 입력해주세요.';
+    return;
+  }
+  // continue to the next question
+  let urlParams = new URLSearchParams(window.location.search);
+  let name = urlParams.get('name') || defaultName;
+  let gender = urlParams.get('gender') || defaultGender;
+  let age = urlParams.get('age') || defaultAge;
+  let inputValue = selectedAnswers.join(','); // Combine the selected answers into a comma-separated string
+  let resultURL =
+    'http://localhost:9080/height?name=' +
+    encodeURIComponent(name) +
+    '&gender=' +
+    encodeURIComponent(gender) +
+    '&age=' +
+    encodeURIComponent(age) +
+    '&illness=' +
+    encodeURIComponent(inputValue);
+  window.location.href = resultURL;
+}
+
+       </script>
+</body>
+</html>

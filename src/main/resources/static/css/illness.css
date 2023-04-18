@@ -1,0 +1,54 @@
+
+/*질문글자 크기, 색깔*/
+.question-section em {
+  padding-left: 30px;
+  font-size: 16px;
+  font-weight: bold;
+  color: #999;
+}
+/*질문 라인*/
+p {
+  display: block;
+  margin-block-start: 1em;
+  margin-block-end: 1em;
+  margin-inline-start: 0px;
+  margin-inline-end: 0px;
+  padding-left: 30px;
+}
+/*질문 언더라인*/
+.question-section > ul {
+  border-top: 1px solid #eee;
+}
+.question-answer-wrap {
+  padding: 28px 0;
+}
+/*체크박스 안보이기*/
+input[type='checkbox'] {
+  display: none;
+}
+/*라벨 레이아웃*/
+.question-answer-wrap {
+  display: grid;
+  justify-content: left;
+  grid-template-columns: repeat(auto-fill, 100px);
+  margin-left: 25px;
+  gap: 25px 25px;
+}
+/*라벨 크기, 색, 글자색, 그림자*/
+.category {
+  display: flex;
+  flex-direction: row;
+  font-size: 16px;
+  font-weight: bold;
+  width: 85px;
+  height: 85px;
+  background-color: #fff;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  border-radius: 15px;
+  box-shadow: rgb(0 0 0 / 20%) 0px 2px 10px 0px;
+}
+#section {
+  display: block;
+}

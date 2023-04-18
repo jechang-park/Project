@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title th:text="${pageTitle}">체중</title>
+  <link rel="stylesheet" href="" th:href="@{/css/Analysis.css}" />
+  <link rel="stylesheet" href="" th:href="@{/css/cmkg.css}" />
+  <link rel="stylesheet" href="" th:href="@{/css/closeModal.css}" />
+</head>
+<body>
+<div id="survey">
+  <div class="survey-wrap">
+    <div class="survey-contents">
+      <div class="survey-contents-inner">
+        <!-- HTML code for the modal -->
+        <div id="myModal" class="modal">
+          <div class="modal-content">
+            <span class="close">&times;</span>
+            <p>분석을 종료하시겠습니까?</p>
+            <button id="yes-btn">Yes</button>
+            <button id="no-btn">No</button>
+          </div>
+        </div>
+        <a
+            href="#"
+            class="close-survey"
+            onclick="openModal(); return false;"
+        >
+          <img th:src="@{/img/close2.png}" alt="close" />
+        </a>
+        <div class="survey-test">
+          <nav class="survey-test-header">
+            <ul class="step-list-wrap">
+              <li data="기본정보">
+                <span>기본정보</span>
+              </li>
+              <img src="/img/right2.png" />
+              <li data="증상/불편">
+                <span>증상/불편</span>
+              </li>
+              <img src="/img/right2.png" />
+              <li data="생활습관" class="on">
+                <span>생활습관</span>
+              </li>
+              <img src="/img/right2.png" />
+              <li data="기타">
+                <span>기타</span>
+              </li>
+            </ul>
+          </nav>
+          <div class="survey-progress">
+            <div id="survey-progress-rate" style="width: 45%"></div>
+          </div>
+          <div class="survey-question-contens">
+            <section class="question-section">
+              <em id="qNum">질문 8</em>
+              <h2 id="qTitle" maxallowed="1" class>
+                <p>고객님의 몸무게를 적어주세요</p>
+                <span class></span>
+              </h2>
+              <p id="qContent">
+                영양성분 추천에 체질량지수(BMI)를 활용합니다
+              </p>
+              <ul class="question-answer-wrap">
+                <li>
+                  <div class="question-input-field" style="padding-left: 0">
+                    <input
+                        type="radio"
+                        class="input-radio input-answer"
+                        name="answer"
+                        value="351"
+                        data-only="1"
+                        checked
+                        style="display: none"
+                    />
+                    <input
+                        id="kilogram"
+                        type="tel"
+                        class="input-text input-small input-full"
+                        placeholder="몸무게"
+                        maxlength="6"
+                        min="30"
+                        max="190"
+                        required="true"
+                    />
+                    <span class="unit">kg</span>
+                  </div>
+                  <span id="weight-value"></span>
+                </li>
+              </ul>
+            </section>
+          </div>
+          <div id="next-error" class="survey-errormsg"></div>
+          <div class="survey-question-footer">
+            <button
+                id="btn-prev"
+                class="btn btn-radius"
+                onclick="window.location.href='http://localhost:9080/height'"
+            >
+              이전
+            </button>
+            <button
+                id="btn-next"
+                class="btn btn-radius btn-dark"
+                onclick="nextBtn('{{gender}}', '{{name}}', '{{age}}', '{{illness}}', '{{height}}');"
+            >
+              다음
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<script>
+      function nextBtn(defaultGender, defaultName, defaultAge, defaultIllness, defaultHeight) {
+        const nextInput = document.getElementById('kilogram');
+        const nextError = document.getElementById('next-error');
+        const inputValue = nextInput.value.trim();
+        const bmiValueElement = document.getElementById('bmi-value');
+
+        if (inputValue === '') {
+          nextError.innerHTML = '답변을 입력하세요';
+          return false;
+        } else if (!/^\d+$/.test(inputValue)) {
+          nextError.innerHTML = '숫자만 입력하세요';
+          return false;
+<!--        } else if (inputValue < 30 || inputValue > 300) {-->
+<!--          nextError.innerHTML = 'You can only enter from 30 to 300';-->
+<!--          return false;-->
+        } else {
+          nextError.innerHTML = '';
+          const urlParams = new URLSearchParams(window.location.search);
+          const name = urlParams.get('name') || defaultName;
+          const gender = urlParams.get('gender') || defaultGender;
+          const age = urlParams.get('age') || dufaultAGe;
+          let illness = urlParams.get('illness') || defaultIllness;
+          const height = urlParams.get('height') || dufaultHeight;
+          const weight = inputValue;
+          const bmi = calculateBMI(height, weight);
+
+          function calculateBMI(height, weight) {
+            // Calculate the BMI
+            let bmi = weight / ((height / 100) * (height / 100));
+            // Check if bmi is a valid number
+            if (!isNaN(bmi)) {
+              // Round the BMI to one decimal place
+              bmi = bmi.toFixed(1);
+            }
+
+            // update the URL with the BMI value
+            urlParams.set('bmi', bmi);
+            window.history.replaceState(
+              {},
+              '',
+              `${location.pathname}?${urlParams.toString()}`,
+            );
+
+            // update the BMI value element
+            if (bmiValueElement) {
+              bmiValueElement.textContent = bmi;
+            }
+
+            // Get the bmi-dot element
+            let bmiDot = document.querySelector('.bmi-dot');
+
+            // Update the margin-left value of the bmi-dot based on the calculated bmi value
+            if (bmi && bmiDot) {
+              let bmiValue = parseFloat(bmi);
+              if (bmiValue < 18.5) {
+                bmiDot.style.marginLeft = '0%';
+              } else if (bmiValue < 23) {
+                bmiDot.style.marginLeft = '25%';
+              } else if (bmiValue < 25) {
+                bmiDot.style.marginLeft = '50%';
+              } else if (bmiValue < 30) {
+                bmiDot.style.marginLeft = '75%';
+              } else {
+                bmiDot.style.marginLeft = '100%';
+              }
+            }
+
+            // navigate to the result page
+            let resultURL =
+              'http://localhost:9080/result?name=' +
+              encodeURIComponent(name) +
+              '&gender=' +
+              encodeURIComponent(gender) +
+              '&age=' +
+              encodeURIComponent(age) +
+              '&illness=' +
+              encodeURIComponent(illness) +
+              '&height=' +
+              encodeURIComponent(height) +
+              '&weight=' +
+              encodeURIComponent(weight) +
+              '&bmi=' +
+              encodeURIComponent(bmi) +
+              '&bmiDot=' +
+              encodeURIComponent(bmi);
+
+            window.location.href = resultURL;
+            return true;
+          }
+        }
+      }
+      // 모달
+      let modal = document.getElementById('myModal');
+
+      // Get the <span> element that closes the modal
+      let span = document.getElementsByClassName('close')[0];
+
+      // Get the Yes and No buttons
+      let yesBtn = document.getElementById('yes-btn');
+
+      let noBtn = document.getElementById('no-btn');
+
+      // Open the modal
+      function openModal() {
+        modal.style.display = 'block';
+      }
+
+      // When the user clicks on <span> (x), close the modal
+      span.onclick = function () {
+        modal.style.display = 'none';
+      };
+
+      // When the user clicks on Yes or No, close the modal and redirect if necessary
+      yesBtn.onclick = function () {
+        modal.style.display = 'none';
+        window.location.href = 'http://localhost:9080';
+      };
+
+      noBtn.onclick = function () {
+        modal.style.display = 'none';
+      };
+    </script>
+</body>
+</html>

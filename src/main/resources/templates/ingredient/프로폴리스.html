@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8"/>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <link rel="stylesheet" th:href="@{../css/ingredient.css}"/>
+  <title>프로폴리스</title>
+</head>
+<body>
+<div class="wrapper">
+  <header>
+    <div class="top">
+      <div class="logo">
+        <a href="/index.html" th:href="@{/}">
+          <img src="/img/black-yagiyo.png" alt=""
+          /></a>
+      </div>
+      <div class="search_box">
+        <input
+            class="searchbar"
+            type="text"
+            placeholder="영양제 성분 검색을 해보세요💊 ! "
+        />
+        <div class="search_btn">
+          <img src="/img/search_div_icn.png" alt=""/>
+        </div>
+      </div>
+      <nav class="gnb_box">
+        <a href="">AI분석</a>
+        <a href="">커뮤니티</a>
+        <a href="">약국정보</a>
+        <a href="">로그인</a>
+      </nav>
+    </div>
+  </header>
+  <main>
+    <div class="banner">
+      <p>프로폴리스</p>
+    </div>
+    <div class="contents">
+      <article>
+        <div class="row row1">
+          <span class="title">💬 프로폴리스</span>
+          <p>
+            천연항생제라고 불리는 프로폴리스는 꿀벌이 자신의 집을 세균으로부터 보호하기 위해 만들어내는 물질이에요.<br>
+
+            · 가글이나 스프레이 형태로 사용하면 입 안의 균을 줄여줄 수 있어요.<br>
+            · 항산화력이 높아서 노화를 촉진하는 '활성산소'를 없애줄 수 있어요.
+          </p>
+        </div>
+        <div class="row row2">
+          <span class="title">▪ 이런 이름으로도 불려요</span>
+          <p>플라보노이드</p>
+        </div>
+        <div class="row row3">
+          <span class="title">▪ 제품에서 추천하고 있는 섭취량을 따르고, 내 몸의 반응에 따라 조절하세요.</span>
+          <p>✅식약처에서 항산화 기능성을 인정받은 일일섭취량은 플라보노이드로서 16~17mg이에요.<br>
+            ✅구강 항균 효과를 위한 제품의 경우 섭취량을 적용하지 않으니 참고하세요.<br>
+            ✅관련 연구에 따르면, 프로폴리스추출물로서 하루 400~500mg 정도를 섭취했을 때 효과가 있었다는 결과가 많아요<br>
+            ✅꿀벌이 만드는 프로폴리스는 환경이나 제조사의 기술 수준, 추출하는 방식에 따라서 실제로 건강에 도움이 되는 성분 함량이 달라질 수 있어요.
+          </p>
+        </div>
+        <div class="row row4">
+          <span class="title">❗ 부작용 및 주의사항</span>
+          <p>꽃가루 알러지 주의꿀 알러지 주의벌 알러지 주의<br>
+            임산부 대상 연구가 부족하므로 전문가와 상담 필요<br>
+            수유부 대상 연구가 부족하므로 전문가와 상담 필요<br>
+            수술 전후 지혈을 늦출 수 있음<br>
+            천식이 악화될 수 있음</p>
+        </div>
+      </article>
+    </div>
+  </main>
+</div>
+</body>
+</html>

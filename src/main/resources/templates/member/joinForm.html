@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="ko"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../../static/css/signup.css" th:href="@{/css/signup.css}">
+  <script src="https://code.jquery.com/jquery-3.6.4.min.js" integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8=" crossorigin="anonymous"></script>
+  <title>회원가입</title>
+</head>
+<body>
+<form id="frm" action="" method="post" th:object="${joinForm}">
+<div class="wrap">
+  <div class="header">
+    <div class="wrapper">
+      <!--팀장님 코드 -->
+      <!-- Header  -->
+      <header>
+        <div class="top">
+          <div class="logo">
+<!--            <img src="/img/black-yagiyo.png" alt="" src="/" />-->
+          </div>
+          <div class="search_box">
+            <input
+                class="searchbar"
+                type="text"
+                placeholder="영양제 성분 검색을 해보세요💊 ! "
+            />
+            <div class="search_btn">
+<!--              <img src="/img/search_div_icn.png" alt="" />-->
+            </div>
+          </div>
+          <nav class="gnb_box">
+            <a href="">AI분석</a>
+            <a href="">커뮤니티</a>
+            <a href="">약국정보</a>
+            <a href="">로그인</a>
+          </nav>
+        </div>
+      </header>
+    </div>
+  </div>
+  <!-- 팀장님 코드 -->
+<div class="main">
+    <div th:if="${#fields.hasGlobalErrors()}">
+      <p th:each="err:${#fields.globalErrors()}" th:text="${err}"></p>
+    </div>
+    <!---->
+    <div class="container">
+      <div class="container_title"><h2>회원가입</h2></div>
+      <div class="container_contents">
+
+          <label for="id" class="container_contents_item">아이디</label>
+        <input
+            placeholder="영문,숫자를 이용해 만들어주세요(6~15자내외)"
+            class="container_contents_item_input"
+            type="text"
+            id="id"
+            th:field="*{id}"
+        />
+        <span class="error"></span>
+        <span th:errors="*{id}"></span>
+        <div id="idError" class="continer_contents_error"></div>
+
+
+
+        <label for="pw" class="container_contents_item">비밀번호</label>
+        <input
+            placeholder="대소문자구분 영문자, 숫자조합으로 적어주세요 (8~20자)"
+
+            class="container_contents_item_input"
+            type="password"
+            th:field="*{pw}"
+
+        />
+        <span class="error"></span>
+        <span th:errors="*{pw}"></span>
+        <div id="pwError" class="continer_contents_error"></div>
+        <label for="pw_check" class="container_contents_item"
+        >비밀번호확인</label
+        >
+        <input
+            id="pw_check"
+            name="pw_check"
+            class="container_contents_item_input"
+            type="password"
+        />
+        <div id="pwChkError" class="continer_contents_error"></div>
+        <label for="nick" class="container_contents_item">닉네임</label>
+        <input
+            placeholder="영문자, 숫자, 한글조합으로 적어주세요 (10글자내외)"
+            th:field="*{nick}"
+            class="container_contents_item_input"
+            type="text"
+        />
+        <div id="nickError" class="continer_contents_error"></div>
+
+        <label for="email" class="container_contents_item">이메일</label>
+        <div>
+          <input
+              required
+              type="email"
+              th:field="*{email}"
+              id="email"
+              class="container_contents_item_input"
+          />
+          <label for="emailSelect">
+            <form id="emailSelectForm">
+              <select
+                  id="emailSelect"
+                  name="emailSelect"
+                  class="container_contents_email"
+              >
+                <option id="directInput" value="directInput">
+                  @직접입력
+                </option>
+                <option id="naver" value="naver">@naver.com</option>
+                <option id="gmail" value="gmail">@gmail.com</option>
+                <option id="daum" value="daum">@daum.net</option>
+              </select>
+            </form>
+          </label>
+
+<!--          이메일 인증 하기-->
+
+<!--          <div class="form-group last mb-4 email_input">-->
+<!--            <label for="memail" id="mailTxt">이메일을 입력해주세요</label>-->
+<!--            <input type="text" class="form-control" name="memail" id="memail">-->
+<!--          </div>-->
+          <!-- <span>이메일 인증번호</span> -->
+<!--          <button class="btn btn-outline-primary" type="button" id="checkEmail">인증번호</button>-->
+
+          <div class="form-group last mb-4 check_input">
+            <label for="memailconfirm" id="memailconfirmTxt">인증번호를 입력해주세요</label>
+            <input type="text" class="form-control" id="memailconfirm">
+          </div>
+          <p id="code"></p>
+<!--          이메일 인증 하기 끝-->
+
+          <button onclick="startTimer()" type="button" disabled id="codeBtn">
+            인증코드받기
+          </button>
+        </div>
+        <div id="emailError" class="continer_contents_error"></div>
+        <div class="div">
+          <a
+              target="_blank"
+              rel="noreferrer noopener"
+              href="https://www.google.com/"
+          >
+            <img
+                class="icon_google"
+                src="https://cdn-icons-png.flaticon.com/32/270/270014.png"
+                alt=""
+            />
+          </a>
+          <a
+              target="_blank"
+              rel="noreferrer noopener"
+              href="https://www.naver.com/"
+          >
+            <img
+                class="icon_naver"
+                src="https://littledeep.com/wp-content/uploads/2020/09/naver-icon-style.png"
+                alt=""
+            />
+          </a>
+          <a
+              target="_blank"
+              rel="noreferrer noopener"
+              href="https://www.daum.net/"
+          >
+            <img
+                class="icon_daum"
+                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT7trxHzrmqrmvjMoL9lHx4ZpoMuW9nYtSSB4b9zTs&s"
+                alt=""
+            />
+          </a>
+          <div class="timer">
+            <div hidden id="timeLimit">03:00</div>
+            <button hidden disabled id="completion">인증완료</button>
+          </div>
+        </div>
+
+        <label for="gender" class="container_contents_item"
+        >성별 (선택)</label
+        >
+        <form action="gender" id="gender">
+          <input
+              disabled
+              type="radio"
+              class="container_contents_item"
+              name="gender"
+              unchecked=""
+              value="man"
+              id="man"
+          />
+          <label for="man" class="container_contents_item">'남'</label>
+          <input
+              disabled
+              type="radio"
+              class="container_contents_item"
+              name="gender"
+              value="women"
+              id="women"
+          />
+          <label for="women" class="container_contents_item">'여'</label>
+        </form>
+        <label for="age" class="container_contents_item">나이 (선택)</label>
+        <input
+            disabled
+            min="1950-01"
+            max="2023-03"
+            type="month"
+            class="container_contents_item_input"
+            th:field="*{age}"
+        />
+      </div>
+      <div>
+        <input id="checkboxAgree" disabled type="checkbox" />
+        <span class="container_contents_agree"
+        ><a
+            id="agreeUrl"
+            target="agreeUrl"
+            th:href="@{/members/Agree}">
+        [필수] 서비스의 이용약관 동의</a
+        ></span
+        >
+      </div>
+      <br />
+      <div>
+        <input id="checkboxIdentity" disabled type="checkbox" />
+
+        <span class="container_contents_identity"
+        ><a
+            id="identityUrl"
+            target="identityUrl"
+            th:href="@{/members/Identity}">
+          [필수] 개인정보 처리방침 동의</a
+        ></span
+        >
+      </div>
+
+      <div>
+        <button
+            disabled
+            id="finishBtn"
+            type="submit"
+            class="container_contents_submitBtn"
+        >
+          회원가입
+        </button>
+        <button class="container_contents_cancelBtn">취소</button>
+      </div>
+    </div>
+</div>
+</div>
+  </form>
+<script type="text/javascript" th:src="@{../js/signup.js}"></script>
+
+</body>
+
+
+</html>

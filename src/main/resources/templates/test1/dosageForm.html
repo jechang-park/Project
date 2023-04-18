@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="ko"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title th:text="${pageTitle}">약</title>
+  <link rel="stylesheet" href="" th:href="@{/css/test1.css}">
+  <style>
+
+/*질문글자 크기, 색깔*/
+.question-section em {
+  padding-left: 20px;
+  font-size: 16px;
+  font-weight: bold;
+  color: #999;
+}
+/*질문 라인*/
+p {
+  display: block;
+  margin-block-start: 1em;
+  margin-block-end: 1em;
+  margin-inline-start: 0px;
+  margin-inline-end: 0px;
+  padding-left: 20px;
+  text-align: start;
+}
+.question-answer-wrap {
+  padding: 28px 0;
+}
+/*체크박스 안보이기*/
+input[type='checkbox'] {
+  display: none;
+}
+/*라벨 레이아웃*/
+.question-answer-wrap {
+  display: grid;
+  justify-content: left;
+  grid-template-columns: repeat(auto-fill, 76px);
+  margin-left: 25px;
+  gap: 25px 25px;
+}
+/*라벨 크기, 색, 글자색, 그림자*/
+.category {
+  display: flex;
+  flex-direction: row;
+  font-size: 16px;
+  font-weight: bold;
+  width: 76px;
+  height: 76px;
+  background-color: #fff;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  border-radius: 15px;
+  box-shadow: rgb(0 0 0 / 20%) 0px 2px 10px 0px;
+}
+  </style>
+</head>
+<body>
+<div id="survey">
+  <div class="survey-wrap">
+    <div class="survey-contents">
+      <div class="survey-contents-inner">
+        <a href="#" class="close-survey" onclick="if(confirm('분석을 종료하시겠습니까?')){ window.location.href='http://localhost:9080'; } return false;">
+          <img th:src="@{/images/close2.png}" alt="close" />
+        </a>
+        <div class="survey-test">
+          <nav class="survey-test-header">
+            <ul class="step-list-wrap">
+              <li data="기본정보">
+                <span>기본정보</span>
+              </li>
+              <img src="/images/right2.png" />
+              <li data="증상/불편" class="on">
+                <span>증상/불편</span>
+              </li>
+              <img src="/images/right2.png" />
+              <li data="생활습관">
+                <span>생활습관</span>
+              </li>
+              <img src="/images/right2.png" />
+              <li data="기타">
+                <span>기타</span>
+              </li>
+            </ul>
+          </nav>
+          <div class="survey-progress">
+            <div id="survey-progress-rate" style="width: 30%"></div>
+          </div>
+          <div class="survey-question-contens">
+            <section class="question-section">
+              <em id="qNum">질문 5</em>
+              <h2 id="qTitle" maxallowed="1" class>
+                <p>어떤 제형을 선호하시나요?</p>
+                <span class></span>
+              </h2>
+              <p id="qContent"></p>
+              <ul class="question-answer-wrap">
+                <li class="category">
+                  <label class="label-checkbox label-question">
+                    <input
+                        id="num1"
+                        type="checkbox"
+                        value="306"
+                        class="input-checkbox input-answer"
+                        name="answer"
+                        data-only="null"
+                    />
+                    <img src="/images/캡슐.png" alt="" />
+                    <span>캡슐</span>
+                  </label>
+                </li>
+                <li class="category">
+                  <label class="label-checkbox label-question">
+                    <input
+                        id="num2"
+                        type="checkbox"
+                        value="307"
+                        class="input-checkbox input-answer"
+                        name="answer"
+                        data-only="null"
+                    />
+                    <img src="/images/정제.png" alt="" />
+                    <span>정</span>
+                  </label>
+                </li>
+                <li class="category">
+                  <label class="label-checkbox label-question">
+                    <input
+                        id="num3"
+                        type="checkbox"
+                        value="308"
+                        class="input-checkbox input-answer"
+                        name="answer"
+                        data-only="null"
+                    />
+                    <img src="/images/가루.png" alt="" />
+                    <span>가루</span>
+                  </label>
+                </li>
+                <li class="category">
+                  <label class="label-checkbox label-question">
+                    <input
+                        id="num4"
+                        type="checkbox"
+                        value="309"
+                        class="input-checkbox input-answer"
+                        name="answer"
+                        data-only="null"
+                    />
+                    <img src="/images/액상.png" alt="" />
+                    <span>액상</span>
+                  </label>
+                </li>
+                <li class="category">
+                  <label class="label-checkbox label-question">
+                    <input
+                        id="num5"
+                        type="checkbox"
+                        value="310"
+                        class="input-checkbox input-answer"
+                        name="answer"
+                        data-only="null"
+                    />
+                    <img src="/images/츄어볼.png" alt="" />
+                    <span>츄어볼</span>
+                  </label>
+                </li>
+                <li class="category">
+                  <label class="label-checkbox label-question">
+                    <input
+                        type="checkbox"
+                        class="input-checkbox input-answer"
+                        name="answer"
+                        id="none"
+                        value="311"
+                        data-only="1"
+                    />
+                    <span>상관없음</span>
+                  </label>
+                </li>
+              </ul>
+            </section>
+          </div>
+          <div class="survey-errormsg"></div>
+          <div class="survey-question-footer">
+            <button
+                id="btn-prev"
+                class="btn btn-radius"
+                onclick="window.location.href='http://localhost:9080/illness'"
+            >
+              이전
+            </button>
+            <button
+                id="btn-next"
+                class="btn btn-radius btn-dark"
+                onclick="handleNextClick()"
+            >
+              다음
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<script>
+      //카테고리 색상
+      const categories = document.querySelectorAll('.category');
+
+      categories.forEach(category => {
+        const checkbox = category.querySelector('input[type="checkbox"]');
+        checkbox.addEventListener('click', () => {
+          if (checkbox.checked) {
+            category.style.border = '2px solid #ff5c35';
+          } else {
+            category.style.border = 'none';
+          }
+        });
+      });
+      //에러메시지
+      function handleNextClick() {
+        // check if at least one checkbox is selected
+        const checkboxes = document.getElementsByName('answer');
+        let isChecked = false;
+        for (let i = 0; i < checkboxes.length; i++) {
+          if (checkboxes[i].checked) {
+            isChecked = true;
+            break;
+          }
+        }
+
+        // display error message if no checkbox is selected
+        if (!isChecked) {
+          const errorMsg = document.querySelector('.survey-errormsg');
+          errorMsg.innerText = '답변을 입력해주세요.';
+          return;
+        }
+
+        // continue to the next question
+         window.location.href =
+          'http://localhost:9080/point';
+      }
+    </script>
+</body>
+</html>

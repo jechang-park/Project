@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8"/>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <link rel="stylesheet" th:href="@{../css/ingredient.css}"/>
+  <title>칼륨</title>
+</head>
+<body>
+<div class="wrapper">
+  <header>
+    <div class="top">
+      <div class="logo">
+        <a href="/index.html">
+          <img src="/img/black-yagiyo.png" alt=""
+          /></a>
+      </div>
+      <div class="search_box">
+        <input
+            class="searchbar"
+            type="text"
+            placeholder="영양제 성분 검색을 해보세요💊 ! "
+        />
+        <div class="search_btn">
+          <img src="/img/search_div_icn.png" alt=""/>
+        </div>
+      </div>
+      <nav class="gnb_box">
+        <a href="">AI분석</a>
+        <a href="">커뮤니티</a>
+        <a href="">약국정보</a>
+        <a href="">로그인</a>
+      </nav>
+    </div>
+  </header>
+  <main>
+    <div class="banner">
+      <p>칼륨</p>
+    </div>
+    <div class="contents">
+      <article>
+        <div class="row row1">
+          <span class="title">💬 칼륨</span>
+          <p>
+            나트륨과 균형을 이루며 몸의 수분 농도를 조절하는 영양소에요. 혈압을 조절하는 과정에도 중요한 역할을 해요.
+          </p>
+        </div>
+        <div class="row row2">
+          <span class="title">▪ 이런 이름으로도 불려요</span>
+          <p>포타슘</p>
+        </div>
+        <div class="row row3">
+          <span class="title">▪ 식품으로 섭취하는 양이 많은 편이니, 식습관에 따라 영양제 추가가 필요할지 고민해보세요</span>
+          <p>✅ 칼륨의 하루 충분섭취량은 3500mg이에요.<br>
+            ✅협압이 높은 사람에게 추천하는 DASH 식단에서는 4700mg을 섭취하도록 권장하고 있어요.<br>
+            ✅나트륨과 비율을 맞춰서 섭취하는 것이 좋기 때문에, 나트륨 섭취가 많다면 칼륨 섭취도 늘리는 것이 좋아요.<br>
+            ✅다양한 식물에서 추출한 성분으로 구성된 영양제나 생약 성분을 꾸준히 드시고 계신다면 칼륨 섭취량이 높을 수 있어요.
+          </p>
+        </div>
+        <div class="row row4" th:href="@{/}">
+          <span class="title">❗ 부작용 및 주의사항</span>
+          <p>위장의 흡수 기능에 문제가 있는 경우 칼륨 농도 조절이 어려울 수 있으므로 주의<br>
+            신장 기능에 문제가 있는 경우 칼륨의 농도 조절이 매우 중요하므로 전문가와 상담 필요<br>
+            혈압이 낮아질 수 있으므로 평소 저혈압이 있는 경우 주의</p>
+        </div>
+      </article>
+    </div>
+  </main>
+</div>
+</body>
+</html>

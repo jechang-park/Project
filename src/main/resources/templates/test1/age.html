@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="ko"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title th:text="${pageTitle}">연령</title>
+  <link rel="stylesheet" href="" th:href="@{/css/test1.css}">
+  <style>
+  /*input 위아래 공백*/
+    .question-answer-wrap {
+      padding: 28px 0;
+    }
+    /*input 크기*/
+    .input-full {
+      width: 100%;
+    }
+    .input-small {
+      padding: 0 25px;
+      height: 50px;
+    }
+    /*input 글자크기, 배경색*/
+    .input-text {
+      font-size: 16px;
+      border: 1px solid #d7d7d7;
+      border-radius: 4px;
+      outline: 0;
+      background-color: #fff;
+      box-sizing: border-box;
+    }
+  </style>
+</head>
+<body>
+<div id="survey">
+  <div class="survey-wrap">
+    <div class="survey-contents">
+      <div class="survey-contents-inner">
+        <a href="#" class="close-survey" onclick="if(confirm('분석을 종료하시겠습니까?')){ window.location.href='http://localhost:9080'; } return false;">
+          <img th:src="@{/images/close2.png}" alt="close" />
+        </a>
+        <div class="survey-test">
+          <nav class="survey-test-header">
+            <ul class="step-list-wrap">
+              <li data="기본정보" class="on">
+                <span>기본정보</span>
+              </li>
+              <img src="/images/right2.png" />
+              <li data="증상/불편">
+                <span>증상/불편</span>
+              </li>
+              <img src="/images/right2.png" />
+              <li data="생활습관">
+                <span>생활습관</span>
+              </li>
+              <img src="/images/right2.png" />
+              <li data="기타">
+                <span>기타</span>
+              </li>
+            </ul>
+          </nav>
+          <div class="survey-progress">
+            <div id="survey-progress-rate" style="width: 15%"></div>
+          </div>
+          <div class="survey-question-contens">
+            <section class="question-section">
+              <em id="qNum">질문 3</em>
+              <h2 id="qTitle" maxallowed="1" class>
+                <p>고객님의 연령은 어떻게 되시나요?</p>
+                <span class></span>
+              </h2>
+              <p id="qContent"></p>
+              <ul class="question-answer-wrap">
+                <li>
+                  <div class="question-input-field" style="padding-left: 0">
+                    <input
+                        id="content"
+                        type="text"
+                        class="input-text input-small input-full"
+                        placeholder="나이"
+                        required="true"
+                        oninput="checkNumber(this)"
+                    />
+                  </div>
+                </li>
+              </ul>
+            </section>
+          </div>
+          <div id="next-error" class="survey-errormsg"></div>
+          <div class="survey-question-footer">
+            <button
+                id="btn-prev"
+                class="btn btn-radius"
+                onclick="window.location.href='http://localhost:9080/gender'"
+            >
+              이전
+            </button>
+            <button
+                id="btn-next"
+                class="btn btn-radius btn-dark"
+                onclick="nextBtn();"
+            >
+              다음
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+<script>
+          function nextBtn() {
+            let nextInput = document.getElementById('content');
+            let nextError = document.getElementById('next-error');
+            let inputValue = nextInput.value.trim();
+
+            if (inputValue === '') {
+              nextError.innerHTML = '답변을 입력하세요';
+              return false;
+            } else if (!/^\d+$/.test(inputValue)) {
+              nextError.innerHTML = '숫자만 입력해주세요';
+              return false;
+            } else if (inputValue < 10 || inputValue > 110) {
+              nextError.innerHTML = '10부터 110까지만 입력할 수 있습니다';
+              return false;
+            } else {
+              nextError.innerHTML = '';
+              window.location.href =
+                'http://localhost:9080/illness';
+              return true;
+            }
+          }
+ </script>
+</body>
+</html>

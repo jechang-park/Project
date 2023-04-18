@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+
+    <!--    <script th:src="@{https://unpkg.com/aos@2.3.1/dist/aos.js}"></script>-->
+    <title>커뮤니티</title>
+</head>
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/xeicon@2.3.3/xeicon.min.css">
+<link rel="stylesheet" href="../css/paging.css">
+<body>
+<div class="wrapper">
+    <!-- Header  -->
+
+    <header>
+        <div class="top">
+            <div class="logo">
+                <a th:href="@{/}">
+                    <img th:src="@{../img/black-yagiyo.png}" alt=""
+                    /></a>
+            </div>
+
+            <!--      검색어   -->
+            <div class="search_box">
+                <form th:action="@{/search}" method="get">
+                    <input type="text" name="query" value=""/>
+                    <button type="submit"></button>
+                </form>
+                <!-- <p id="recent-search"></p> -->
+            </div>
+
+            <nav class="gnb_box">
+                <a th:href="@{/name}">AI분석</a>
+                <a href="">커뮤니티</a>
+                <a href="">약국정보</a>
+                <div th:if="${!session.isEmpty()}">
+                    <p th:text="${session.loginMember.gubun}"></p>
+                </div>
+                <div>
+                    <th:bolck class="login" th:if="${session.isEmpty()}">
+                        <a href="" th:href="@{/login}">로그인</a>
+                    </th:bolck>
+                    <th:bolck class="logout" th:unless="${session.isEmpty()}">
+                        <a href="" th:href="@{/logout}">로그아웃</a>
+                    </th:bolck>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <div class="main">
+
+        <div class="top_line">
+            <div class="board_title">
+                <p>No</p>
+                <p>내용</p>
+                <p>작성자</p>
+                <p>날짜</p>
+                <p>조회수</p>
+            </div>
+            <div class="board_list" th:each="board: ${boardList}">
+                <div class="border_line">
+                    <div class="row row1" th:text="${board.id}"></div>
+                    <div class="row row2"><a th:href="@{|/board/${board.id}|(page=${boardList.number + 1})}"
+                                             th:text="${board.boardTitle}"></a></div>
+                    <div class="row row3" th:text="${board.boardWriter}"></div>
+                    <div class="row row4"
+                         th:text="*{#temporals.format(board.boardCreatedTime, 'yyyy-MM-dd HH:mm:ss')}"></div>
+                    <div class="row row5" th:text="${board.boardHits}"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 첫번째 페이지로 이동 -->
+        <!-- /board/paging?page=1 -->
+        <div class="paging">
+            <div class="left_area">
+                <a th:href="@{/board/paging(page=1)}"><i class="xi-angle-left"></i><i class="xi-angle-left"></i></a>
+                <!-- 이전 링크 활성화 비활성화 -->
+                <!-- boardList.getNumber() 사용자:2페이지 getNumber()=1 -->
+                <a th:href="${boardList.first} ? '#' : @{/board/paging(page=${boardList.number})}"><i
+                        class="xi-angle-left"></i></a>
+            </div>
+            <!-- 페이지 번호 링크(현재 페이지는 숫자만)
+                    for(int page=startPage; page<=endPage; page++)-->
+            <div class="no_area">
+            <span th:each="page: ${#numbers.sequence(startPage, endPage)}">
+
+
+<!-- 현재페이지는 링크 없이 숫자만 -->
+    <span th:if="${page == boardList.number + 1}" th:text="${page}"></span>
+                <!-- 현재페이지 번호가 아닌 다른 페이지번호에는 링크를 보여줌 -->
+    <span th:unless="${page == boardList.number + 1}">
+        <a th:href="@{/board/paging(page=${page})}" th:text="${page}"></a>
+    </span>
+        </span>
+            </div>
+
+            <div class="right_area">
+                <!-- 다음 링크 활성화 비활성화
+                    사용자: 2페이지, getNumber: 1, 3페이지-->
+                <a th:href="${boardList.last} ? '#' : @{/board/paging(page=${boardList.number + 2})}"><i
+                        class="xi-angle-right"></i></a>
+                <!-- 마지막 페이지로 이동 -->
+                <a th:href="@{/board/paging(page=${boardList.totalPages})}"><i class="xi-angle-right"></i><i
+                        class="xi-angle-right"></i></a>
+            </div>
+        </div>
+        <div class="btn"><button onclick="saveReq()">글작성</button></div>
+
+    </div>
+    <footer>
+        <div class="footer_area">
+            <div class="top">
+                <img
+                        class="footer_img"
+                        th:src="@{../img/white-yagiyo.png}"
+                        alt=""
+                />
+                <div class="footer_menu">
+                    <a href="">이용약관</a>
+                    <a href="">개인정보처리방침</a>
+                </div>
+            </div>
+
+            <!--footer - bottom  -->
+
+            <div class="bottom">
+                <div class="info">
+                    <span class="title">주(야기요)</span>
+                    <p></p>
+                </div>
+            </div>
+
+            <!--footer - copyright -->
+
+            <div class="copyright">
+                <p>Copyright 2023 YAGIYO. Allrights reserved.</p>
+            </div>
+        </div>
+    </footer>
+</div>
+
+
+<script>
+    const saveReq = () => {
+        location.href = "/board/save";
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</script>
+
+
+<!--page 새로고침시에 /search 로 이동-->
+<!--        <script type="text/javascript">-->
+<!--            window.onload = function () {-->
+<!--                if (location.pathname === "/search") {-->
+<!--                    if (performance.navigation.type == 1) {-->
+<!--                        window.location.href = "/search";-->
+<!--                    }-->
+<!--                }-->
+<!--            };-->
+<!--        </script>-->
+</body>
+</html>

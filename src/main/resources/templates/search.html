@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!--    스와이퍼 라이브러리 -->
+    <link
+      rel="stylesheet"
+      th:href="@{https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css}"
+    />
+    <!--    스타일시트(기초셋팅 css)-->
+    <link rel="stylesheet" th:href="@{../css/search.css}" />
+    <!--    자바스크립트-->
+    <script th:src="@{../js/main.js}"></script>
+    <!--   애니메이션 라이브러리 -->
+    <link
+      th:href="@{https://unpkg.com/aos@2.3.1/dist/aos.css}"
+      rel="stylesheet"
+    />
+    <!--    <script th:src="@{https://unpkg.com/aos@2.3.1/dist/aos.js}"></script>-->
+    <title>💊YAGIYO</title>
+  </head>
+  <body>
+    <div class="wrapper">
+      <!-- Header  -->
+
+      <header>
+        <div class="top">
+          <div class="logo">
+            <a th:href="@{/}">
+              <img th:src="@{../img/black-yagiyo.png}" alt=""
+            /></a>
+          </div>
+
+          <!--      검색어   -->
+          <div class="search_box">
+            <form th:action="@{/search}" method="get">
+              <input type="text" name="query" value="" />
+              <button type="submit"></button>
+            </form>
+            <!-- <p id="recent-search"></p> -->
+          </div>
+
+          <nav class="gnb_box">
+            <a th:href="@{/name}">AI분석</a>
+            <a href="">커뮤니티</a>
+            <a href="">약국정보</a>
+            <div th:if="${!session.isEmpty()}">
+              <p th:text="${session.loginMember.gubun}"></p>
+            </div>
+            <div>
+              <th:bolck class="login" th:if="${session.isEmpty()}">
+                <a href="" th:href="@{/login}">로그인</a>
+              </th:bolck>
+              <th:bolck class="logout" th:unless="${session.isEmpty()}">
+                <a href="" th:href="@{/logout}">로그아웃</a>
+              </th:bolck>
+            </div>
+          </nav>
+        </div>
+      </header>
+
+      <a class="banner" th:href="@{/nutrients/오메가3}">
+        <div class="banner_text">
+          오메가3는 생선이나 해조류에서 추출한 여러 종류의 불포화지방산을 부르는
+          말이에요. 그 중 가장 중요한 것은 EPA와 DHA에요. ·
+        </div>
+      </a>
+
+      <div class="main">
+        <div
+          class="item_cards"
+          th:replace="~{fragments/apple :: header}"
+          id="apple-header"
+        ></div>
+        <div
+          th:replace="~{fragments/apple :: footer}"
+          id="apple-footer"
+          th:class="item_cards"
+        ></div>
+      </div>
+
+      <footer>
+        <div class="footer_area">
+          <div class="top">
+            <img
+              class="footer_img"
+              th:src="@{../img/white-yagiyo.png}"
+              alt=""
+            />
+            <div class="footer_menu">
+              <a href="">이용약관</a>
+              <a href="">개인정보처리방침</a>
+            </div>
+          </div>
+        </div>
+        <!--footer - bottom  -->
+
+        <div class="bottom">
+          <div class="info">
+            <span class="title">주(야기요)</span>
+            <p></p>
+          </div>
+        </div>
+
+        <!--footer - copyright -->
+
+        <div class="copyright">
+          <p>Copyright 2023 YAGIYO. Allrights reserved.</p>
+        </div>
+      </footer>
+    </div>
+    <script>
+      const query = new URLSearchParams(window.location.search).get('query');
+      if (query === '오메가') {
+        document.getElementById('apple-header').style.display = 'flex';
+        document.getElementById('apple-footer').style.display = 'none';
+      } else {
+        document.getElementById('apple-header').style.display = 'none';
+        document.getElementById('apple-footer').style.display = 'flex';
+      }
+    </script>
+
+    <script>
+      // 검색어를 localStorage에 저장하는 함수
+      function saveSearch(query) {
+        // 최근 검색어 배열을 가져옴
+        const recentSearches =
+          JSON.parse(localStorage.getItem('recentSearches')) || [];
+
+        // 검색어가 이미 최근 검색어에 있으면 삭제
+        const index = recentSearches.indexOf(query);
+        if (index !== -1) {
+          recentSearches.splice(index, 1);
+        }
+
+        // 검색어를 최근 검색어 배열 맨 앞에 추가
+        recentSearches.unshift(query);
+
+        // 최근 검색어 배열을 localStorage에 저장
+        localStorage.setItem('recentSearches', JSON.stringify(recentSearches));
+      }
+
+      // 최근 검색어를 보여주는 함수
+      function showRecentSearches() {
+        // 최근 검색어 배열을 가져옴
+        const recentSearches =
+          JSON.parse(localStorage.getItem('recentSearches')) || [];
+
+        // 최근 검색어를 p 태그에 추가
+        const recentSearchEl = document.getElementById('recent-search');
+        if (recentSearches.length > 0) {
+          recentSearchEl.innerText = `최근 검색어: ${recentSearches.join(
+            ', ',
+          )}`;
+        } else {
+          recentSearchEl.innerText = '';
+        }
+      }
+
+      // 페이지 로드시 최근 검색어를 보여줌
+      showRecentSearches();
+
+      // 검색어를 submit 할 때 최근 검색어를 localStorage에 저장하고 보여줌
+      const form = document.querySelector('form');
+      form.addEventListener('submit', function (e) {
+        e.preventDefault();
+        const query = this.querySelector('input[name="query"]').value;
+        saveSearch(query);
+        showRecentSearches();
+        this.submit();
+      });
+    </script>
+
+    <!--page 새로고침시에 /search 로 이동-->
+    <!--        <script type="text/javascript">-->
+    <!--            window.onload = function () {-->
+    <!--                if (location.pathname === "/search") {-->
+    <!--                    if (performance.navigation.type == 1) {-->
+    <!--                        window.location.href = "/search";-->
+    <!--                    }-->
+    <!--                }-->
+    <!--            };-->
+    <!--        </script>-->
+  </body>
+</html>

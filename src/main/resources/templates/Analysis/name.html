@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="ko"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title th:text="${pageTitle}">이름</title>
+  <link rel="stylesheet" href="" th:href="@{/css/Analysis.css}">
+  <link rel="stylesheet" href="" th:href="@{/css/input.css}">
+  <link rel="stylesheet" href="" th:href="@{/css/closeModal.css}">
+  </style>
+</head>
+<body>
+<div id="survey">
+  <div class="survey-wrap">
+    <div class="survey-contents">
+      <div class="survey-contents-inner">
+        <!-- HTML code for the modal -->
+        <div id="myModal" class="modal">
+          <div class="modal-content">
+            <span class="close">&times;</span>
+            <p>분석을 종료하시겠습니까?</p>
+            <button id="yes-btn">Yes</button>
+            <button id="no-btn">No</button>
+          </div>
+        </div>
+        <a href="#" class="close-survey" onclick="openModal(); return false;">
+          <img th:src="@{/img/close2.png}" alt="close" />
+        </a>
+        <div class="survey-test">
+          <nav class="survey-test-header">
+            <ul class="step-list-wrap">
+              <li data="기본정보" class="on">
+                <span>기본정보</span>
+              </li>
+              <img src="/img/right2.png" />
+              <li data="증상/불편">
+                <span>증상/불편</span>
+              </li>
+              <img src="/img/right2.png" />
+              <li data="생활습관">
+                <span>생활습관</span>
+              </li>
+              <img src="/img/right2.png" />
+              <li data="기타">
+                <span>기타</span>
+              </li>
+            </ul>
+          </nav>
+          <div class="survey-progress">
+            <div id="survey-progress-rate" style="width: 5%"></div>
+          </div>
+          <div class="survey-question-contens">
+            <section class="question-section">
+              <em id="qNum" >질문 1</em>
+              <h2 id="qTitle" maxallowed="1">
+                <p>고객님의 성함은 어떻게 되십니까?</p>
+                <span class></span>
+              </h2>
+              <p id="qContent"></p>
+              <ul class="question-answer-wrap">
+                <li>
+                  <div class="question-input-field" style="padding-left: 0">
+                    <input
+                        id="name"
+                        type="text"
+                        class="input-text input-small input-full"
+                        placeholder="이름"
+                        maxlength="10"
+                        required="true"
+                    />
+                    <span id="name-value"></span>
+                  </div>
+                </li>
+              </ul>
+            </section>
+          </div>
+          <div id="name-error" class="survey-errormsg"></div>
+          <div class="survey-question-footer">
+            <button id="btn-prev" class="btn btn-radius">이전</button>
+            <button id="submit-button" class="btn btn-radius btn-dark"
+                    th:onclick="validateName(); ">
+              다음
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<script >
+      function getUrlParameter(name) {
+        name = name.replace(/[\[]/, '\\[').replace(/[\]]/, '\\]');
+        var regex = new RegExp('[\\?&]' + name + '=([^&#]*)');
+        var results = regex.exec(location.search);
+        return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));
+      }
+      function validateName() {
+        let nameInput = document.getElementById('name');
+        let nameError = document.getElementById('name-error');
+        if (nameInput.value.trim() === '') {
+          nameError.innerHTML = '이름을 입력해주세요';
+          return false;
+        } else {
+          nameError.innerHTML = '';
+          window.location.href = 'http://localhost:9080/gender?name=' + encodeURIComponent(nameInput.value);
+          return true;
+        }
+      }
+      window.onload = function() {
+        let nameInput = decodeURIComponent(getUrlParameter('name'));
+        let nameValue = document.getElementById('name-value');
+        console.log('nameValue:', nameValue);
+        if (nameValue != null) {
+          nameValue.textContent = nameInput;
+        } else {
+          console.error('Element with ID "name-value" not found!');
+        }
+      };
+            // 모달
+            let modal = document.getElementById("myModal");
+
+            // Get the <span> element that closes the modal
+            let span = document.getElementsByClassName("close")[0];
+
+            // Get the Yes and No buttons
+            let yesBtn = document.getElementById("yes-btn");
+
+            let noBtn = document.getElementById("no-btn");
+
+            // Open the modal
+            function openModal() {
+              modal.style.display = "block";
+            }
+
+            // When the user clicks on <span> (x), close the modal
+            span.onclick = function() {
+              modal.style.display = "none";
+            }
+
+            // When the user clicks on Yes or No, close the modal and redirect if necessary
+            yesBtn.onclick = function() {
+              modal.style.display = "none";
+              window.location.href = 'http://localhost:9080';
+            }
+
+            noBtn.onclick = function() {
+              modal.style.display = "none";
+            }
+ </script>
+
+</body>
+</html>

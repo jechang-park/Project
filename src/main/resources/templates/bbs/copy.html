@@ -1,0 +1,3253 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width,initial-scale=1.0,minimum-scale=0,maximum-scale=10,user-scalable=yes"
+    />
+
+    <meta name="HandheldFriendly" content="true" />
+    <meta name="format-detection" content="telephone=no" />
+    <meta http-equiv="X-UA-Compatible" content="IE=10,chrome=1" />
+    <title>게시판 1 페이지 | 하이버리</title>
+    <link
+      rel="stylesheet"
+      href="http://www.highbury.co.kr/theme/cookie/css/mobile.css?ver=191202"
+    />
+    <link
+      rel="stylesheet"
+      href="http://www.highbury.co.kr/js/font-awesome/css/font-awesome.min.css?ver=191202"
+    />
+    <link
+      rel="stylesheet"
+      href="http://www.highbury.co.kr/theme/cookie/mobile/skin/outlogin/basic/style.css?ver=191202"
+    />
+    <link
+      rel="stylesheet"
+      href="http://www.highbury.co.kr/theme/cookie/mobile/skin/board/basic_pc_style/style.css?ver=191202"
+    />
+    <!--[if lte IE 8]>
+      <script src="http://www.highbury.co.kr/js/html5.js"></script>
+    <![endif]-->
+    <script>
+      // 자바스크립트에서 사용하는 전역변수 선언
+      var g5_url = 'http://www.highbury.co.kr';
+      var g5_bbs_url = 'http://www.highbury.co.kr/bbs';
+      var g5_is_member = '1';
+      var g5_is_admin = '';
+      var g5_is_mobile = '1';
+      var g5_bo_table = 'highbury';
+      var g5_sca = '';
+      var g5_editor = 'smarteditor2';
+      var g5_cookie_domain = '';
+    </script>
+    <script src="http://www.highbury.co.kr/js/modernizr.custom.70111.js"></script>
+    <script src="http://www.highbury.co.kr/js/jquery-1.12.4.min.js?ver=191202"></script>
+    <script src="http://www.highbury.co.kr/js/jquery-migrate-1.4.1.min.js?ver=191202"></script>
+    <script src="http://www.highbury.co.kr/js/jquery.menu.js?ver=191202"></script>
+    <script src="http://www.highbury.co.kr/js/common.js?ver=191202"></script>
+    <script src="http://www.highbury.co.kr/js/wrest.js?ver=191202"></script>
+    <script src="http://www.highbury.co.kr/js/placeholders.min.js?ver=191202"></script>
+    <script src="http://www.highbury.co.kr/theme/cookie/js/theme_common.js?ver=191202"></script>
+  </head>
+  <body>
+    <div id="hd_login_msg">
+      파랑삐약이님 로그인 중
+      <a href="http://www.highbury.co.kr/bbs/logout.php">로그아웃</a>
+    </div>
+    <header id="hd">
+      <h1 id="hd_h1">게시판 1 페이지</h1>
+
+      <div class="to_content"><a href="#container">본문 바로가기</a></div>
+
+      <div id="tnb" class="pc_view">
+        <ul>
+          <li class="right tnb_res">
+            <a href="/bbs/content.php?co_id=schedule"
+              ><i class="fa fa-calendar"></i> 스케줄</a
+            >
+          </li>
+          <li class="right prf">
+            <button type="button" class="prf_btn">
+              <img
+                src="http://www.highbury.co.kr/img/no_profile.gif"
+                alt="profile_image"
+              />
+              파랑삐약이 <i class="fa fa-angle-down"></i>
+            </button>
+            <ul id="ol_after_private">
+              <li>
+                <a
+                  href="http://www.highbury.co.kr/bbs/memo.php"
+                  target="_blank"
+                  class="win_memo"
+                  >쪽지
+                  <strong>0</strong>
+                </a>
+              </li>
+              <li>
+                <a
+                  href="http://www.highbury.co.kr/bbs/point.php"
+                  target="_blank"
+                  class="win_point"
+                  >포인트
+                  <strong>0</strong>
+                </a>
+              </li>
+              <li>
+                <a
+                  href="http://www.highbury.co.kr/bbs/scrap.php"
+                  target="_blank"
+                  class="win_scrap"
+                  >스크랩</a
+                >
+              </li>
+              <li>
+                <a
+                  href="http://www.highbury.co.kr/bbs/profile.php?mb_id=piyaksblue"
+                  onclick="win_profile(this.href); return false;"
+                  >자기소개</a
+                >
+              </li>
+              <li>
+                <a href="http://www.highbury.co.kr/bbs/logout.php">로그아웃</a>
+              </li>
+              <li>
+                <a
+                  href="http://www.highbury.co.kr/bbs/member_confirm.php?url=register_form.php"
+                  title="정보수정"
+                  >정보수정</a
+                >
+              </li>
+              <li></li>
+            </ul>
+          </li>
+          <li class="right clear">
+            <a
+              href="http://www.highbury.co.kr/bbs/member_confirm.php?url=http://www.highbury.co.kr/bbs/register_form.php"
+              >정보수정</a
+            >
+          </li>
+          <li class="right">
+            <a href="http://www.highbury.co.kr/bbs/logout.php">로그아웃</a>
+          </li>
+
+          <script>
+            $('.prf_btn').on('click', function () {
+              $('#ol_after_private').toggle();
+            });
+
+            $(document).mouseup(function (e) {
+              var container = $('#ol_after_private');
+              if (container.has(e.target).length === 0) container.hide();
+            });
+          </script>
+        </ul>
+      </div>
+
+      <div id="hd_wrapper">
+        <div id="logo">
+          <a href="http://www.highbury.co.kr"
+            ><img
+              src="http://www.highbury.co.kr/theme/cookie/img/m_logo.png"
+              alt="하이버리"
+          /></a>
+        </div>
+
+        <button type="button" id="gnb_open">
+          <i class="fa fa-bars"></i><span class="sound_only"> 메뉴열기</span>
+        </button>
+        <button type="button" class="hd_sch_btn">
+          <i class="fa fa-search"></i><span class="sound_only">검색열기</span>
+        </button>
+
+        <div id="hd_sch">
+          <div class="sch_wr">
+            <h2 class="sound_only">사이트 내 전체검색</h2>
+            <form
+              name="fsearchbox"
+              action="http://www.highbury.co.kr/bbs/search.php"
+              onsubmit="return fsearchbox_submit(this);"
+              method="get"
+            >
+              <input type="hidden" name="sfl" value="wr_subject||wr_content" />
+              <input type="hidden" name="sop" value="and" />
+              <input
+                type="text"
+                name="stx"
+                id="sch_stx"
+                placeholder="검색어(필수)"
+                required
+                maxlength="20"
+              />
+              <button type="submit" value="검색" id="sch_submit">
+                <i class="fa fa-search" aria-hidden="true"></i
+                ><span class="sound_only">검색</span>
+              </button>
+            </form>
+
+            <script>
+              function fsearchbox_submit(f) {
+                if (f.stx.value.length < 2) {
+                  alert('검색어는 두글자 이상 입력하십시오.');
+                  f.stx.select();
+                  f.stx.focus();
+                  return false;
+                }
+
+                // 검색에 많은 부하가 걸리는 경우 이 주석을 제거하세요.
+                var cnt = 0;
+                for (var i = 0; i < f.stx.value.length; i++) {
+                  if (f.stx.value.charAt(i) == ' ') cnt++;
+                }
+
+                if (cnt > 1) {
+                  alert(
+                    '빠른 검색을 위하여 검색어에 공백은 한개만 입력할 수 있습니다.',
+                  );
+                  f.stx.select();
+                  f.stx.focus();
+                  return false;
+                }
+
+                return true;
+              }
+            </script>
+            <button type="button" class="btn_close">
+              <i class="fa fa-times-circle"></i
+              ><span class="sound_only">검색</span>
+            </button>
+          </div>
+        </div>
+
+        <div id="gnb" class="pc_view">
+          <ul id="gnb_1dul">
+            <li class="gnb_1dli">
+              <a
+                href="/bbs/board.php?bo_table=highbury"
+                target="_self"
+                class="gnb_1da"
+                >게시판</a
+              >
+            </li>
+            <li class="gnb_1dli">
+              <a
+                href="/bbs/board.php?bo_table=best"
+                target="_self"
+                class="gnb_1da"
+                >베스트</a
+              >
+            </li>
+            <li class="gnb_1dli">
+              <a
+                href="/bbs/content.php?co_id=schedule"
+                target="_self"
+                class="gnb_1da"
+                >스케줄</a
+              >
+            </li>
+            <li class="gnb_1dli">
+              <a
+                href="/bbs/board.php?bo_table=icon_shop"
+                target="_self"
+                class="gnb_1da"
+                >포인트샵</a
+              >
+            </li>
+            <li class="gnb_1dli">
+              <a href="/point.php" target="_self" class="gnb_1da">랭킹</a>
+            </li>
+          </ul>
+        </div>
+
+        <div id="gnb2">
+          <button type="button" class="btn_close">
+            <i class="fa fa-times"></i>
+          </button>
+          <ul class="gnb_tnb">
+            <li>
+              <a
+                href="http://www.highbury.co.kr/bbs/member_confirm.php?url=http://www.highbury.co.kr/bbs/register_form.php"
+                >정보수정</a
+              >
+            </li>
+            <li>
+              <a href="http://www.highbury.co.kr/bbs/logout.php">로그아웃</a>
+            </li>
+          </ul>
+          <ul id="gnb2_1dul">
+            <li class="gnb2_1dli">
+              <a
+                href="/bbs/board.php?bo_table=highbury"
+                target="_self"
+                class="gnb2_1da"
+                >게시판</a
+              >
+            </li>
+            <li class="gnb2_1dli">
+              <a
+                href="/bbs/board.php?bo_table=best"
+                target="_self"
+                class="gnb2_1da"
+                >베스트</a
+              >
+            </li>
+            <li class="gnb2_1dli">
+              <a
+                href="/bbs/content.php?co_id=schedule"
+                target="_self"
+                class="gnb2_1da"
+                >스케줄</a
+              >
+            </li>
+            <li class="gnb2_1dli">
+              <a
+                href="/bbs/board.php?bo_table=icon_shop"
+                target="_self"
+                class="gnb2_1da"
+                >포인트샵</a
+              >
+            </li>
+            <li class="gnb2_1dli">
+              <a href="/point.php" target="_self" class="gnb2_1da">랭킹</a>
+            </li>
+            <li class="gnb2_1dli">
+              <a
+                href="http://www.highbury.co.kr/bbs/profile.php?mb_id=piyaksblue"
+                onclick="win_profile(this.href); return false;"
+                class="gnb2_1da"
+                >자기소개</a
+              >
+            </li>
+          </ul>
+        </div>
+        <script>
+          $(function () {
+            //폰트 크기 조정 위치 지정
+            var font_resize_class = get_cookie('ck_font_resize_add_class');
+            if (font_resize_class == 'ts_up') {
+              $('#text_size button').removeClass('select');
+              $('#size_def').addClass('select');
+            } else if (font_resize_class == 'ts_up2') {
+              $('#text_size button').removeClass('select');
+              $('#size_up').addClass('select');
+            }
+
+            $('.hd_opener').on('click', function () {
+              var $this = $(this);
+              var $hd_layer = $this.next('.hd_div');
+
+              if ($hd_layer.is(':visible')) {
+                $hd_layer.hide();
+                $this.find('span').text('열기');
+              } else {
+                var $hd_layer2 = $('.hd_div:visible');
+                $hd_layer2.prev('.hd_opener').find('span').text('열기');
+                $hd_layer2.hide();
+
+                $hd_layer.show();
+                $this.find('span').text('닫기');
+              }
+            });
+
+            $('.btn_gnb_op').click(function () {
+              $(this)
+                .toggleClass('btn_gnb_cl')
+                .next('.gnb2_2dul')
+                .slideToggle(300);
+            });
+
+            $('.hd_closer').on('click', function () {
+              var idx = $('.hd_closer').index($(this));
+              $('.hd_div:visible').hide();
+              $('.hd_opener:eq(' + idx + ')')
+                .find('span')
+                .text('열기');
+            });
+
+            $('.hd_sch_btn').on('click', function () {
+              $('#hd_sch').show();
+            });
+
+            $('#hd_sch .btn_close').on('click', function () {
+              $('#hd_sch').hide();
+            });
+
+            $('#gnb_open').on('click', function () {
+              $('#gnb2').show();
+            });
+
+            $('#gnb2 .btn_close').on('click', function () {
+              $('#gnb2').hide();
+            });
+          });
+
+          //상단고정
+          if ($('#hd').length) {
+            var jbOffset = $('#hd').offset();
+            $(window).scroll(function () {
+              if ($(document).scrollTop() > jbOffset.top) {
+                $('body').addClass('fixed');
+              } else {
+                $('body').removeClass('fixed');
+              }
+            });
+          }
+        </script>
+      </div>
+    </header>
+
+    <div id="wrapper">
+      <div id="container">
+        <h2 id="container_title" class="top" title="게시판 1 페이지">게시판</h2>
+        <p>
+          <img
+            src="https://fantazykyb.cafe24.com/data/editor/2107/61b473c3d8e59cf5fa6767bf4175c271_1625482150_8281.jpg"
+            title="61b473c3d8e59cf5fa6767bf4175c271_1625482150_8281.jpg"
+            alt="61b473c3d8e59cf5fa6767bf4175c271_1625482150_8281.jpg"
+          /><br style="clear: both" />
+        </p>
+        <!-- 게시판 목록 시작 { -->
+        <div id="bo_list" style="width: 100%">
+          <!-- 게시판 카테고리 시작 { -->
+          <nav id="bo_cate">
+            <h2>게시판 카테고리</h2>
+            <ul id="bo_cate_ul">
+              <li>
+                <a
+                  href="http://www.highbury.co.kr/bbs/board.php?bo_table=highbury"
+                  id="bo_cate_on"
+                  >전체</a
+                >
+              </li>
+              <li>
+                <a
+                  href="http://www.highbury.co.kr/bbs/board.php?bo_table=highbury&amp;sca=%EC%95%84%EC%8A%A4%EB%82%A0"
+                  >아스날</a
+                >
+              </li>
+              <li>
+                <a
+                  href="http://www.highbury.co.kr/bbs/board.php?bo_table=highbury&amp;sca=%EC%B6%95%EA%B5%AC"
+                  >축구</a
+                >
+              </li>
+              <li>
+                <a
+                  href="http://www.highbury.co.kr/bbs/board.php?bo_table=highbury&amp;sca=%EC%8A%A4%ED%8F%AC%EC%B8%A0"
+                  >스포츠</a
+                >
+              </li>
+              <li>
+                <a
+                  href="http://www.highbury.co.kr/bbs/board.php?bo_table=highbury&amp;sca=%EC%9E%90%EC%9C%A0"
+                  >자유</a
+                >
+              </li>
+            </ul>
+          </nav>
+          <!-- } 게시판 카테고리 끝 -->
+
+          <form
+            name="fboardlist"
+            id="fboardlist"
+            action="http://www.highbury.co.kr/bbs/board_list_update.php"
+            onsubmit="return fboardlist_submit(this);"
+            method="post"
+          >
+            <input type="hidden" name="bo_table" value="highbury" />
+            <input type="hidden" name="sfl" value="" />
+            <input type="hidden" name="stx" value="" />
+            <input type="hidden" name="spt" value="" />
+            <input type="hidden" name="sca" value="" />
+            <input type="hidden" name="sst" value="wr_num, wr_reply" />
+            <input type="hidden" name="sod" value="" />
+            <input type="hidden" name="page" value="1" />
+            <input type="hidden" name="sw" value="" />
+
+            <!-- 게시판 페이지 정보 및 버튼 시작 { -->
+            <div id="bo_btn_top">
+              <div id="bo_list_total">
+                <span>Total 1,773건</span>
+                1 페이지
+              </div>
+
+              <ul class="btn_bo_user">
+                <li>
+                  <button
+                    type="button"
+                    class="btn_bo_sch btn_b01 btn"
+                    title="게시판 검색"
+                  >
+                    <i class="fa fa-search" aria-hidden="true"></i
+                    ><span class="sound_only">게시판 검색</span>
+                  </button>
+                </li>
+              </ul>
+            </div>
+            <!-- } 게시판 페이지 정보 및 버튼 끝 -->
+
+            <div class="tbl_head01 tbl_wrap">
+              <table>
+                <caption>
+                  게시판 목록
+                </caption>
+                <thead>
+                  <tr>
+                    <th scope="col" class="only_pc">번호</th>
+                    <th scope="col">제목</th>
+                    <th scope="col">글쓴이</th>
+                    <th scope="col" class="only_pc">
+                      <a
+                        href="/bbs/board.php?bo_table=highbury&amp;sop=and&amp;sst=wr_hit&amp;sod=desc&amp;sfl=&amp;stx=&amp;sca=&amp;page=1"
+                        >조회
+                      </a>
+                    </th>
+                    <th scope="col" class="only_pc">
+                      <a
+                        href="/bbs/board.php?bo_table=highbury&amp;sop=and&amp;sst=wr_good&amp;sod=desc&amp;sfl=&amp;stx=&amp;sca=&amp;page=1"
+                        >추천
+                      </a>
+                    </th>
+                    <th scope="col">
+                      <a
+                        href="/bbs/board.php?bo_table=highbury&amp;sop=and&amp;sst=wr_datetime&amp;sod=desc&amp;sfl=&amp;stx=&amp;sca=&amp;page=1"
+                        >날짜
+                      </a>
+                    </th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr class="bo_notice even">
+                    <td class="td_num2 only_pc">
+                      <strong class="notice_icon">공지</strong>
+                    </td>
+
+                    <td class="td_subject">
+                      <a
+                        href="http://www.highbury.co.kr/bbs/board.php?bo_table=highbury&amp;sca=%EA%B3%B5%EC%A7%80"
+                        class="bo_cate_link only_pc"
+                        >공지</a
+                      >
+                      <div class="bo_tit">
+                        <a
+                          href="http://www.highbury.co.kr/bbs/board.php?bo_table=highbury&amp;wr_id=17267"
+                        >
+                          회원 가입시 레벨1이 되도록 조정했습니다.
+                        </a>
+                        <span class="sound_only">댓글</span
+                        ><span class="cnt_cmt">1</span
+                        ><span class="sound_only">개</span>
+                      </div>
+                    </td>
+                    <td class="td_name sv_use">
+                      <span class="sv_wrap">
+                        <a
+                          href="http://www.highbury.co.kr/bbs/profile.php?mb_id=arsenal"
+                          class="sv_member"
+                          title="하이버리관리자 자기소개"
+                          target="_blank"
+                          rel="nofollow"
+                          onclick="return false;"
+                          ><span class="profile_img"
+                            ><img
+                              src="http://www.highbury.co.kr/img/no_profile.gif"
+                              alt="no_profile"
+                              width="60"
+                              height="60"
+                          /></span>
+                          하이버리관리자</a
+                        >
+                        <span class="sv">
+                          <a
+                            href="http://www.highbury.co.kr/bbs/memo_form.php?me_recv_mb_id=arsenal"
+                            onclick="win_memo(this.href); return false;"
+                            >쪽지보내기</a
+                          >
+                          <a
+                            href="http://www.highbury.co.kr/bbs/formmail.php?mb_id=arsenal&amp;name=%ED%95%98%EC%9D%B4%EB%B2%84%EB%A6%AC%EA%B4%80%EB%A6%AC%EC%9E%90&amp;email=k5rQms9wmJmbzZKlq66UlaCQm9M-"
+                            onclick="win_email(this.href); return false;"
+                            >메일보내기</a
+                          >
+                          <a
+                            href="http://www.highbury.co.kr/bbs/profile.php?mb_id=arsenal"
+                            onclick="win_profile(this.href); return false;"
+                            >자기소개</a
+                          >
+                          <a
+                            href="http://www.highbury.co.kr/bbs/board.php?bo_table=highbury&amp;sca=&amp;sfl=mb_id,1&amp;stx=arsenal"
+                            >아이디로 검색</a
+                          >
+                          <a
+                            href="http://www.highbury.co.kr/bbs/new.php?mb_id=arsenal"
+                            class="link_new_page"
+                            onclick="check_goto_new(this.href, event);"
+                            >전체게시물</a
+                          >
+                        </span>
+
+                        <noscript class="sv_nojs"
+                          ><span class="sv">
+                            <a
+                              href="http://www.highbury.co.kr/bbs/memo_form.php?me_recv_mb_id=arsenal"
+                              onclick="win_memo(this.href); return false;"
+                              >쪽지보내기</a
+                            >
+                            <a
+                              href="http://www.highbury.co.kr/bbs/formmail.php?mb_id=arsenal&amp;name=%ED%95%98%EC%9D%B4%EB%B2%84%EB%A6%AC%EA%B4%80%EB%A6%AC%EC%9E%90&amp;email=k5rQms9wmJmbzZKlq66UlaCQm9M-"
+                              onclick="win_email(this.href); return false;"
+                              >메일보내기</a
+                            >
+                            <a
+                              href="http://www.highbury.co.kr/bbs/profile.php?mb_id=arsenal"
+                              onclick="win_profile(this.href); return false;"
+                              >자기소개</a
+                            >
+                            <a
+                              href="http://www.highbury.co.kr/bbs/board.php?bo_table=highbury&amp;sca=&amp;sfl=mb_id,1&amp;stx=arsenal"
+                              >아이디로 검색</a
+                            >
+                            <a
+                              href="http://www.highbury.co.kr/bbs/new.php?mb_id=arsenal"
+                              class="link_new_page"
+                              onclick="check_goto_new(this.href, event);"
+                              >전체게시물</a
+                            >
+                          </span>
+                        </noscript></span
+                      >
+                    </td>
+                    <td class="td_num only_pc">210</td>
+                    <td class="td_num only_pc">4</td>
+                    <td class="td_datetime">03-12</td>
+                  </tr>
+                  <tr class="bo_notice">
+                    <td class="td_num2 only_pc">
+                      <strong class="notice_icon">공지</strong>
+                    </td>
+
+                    <td class="td_subject">
+                      <a
+                        href="http://www.highbury.co.kr/bbs/board.php?bo_table=highbury&amp;sca=%EA%B3%B5%EC%A7%80"
+                        class="bo_cate_link only_pc"
+                        >공지</a
+                      >
+                      <div class="bo_tit">
+                        <a
+                          href="http://www.highbury.co.kr/bbs/board.php?bo_table=highbury&amp;wr_id=3193"
+                        >
+                          아스날FC 팬사이트 하이버리 공지(2021.09.29)
+                        </a>
+                        <span class="sound_only">댓글</span
+                        ><span class="cnt_cmt">3</span
+                        ><span class="sound_only">개</span>
+                      </div>
+                    </td>
+                    <td class="td_name sv_use">
+                      <span class="sv_wrap">
+                        <a
+                          href="http://www.highbury.co.kr/bbs/profile.php?mb_id=arsenal"
+                          class="sv_member"
+                          title="하이버리관리자 자기소개"
+                          target="_blank"
+                          rel="nofollow"
+                          onclick="return false;"
+                          ><span class="profile_img"
+                            ><img
+                              src="http://www.highbury.co.kr/img/no_profile.gif"
+                              alt="no_profile"
+                              width="60"
+                              height="60"
+                          /></span>
+                          하이버리관리자</a
+                        >
+                        <span class="sv">
+                          <a
+                            href="http://www.highbury.co.kr/bbs/memo_form.php?me_recv_mb_id=arsenal"
+                            onclick="win_memo(this.href); return false;"
+                            >쪽지보내기</a
+                          >
+                          <a
+                            href="http://www.highbury.co.kr/bbs/formmail.php?mb_id=arsenal&amp;name=%ED%95%98%EC%9D%B4%EB%B2%84%EB%A6%AC%EA%B4%80%EB%A6%AC%EC%9E%90&amp;email=k5rQms9wmJmbzZKlq66UlaCQm9M-"
+                            onclick="win_email(this.href); return false;"
+                            >메일보내기</a
+                          >
+                          <a
+                            href="http://www.highbury.co.kr/bbs/profile.php?mb_id=arsenal"
+                            onclick="win_profile(this.href); return false;"
+                            >자기소개</a
+                          >
+                          <a
+                            href="http://www.highbury.co.kr/bbs/board.php?bo_table=highbury&amp;sca=&amp;sfl=mb_id,1&amp;stx=arsenal"
+                            >아이디로 검색</a
+                          >
+                          <a
+                            href="http://www.highbury.co.kr/bbs/new.php?mb_id=arsenal"
+                            class="link_new_page"
+                            onclick="check_goto_new(this.href, event);"
+                            >전체게시물</a
+                          >
+                        </span>
+
+                        <noscript class="sv_nojs"
+                          ><span class="sv">
+                            <a
+                              href="http://www.highbury.co.kr/bbs/memo_form.php?me_recv_mb_id=arsenal"
+                              onclick="win_memo(this.href); return false;"
+                              >쪽지보내기</a
+                            >
+                            <a
+                              href="http://www.highbury.co.kr/bbs/formmail.php?mb_id=arsenal&amp;name=%ED%95%98%EC%9D%B4%EB%B2%84%EB%A6%AC%EA%B4%80%EB%A6%AC%EC%9E%90&amp;email=k5rQms9wmJmbzZKlq66UlaCQm9M-"
+                              onclick="win_email(this.href); return false;"
+                              >메일보내기</a
+                            >
+                            <a
+                              href="http://www.highbury.co.kr/bbs/profile.php?mb_id=arsenal"
+                              onclick="win_profile(this.href); return false;"
+                              >자기소개</a
+                            >
+                            <a
+                              href="http://www.highbury.co.kr/bbs/board.php?bo_table=highbury&amp;sca=&amp;sfl=mb_id,1&amp;stx=arsenal"
+                              >아이디로 검색</a
+                            >
+                            <a
+                              href="http://www.highbury.co.kr/bbs/new.php?mb_id=arsenal"
+                              class="link_new_page"
+                              onclick="check_goto_new(this.href, event);"
+                              >전체게시물</a
+                            >
+                          </span>
+                        </noscript></span
+                      >
+                    </td>
+                    <td class="td_num only_pc">1797</td>
+                    <td class="td_num only_pc">3</td>
+                    <td class="td_datetime">09-28</td>
+                  </tr>
+                  <tr class="bo_notice even">
+                    <td class="td_num2 only_pc">
+                      <strong class="notice_icon">공지</strong>
+                    </td>
+
+                    <td class="td_subject">
+                      <a
+                        href="http://www.highbury.co.kr/bbs/board.php?bo_table=highbury&amp;sca=%EC%9E%90%EC%9C%A0"
+                        class="bo_cate_link only_pc"
+                        >자유</a
+                      >
+                      <div class="bo_tit">
+                        <a
+                          href="http://www.highbury.co.kr/bbs/board.php?bo_table=highbury&amp;wr_id=8"
+                        >
+                          하이버리의 새로운 시작을 축하합니다.
+                        </a>
+                        <span class="sound_only">댓글</span
+                        ><span class="cnt_cmt">67</span
+                        ><span class="sound_only">개</span>
+                      </div>
+                    </td>
+                    <td class="td_name sv_use">
+                      <span class="sv_wrap">
+                        <a
+                          href="http://www.highbury.co.kr/bbs/profile.php?mb_id=thegunners"
+                          class="sv_member"
+                          title="SoulBurner 자기소개"
+                          target="_blank"
+                          rel="nofollow"
+                          onclick="return false;"
+                          ><span class="profile_img"
+                            ><img
+                              src="http://www.highbury.co.kr/data/member/th/thegunners.gif?1625719582"
+                              width="60"
+                              height="60"
+                              alt=""
+                          /></span>
+                          SoulBurner</a
+                        >
+                        <span class="sv">
+                          <a
+                            href="http://www.highbury.co.kr/bbs/memo_form.php?me_recv_mb_id=thegunners"
+                            onclick="win_memo(this.href); return false;"
+                            >쪽지보내기</a
+                          >
+                          <a
+                            href="http://www.highbury.co.kr/bbs/formmail.php?mb_id=thegunners&amp;name=SoulBurner&amp;email=mp_KmcOloql0yZGlpmPUl6U-"
+                            onclick="win_email(this.href); return false;"
+                            >메일보내기</a
+                          >
+                          <a
+                            href="http://www.highbury.co.kr/bbs/profile.php?mb_id=thegunners"
+                            onclick="win_profile(this.href); return false;"
+                            >자기소개</a
+                          >
+                          <a
+                            href="http://www.highbury.co.kr/bbs/board.php?bo_table=highbury&amp;sca=&amp;sfl=mb_id,1&amp;stx=thegunners"
+                            >아이디로 검색</a
+                          >
+                          <a
+                            href="http://www.highbury.co.kr/bbs/new.php?mb_id=thegunners"
+                            class="link_new_page"
+                            onclick="check_goto_new(this.href, event);"
+                            >전체게시물</a
+                          >
+                        </span>
+
+                        <noscript class="sv_nojs"
+                          ><span class="sv">
+                            <a
+                              href="http://www.highbury.co.kr/bbs/memo_form.php?me_recv_mb_id=thegunners"
+                              onclick="win_memo(this.href); return false;"
+                              >쪽지보내기</a
+                            >
+                            <a
+                              href="http://www.highbury.co.kr/bbs/formmail.php?mb_id=thegunners&amp;name=SoulBurner&amp;email=mp_KmcOloql0yZGlpmPUl6U-"
+                              onclick="win_email(this.href); return false;"
+                              >메일보내기</a
+                            >
+                            <a
+                              href="http://www.highbury.co.kr/bbs/profile.php?mb_id=thegunners"
+                              onclick="win_profile(this.href); return false;"
+                              >자기소개</a
+                            >
+                            <a
+                              href="http://www.highbury.co.kr/bbs/board.php?bo_table=highbury&amp;sca=&amp;sfl=mb_id,1&amp;stx=thegunners"
+                              >아이디로 검색</a
+                            >
+                            <a
+                              href="http://www.highbury.co.kr/bbs/new.php?mb_id=thegunners"
+                              class="link_new_page"
+                              onclick="check_goto_new(this.href, event);"
+                              >전체게시물</a
+                            >
+                          </span>
+                        </noscript></span
+                      >
+                    </td>
+                    <td class="td_num only_pc">4197</td>
+                    <td class="td_num only_pc">41</td>
+                    <td class="td_datetime">07-08</td>
+                  </tr>
+                  <tr class=" ">
+                    <td class="td_num2 only_pc">1770</td>
+
+                    <td class="td_subject">
+                      <a
+                        href="http://www.highbury.co.kr/bbs/board.php?bo_table=highbury&amp;sca=%EC%95%84%EC%8A%A4%EB%82%A0"
+                        class="bo_cate_link only_pc"
+                        >아스날</a
+                      >
+                      <div class="bo_tit">
+                        <a
+                          href="http://www.highbury.co.kr/bbs/board.php?bo_table=highbury&amp;wr_id=17578"
+                        >
+                          이제 리그에만 집중할 수 있겠네요
+                        </a>
+                        <span class="new_icon"
+                          >N<span class="sound_only">새글</span></span
+                        >
+                        <span class="sound_only">댓글</span
+                        ><span class="cnt_cmt">10</span
+                        ><span class="sound_only">개</span>
+                      </div>
+                    </td>
+                    <td class="td_name sv_use">
+                      <span class="sv_wrap">
+                        <a
+                          href="http://www.highbury.co.kr/bbs/profile.php?mb_id=pop6507"
+                          class="sv_member"
+                          title="Jensen 자기소개"
+                          target="_blank"
+                          rel="nofollow"
+                          onclick="return false;"
+                          ><span class="profile_img"
+                            ><img
+                              src="http://www.highbury.co.kr/img/no_profile.gif"
+                              alt="no_profile"
+                              width="60"
+                              height="60"
+                          /></span>
+                          Jensen</a
+                        >
+                        <span class="sv">
+                          <a
+                            href="http://www.highbury.co.kr/bbs/memo_form.php?me_recv_mb_id=pop6507"
+                            onclick="win_memo(this.href); return false;"
+                            >쪽지보내기</a
+                          >
+                          <a
+                            href="http://www.highbury.co.kr/bbs/formmail.php?mb_id=pop6507&amp;name=Jensen&amp;email=nJ_RncqRn5iV03CXppbPnl_Fn84-"
+                            onclick="win_email(this.href); return false;"
+                            >메일보내기</a
+                          >
+                          <a
+                            href="http://www.highbury.co.kr/bbs/profile.php?mb_id=pop6507"
+                            onclick="win_profile(this.href); return false;"
+                            >자기소개</a
+                          >
+                          <a
+                            href="http://www.highbury.co.kr/bbs/board.php?bo_table=highbury&amp;sca=&amp;sfl=mb_id,1&amp;stx=pop6507"
+                            >아이디로 검색</a
+                          >
+                          <a
+                            href="http://www.highbury.co.kr/bbs/new.php?mb_id=pop6507"
+                            class="link_new_page"
+                            onclick="check_goto_new(this.href, event);"
+                            >전체게시물</a
+                          >
+                        </span>
+
+                        <noscript class="sv_nojs"
+                          ><span class="sv">
+                            <a
+                              href="http://www.highbury.co.kr/bbs/memo_form.php?me_recv_mb_id=pop6507"
+                              onclick="win_memo(this.href); return false;"
+                              >쪽지보내기</a
+                            >
+                            <a
+                              href="http://www.highbury.co.kr/bbs/formmail.php?mb_id=pop6507&amp;name=Jensen&amp;email=nJ_RncqRn5iV03CXppbPnl_Fn84-"
+                              onclick="win_email(this.href); return false;"
+                              >메일보내기</a
+                            >
+                            <a
+                              href="http://www.highbury.co.kr/bbs/profile.php?mb_id=pop6507"
+                              onclick="win_profile(this.href); return false;"
+                              >자기소개</a
+                            >
+                            <a
+                              href="http://www.highbury.co.kr/bbs/board.php?bo_table=highbury&amp;sca=&amp;sfl=mb_id,1&amp;stx=pop6507"
+                              >아이디로 검색</a
+                            >
+                            <a
+                              href="http://www.highbury.co.kr/bbs/new.php?mb_id=pop6507"
+                              class="link_new_page"
+                              onclick="check_goto_new(this.href, event);"
+                              >전체게시물</a
+                            >
+                          </span>
+                        </noscript></span
+                      >
+                    </td>
+                    <td class="td_num only_pc">248</td>
+                    <td class="td_num only_pc">0</td>
+                    <td class="td_datetime">10:11</td>
+                  </tr>
+                  <tr class="even">
+                    <td class="td_num2 only_pc">1769</td>
+
+                    <td class="td_subject">
+                      <a
+                        href="http://www.highbury.co.kr/bbs/board.php?bo_table=highbury&amp;sca=%EC%95%84%EC%8A%A4%EB%82%A0"
+                        class="bo_cate_link only_pc"
+                        >아스날</a
+                      >
+                      <div class="bo_tit">
+                        <a
+                          href="http://www.highbury.co.kr/bbs/board.php?bo_table=highbury&amp;wr_id=17573"
+                        >
+                          토미야스는 팔아야겠네요..
+                        </a>
+                        <span class="new_icon"
+                          >N<span class="sound_only">새글</span></span
+                        >
+                        <span class="sound_only">댓글</span
+                        ><span class="cnt_cmt">8</span
+                        ><span class="sound_only">개</span>
+                      </div>
+                    </td>
+                    <td class="td_name sv_use">
+                      <span class="sv_wrap">
+                        <a
+                          href="http://www.highbury.co.kr/bbs/profile.php?mb_id=jongdari"
+                          class="sv_member"
+                          title="Booo 자기소개"
+                          target="_blank"
+                          rel="nofollow"
+                          onclick="return false;"
+                          ><span class="profile_img"
+                            ><img
+                              src="http://www.highbury.co.kr/img/no_profile.gif"
+                              alt="no_profile"
+                              width="60"
+                              height="60"
+                          /></span>
+                          Booo</a
+                        >
+                        <span class="sv">
+                          <a
+                            href="http://www.highbury.co.kr/bbs/memo_form.php?me_recv_mb_id=jongdari"
+                            onclick="win_memo(this.href); return false;"
+                            >쪽지보내기</a
+                          >
+                          <a
+                            href="http://www.highbury.co.kr/bbs/formmail.php?mb_id=jongdari&amp;name=Booo&amp;email=nKXRmMWRoplllWJpeaPHqJbUXsShoQ--"
+                            onclick="win_email(this.href); return false;"
+                            >메일보내기</a
+                          >
+                          <a
+                            href="http://www.highbury.co.kr/bbs/profile.php?mb_id=jongdari"
+                            onclick="win_profile(this.href); return false;"
+                            >자기소개</a
+                          >
+                          <a
+                            href="http://www.highbury.co.kr/bbs/board.php?bo_table=highbury&amp;sca=&amp;sfl=mb_id,1&amp;stx=jongdari"
+                            >아이디로 검색</a
+                          >
+                          <a
+                            href="http://www.highbury.co.kr/bbs/new.php?mb_id=jongdari"
+                            class="link_new_page"
+                            onclick="check_goto_new(this.href, event);"
+                            >전체게시물</a
+                          >
+                        </span>
+
+                        <noscript class="sv_nojs"
+                          ><span class="sv">
+                            <a
+                              href="http://www.highbury.co.kr/bbs/memo_form.php?me_recv_mb_id=jongdari"
+                              onclick="win_memo(this.href); return false;"
+                              >쪽지보내기</a
+                            >
+                            <a
+                              href="http://www.highbury.co.kr/bbs/formmail.php?mb_id=jongdari&amp;name=Booo&amp;email=nKXRmMWRoplllWJpeaPHqJbUXsShoQ--"
+                              onclick="win_email(this.href); return false;"
+                              >메일보내기</a
+                            >
+                            <a
+                              href="http://www.highbury.co.kr/bbs/profile.php?mb_id=jongdari"
+                              onclick="win_profile(this.href); return false;"
+                              >자기소개</a
+                            >
+                            <a
+                              href="http://www.highbury.co.kr/bbs/board.php?bo_table=highbury&amp;sca=&amp;sfl=mb_id,1&amp;stx=jongdari"
+                              >아이디로 검색</a
+                            >
+                            <a
+                              href="http://www.highbury.co.kr/bbs/new.php?mb_id=jongdari"
+                              class="link_new_page"
+                              onclick="check_goto_new(this.href, event);"
+                              >전체게시물</a
+                            >
+                          </span>
+                        </noscript></span
+                      >
+                    </td>
+                    <td class="td_num only_pc">355</td>
+                    <td class="td_num only_pc">0</td>
+                    <td class="td_datetime">08:47</td>
+                  </tr>
+                  <tr class=" ">
+                    <td class="td_num2 only_pc">1768</td>
+
+                    <td class="td_subject">
+                      <a
+                        href="http://www.highbury.co.kr/bbs/board.php?bo_table=highbury&amp;sca=%EC%95%84%EC%8A%A4%EB%82%A0"
+                        class="bo_cate_link only_pc"
+                        >아스날</a
+                      >
+                      <div class="bo_tit">
+                        <a
+                          href="http://www.highbury.co.kr/bbs/board.php?bo_table=highbury&amp;wr_id=17527"
+                        >
+                          VS 스포르팅 (H)
+                        </a>
+                        <span class="new_icon"
+                          >N<span class="sound_only">새글</span></span
+                        ><i class="fa fa-download" aria-hidden="true"></i>
+                        <span class="sound_only">댓글</span
+                        ><span class="cnt_cmt">45</span
+                        ><span class="sound_only">개</span>
+                      </div>
+                    </td>
+                    <td class="td_name sv_use">
+                      <span class="sv_wrap">
+                        <a
+                          href="http://www.highbury.co.kr/bbs/profile.php?mb_id=xcvbnm"
+                          class="sv_member"
+                          title="Wengerized 자기소개"
+                          target="_blank"
+                          rel="nofollow"
+                          onclick="return false;"
+                          ><span class="profile_img"
+                            ><img
+                              src="http://www.highbury.co.kr/img/no_profile.gif"
+                              alt="no_profile"
+                              width="60"
+                              height="60"
+                          /></span>
+                          Wengerized</a
+                        >
+                        <span class="sv">
+                          <a
+                            href="http://www.highbury.co.kr/bbs/memo_form.php?me_recv_mb_id=xcvbnm"
+                            onclick="win_memo(this.href); return false;"
+                            >쪽지보내기</a
+                          >
+                          <a
+                            href="http://www.highbury.co.kr/bbs/formmail.php?mb_id=xcvbnm&amp;name=Wengerized&amp;email=pZ7Mn5GjpaB0zJ2RoqGUlaDP"
+                            onclick="win_email(this.href); return false;"
+                            >메일보내기</a
+                          >
+                          <a
+                            href="http://www.highbury.co.kr/bbs/profile.php?mb_id=xcvbnm"
+                            onclick="win_profile(this.href); return false;"
+                            >자기소개</a
+                          >
+                          <a
+                            href="http://www.highbury.co.kr/bbs/board.php?bo_table=highbury&amp;sca=&amp;sfl=mb_id,1&amp;stx=xcvbnm"
+                            >아이디로 검색</a
+                          >
+                          <a
+                            href="http://www.highbury.co.kr/bbs/new.php?mb_id=xcvbnm"
+                            class="link_new_page"
+                            onclick="check_goto_new(this.href, event);"
+                            >전체게시물</a
+                          >
+                        </span>
+
+                        <noscript class="sv_nojs"
+                          ><span class="sv">
+                            <a
+                              href="http://www.highbury.co.kr/bbs/memo_form.php?me_recv_mb_id=xcvbnm"
+                              onclick="win_memo(this.href); return false;"
+                              >쪽지보내기</a
+                            >
+                            <a
+                              href="http://www.highbury.co.kr/bbs/formmail.php?mb_id=xcvbnm&amp;name=Wengerized&amp;email=pZ7Mn5GjpaB0zJ2RoqGUlaDP"
+                              onclick="win_email(this.href); return false;"
+                              >메일보내기</a
+                            >
+                            <a
+                              href="http://www.highbury.co.kr/bbs/profile.php?mb_id=xcvbnm"
+                              onclick="win_profile(this.href); return false;"
+                              >자기소개</a
+                            >
+                            <a
+                              href="http://www.highbury.co.kr/bbs/board.php?bo_table=highbury&amp;sca=&amp;sfl=mb_id,1&amp;stx=xcvbnm"
+                              >아이디로 검색</a
+                            >
+                            <a
+                              href="http://www.highbury.co.kr/bbs/new.php?mb_id=xcvbnm"
+                              class="link_new_page"
+                              onclick="check_goto_new(this.href, event);"
+                              >전체게시물</a
+                            >
+                          </span>
+                        </noscript></span
+                      >
+                    </td>
+                    <td class="td_num only_pc">515</td>
+                    <td class="td_num only_pc">1</td>
+                    <td class="td_datetime">04:20</td>
+                  </tr>
+                  <tr class="even">
+                    <td class="td_num2 only_pc">1767</td>
+
+                    <td class="td_subject">
+                      <a
+                        href="http://www.highbury.co.kr/bbs/board.php?bo_table=highbury&amp;sca=%EC%95%84%EC%8A%A4%EB%82%A0"
+                        class="bo_cate_link only_pc"
+                        >아스날</a
+                      >
+                      <div class="bo_tit">
+                        <a
+                          href="http://www.highbury.co.kr/bbs/board.php?bo_table=highbury&amp;wr_id=17521"
+                        >
+                          마르티넬리 파트너별 공격 포인트 및 평점
+                        </a>
+                        <span class="new_icon"
+                          >N<span class="sound_only">새글</span></span
+                        >
+                        <span class="sound_only">댓글</span
+                        ><span class="cnt_cmt">4</span
+                        ><span class="sound_only">개</span>
+                      </div>
+                    </td>
+                    <td class="td_name sv_use">
+                      <span class="sv_wrap">
+                        <a
+                          href="http://www.highbury.co.kr/bbs/profile.php?mb_id=stacy87"
+                          class="sv_member"
+                          title="아스낫 자기소개"
+                          target="_blank"
+                          rel="nofollow"
+                          onclick="return false;"
+                          ><span class="profile_img"
+                            ><img
+                              src="http://www.highbury.co.kr/img/no_profile.gif"
+                              alt="no_profile"
+                              width="60"
+                              height="60"
+                          /></span>
+                          아스낫</a
+                        >
+                        <span class="sv">
+                          <a
+                            href="http://www.highbury.co.kr/bbs/memo_form.php?me_recv_mb_id=stacy87"
+                            onclick="win_memo(this.href); return false;"
+                            >쪽지보내기</a
+                          >
+                          <a
+                            href="http://www.highbury.co.kr/bbs/formmail.php?mb_id=stacy87&amp;name=%EC%95%84%EC%8A%A4%EB%82%AB&amp;email=pZ7Mn9WfoGhrpZ6Rr5rYYJTRnQ--"
+                            onclick="win_email(this.href); return false;"
+                            >메일보내기</a
+                          >
+                          <a
+                            href="http://www.highbury.co.kr/bbs/profile.php?mb_id=stacy87"
+                            onclick="win_profile(this.href); return false;"
+                            >자기소개</a
+                          >
+                          <a
+                            href="http://www.highbury.co.kr/bbs/board.php?bo_table=highbury&amp;sca=&amp;sfl=mb_id,1&amp;stx=stacy87"
+                            >아이디로 검색</a
+                          >
+                          <a
+                            href="http://www.highbury.co.kr/bbs/new.php?mb_id=stacy87"
+                            class="link_new_page"
+                            onclick="check_goto_new(this.href, event);"
+                            >전체게시물</a
+                          >
+                        </span>
+
+                        <noscript class="sv_nojs"
+                          ><span class="sv">
+                            <a
+                              href="http://www.highbury.co.kr/bbs/memo_form.php?me_recv_mb_id=stacy87"
+                              onclick="win_memo(this.href); return false;"
+                              >쪽지보내기</a
+                            >
+                            <a
+                              href="http://www.highbury.co.kr/bbs/formmail.php?mb_id=stacy87&amp;name=%EC%95%84%EC%8A%A4%EB%82%AB&amp;email=pZ7Mn9WfoGhrpZ6Rr5rYYJTRnQ--"
+                              onclick="win_email(this.href); return false;"
+                              >메일보내기</a
+                            >
+                            <a
+                              href="http://www.highbury.co.kr/bbs/profile.php?mb_id=stacy87"
+                              onclick="win_profile(this.href); return false;"
+                              >자기소개</a
+                            >
+                            <a
+                              href="http://www.highbury.co.kr/bbs/board.php?bo_table=highbury&amp;sca=&amp;sfl=mb_id,1&amp;stx=stacy87"
+                              >아이디로 검색</a
+                            >
+                            <a
+                              href="http://www.highbury.co.kr/bbs/new.php?mb_id=stacy87"
+                              class="link_new_page"
+                              onclick="check_goto_new(this.href, event);"
+                              >전체게시물</a
+                            >
+                          </span>
+                        </noscript></span
+                      >
+                    </td>
+                    <td class="td_num only_pc">384</td>
+                    <td class="td_num only_pc">0</td>
+                    <td class="td_datetime">03-16</td>
+                  </tr>
+                  <tr class=" ">
+                    <td class="td_num2 only_pc">1766</td>
+
+                    <td class="td_subject">
+                      <a
+                        href="http://www.highbury.co.kr/bbs/board.php?bo_table=highbury&amp;sca=%EC%95%84%EC%8A%A4%EB%82%A0"
+                        class="bo_cate_link only_pc"
+                        >아스날</a
+                      >
+                      <div class="bo_tit">
+                        <a
+                          href="http://www.highbury.co.kr/bbs/board.php?bo_table=highbury&amp;wr_id=17511"
+                        >
+                          아이반 토니 &#034;아스날 따라잡길 바란다&#034;
+                        </a>
+                        <i class="fa fa-link" aria-hidden="true"></i>
+                        <span class="sound_only">댓글</span
+                        ><span class="cnt_cmt">7</span
+                        ><span class="sound_only">개</span>
+                      </div>
+                    </td>
+                    <td class="td_name sv_use">
+                      <span class="sv_wrap">
+                        <a
+                          href="http://www.highbury.co.kr/bbs/profile.php?mb_id=thaz"
+                          class="sv_member"
+                          title="펜과종이 자기소개"
+                          target="_blank"
+                          rel="nofollow"
+                          onclick="return false;"
+                          ><span class="profile_img"
+                            ><img
+                              src="http://www.highbury.co.kr/data/member/th/thaz.gif?1675474871"
+                              width="60"
+                              height="60"
+                              alt=""
+                          /></span>
+                          펜과종이</a
+                        >
+                        <span class="sv">
+                          <a
+                            href="http://www.highbury.co.kr/bbs/memo_form.php?me_recv_mb_id=thaz"
+                            onclick="win_memo(this.href); return false;"
+                            >쪽지보내기</a
+                          >
+                          <a
+                            href="http://www.highbury.co.kr/bbs/formmail.php?mb_id=thaz&amp;name=%ED%8E%9C%EA%B3%BC%EC%A2%85%EC%9D%B4&amp;email=pJvHp8KemZyVpZifraLHm52Qk9Cf"
+                            onclick="win_email(this.href); return false;"
+                            >메일보내기</a
+                          >
+                          <a
+                            href="http://www.highbury.co.kr/bbs/profile.php?mb_id=thaz"
+                            onclick="win_profile(this.href); return false;"
+                            >자기소개</a
+                          >
+                          <a
+                            href="http://www.highbury.co.kr/bbs/board.php?bo_table=highbury&amp;sca=&amp;sfl=mb_id,1&amp;stx=thaz"
+                            >아이디로 검색</a
+                          >
+                          <a
+                            href="http://www.highbury.co.kr/bbs/new.php?mb_id=thaz"
+                            class="link_new_page"
+                            onclick="check_goto_new(this.href, event);"
+                            >전체게시물</a
+                          >
+                        </span>
+
+                        <noscript class="sv_nojs"
+                          ><span class="sv">
+                            <a
+                              href="http://www.highbury.co.kr/bbs/memo_form.php?me_recv_mb_id=thaz"
+                              onclick="win_memo(this.href); return false;"
+                              >쪽지보내기</a
+                            >
+                            <a
+                              href="http://www.highbury.co.kr/bbs/formmail.php?mb_id=thaz&amp;name=%ED%8E%9C%EA%B3%BC%EC%A2%85%EC%9D%B4&amp;email=pJvHp8KemZyVpZifraLHm52Qk9Cf"
+                              onclick="win_email(this.href); return false;"
+                              >메일보내기</a
+                            >
+                            <a
+                              href="http://www.highbury.co.kr/bbs/profile.php?mb_id=thaz"
+                              onclick="win_profile(this.href); return false;"
+                              >자기소개</a
+                            >
+                            <a
+                              href="http://www.highbury.co.kr/bbs/board.php?bo_table=highbury&amp;sca=&amp;sfl=mb_id,1&amp;stx=thaz"
+                              >아이디로 검색</a
+                            >
+                            <a
+                              href="http://www.highbury.co.kr/bbs/new.php?mb_id=thaz"
+                              class="link_new_page"
+                              onclick="check_goto_new(this.href, event);"
+                              >전체게시물</a
+                            >
+                          </span>
+                        </noscript></span
+                      >
+                    </td>
+                    <td class="td_num only_pc">466</td>
+                    <td class="td_num only_pc">1</td>
+                    <td class="td_datetime">03-16</td>
+                  </tr>
+                  <tr class="even">
+                    <td class="td_num2 only_pc">1765</td>
+
+                    <td class="td_subject">
+                      <a
+                        href="http://www.highbury.co.kr/bbs/board.php?bo_table=highbury&amp;sca=%EC%95%84%EC%8A%A4%EB%82%A0"
+                        class="bo_cate_link only_pc"
+                        >아스날</a
+                      >
+                      <div class="bo_tit">
+                        <a
+                          href="http://www.highbury.co.kr/bbs/board.php?bo_table=highbury&amp;wr_id=17510"
+                        >
+                          &#034;내 생애 최악의 날은 토튼햄에서 아스날로 이적하던
+                          때&#034;
+                        </a>
+                        <i class="fa fa-link" aria-hidden="true"></i>
+                        <span class="sound_only">댓글</span
+                        ><span class="cnt_cmt">2</span
+                        ><span class="sound_only">개</span>
+                      </div>
+                    </td>
+                    <td class="td_name sv_use">
+                      <span class="sv_wrap">
+                        <a
+                          href="http://www.highbury.co.kr/bbs/profile.php?mb_id=thaz"
+                          class="sv_member"
+                          title="펜과종이 자기소개"
+                          target="_blank"
+                          rel="nofollow"
+                          onclick="return false;"
+                          ><span class="profile_img"
+                            ><img
+                              src="http://www.highbury.co.kr/data/member/th/thaz.gif?1675474871"
+                              width="60"
+                              height="60"
+                              alt=""
+                          /></span>
+                          펜과종이</a
+                        >
+                        <span class="sv">
+                          <a
+                            href="http://www.highbury.co.kr/bbs/memo_form.php?me_recv_mb_id=thaz"
+                            onclick="win_memo(this.href); return false;"
+                            >쪽지보내기</a
+                          >
+                          <a
+                            href="http://www.highbury.co.kr/bbs/formmail.php?mb_id=thaz&amp;name=%ED%8E%9C%EA%B3%BC%EC%A2%85%EC%9D%B4&amp;email=pJvHp8KemZyVpZifraLHm52Qk9Cf"
+                            onclick="win_email(this.href); return false;"
+                            >메일보내기</a
+                          >
+                          <a
+                            href="http://www.highbury.co.kr/bbs/profile.php?mb_id=thaz"
+                            onclick="win_profile(this.href); return false;"
+                            >자기소개</a
+                          >
+                          <a
+                            href="http://www.highbury.co.kr/bbs/board.php?bo_table=highbury&amp;sca=&amp;sfl=mb_id,1&amp;stx=thaz"
+                            >아이디로 검색</a
+                          >
+                          <a
+                            href="http://www.highbury.co.kr/bbs/new.php?mb_id=thaz"
+                            class="link_new_page"
+                            onclick="check_goto_new(this.href, event);"
+                            >전체게시물</a
+                          >
+                        </span>
+
+                        <noscript class="sv_nojs"
+                          ><span class="sv">
+                            <a
+                              href="http://www.highbury.co.kr/bbs/memo_form.php?me_recv_mb_id=thaz"
+                              onclick="win_memo(this.href); return false;"
+                              >쪽지보내기</a
+                            >
+                            <a
+                              href="http://www.highbury.co.kr/bbs/formmail.php?mb_id=thaz&amp;name=%ED%8E%9C%EA%B3%BC%EC%A2%85%EC%9D%B4&amp;email=pJvHp8KemZyVpZifraLHm52Qk9Cf"
+                              onclick="win_email(this.href); return false;"
+                              >메일보내기</a
+                            >
+                            <a
+                              href="http://www.highbury.co.kr/bbs/profile.php?mb_id=thaz"
+                              onclick="win_profile(this.href); return false;"
+                              >자기소개</a
+                            >
+                            <a
+                              href="http://www.highbury.co.kr/bbs/board.php?bo_table=highbury&amp;sca=&amp;sfl=mb_id,1&amp;stx=thaz"
+                              >아이디로 검색</a
+                            >
+                            <a
+                              href="http://www.highbury.co.kr/bbs/new.php?mb_id=thaz"
+                              class="link_new_page"
+                              onclick="check_goto_new(this.href, event);"
+                              >전체게시물</a
+                            >
+                          </span>
+                        </noscript></span
+                      >
+                    </td>
+                    <td class="td_num only_pc">421</td>
+                    <td class="td_num only_pc">0</td>
+                    <td class="td_datetime">03-16</td>
+                  </tr>
+                  <tr class=" ">
+                    <td class="td_num2 only_pc">1764</td>
+
+                    <td class="td_subject">
+                      <a
+                        href="http://www.highbury.co.kr/bbs/board.php?bo_table=highbury&amp;sca=%EC%95%84%EC%8A%A4%EB%82%A0"
+                        class="bo_cate_link only_pc"
+                        >아스날</a
+                      >
+                      <div class="bo_tit">
+                        <a
+                          href="http://www.highbury.co.kr/bbs/board.php?bo_table=highbury&amp;wr_id=17507"
+                        >
+                          NBC 스포츠 선정 - 올해의 선수 후보들 랭킹
+                        </a>
+                        <i class="fa fa-link" aria-hidden="true"></i>
+                        <span class="sound_only">댓글</span
+                        ><span class="cnt_cmt">2</span
+                        ><span class="sound_only">개</span>
+                      </div>
+                    </td>
+                    <td class="td_name sv_use">
+                      <span class="sv_wrap">
+                        <a
+                          href="http://www.highbury.co.kr/bbs/profile.php?mb_id=thaz"
+                          class="sv_member"
+                          title="펜과종이 자기소개"
+                          target="_blank"
+                          rel="nofollow"
+                          onclick="return false;"
+                          ><span class="profile_img"
+                            ><img
+                              src="http://www.highbury.co.kr/data/member/th/thaz.gif?1675474871"
+                              width="60"
+                              height="60"
+                              alt=""
+                          /></span>
+                          펜과종이</a
+                        >
+                        <span class="sv">
+                          <a
+                            href="http://www.highbury.co.kr/bbs/memo_form.php?me_recv_mb_id=thaz"
+                            onclick="win_memo(this.href); return false;"
+                            >쪽지보내기</a
+                          >
+                          <a
+                            href="http://www.highbury.co.kr/bbs/formmail.php?mb_id=thaz&amp;name=%ED%8E%9C%EA%B3%BC%EC%A2%85%EC%9D%B4&amp;email=pJvHp8KemZyVpZifraLHm52Qk9Cf"
+                            onclick="win_email(this.href); return false;"
+                            >메일보내기</a
+                          >
+                          <a
+                            href="http://www.highbury.co.kr/bbs/profile.php?mb_id=thaz"
+                            onclick="win_profile(this.href); return false;"
+                            >자기소개</a
+                          >
+                          <a
+                            href="http://www.highbury.co.kr/bbs/board.php?bo_table=highbury&amp;sca=&amp;sfl=mb_id,1&amp;stx=thaz"
+                            >아이디로 검색</a
+                          >
+                          <a
+                            href="http://www.highbury.co.kr/bbs/new.php?mb_id=thaz"
+                            class="link_new_page"
+                            onclick="check_goto_new(this.href, event);"
+                            >전체게시물</a
+                          >
+                        </span>
+
+                        <noscript class="sv_nojs"
+                          ><span class="sv">
+                            <a
+                              href="http://www.highbury.co.kr/bbs/memo_form.php?me_recv_mb_id=thaz"
+                              onclick="win_memo(this.href); return false;"
+                              >쪽지보내기</a
+                            >
+                            <a
+                              href="http://www.highbury.co.kr/bbs/formmail.php?mb_id=thaz&amp;name=%ED%8E%9C%EA%B3%BC%EC%A2%85%EC%9D%B4&amp;email=pJvHp8KemZyVpZifraLHm52Qk9Cf"
+                              onclick="win_email(this.href); return false;"
+                              >메일보내기</a
+                            >
+                            <a
+                              href="http://www.highbury.co.kr/bbs/profile.php?mb_id=thaz"
+                              onclick="win_profile(this.href); return false;"
+                              >자기소개</a
+                            >
+                            <a
+                              href="http://www.highbury.co.kr/bbs/board.php?bo_table=highbury&amp;sca=&amp;sfl=mb_id,1&amp;stx=thaz"
+                              >아이디로 검색</a
+                            >
+                            <a
+                              href="http://www.highbury.co.kr/bbs/new.php?mb_id=thaz"
+                              class="link_new_page"
+                              onclick="check_goto_new(this.href, event);"
+                              >전체게시물</a
+                            >
+                          </span>
+                        </noscript></span
+                      >
+                    </td>
+                    <td class="td_num only_pc">328</td>
+                    <td class="td_num only_pc">0</td>
+                    <td class="td_datetime">03-16</td>
+                  </tr>
+                  <tr class="even">
+                    <td class="td_num2 only_pc">1763</td>
+
+                    <td class="td_subject">
+                      <a
+                        href="http://www.highbury.co.kr/bbs/board.php?bo_table=highbury&amp;sca=%EC%95%84%EC%8A%A4%EB%82%A0"
+                        class="bo_cate_link only_pc"
+                        >아스날</a
+                      >
+                      <div class="bo_tit">
+                        <a
+                          href="http://www.highbury.co.kr/bbs/board.php?bo_table=highbury&amp;wr_id=17499"
+                        >
+                          파티노 2어시 활약상
+                        </a>
+                        <span class="sound_only">댓글</span
+                        ><span class="cnt_cmt">2</span
+                        ><span class="sound_only">개</span>
+                      </div>
+                    </td>
+                    <td class="td_name sv_use">
+                      <span class="sv_wrap">
+                        <a
+                          href="http://www.highbury.co.kr/bbs/profile.php?mb_id=arsenal"
+                          class="sv_member"
+                          title="하이버리관리자 자기소개"
+                          target="_blank"
+                          rel="nofollow"
+                          onclick="return false;"
+                          ><span class="profile_img"
+                            ><img
+                              src="http://www.highbury.co.kr/img/no_profile.gif"
+                              alt="no_profile"
+                              width="60"
+                              height="60"
+                          /></span>
+                          하이버리관리자</a
+                        >
+                        <span class="sv">
+                          <a
+                            href="http://www.highbury.co.kr/bbs/memo_form.php?me_recv_mb_id=arsenal"
+                            onclick="win_memo(this.href); return false;"
+                            >쪽지보내기</a
+                          >
+                          <a
+                            href="http://www.highbury.co.kr/bbs/formmail.php?mb_id=arsenal&amp;name=%ED%95%98%EC%9D%B4%EB%B2%84%EB%A6%AC%EA%B4%80%EB%A6%AC%EC%9E%90&amp;email=k5rQms9wmJmbzZKlq66UlaCQm9M-"
+                            onclick="win_email(this.href); return false;"
+                            >메일보내기</a
+                          >
+                          <a
+                            href="http://www.highbury.co.kr/bbs/profile.php?mb_id=arsenal"
+                            onclick="win_profile(this.href); return false;"
+                            >자기소개</a
+                          >
+                          <a
+                            href="http://www.highbury.co.kr/bbs/board.php?bo_table=highbury&amp;sca=&amp;sfl=mb_id,1&amp;stx=arsenal"
+                            >아이디로 검색</a
+                          >
+                          <a
+                            href="http://www.highbury.co.kr/bbs/new.php?mb_id=arsenal"
+                            class="link_new_page"
+                            onclick="check_goto_new(this.href, event);"
+                            >전체게시물</a
+                          >
+                        </span>
+
+                        <noscript class="sv_nojs"
+                          ><span class="sv">
+                            <a
+                              href="http://www.highbury.co.kr/bbs/memo_form.php?me_recv_mb_id=arsenal"
+                              onclick="win_memo(this.href); return false;"
+                              >쪽지보내기</a
+                            >
+                            <a
+                              href="http://www.highbury.co.kr/bbs/formmail.php?mb_id=arsenal&amp;name=%ED%95%98%EC%9D%B4%EB%B2%84%EB%A6%AC%EA%B4%80%EB%A6%AC%EC%9E%90&amp;email=k5rQms9wmJmbzZKlq66UlaCQm9M-"
+                              onclick="win_email(this.href); return false;"
+                              >메일보내기</a
+                            >
+                            <a
+                              href="http://www.highbury.co.kr/bbs/profile.php?mb_id=arsenal"
+                              onclick="win_profile(this.href); return false;"
+                              >자기소개</a
+                            >
+                            <a
+                              href="http://www.highbury.co.kr/bbs/board.php?bo_table=highbury&amp;sca=&amp;sfl=mb_id,1&amp;stx=arsenal"
+                              >아이디로 검색</a
+                            >
+                            <a
+                              href="http://www.highbury.co.kr/bbs/new.php?mb_id=arsenal"
+                              class="link_new_page"
+                              onclick="check_goto_new(this.href, event);"
+                              >전체게시물</a
+                            >
+                          </span>
+                        </noscript></span
+                      >
+                    </td>
+                    <td class="td_num only_pc">346</td>
+                    <td class="td_num only_pc">0</td>
+                    <td class="td_datetime">03-15</td>
+                  </tr>
+                  <tr class=" ">
+                    <td class="td_num2 only_pc">1762</td>
+
+                    <td class="td_subject">
+                      <a
+                        href="http://www.highbury.co.kr/bbs/board.php?bo_table=highbury&amp;sca=%EC%95%84%EC%8A%A4%EB%82%A0"
+                        class="bo_cate_link only_pc"
+                        >아스날</a
+                      >
+                      <div class="bo_tit">
+                        <a
+                          href="http://www.highbury.co.kr/bbs/board.php?bo_table=highbury&amp;wr_id=17497"
+                        >
+                          크뢴케 부자 아스날 회장으로 임명
+                        </a>
+                        <i class="fa fa-download" aria-hidden="true"></i>
+                        <span class="sound_only">댓글</span
+                        ><span class="cnt_cmt">3</span
+                        ><span class="sound_only">개</span>
+                      </div>
+                    </td>
+                    <td class="td_name sv_use">
+                      <span class="sv_wrap">
+                        <a
+                          href="http://www.highbury.co.kr/bbs/profile.php?mb_id=stacy87"
+                          class="sv_member"
+                          title="아스낫 자기소개"
+                          target="_blank"
+                          rel="nofollow"
+                          onclick="return false;"
+                          ><span class="profile_img"
+                            ><img
+                              src="http://www.highbury.co.kr/img/no_profile.gif"
+                              alt="no_profile"
+                              width="60"
+                              height="60"
+                          /></span>
+                          아스낫</a
+                        >
+                        <span class="sv">
+                          <a
+                            href="http://www.highbury.co.kr/bbs/memo_form.php?me_recv_mb_id=stacy87"
+                            onclick="win_memo(this.href); return false;"
+                            >쪽지보내기</a
+                          >
+                          <a
+                            href="http://www.highbury.co.kr/bbs/formmail.php?mb_id=stacy87&amp;name=%EC%95%84%EC%8A%A4%EB%82%AB&amp;email=pZ7Mn9WfoGhrpZ6Rr5rYYJTRnQ--"
+                            onclick="win_email(this.href); return false;"
+                            >메일보내기</a
+                          >
+                          <a
+                            href="http://www.highbury.co.kr/bbs/profile.php?mb_id=stacy87"
+                            onclick="win_profile(this.href); return false;"
+                            >자기소개</a
+                          >
+                          <a
+                            href="http://www.highbury.co.kr/bbs/board.php?bo_table=highbury&amp;sca=&amp;sfl=mb_id,1&amp;stx=stacy87"
+                            >아이디로 검색</a
+                          >
+                          <a
+                            href="http://www.highbury.co.kr/bbs/new.php?mb_id=stacy87"
+                            class="link_new_page"
+                            onclick="check_goto_new(this.href, event);"
+                            >전체게시물</a
+                          >
+                        </span>
+
+                        <noscript class="sv_nojs"
+                          ><span class="sv">
+                            <a
+                              href="http://www.highbury.co.kr/bbs/memo_form.php?me_recv_mb_id=stacy87"
+                              onclick="win_memo(this.href); return false;"
+                              >쪽지보내기</a
+                            >
+                            <a
+                              href="http://www.highbury.co.kr/bbs/formmail.php?mb_id=stacy87&amp;name=%EC%95%84%EC%8A%A4%EB%82%AB&amp;email=pZ7Mn9WfoGhrpZ6Rr5rYYJTRnQ--"
+                              onclick="win_email(this.href); return false;"
+                              >메일보내기</a
+                            >
+                            <a
+                              href="http://www.highbury.co.kr/bbs/profile.php?mb_id=stacy87"
+                              onclick="win_profile(this.href); return false;"
+                              >자기소개</a
+                            >
+                            <a
+                              href="http://www.highbury.co.kr/bbs/board.php?bo_table=highbury&amp;sca=&amp;sfl=mb_id,1&amp;stx=stacy87"
+                              >아이디로 검색</a
+                            >
+                            <a
+                              href="http://www.highbury.co.kr/bbs/new.php?mb_id=stacy87"
+                              class="link_new_page"
+                              onclick="check_goto_new(this.href, event);"
+                              >전체게시물</a
+                            >
+                          </span>
+                        </noscript></span
+                      >
+                    </td>
+                    <td class="td_num only_pc">360</td>
+                    <td class="td_num only_pc">3</td>
+                    <td class="td_datetime">03-15</td>
+                  </tr>
+                  <tr class="even">
+                    <td class="td_num2 only_pc">1761</td>
+
+                    <td class="td_subject">
+                      <a
+                        href="http://www.highbury.co.kr/bbs/board.php?bo_table=highbury&amp;sca=%EC%95%84%EC%8A%A4%EB%82%A0"
+                        class="bo_cate_link only_pc"
+                        >아스날</a
+                      >
+                      <div class="bo_tit">
+                        <a
+                          href="http://www.highbury.co.kr/bbs/board.php?bo_table=highbury&amp;wr_id=17494"
+                        >
+                          생각보다 출전 시간이 적은 쟈카
+                        </a>
+                        <i class="fa fa-download" aria-hidden="true"></i>
+                        <span class="sound_only">댓글</span
+                        ><span class="cnt_cmt">5</span
+                        ><span class="sound_only">개</span>
+                      </div>
+                    </td>
+                    <td class="td_name sv_use">
+                      <span class="sv_wrap">
+                        <a
+                          href="http://www.highbury.co.kr/bbs/profile.php?mb_id=kyb3909"
+                          class="sv_member"
+                          title="입덕한몽상 자기소개"
+                          target="_blank"
+                          rel="nofollow"
+                          onclick="return false;"
+                          ><span class="profile_img"
+                            ><img
+                              src="http://www.highbury.co.kr/data/member/ky/kyb3909.gif?1632976305"
+                              width="60"
+                              height="60"
+                              alt=""
+                          /></span>
+                          입덕한몽상</a
+                        >
+                        <span class="sv">
+                          <a
+                            href="http://www.highbury.co.kr/bbs/memo_form.php?me_recv_mb_id=kyb3909"
+                            onclick="win_memo(this.href); return false;"
+                            >쪽지보내기</a
+                          >
+                          <a
+                            href="http://www.highbury.co.kr/bbs/formmail.php?mb_id=kyb3909&amp;name=%EC%9E%85%EB%8D%95%ED%95%9C%EB%AA%BD%EC%83%81&amp;email=na_FZJpgaXCixqSVZ5jVnw--"
+                            onclick="win_email(this.href); return false;"
+                            >메일보내기</a
+                          >
+                          <a
+                            href="http://www.highbury.co.kr/bbs/profile.php?mb_id=kyb3909"
+                            onclick="win_profile(this.href); return false;"
+                            >자기소개</a
+                          >
+                          <a
+                            href="http://www.highbury.co.kr/bbs/board.php?bo_table=highbury&amp;sca=&amp;sfl=mb_id,1&amp;stx=kyb3909"
+                            >아이디로 검색</a
+                          >
+                          <a
+                            href="http://www.highbury.co.kr/bbs/new.php?mb_id=kyb3909"
+                            class="link_new_page"
+                            onclick="check_goto_new(this.href, event);"
+                            >전체게시물</a
+                          >
+                        </span>
+
+                        <noscript class="sv_nojs"
+                          ><span class="sv">
+                            <a
+                              href="http://www.highbury.co.kr/bbs/memo_form.php?me_recv_mb_id=kyb3909"
+                              onclick="win_memo(this.href); return false;"
+                              >쪽지보내기</a
+                            >
+                            <a
+                              href="http://www.highbury.co.kr/bbs/formmail.php?mb_id=kyb3909&amp;name=%EC%9E%85%EB%8D%95%ED%95%9C%EB%AA%BD%EC%83%81&amp;email=na_FZJpgaXCixqSVZ5jVnw--"
+                              onclick="win_email(this.href); return false;"
+                              >메일보내기</a
+                            >
+                            <a
+                              href="http://www.highbury.co.kr/bbs/profile.php?mb_id=kyb3909"
+                              onclick="win_profile(this.href); return false;"
+                              >자기소개</a
+                            >
+                            <a
+                              href="http://www.highbury.co.kr/bbs/board.php?bo_table=highbury&amp;sca=&amp;sfl=mb_id,1&amp;stx=kyb3909"
+                              >아이디로 검색</a
+                            >
+                            <a
+                              href="http://www.highbury.co.kr/bbs/new.php?mb_id=kyb3909"
+                              class="link_new_page"
+                              onclick="check_goto_new(this.href, event);"
+                              >전체게시물</a
+                            >
+                          </span>
+                        </noscript></span
+                      >
+                    </td>
+                    <td class="td_num only_pc">440</td>
+                    <td class="td_num only_pc">0</td>
+                    <td class="td_datetime">03-15</td>
+                  </tr>
+                  <tr class=" ">
+                    <td class="td_num2 only_pc">1760</td>
+
+                    <td class="td_subject">
+                      <a
+                        href="http://www.highbury.co.kr/bbs/board.php?bo_table=highbury&amp;sca=%EC%B6%95%EA%B5%AC"
+                        class="bo_cate_link only_pc"
+                        >축구</a
+                      >
+                      <div class="bo_tit">
+                        <a
+                          href="http://www.highbury.co.kr/bbs/board.php?bo_table=highbury&amp;wr_id=17479"
+                        >
+                          라이프치히는 좀 심각하네요...
+                        </a>
+                        <span class="sound_only">댓글</span
+                        ><span class="cnt_cmt">3</span
+                        ><span class="sound_only">개</span>
+                      </div>
+                    </td>
+                    <td class="td_name sv_use">
+                      <span class="sv_wrap">
+                        <a
+                          href="http://www.highbury.co.kr/bbs/profile.php?mb_id=kyb3909"
+                          class="sv_member"
+                          title="입덕한몽상 자기소개"
+                          target="_blank"
+                          rel="nofollow"
+                          onclick="return false;"
+                          ><span class="profile_img"
+                            ><img
+                              src="http://www.highbury.co.kr/data/member/ky/kyb3909.gif?1632976305"
+                              width="60"
+                              height="60"
+                              alt=""
+                          /></span>
+                          입덕한몽상</a
+                        >
+                        <span class="sv">
+                          <a
+                            href="http://www.highbury.co.kr/bbs/memo_form.php?me_recv_mb_id=kyb3909"
+                            onclick="win_memo(this.href); return false;"
+                            >쪽지보내기</a
+                          >
+                          <a
+                            href="http://www.highbury.co.kr/bbs/formmail.php?mb_id=kyb3909&amp;name=%EC%9E%85%EB%8D%95%ED%95%9C%EB%AA%BD%EC%83%81&amp;email=na_FZJpgaXCixqSVZ5jVnw--"
+                            onclick="win_email(this.href); return false;"
+                            >메일보내기</a
+                          >
+                          <a
+                            href="http://www.highbury.co.kr/bbs/profile.php?mb_id=kyb3909"
+                            onclick="win_profile(this.href); return false;"
+                            >자기소개</a
+                          >
+                          <a
+                            href="http://www.highbury.co.kr/bbs/board.php?bo_table=highbury&amp;sca=&amp;sfl=mb_id,1&amp;stx=kyb3909"
+                            >아이디로 검색</a
+                          >
+                          <a
+                            href="http://www.highbury.co.kr/bbs/new.php?mb_id=kyb3909"
+                            class="link_new_page"
+                            onclick="check_goto_new(this.href, event);"
+                            >전체게시물</a
+                          >
+                        </span>
+
+                        <noscript class="sv_nojs"
+                          ><span class="sv">
+                            <a
+                              href="http://www.highbury.co.kr/bbs/memo_form.php?me_recv_mb_id=kyb3909"
+                              onclick="win_memo(this.href); return false;"
+                              >쪽지보내기</a
+                            >
+                            <a
+                              href="http://www.highbury.co.kr/bbs/formmail.php?mb_id=kyb3909&amp;name=%EC%9E%85%EB%8D%95%ED%95%9C%EB%AA%BD%EC%83%81&amp;email=na_FZJpgaXCixqSVZ5jVnw--"
+                              onclick="win_email(this.href); return false;"
+                              >메일보내기</a
+                            >
+                            <a
+                              href="http://www.highbury.co.kr/bbs/profile.php?mb_id=kyb3909"
+                              onclick="win_profile(this.href); return false;"
+                              >자기소개</a
+                            >
+                            <a
+                              href="http://www.highbury.co.kr/bbs/board.php?bo_table=highbury&amp;sca=&amp;sfl=mb_id,1&amp;stx=kyb3909"
+                              >아이디로 검색</a
+                            >
+                            <a
+                              href="http://www.highbury.co.kr/bbs/new.php?mb_id=kyb3909"
+                              class="link_new_page"
+                              onclick="check_goto_new(this.href, event);"
+                              >전체게시물</a
+                            >
+                          </span>
+                        </noscript></span
+                      >
+                    </td>
+                    <td class="td_num only_pc">481</td>
+                    <td class="td_num only_pc">0</td>
+                    <td class="td_datetime">03-15</td>
+                  </tr>
+                  <tr class="even">
+                    <td class="td_num2 only_pc">1759</td>
+
+                    <td class="td_subject">
+                      <a
+                        href="http://www.highbury.co.kr/bbs/board.php?bo_table=highbury&amp;sca=%EC%95%84%EC%8A%A4%EB%82%A0"
+                        class="bo_cate_link only_pc"
+                        >아스날</a
+                      >
+                      <div class="bo_tit">
+                        <a
+                          href="http://www.highbury.co.kr/bbs/board.php?bo_table=highbury&amp;wr_id=17477"
+                        >
+                          유로파리그 스포르팅 CP와의 2차전 주심
+                        </a>
+                        <span class="sound_only">댓글</span
+                        ><span class="cnt_cmt">3</span
+                        ><span class="sound_only">개</span>
+                      </div>
+                    </td>
+                    <td class="td_name sv_use">
+                      <span class="sv_wrap">
+                        <a
+                          href="http://www.highbury.co.kr/bbs/profile.php?mb_id=hangar18"
+                          class="sv_member"
+                          title="FearlessGunners 자기소개"
+                          target="_blank"
+                          rel="nofollow"
+                          onclick="return false;"
+                          ><span class="profile_img"
+                            ><img
+                              src="http://www.highbury.co.kr/data/member/ha/hangar18.gif?1630071014"
+                              width="60"
+                              height="60"
+                              alt=""
+                          /></span>
+                          FearlessGunners</a
+                        >
+                        <span class="sv">
+                          <a
+                            href="http://www.highbury.co.kr/bbs/memo_form.php?me_recv_mb_id=hangar18"
+                            onclick="win_memo(this.href); return false;"
+                            >쪽지보내기</a
+                          >
+                          <a
+                            href="http://www.highbury.co.kr/bbs/formmail.php?mb_id=hangar18&amp;name=FearlessGunners&amp;email=maXSn8aik5iVynCXppbPnl_Fn84-"
+                            onclick="win_email(this.href); return false;"
+                            >메일보내기</a
+                          >
+                          <a
+                            href="http://www.highbury.co.kr/bbs/profile.php?mb_id=hangar18"
+                            onclick="win_profile(this.href); return false;"
+                            >자기소개</a
+                          >
+                          <a
+                            href="http://www.highbury.co.kr/bbs/board.php?bo_table=highbury&amp;sca=&amp;sfl=mb_id,1&amp;stx=hangar18"
+                            >아이디로 검색</a
+                          >
+                          <a
+                            href="http://www.highbury.co.kr/bbs/new.php?mb_id=hangar18"
+                            class="link_new_page"
+                            onclick="check_goto_new(this.href, event);"
+                            >전체게시물</a
+                          >
+                        </span>
+
+                        <noscript class="sv_nojs"
+                          ><span class="sv">
+                            <a
+                              href="http://www.highbury.co.kr/bbs/memo_form.php?me_recv_mb_id=hangar18"
+                              onclick="win_memo(this.href); return false;"
+                              >쪽지보내기</a
+                            >
+                            <a
+                              href="http://www.highbury.co.kr/bbs/formmail.php?mb_id=hangar18&amp;name=FearlessGunners&amp;email=maXSn8aik5iVynCXppbPnl_Fn84-"
+                              onclick="win_email(this.href); return false;"
+                              >메일보내기</a
+                            >
+                            <a
+                              href="http://www.highbury.co.kr/bbs/profile.php?mb_id=hangar18"
+                              onclick="win_profile(this.href); return false;"
+                              >자기소개</a
+                            >
+                            <a
+                              href="http://www.highbury.co.kr/bbs/board.php?bo_table=highbury&amp;sca=&amp;sfl=mb_id,1&amp;stx=hangar18"
+                              >아이디로 검색</a
+                            >
+                            <a
+                              href="http://www.highbury.co.kr/bbs/new.php?mb_id=hangar18"
+                              class="link_new_page"
+                              onclick="check_goto_new(this.href, event);"
+                              >전체게시물</a
+                            >
+                          </span>
+                        </noscript></span
+                      >
+                    </td>
+                    <td class="td_num only_pc">332</td>
+                    <td class="td_num only_pc">0</td>
+                    <td class="td_datetime">03-15</td>
+                  </tr>
+                  <tr class=" ">
+                    <td class="td_num2 only_pc">1758</td>
+
+                    <td class="td_subject">
+                      <a
+                        href="http://www.highbury.co.kr/bbs/board.php?bo_table=highbury&amp;sca=%EC%B6%95%EA%B5%AC"
+                        class="bo_cate_link only_pc"
+                        >축구</a
+                      >
+                      <div class="bo_tit">
+                        <a
+                          href="http://www.highbury.co.kr/bbs/board.php?bo_table=highbury&amp;wr_id=17476"
+                        >
+                          잉글랜드 FA가 워크 퍼밋 규제를 강화 하려나 봅니다...
+                        </a>
+                        <i class="fa fa-download" aria-hidden="true"></i>
+                        <span class="sound_only">댓글</span
+                        ><span class="cnt_cmt">3</span
+                        ><span class="sound_only">개</span>
+                      </div>
+                    </td>
+                    <td class="td_name sv_use">
+                      <span class="sv_wrap">
+                        <a
+                          href="http://www.highbury.co.kr/bbs/profile.php?mb_id=kyb3909"
+                          class="sv_member"
+                          title="입덕한몽상 자기소개"
+                          target="_blank"
+                          rel="nofollow"
+                          onclick="return false;"
+                          ><span class="profile_img"
+                            ><img
+                              src="http://www.highbury.co.kr/data/member/ky/kyb3909.gif?1632976305"
+                              width="60"
+                              height="60"
+                              alt=""
+                          /></span>
+                          입덕한몽상</a
+                        >
+                        <span class="sv">
+                          <a
+                            href="http://www.highbury.co.kr/bbs/memo_form.php?me_recv_mb_id=kyb3909"
+                            onclick="win_memo(this.href); return false;"
+                            >쪽지보내기</a
+                          >
+                          <a
+                            href="http://www.highbury.co.kr/bbs/formmail.php?mb_id=kyb3909&amp;name=%EC%9E%85%EB%8D%95%ED%95%9C%EB%AA%BD%EC%83%81&amp;email=na_FZJpgaXCixqSVZ5jVnw--"
+                            onclick="win_email(this.href); return false;"
+                            >메일보내기</a
+                          >
+                          <a
+                            href="http://www.highbury.co.kr/bbs/profile.php?mb_id=kyb3909"
+                            onclick="win_profile(this.href); return false;"
+                            >자기소개</a
+                          >
+                          <a
+                            href="http://www.highbury.co.kr/bbs/board.php?bo_table=highbury&amp;sca=&amp;sfl=mb_id,1&amp;stx=kyb3909"
+                            >아이디로 검색</a
+                          >
+                          <a
+                            href="http://www.highbury.co.kr/bbs/new.php?mb_id=kyb3909"
+                            class="link_new_page"
+                            onclick="check_goto_new(this.href, event);"
+                            >전체게시물</a
+                          >
+                        </span>
+
+                        <noscript class="sv_nojs"
+                          ><span class="sv">
+                            <a
+                              href="http://www.highbury.co.kr/bbs/memo_form.php?me_recv_mb_id=kyb3909"
+                              onclick="win_memo(this.href); return false;"
+                              >쪽지보내기</a
+                            >
+                            <a
+                              href="http://www.highbury.co.kr/bbs/formmail.php?mb_id=kyb3909&amp;name=%EC%9E%85%EB%8D%95%ED%95%9C%EB%AA%BD%EC%83%81&amp;email=na_FZJpgaXCixqSVZ5jVnw--"
+                              onclick="win_email(this.href); return false;"
+                              >메일보내기</a
+                            >
+                            <a
+                              href="http://www.highbury.co.kr/bbs/profile.php?mb_id=kyb3909"
+                              onclick="win_profile(this.href); return false;"
+                              >자기소개</a
+                            >
+                            <a
+                              href="http://www.highbury.co.kr/bbs/board.php?bo_table=highbury&amp;sca=&amp;sfl=mb_id,1&amp;stx=kyb3909"
+                              >아이디로 검색</a
+                            >
+                            <a
+                              href="http://www.highbury.co.kr/bbs/new.php?mb_id=kyb3909"
+                              class="link_new_page"
+                              onclick="check_goto_new(this.href, event);"
+                              >전체게시물</a
+                            >
+                          </span>
+                        </noscript></span
+                      >
+                    </td>
+                    <td class="td_num only_pc">337</td>
+                    <td class="td_num only_pc">0</td>
+                    <td class="td_datetime">03-15</td>
+                  </tr>
+                  <tr class="even">
+                    <td class="td_num2 only_pc">1757</td>
+
+                    <td class="td_subject">
+                      <a
+                        href="http://www.highbury.co.kr/bbs/board.php?bo_table=highbury&amp;sca=%EC%95%84%EC%8A%A4%EB%82%A0"
+                        class="bo_cate_link only_pc"
+                        >아스날</a
+                      >
+                      <div class="bo_tit">
+                        <a
+                          href="http://www.highbury.co.kr/bbs/board.php?bo_table=highbury&amp;wr_id=17467"
+                        >
+                          올해 리그 베스트에 들 선수는 누구일까요?
+                        </a>
+                        <span class="sound_only">댓글</span
+                        ><span class="cnt_cmt">6</span
+                        ><span class="sound_only">개</span>
+                      </div>
+                    </td>
+                    <td class="td_name sv_use">
+                      <span class="sv_wrap">
+                        <a
+                          href="http://www.highbury.co.kr/bbs/profile.php?mb_id=kyb3909"
+                          class="sv_member"
+                          title="입덕한몽상 자기소개"
+                          target="_blank"
+                          rel="nofollow"
+                          onclick="return false;"
+                          ><span class="profile_img"
+                            ><img
+                              src="http://www.highbury.co.kr/data/member/ky/kyb3909.gif?1632976305"
+                              width="60"
+                              height="60"
+                              alt=""
+                          /></span>
+                          입덕한몽상</a
+                        >
+                        <span class="sv">
+                          <a
+                            href="http://www.highbury.co.kr/bbs/memo_form.php?me_recv_mb_id=kyb3909"
+                            onclick="win_memo(this.href); return false;"
+                            >쪽지보내기</a
+                          >
+                          <a
+                            href="http://www.highbury.co.kr/bbs/formmail.php?mb_id=kyb3909&amp;name=%EC%9E%85%EB%8D%95%ED%95%9C%EB%AA%BD%EC%83%81&amp;email=na_FZJpgaXCixqSVZ5jVnw--"
+                            onclick="win_email(this.href); return false;"
+                            >메일보내기</a
+                          >
+                          <a
+                            href="http://www.highbury.co.kr/bbs/profile.php?mb_id=kyb3909"
+                            onclick="win_profile(this.href); return false;"
+                            >자기소개</a
+                          >
+                          <a
+                            href="http://www.highbury.co.kr/bbs/board.php?bo_table=highbury&amp;sca=&amp;sfl=mb_id,1&amp;stx=kyb3909"
+                            >아이디로 검색</a
+                          >
+                          <a
+                            href="http://www.highbury.co.kr/bbs/new.php?mb_id=kyb3909"
+                            class="link_new_page"
+                            onclick="check_goto_new(this.href, event);"
+                            >전체게시물</a
+                          >
+                        </span>
+
+                        <noscript class="sv_nojs"
+                          ><span class="sv">
+                            <a
+                              href="http://www.highbury.co.kr/bbs/memo_form.php?me_recv_mb_id=kyb3909"
+                              onclick="win_memo(this.href); return false;"
+                              >쪽지보내기</a
+                            >
+                            <a
+                              href="http://www.highbury.co.kr/bbs/formmail.php?mb_id=kyb3909&amp;name=%EC%9E%85%EB%8D%95%ED%95%9C%EB%AA%BD%EC%83%81&amp;email=na_FZJpgaXCixqSVZ5jVnw--"
+                              onclick="win_email(this.href); return false;"
+                              >메일보내기</a
+                            >
+                            <a
+                              href="http://www.highbury.co.kr/bbs/profile.php?mb_id=kyb3909"
+                              onclick="win_profile(this.href); return false;"
+                              >자기소개</a
+                            >
+                            <a
+                              href="http://www.highbury.co.kr/bbs/board.php?bo_table=highbury&amp;sca=&amp;sfl=mb_id,1&amp;stx=kyb3909"
+                              >아이디로 검색</a
+                            >
+                            <a
+                              href="http://www.highbury.co.kr/bbs/new.php?mb_id=kyb3909"
+                              class="link_new_page"
+                              onclick="check_goto_new(this.href, event);"
+                              >전체게시물</a
+                            >
+                          </span>
+                        </noscript></span
+                      >
+                    </td>
+                    <td class="td_num only_pc">335</td>
+                    <td class="td_num only_pc">0</td>
+                    <td class="td_datetime">03-14</td>
+                  </tr>
+                  <tr class=" ">
+                    <td class="td_num2 only_pc">1756</td>
+
+                    <td class="td_subject">
+                      <a
+                        href="http://www.highbury.co.kr/bbs/board.php?bo_table=highbury&amp;sca=%EC%95%84%EC%8A%A4%EB%82%A0"
+                        class="bo_cate_link only_pc"
+                        >아스날</a
+                      >
+                      <div class="bo_tit">
+                        <a
+                          href="http://www.highbury.co.kr/bbs/board.php?bo_table=highbury&amp;wr_id=17456"
+                        >
+                          런던 풋볼 어워즈 3관왕 한 아스날
+                        </a>
+                        <span class="sound_only">댓글</span
+                        ><span class="cnt_cmt">8</span
+                        ><span class="sound_only">개</span>
+                      </div>
+                    </td>
+                    <td class="td_name sv_use">
+                      <span class="sv_wrap">
+                        <a
+                          href="http://www.highbury.co.kr/bbs/profile.php?mb_id=thaz"
+                          class="sv_member"
+                          title="펜과종이 자기소개"
+                          target="_blank"
+                          rel="nofollow"
+                          onclick="return false;"
+                          ><span class="profile_img"
+                            ><img
+                              src="http://www.highbury.co.kr/data/member/th/thaz.gif?1675474871"
+                              width="60"
+                              height="60"
+                              alt=""
+                          /></span>
+                          펜과종이</a
+                        >
+                        <span class="sv">
+                          <a
+                            href="http://www.highbury.co.kr/bbs/memo_form.php?me_recv_mb_id=thaz"
+                            onclick="win_memo(this.href); return false;"
+                            >쪽지보내기</a
+                          >
+                          <a
+                            href="http://www.highbury.co.kr/bbs/formmail.php?mb_id=thaz&amp;name=%ED%8E%9C%EA%B3%BC%EC%A2%85%EC%9D%B4&amp;email=pJvHp8KemZyVpZifraLHm52Qk9Cf"
+                            onclick="win_email(this.href); return false;"
+                            >메일보내기</a
+                          >
+                          <a
+                            href="http://www.highbury.co.kr/bbs/profile.php?mb_id=thaz"
+                            onclick="win_profile(this.href); return false;"
+                            >자기소개</a
+                          >
+                          <a
+                            href="http://www.highbury.co.kr/bbs/board.php?bo_table=highbury&amp;sca=&amp;sfl=mb_id,1&amp;stx=thaz"
+                            >아이디로 검색</a
+                          >
+                          <a
+                            href="http://www.highbury.co.kr/bbs/new.php?mb_id=thaz"
+                            class="link_new_page"
+                            onclick="check_goto_new(this.href, event);"
+                            >전체게시물</a
+                          >
+                        </span>
+
+                        <noscript class="sv_nojs"
+                          ><span class="sv">
+                            <a
+                              href="http://www.highbury.co.kr/bbs/memo_form.php?me_recv_mb_id=thaz"
+                              onclick="win_memo(this.href); return false;"
+                              >쪽지보내기</a
+                            >
+                            <a
+                              href="http://www.highbury.co.kr/bbs/formmail.php?mb_id=thaz&amp;name=%ED%8E%9C%EA%B3%BC%EC%A2%85%EC%9D%B4&amp;email=pJvHp8KemZyVpZifraLHm52Qk9Cf"
+                              onclick="win_email(this.href); return false;"
+                              >메일보내기</a
+                            >
+                            <a
+                              href="http://www.highbury.co.kr/bbs/profile.php?mb_id=thaz"
+                              onclick="win_profile(this.href); return false;"
+                              >자기소개</a
+                            >
+                            <a
+                              href="http://www.highbury.co.kr/bbs/board.php?bo_table=highbury&amp;sca=&amp;sfl=mb_id,1&amp;stx=thaz"
+                              >아이디로 검색</a
+                            >
+                            <a
+                              href="http://www.highbury.co.kr/bbs/new.php?mb_id=thaz"
+                              class="link_new_page"
+                              onclick="check_goto_new(this.href, event);"
+                              >전체게시물</a
+                            >
+                          </span>
+                        </noscript></span
+                      >
+                    </td>
+                    <td class="td_num only_pc">379</td>
+                    <td class="td_num only_pc">1</td>
+                    <td class="td_datetime">03-14</td>
+                  </tr>
+                  <tr class="even">
+                    <td class="td_num2 only_pc">1755</td>
+
+                    <td class="td_subject">
+                      <a
+                        href="http://www.highbury.co.kr/bbs/board.php?bo_table=highbury&amp;sca=%EC%95%84%EC%8A%A4%EB%82%A0"
+                        class="bo_cate_link only_pc"
+                        >아스날</a
+                      >
+                      <div class="bo_tit">
+                        <a
+                          href="http://www.highbury.co.kr/bbs/board.php?bo_table=highbury&amp;wr_id=17445"
+                        >
+                          잔여경기로 보는 타이틀 레이스: 아스날 이번 주에 승점
+                          8점차로 벌릴 수…
+                        </a>
+                        <span class="sound_only">댓글</span
+                        ><span class="cnt_cmt">9</span
+                        ><span class="sound_only">개</span>
+                      </div>
+                    </td>
+                    <td class="td_name sv_use">
+                      <span class="sv_wrap">
+                        <a
+                          href="http://www.highbury.co.kr/bbs/profile.php?mb_id=thaz"
+                          class="sv_member"
+                          title="펜과종이 자기소개"
+                          target="_blank"
+                          rel="nofollow"
+                          onclick="return false;"
+                          ><span class="profile_img"
+                            ><img
+                              src="http://www.highbury.co.kr/data/member/th/thaz.gif?1675474871"
+                              width="60"
+                              height="60"
+                              alt=""
+                          /></span>
+                          펜과종이</a
+                        >
+                        <span class="sv">
+                          <a
+                            href="http://www.highbury.co.kr/bbs/memo_form.php?me_recv_mb_id=thaz"
+                            onclick="win_memo(this.href); return false;"
+                            >쪽지보내기</a
+                          >
+                          <a
+                            href="http://www.highbury.co.kr/bbs/formmail.php?mb_id=thaz&amp;name=%ED%8E%9C%EA%B3%BC%EC%A2%85%EC%9D%B4&amp;email=pJvHp8KemZyVpZifraLHm52Qk9Cf"
+                            onclick="win_email(this.href); return false;"
+                            >메일보내기</a
+                          >
+                          <a
+                            href="http://www.highbury.co.kr/bbs/profile.php?mb_id=thaz"
+                            onclick="win_profile(this.href); return false;"
+                            >자기소개</a
+                          >
+                          <a
+                            href="http://www.highbury.co.kr/bbs/board.php?bo_table=highbury&amp;sca=&amp;sfl=mb_id,1&amp;stx=thaz"
+                            >아이디로 검색</a
+                          >
+                          <a
+                            href="http://www.highbury.co.kr/bbs/new.php?mb_id=thaz"
+                            class="link_new_page"
+                            onclick="check_goto_new(this.href, event);"
+                            >전체게시물</a
+                          >
+                        </span>
+
+                        <noscript class="sv_nojs"
+                          ><span class="sv">
+                            <a
+                              href="http://www.highbury.co.kr/bbs/memo_form.php?me_recv_mb_id=thaz"
+                              onclick="win_memo(this.href); return false;"
+                              >쪽지보내기</a
+                            >
+                            <a
+                              href="http://www.highbury.co.kr/bbs/formmail.php?mb_id=thaz&amp;name=%ED%8E%9C%EA%B3%BC%EC%A2%85%EC%9D%B4&amp;email=pJvHp8KemZyVpZifraLHm52Qk9Cf"
+                              onclick="win_email(this.href); return false;"
+                              >메일보내기</a
+                            >
+                            <a
+                              href="http://www.highbury.co.kr/bbs/profile.php?mb_id=thaz"
+                              onclick="win_profile(this.href); return false;"
+                              >자기소개</a
+                            >
+                            <a
+                              href="http://www.highbury.co.kr/bbs/board.php?bo_table=highbury&amp;sca=&amp;sfl=mb_id,1&amp;stx=thaz"
+                              >아이디로 검색</a
+                            >
+                            <a
+                              href="http://www.highbury.co.kr/bbs/new.php?mb_id=thaz"
+                              class="link_new_page"
+                              onclick="check_goto_new(this.href, event);"
+                              >전체게시물</a
+                            >
+                          </span>
+                        </noscript></span
+                      >
+                    </td>
+                    <td class="td_num only_pc">533</td>
+                    <td class="td_num only_pc">2</td>
+                    <td class="td_datetime">03-14</td>
+                  </tr>
+                  <tr class=" ">
+                    <td class="td_num2 only_pc">1754</td>
+
+                    <td class="td_subject">
+                      <a
+                        href="http://www.highbury.co.kr/bbs/board.php?bo_table=highbury&amp;sca=%EC%95%84%EC%8A%A4%EB%82%A0"
+                        class="bo_cate_link only_pc"
+                        >아스날</a
+                      >
+                      <div class="bo_tit">
+                        <a
+                          href="http://www.highbury.co.kr/bbs/board.php?bo_table=highbury&amp;wr_id=17430"
+                        >
+                          킹메이커는 리버풀?
+                        </a>
+                        <i class="fa fa-download" aria-hidden="true"></i>
+                        <span class="sound_only">댓글</span
+                        ><span class="cnt_cmt">7</span
+                        ><span class="sound_only">개</span>
+                      </div>
+                    </td>
+                    <td class="td_name sv_use">
+                      <span class="sv_wrap">
+                        <a
+                          href="http://www.highbury.co.kr/bbs/profile.php?mb_id=civics23"
+                          class="sv_member"
+                          title="낭만오리2 자기소개"
+                          target="_blank"
+                          rel="nofollow"
+                          onclick="return false;"
+                          ><span class="profile_img"
+                            ><img
+                              src="http://www.highbury.co.kr/img/no_profile.gif"
+                              alt="no_profile"
+                              width="60"
+                              height="60"
+                          /></span>
+                          낭만오리2</a
+                        >
+                        <span class="sv">
+                          <a
+                            href="http://www.highbury.co.kr/bbs/memo_form.php?me_recv_mb_id=civics23"
+                            onclick="win_memo(this.href); return false;"
+                            >쪽지보내기</a
+                          >
+                          <a
+                            href="http://www.highbury.co.kr/bbs/formmail.php?mb_id=civics23&amp;name=%EB%82%AD%EB%A7%8C%EC%98%A4%EB%A6%AC2&amp;email=lZ_ZmsSjYmN005GmnqeUlaDP"
+                            onclick="win_email(this.href); return false;"
+                            >메일보내기</a
+                          >
+                          <a
+                            href="http://www.highbury.co.kr/bbs/profile.php?mb_id=civics23"
+                            onclick="win_profile(this.href); return false;"
+                            >자기소개</a
+                          >
+                          <a
+                            href="http://www.highbury.co.kr/bbs/board.php?bo_table=highbury&amp;sca=&amp;sfl=mb_id,1&amp;stx=civics23"
+                            >아이디로 검색</a
+                          >
+                          <a
+                            href="http://www.highbury.co.kr/bbs/new.php?mb_id=civics23"
+                            class="link_new_page"
+                            onclick="check_goto_new(this.href, event);"
+                            >전체게시물</a
+                          >
+                        </span>
+
+                        <noscript class="sv_nojs"
+                          ><span class="sv">
+                            <a
+                              href="http://www.highbury.co.kr/bbs/memo_form.php?me_recv_mb_id=civics23"
+                              onclick="win_memo(this.href); return false;"
+                              >쪽지보내기</a
+                            >
+                            <a
+                              href="http://www.highbury.co.kr/bbs/formmail.php?mb_id=civics23&amp;name=%EB%82%AD%EB%A7%8C%EC%98%A4%EB%A6%AC2&amp;email=lZ_ZmsSjYmN005GmnqeUlaDP"
+                              onclick="win_email(this.href); return false;"
+                              >메일보내기</a
+                            >
+                            <a
+                              href="http://www.highbury.co.kr/bbs/profile.php?mb_id=civics23"
+                              onclick="win_profile(this.href); return false;"
+                              >자기소개</a
+                            >
+                            <a
+                              href="http://www.highbury.co.kr/bbs/board.php?bo_table=highbury&amp;sca=&amp;sfl=mb_id,1&amp;stx=civics23"
+                              >아이디로 검색</a
+                            >
+                            <a
+                              href="http://www.highbury.co.kr/bbs/new.php?mb_id=civics23"
+                              class="link_new_page"
+                              onclick="check_goto_new(this.href, event);"
+                              >전체게시물</a
+                            >
+                          </span>
+                        </noscript></span
+                      >
+                    </td>
+                    <td class="td_num only_pc">518</td>
+                    <td class="td_num only_pc">0</td>
+                    <td class="td_datetime">03-13</td>
+                  </tr>
+                  <tr class="even">
+                    <td class="td_num2 only_pc">1753</td>
+
+                    <td class="td_subject">
+                      <a
+                        href="http://www.highbury.co.kr/bbs/board.php?bo_table=highbury&amp;sca=%EC%95%84%EC%8A%A4%EB%82%A0"
+                        class="bo_cate_link only_pc"
+                        >아스날</a
+                      >
+                      <div class="bo_tit">
+                        <a
+                          href="http://www.highbury.co.kr/bbs/board.php?bo_table=highbury&amp;wr_id=17423"
+                        >
+                          파티는 디아비를 떠올리게 만듭니다
+                        </a>
+                        <span class="sound_only">댓글</span
+                        ><span class="cnt_cmt">14</span
+                        ><span class="sound_only">개</span>
+                      </div>
+                    </td>
+                    <td class="td_name sv_use">
+                      <span class="sv_wrap">
+                        <a
+                          href="http://www.highbury.co.kr/bbs/profile.php?mb_id=fredj"
+                          class="sv_member"
+                          title="fredj 자기소개"
+                          target="_blank"
+                          rel="nofollow"
+                          onclick="return false;"
+                          ><span class="profile_img"
+                            ><img
+                              src="http://www.highbury.co.kr/img/no_profile.gif"
+                              alt="no_profile"
+                              width="60"
+                              height="60"
+                          /></span>
+                          fredj</a
+                        >
+                        <span class="sv">
+                          <a
+                            href="http://www.highbury.co.kr/bbs/memo_form.php?me_recv_mb_id=fredj"
+                            onclick="win_memo(this.href); return false;"
+                            >쪽지보내기</a
+                          >
+                          <a
+                            href="http://www.highbury.co.kr/bbs/formmail.php?mb_id=fredj&amp;name=fredj&amp;email=mKjIlcthYWFlpZedmp7SYJTRnQ--"
+                            onclick="win_email(this.href); return false;"
+                            >메일보내기</a
+                          >
+                          <a
+                            href="http://www.highbury.co.kr/bbs/profile.php?mb_id=fredj"
+                            onclick="win_profile(this.href); return false;"
+                            >자기소개</a
+                          >
+                          <a
+                            href="http://www.highbury.co.kr/bbs/board.php?bo_table=highbury&amp;sca=&amp;sfl=mb_id,1&amp;stx=fredj"
+                            >아이디로 검색</a
+                          >
+                          <a
+                            href="http://www.highbury.co.kr/bbs/new.php?mb_id=fredj"
+                            class="link_new_page"
+                            onclick="check_goto_new(this.href, event);"
+                            >전체게시물</a
+                          >
+                        </span>
+
+                        <noscript class="sv_nojs"
+                          ><span class="sv">
+                            <a
+                              href="http://www.highbury.co.kr/bbs/memo_form.php?me_recv_mb_id=fredj"
+                              onclick="win_memo(this.href); return false;"
+                              >쪽지보내기</a
+                            >
+                            <a
+                              href="http://www.highbury.co.kr/bbs/formmail.php?mb_id=fredj&amp;name=fredj&amp;email=mKjIlcthYWFlpZedmp7SYJTRnQ--"
+                              onclick="win_email(this.href); return false;"
+                              >메일보내기</a
+                            >
+                            <a
+                              href="http://www.highbury.co.kr/bbs/profile.php?mb_id=fredj"
+                              onclick="win_profile(this.href); return false;"
+                              >자기소개</a
+                            >
+                            <a
+                              href="http://www.highbury.co.kr/bbs/board.php?bo_table=highbury&amp;sca=&amp;sfl=mb_id,1&amp;stx=fredj"
+                              >아이디로 검색</a
+                            >
+                            <a
+                              href="http://www.highbury.co.kr/bbs/new.php?mb_id=fredj"
+                              class="link_new_page"
+                              onclick="check_goto_new(this.href, event);"
+                              >전체게시물</a
+                            >
+                          </span>
+                        </noscript></span
+                      >
+                    </td>
+                    <td class="td_num only_pc">562</td>
+                    <td class="td_num only_pc">0</td>
+                    <td class="td_datetime">03-13</td>
+                  </tr>
+                  <tr class=" ">
+                    <td class="td_num2 only_pc">1752</td>
+
+                    <td class="td_subject">
+                      <a
+                        href="http://www.highbury.co.kr/bbs/board.php?bo_table=highbury&amp;sca=%EC%95%84%EC%8A%A4%EB%82%A0"
+                        class="bo_cate_link only_pc"
+                        >아스날</a
+                      >
+                      <div class="bo_tit">
+                        <a
+                          href="http://www.highbury.co.kr/bbs/board.php?bo_table=highbury&amp;wr_id=17422"
+                        >
+                          11 games 2 go
+                        </a>
+                        <i class="fa fa-download" aria-hidden="true"></i
+                        ><i class="fa fa-link" aria-hidden="true"></i>
+                        <span class="sound_only">댓글</span
+                        ><span class="cnt_cmt">10</span
+                        ><span class="sound_only">개</span>
+                      </div>
+                    </td>
+                    <td class="td_name sv_use">
+                      <span class="sv_wrap">
+                        <a
+                          href="http://www.highbury.co.kr/bbs/profile.php?mb_id=zxzzx"
+                          class="sv_member"
+                          title="응응 자기소개"
+                          target="_blank"
+                          rel="nofollow"
+                          onclick="return false;"
+                          ><span class="profile_img"
+                            ><img
+                              src="http://www.highbury.co.kr/data/member/zx/zxzzx.gif?1626178712"
+                              width="60"
+                              height="60"
+                              alt=""
+                          /></span>
+                          응응</a
+                        >
+                        <span class="sv">
+                          <a
+                            href="http://www.highbury.co.kr/bbs/memo_form.php?me_recv_mb_id=zxzzx"
+                            onclick="win_memo(this.href); return false;"
+                            >쪽지보내기</a
+                          >
+                          <a
+                            href="http://www.highbury.co.kr/bbs/formmail.php?mb_id=zxzzx&amp;name=%EC%9D%91%EC%9D%91&amp;email=rK7dq9mPcJ6V25WiZ5jVnw--"
+                            onclick="win_email(this.href); return false;"
+                            >메일보내기</a
+                          >
+                          <a
+                            href="http://www.highbury.co.kr/bbs/profile.php?mb_id=zxzzx"
+                            onclick="win_profile(this.href); return false;"
+                            >자기소개</a
+                          >
+                          <a
+                            href="http://www.highbury.co.kr/bbs/board.php?bo_table=highbury&amp;sca=&amp;sfl=mb_id,1&amp;stx=zxzzx"
+                            >아이디로 검색</a
+                          >
+                          <a
+                            href="http://www.highbury.co.kr/bbs/new.php?mb_id=zxzzx"
+                            class="link_new_page"
+                            onclick="check_goto_new(this.href, event);"
+                            >전체게시물</a
+                          >
+                        </span>
+
+                        <noscript class="sv_nojs"
+                          ><span class="sv">
+                            <a
+                              href="http://www.highbury.co.kr/bbs/memo_form.php?me_recv_mb_id=zxzzx"
+                              onclick="win_memo(this.href); return false;"
+                              >쪽지보내기</a
+                            >
+                            <a
+                              href="http://www.highbury.co.kr/bbs/formmail.php?mb_id=zxzzx&amp;name=%EC%9D%91%EC%9D%91&amp;email=rK7dq9mPcJ6V25WiZ5jVnw--"
+                              onclick="win_email(this.href); return false;"
+                              >메일보내기</a
+                            >
+                            <a
+                              href="http://www.highbury.co.kr/bbs/profile.php?mb_id=zxzzx"
+                              onclick="win_profile(this.href); return false;"
+                              >자기소개</a
+                            >
+                            <a
+                              href="http://www.highbury.co.kr/bbs/board.php?bo_table=highbury&amp;sca=&amp;sfl=mb_id,1&amp;stx=zxzzx"
+                              >아이디로 검색</a
+                            >
+                            <a
+                              href="http://www.highbury.co.kr/bbs/new.php?mb_id=zxzzx"
+                              class="link_new_page"
+                              onclick="check_goto_new(this.href, event);"
+                              >전체게시물</a
+                            >
+                          </span>
+                        </noscript></span
+                      >
+                    </td>
+                    <td class="td_num only_pc">457</td>
+                    <td class="td_num only_pc">0</td>
+                    <td class="td_datetime">03-13</td>
+                  </tr>
+                  <tr class="even">
+                    <td class="td_num2 only_pc">1751</td>
+
+                    <td class="td_subject">
+                      <a
+                        href="http://www.highbury.co.kr/bbs/board.php?bo_table=highbury&amp;sca=%EC%95%84%EC%8A%A4%EB%82%A0"
+                        class="bo_cate_link only_pc"
+                        >아스날</a
+                      >
+                      <div class="bo_tit">
+                        <a
+                          href="http://www.highbury.co.kr/bbs/board.php?bo_table=highbury&amp;wr_id=17412"
+                        >
+                          공격포인트 TOP10에 4명이 등재된 아스날
+                        </a>
+                        <i class="fa fa-download" aria-hidden="true"></i>
+                        <span class="sound_only">댓글</span
+                        ><span class="cnt_cmt">2</span
+                        ><span class="sound_only">개</span>
+                      </div>
+                    </td>
+                    <td class="td_name sv_use">
+                      <span class="sv_wrap">
+                        <a
+                          href="http://www.highbury.co.kr/bbs/profile.php?mb_id=stacy87"
+                          class="sv_member"
+                          title="아스낫 자기소개"
+                          target="_blank"
+                          rel="nofollow"
+                          onclick="return false;"
+                          ><span class="profile_img"
+                            ><img
+                              src="http://www.highbury.co.kr/img/no_profile.gif"
+                              alt="no_profile"
+                              width="60"
+                              height="60"
+                          /></span>
+                          아스낫</a
+                        >
+                        <span class="sv">
+                          <a
+                            href="http://www.highbury.co.kr/bbs/memo_form.php?me_recv_mb_id=stacy87"
+                            onclick="win_memo(this.href); return false;"
+                            >쪽지보내기</a
+                          >
+                          <a
+                            href="http://www.highbury.co.kr/bbs/formmail.php?mb_id=stacy87&amp;name=%EC%95%84%EC%8A%A4%EB%82%AB&amp;email=pZ7Mn9WfoGhrpZ6Rr5rYYJTRnQ--"
+                            onclick="win_email(this.href); return false;"
+                            >메일보내기</a
+                          >
+                          <a
+                            href="http://www.highbury.co.kr/bbs/profile.php?mb_id=stacy87"
+                            onclick="win_profile(this.href); return false;"
+                            >자기소개</a
+                          >
+                          <a
+                            href="http://www.highbury.co.kr/bbs/board.php?bo_table=highbury&amp;sca=&amp;sfl=mb_id,1&amp;stx=stacy87"
+                            >아이디로 검색</a
+                          >
+                          <a
+                            href="http://www.highbury.co.kr/bbs/new.php?mb_id=stacy87"
+                            class="link_new_page"
+                            onclick="check_goto_new(this.href, event);"
+                            >전체게시물</a
+                          >
+                        </span>
+
+                        <noscript class="sv_nojs"
+                          ><span class="sv">
+                            <a
+                              href="http://www.highbury.co.kr/bbs/memo_form.php?me_recv_mb_id=stacy87"
+                              onclick="win_memo(this.href); return false;"
+                              >쪽지보내기</a
+                            >
+                            <a
+                              href="http://www.highbury.co.kr/bbs/formmail.php?mb_id=stacy87&amp;name=%EC%95%84%EC%8A%A4%EB%82%AB&amp;email=pZ7Mn9WfoGhrpZ6Rr5rYYJTRnQ--"
+                              onclick="win_email(this.href); return false;"
+                              >메일보내기</a
+                            >
+                            <a
+                              href="http://www.highbury.co.kr/bbs/profile.php?mb_id=stacy87"
+                              onclick="win_profile(this.href); return false;"
+                              >자기소개</a
+                            >
+                            <a
+                              href="http://www.highbury.co.kr/bbs/board.php?bo_table=highbury&amp;sca=&amp;sfl=mb_id,1&amp;stx=stacy87"
+                              >아이디로 검색</a
+                            >
+                            <a
+                              href="http://www.highbury.co.kr/bbs/new.php?mb_id=stacy87"
+                              class="link_new_page"
+                              onclick="check_goto_new(this.href, event);"
+                              >전체게시물</a
+                            >
+                          </span>
+                        </noscript></span
+                      >
+                    </td>
+                    <td class="td_num only_pc">561</td>
+                    <td class="td_num only_pc">0</td>
+                    <td class="td_datetime">03-13</td>
+                  </tr>
+                  <tr class=" ">
+                    <td class="td_num2 only_pc">1750</td>
+
+                    <td class="td_subject">
+                      <a
+                        href="http://www.highbury.co.kr/bbs/board.php?bo_table=highbury&amp;sca=%EC%95%84%EC%8A%A4%EB%82%A0"
+                        class="bo_cate_link only_pc"
+                        >아스날</a
+                      >
+                      <div class="bo_tit">
+                        <a
+                          href="http://www.highbury.co.kr/bbs/board.php?bo_table=highbury&amp;wr_id=17404"
+                        >
+                          가장 고무적인 것은 벤치가 너무 든든 하다는 거네요
+                        </a>
+                        <span class="sound_only">댓글</span
+                        ><span class="cnt_cmt">9</span
+                        ><span class="sound_only">개</span>
+                      </div>
+                    </td>
+                    <td class="td_name sv_use">
+                      <span class="sv_wrap">
+                        <a
+                          href="http://www.highbury.co.kr/bbs/profile.php?mb_id=kyb3909"
+                          class="sv_member"
+                          title="입덕한몽상 자기소개"
+                          target="_blank"
+                          rel="nofollow"
+                          onclick="return false;"
+                          ><span class="profile_img"
+                            ><img
+                              src="http://www.highbury.co.kr/data/member/ky/kyb3909.gif?1632976305"
+                              width="60"
+                              height="60"
+                              alt=""
+                          /></span>
+                          입덕한몽상</a
+                        >
+                        <span class="sv">
+                          <a
+                            href="http://www.highbury.co.kr/bbs/memo_form.php?me_recv_mb_id=kyb3909"
+                            onclick="win_memo(this.href); return false;"
+                            >쪽지보내기</a
+                          >
+                          <a
+                            href="http://www.highbury.co.kr/bbs/formmail.php?mb_id=kyb3909&amp;name=%EC%9E%85%EB%8D%95%ED%95%9C%EB%AA%BD%EC%83%81&amp;email=na_FZJpgaXCixqSVZ5jVnw--"
+                            onclick="win_email(this.href); return false;"
+                            >메일보내기</a
+                          >
+                          <a
+                            href="http://www.highbury.co.kr/bbs/profile.php?mb_id=kyb3909"
+                            onclick="win_profile(this.href); return false;"
+                            >자기소개</a
+                          >
+                          <a
+                            href="http://www.highbury.co.kr/bbs/board.php?bo_table=highbury&amp;sca=&amp;sfl=mb_id,1&amp;stx=kyb3909"
+                            >아이디로 검색</a
+                          >
+                          <a
+                            href="http://www.highbury.co.kr/bbs/new.php?mb_id=kyb3909"
+                            class="link_new_page"
+                            onclick="check_goto_new(this.href, event);"
+                            >전체게시물</a
+                          >
+                        </span>
+
+                        <noscript class="sv_nojs"
+                          ><span class="sv">
+                            <a
+                              href="http://www.highbury.co.kr/bbs/memo_form.php?me_recv_mb_id=kyb3909"
+                              onclick="win_memo(this.href); return false;"
+                              >쪽지보내기</a
+                            >
+                            <a
+                              href="http://www.highbury.co.kr/bbs/formmail.php?mb_id=kyb3909&amp;name=%EC%9E%85%EB%8D%95%ED%95%9C%EB%AA%BD%EC%83%81&amp;email=na_FZJpgaXCixqSVZ5jVnw--"
+                              onclick="win_email(this.href); return false;"
+                              >메일보내기</a
+                            >
+                            <a
+                              href="http://www.highbury.co.kr/bbs/profile.php?mb_id=kyb3909"
+                              onclick="win_profile(this.href); return false;"
+                              >자기소개</a
+                            >
+                            <a
+                              href="http://www.highbury.co.kr/bbs/board.php?bo_table=highbury&amp;sca=&amp;sfl=mb_id,1&amp;stx=kyb3909"
+                              >아이디로 검색</a
+                            >
+                            <a
+                              href="http://www.highbury.co.kr/bbs/new.php?mb_id=kyb3909"
+                              class="link_new_page"
+                              onclick="check_goto_new(this.href, event);"
+                              >전체게시물</a
+                            >
+                          </span>
+                        </noscript></span
+                      >
+                    </td>
+                    <td class="td_num only_pc">583</td>
+                    <td class="td_num only_pc">0</td>
+                    <td class="td_datetime">03-13</td>
+                  </tr>
+                  <tr class="even">
+                    <td class="td_num2 only_pc">1749</td>
+
+                    <td class="td_subject">
+                      <a
+                        href="http://www.highbury.co.kr/bbs/board.php?bo_table=highbury&amp;sca=%EC%95%84%EC%8A%A4%EB%82%A0"
+                        class="bo_cate_link only_pc"
+                        >아스날</a
+                      >
+                      <div class="bo_tit">
+                        <a
+                          href="http://www.highbury.co.kr/bbs/board.php?bo_table=highbury&amp;wr_id=17399"
+                        >
+                          올 시즌 프리미어 리그 부상 기록들
+                        </a>
+                        <i class="fa fa-download" aria-hidden="true"></i>
+                        <span class="sound_only">댓글</span
+                        ><span class="cnt_cmt">2</span
+                        ><span class="sound_only">개</span>
+                      </div>
+                    </td>
+                    <td class="td_name sv_use">
+                      <span class="sv_wrap">
+                        <a
+                          href="http://www.highbury.co.kr/bbs/profile.php?mb_id=kyb3909"
+                          class="sv_member"
+                          title="입덕한몽상 자기소개"
+                          target="_blank"
+                          rel="nofollow"
+                          onclick="return false;"
+                          ><span class="profile_img"
+                            ><img
+                              src="http://www.highbury.co.kr/data/member/ky/kyb3909.gif?1632976305"
+                              width="60"
+                              height="60"
+                              alt=""
+                          /></span>
+                          입덕한몽상</a
+                        >
+                        <span class="sv">
+                          <a
+                            href="http://www.highbury.co.kr/bbs/memo_form.php?me_recv_mb_id=kyb3909"
+                            onclick="win_memo(this.href); return false;"
+                            >쪽지보내기</a
+                          >
+                          <a
+                            href="http://www.highbury.co.kr/bbs/formmail.php?mb_id=kyb3909&amp;name=%EC%9E%85%EB%8D%95%ED%95%9C%EB%AA%BD%EC%83%81&amp;email=na_FZJpgaXCixqSVZ5jVnw--"
+                            onclick="win_email(this.href); return false;"
+                            >메일보내기</a
+                          >
+                          <a
+                            href="http://www.highbury.co.kr/bbs/profile.php?mb_id=kyb3909"
+                            onclick="win_profile(this.href); return false;"
+                            >자기소개</a
+                          >
+                          <a
+                            href="http://www.highbury.co.kr/bbs/board.php?bo_table=highbury&amp;sca=&amp;sfl=mb_id,1&amp;stx=kyb3909"
+                            >아이디로 검색</a
+                          >
+                          <a
+                            href="http://www.highbury.co.kr/bbs/new.php?mb_id=kyb3909"
+                            class="link_new_page"
+                            onclick="check_goto_new(this.href, event);"
+                            >전체게시물</a
+                          >
+                        </span>
+
+                        <noscript class="sv_nojs"
+                          ><span class="sv">
+                            <a
+                              href="http://www.highbury.co.kr/bbs/memo_form.php?me_recv_mb_id=kyb3909"
+                              onclick="win_memo(this.href); return false;"
+                              >쪽지보내기</a
+                            >
+                            <a
+                              href="http://www.highbury.co.kr/bbs/formmail.php?mb_id=kyb3909&amp;name=%EC%9E%85%EB%8D%95%ED%95%9C%EB%AA%BD%EC%83%81&amp;email=na_FZJpgaXCixqSVZ5jVnw--"
+                              onclick="win_email(this.href); return false;"
+                              >메일보내기</a
+                            >
+                            <a
+                              href="http://www.highbury.co.kr/bbs/profile.php?mb_id=kyb3909"
+                              onclick="win_profile(this.href); return false;"
+                              >자기소개</a
+                            >
+                            <a
+                              href="http://www.highbury.co.kr/bbs/board.php?bo_table=highbury&amp;sca=&amp;sfl=mb_id,1&amp;stx=kyb3909"
+                              >아이디로 검색</a
+                            >
+                            <a
+                              href="http://www.highbury.co.kr/bbs/new.php?mb_id=kyb3909"
+                              class="link_new_page"
+                              onclick="check_goto_new(this.href, event);"
+                              >전체게시물</a
+                            >
+                          </span>
+                        </noscript></span
+                      >
+                    </td>
+                    <td class="td_num only_pc">391</td>
+                    <td class="td_num only_pc">0</td>
+                    <td class="td_datetime">03-13</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <!-- 페이지 -->
+            <nav class="pg_wrap">
+              <span class="pg"
+                ><span class="sound_only">열린</span
+                ><strong class="pg_current">1</strong
+                ><span class="sound_only">페이지</span>
+                <a
+                  href="http://www.highbury.co.kr/bbs/board.php?bo_table=highbury&amp;page=2"
+                  class="pg_page"
+                  >2<span class="sound_only">페이지</span></a
+                >
+                <a
+                  href="http://www.highbury.co.kr/bbs/board.php?bo_table=highbury&amp;page=3"
+                  class="pg_page"
+                  >3<span class="sound_only">페이지</span></a
+                >
+                <a
+                  href="http://www.highbury.co.kr/bbs/board.php?bo_table=highbury&amp;page=4"
+                  class="pg_page"
+                  >4<span class="sound_only">페이지</span></a
+                >
+                <a
+                  href="http://www.highbury.co.kr/bbs/board.php?bo_table=highbury&amp;page=5"
+                  class="pg_page"
+                  >5<span class="sound_only">페이지</span></a
+                >
+                <a
+                  href="http://www.highbury.co.kr/bbs/board.php?bo_table=highbury&amp;page=6"
+                  class="pg_page pg_next"
+                  >다음</a
+                >
+                <a
+                  href="http://www.highbury.co.kr/bbs/board.php?bo_table=highbury&amp;page=71"
+                  class="pg_page pg_end"
+                  >맨끝</a
+                >
+              </span>
+            </nav>
+            <!-- 페이지 -->
+          </form>
+
+          <!-- 게시판 검색 시작 { -->
+          <div class="bo_sch_wrap">
+            <fieldset class="bo_sch">
+              <h3>검색</h3>
+              <form name="fsearch" method="get">
+                <input type="hidden" name="bo_table" value="highbury" />
+                <input type="hidden" name="sca" value="" />
+                <input type="hidden" name="sop" value="and" />
+                <label for="sfl" class="sound_only">검색대상</label>
+                <select name="sfl" id="sfl">
+                  <option value="wr_subject">제목</option>
+                  <option value="wr_content">내용</option>
+                  <option value="wr_subject||wr_content">제목+내용</option>
+                  <option value="wr_name,1">글쓴이</option>
+                  <option value="wr_name,0">글쓴이(코)</option>
+                </select>
+                <label for="stx" class="sound_only"
+                  >검색어<strong class="sound_only"> 필수</strong></label
+                >
+                <div class="sch_bar">
+                  <input
+                    type="text"
+                    name="stx"
+                    value=""
+                    required
+                    id="stx"
+                    class="sch_input"
+                    size="25"
+                    maxlength="20"
+                    placeholder=" 검색어를 입력해주세요"
+                  />
+                  <button type="submit" value="검색" class="sch_btn">
+                    <i class="fa fa-search" aria-hidden="true"></i
+                    ><span class="sound_only">검색</span>
+                  </button>
+                </div>
+                <button type="button" class="bo_sch_cls" title="닫기">
+                  <i class="fa fa-times" aria-hidden="true"></i
+                  ><span class="sound_only">닫기</span>
+                </button>
+              </form>
+            </fieldset>
+            <div class="bo_sch_bg"></div>
+          </div>
+          <script>
+            jQuery(function ($) {
+              // 게시판 검색
+              $('.btn_bo_sch').on('click', function () {
+                $('.bo_sch_wrap').toggle();
+              });
+              $('.bo_sch_bg, .bo_sch_cls').click(function () {
+                $('.bo_sch_wrap').hide();
+              });
+            });
+          </script>
+          <!-- } 게시판 검색 끝 -->
+        </div>
+
+        <!-- } 게시판 목록 끝 -->
+      </div>
+    </div>
+
+    <div id="ft">
+      <div class="ft_wr">
+        <div id="ft_copy">
+          <p></p>
+          <p>Copyright © 2012 - 2021 highbury All rights reserved.</p>
+        </div>
+      </div>
+      <button type="button" id="top_btn">
+        <i class="fa fa-arrow-up" aria-hidden="true"></i
+        ><span class="sound_only">상단으로</span>
+      </button>
+    </div>
+
+    <script>
+      jQuery(function ($) {
+        $(document).ready(function () {
+          // 폰트 리사이즈 쿠키있으면 실행
+          font_resize(
+            'container',
+            get_cookie('ck_font_resize_rmv_class'),
+            get_cookie('ck_font_resize_add_class'),
+          );
+
+          if ($('#top_btn').length) {
+            var scrollTrigger = 100, // px
+              backToTop = function () {
+                var scrollTop = $(window).scrollTop();
+                if (scrollTop > scrollTrigger) {
+                  $('#top_btn').addClass('show');
+                } else {
+                  $('#top_btn').removeClass('show');
+                }
+              };
+            backToTop();
+            $(window).on('scroll', function () {
+              backToTop();
+            });
+            $('#top_btn').on('click', function (e) {
+              e.preventDefault();
+              $('html,body').animate(
+                {
+                  scrollTop: 0,
+                },
+                700,
+              );
+            });
+          }
+        });
+      });
+    </script>
+
+    <!-- ie6,7에서 사이드뷰가 게시판 목록에서 아래 사이드뷰에 가려지는 현상 수정 -->
+    <!--[if lte IE 7]>
+      <script>
+        $(function () {
+          var $sv_use = $('.sv_use');
+          var count = $sv_use.length;
+
+          $sv_use.each(function () {
+            $(this).css('z-index', count);
+            $(this).css('position', 'relative');
+            count = count - 1;
+          });
+        });
+      </script>
+    <![endif]-->
+  </body>
+</html>
+
+<!-- 사용스킨 : theme/basic_pc_style -->
