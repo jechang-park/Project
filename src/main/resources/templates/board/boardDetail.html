@@ -58,11 +58,11 @@
         <div class="title_text" th:text="${board.boardTitle}"></div>
       </div>
       <div class="header_contents">
-        <div class="writer" th:text="${board.boardWriter}"></div>
+        <div class="board_writer" th:text="${board.boardWriter}"></div>
         <div class="time" th:text="${board.boardCreatedTime}"></div>
         <div class="hits" th:text="${board.boardHits}"></div>
       </div>
-      <div class="board_contents" th:text="${board.boardContents}">내용</div>
+      <div class="board_contents" th:text="${board.boardContents}"></div>
 
       <div th:if="${board.fileAttached == 1}">
         <div th:each="fileName: ${board.storedFileName}">
@@ -76,7 +76,7 @@
     </div>
     <!-- 댓글 작성 부분 -->
     <div id="comment-write">
-      <span class="writer">작성자</span><input type="text" th:value="${session.loginMember.nick}" id="commentWriter"
+      <span class="writer"></span><input type="text" th:value="${session.loginMember.nick}" id="commentWriter"
                                             readonly></input>
     </div>
     <div class="comment_btn">
@@ -89,13 +89,13 @@
       <div id="comment-list">
         <table>
           <tr>
-            <th>댓글번호</th>
-            <th>작성자</th>
-            <th>내용</th>
-            <th>작성시간</th>
+<!--            <th>댓글번호</th>-->
+            <th></th>
+            <th></th>
+            <th></th>
           </tr>
           <tr th:each="comment: ${commentList}">
-            <td th:text="${comment.id}"></td>
+<!--            <td th:text="${comment.id}"></td>-->
             <td th:text="${comment.commentWriter}"></td>
             <td th:text="${comment.commentContents}"></td>
             <td th:text="${comment.commentCreatedTime}"></td>
@@ -155,13 +155,13 @@
            success: function (res) {
                console.log("요청성공", res);
                let output = "<table>";
-               output += "<tr><th>댓글번호</th>";
+<!--               output += "<tr><th>댓글번호</th>";-->
                output += "<th>작성자</th>";
                output += "<th>내용</th>";
                output += "<th>작성시간</th></tr>";
                for (let i in res) {
                    output += "<tr>";
-                   output += "<td>" + res[i].id + "</td>";
+<!--                   output += "<td>" + res[i].id + "</td>";-->
                    output += "<td>" + res[i].commentWriter + "</td>";
                    output += "<td>" + res[i].commentContents + "</td>";
                    output += "<td>" + res[i].commentCreatedTime + "</td>";

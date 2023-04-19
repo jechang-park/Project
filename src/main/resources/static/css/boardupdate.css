@@ -7,10 +7,7 @@
   color: inherit;
   font-family: 'pretendard', sans-serif;
 }
-#apple-header,
-#apple-footer {
-  display: none;
-}
+
 
 @import url('https://fonts.googleapis.com/css2?family=Gowun+Dodum&display=swap');
 
@@ -150,123 +147,6 @@ width:1280px;
 margin: 0 auto;
 margin-top:250px;
 }
-.main > p {
-font-weight:bold;
-margin-bottom: 5px;
-font-size:20px;
-}
-.top_line{
-width:1280px;
-margin: 0px auto 10px auto;
-position:relative;
-border-top: 1px solid #000;
-border-bottom: 1px solid #000;
-padding-bottom:10px;
-}
-.top_line .board_title{
-width:1280px;
-height:30px;
-position:relative;
-margin-top:10px;
-
-}
-.board_title p{
-position:absolute;
-}
-.board_title p:nth-of-type(1){
-left:5px;
-}
-.board_title p:nth-of-type(2){
-left:350px;
-}
-.board_title p:nth-of-type(3){
-left:690px;
-}
-.board_title p:nth-of-type(4){
-left:1050px;
-}
-.board_title p:nth-of-type(5){
-left:1230px;
-}
-.top_line li{
-position:absolute;
-}
-.top_line li:nth-of-type(3){
-}
-.board_list{
-display: flex;
-justify-content:left;
-margin-top:10px;
-}
-
-
-.border_line {
-display:flex;
-width:1280px;
-border-top: 1px solid #eee;
-align-item:center;
-}
-
-
-.row{
-margin:5px 0px 5px 100px;
-
-}
-.row1{
-flex:0.3;
-margin-left:10px;
-}
-.row2{
-flex:1;
-}
-.row3{
-flex:0.5;
-
-}
-.row4{
-flex:0.5;
-
-}
-.row5{
-flex:0.1;
-}
-.paging{
-display:flex;
-margin-top:50px;
-text-align:center;
-justify-content:center;
-}
-.paging .xi-angle-left{
-letter-spacing:-10px;
-
-}
-.paging .left_area a{
-margin:15px;
-}
-.paging .xi-angle-right{
-letter-spacing:-10px;
-}
-.paging .right_area a{
-margin:15px;
-}
-.paging .no_area a,span{
-margin:3px;}
-/* footer */
-.btn{
-width:1280px;
-text-align:right;
-}
-button{
- background-color: #007bff;
-  border: none;
-  color: #fff;
-  cursor: pointer;
-  text-decoration: none;
-  transition: background-color 0.3s ease;
-width:200px;
-height:60px;
-font-size:15px;
-}
 
 footer {
 position:fixed;
@@ -275,12 +155,7 @@ bottom:0;
   background-color: #2d3142;
 
 }
-.item_cards .item_box{
-        border: 5px solid #fffff;
-        box-shadow: 0px 2px 10px rgba(70, 56, 147, 0.1);
-        border-radius: 20px;
-        background: #fff;
-}
+
 .footer_area {
   width: 1280px;
   color: #999;
