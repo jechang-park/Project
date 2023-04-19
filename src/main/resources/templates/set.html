@@ -6,10 +6,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
 
-  <title>글작성</title>
+  <title>커뮤니티</title>
 </head>
 <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/xeicon@2.3.3/xeicon.min.css">
-<link rel="stylesheet" href="../css/boardsave.css">
+<link rel="stylesheet" href="../css/paging.css">
 <body>
 <div class="wrapper">
   <!-- Header  -->
@@ -49,26 +49,8 @@
       </nav>
     </div>
   </header>
-  <div class="save_box">
-    <h3>커뮤니티</h3>
-    <form action="/board/save" method="post" enctype="multipart/form-data">
-      <!-- <input type="hidden" name="boardWriter"><br>-->
-      <div class="row">닉네임<input type="text" name="boardWriter" th:value="${session.loginMember.nick}" readonly>
-      </div>
-      <div class="row"> 게시글 비밀번호 <input type="text" name="boardPass">
-      </div>
-      <div class="row"> 제목 <input type="text" name="boardTitle">
-      </div>
-      <div class="row"> 내용 <textarea name="boardContents" cols="30" rows="10"></textarea>
-      </div>
-      <div class="row row5"> 파일첨부 <input type="file" name="boardFile" multiple>
-      </div>
-      <div class="bottom_btn">
-        <div class="submit"><input type="submit" value="완료"></div>
-        <div class="board_paging"><a href="/board/paging">목록</a></div>
-      </div>
-    </form>
-  </div>
+
+
   <footer>
     <div class="footer_area">
       <div class="top">
@@ -101,7 +83,6 @@
   </footer>
 </div>
 <script>
-
 </script>
 </body>
 </html>

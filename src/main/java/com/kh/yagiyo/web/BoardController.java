@@ -28,6 +28,7 @@ private final CommentSVC commentSVC;
   public String boardForm(){
     return "/board/board";
   }
+
   @GetMapping("/save")
   public String boardSaveForm(){
     return "/board/boardSave";
@@ -37,7 +38,7 @@ private final CommentSVC commentSVC;
     System.out.println("boardForm = " + boardForm);
     boardSVC.save(boardForm);
 
-    return "/board/board";
+    return "redirect:/board/paging";
   }
   @GetMapping("/list")
   public String findAll(Model model){
@@ -58,6 +59,7 @@ private final CommentSVC commentSVC;
     model.addAttribute("page", pageable.getPageNumber());
     return "/board/boardDetail";
   }
+
   @GetMapping("/update/{id}")
   public String updateForm(@PathVariable Long id,Model model) {
     BoardForm boardForm = boardSVC.findById(id);

@@ -1,74 +1,141 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
 <head>
-  <meta charset="UTF-8">
-  <title>detail</title>
-  <!-- jquery cdn -->
-  <script src="https://code.jquery.com/jquery-3.6.3.min.js" integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
+  <meta charset="UTF-8"/>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+
+  <title>커뮤니티</title>
 </head>
+<script src="https://code.jquery.com/jquery-3.6.3.min.js"
+        integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/xeicon@2.3.3/xeicon.min.css">
+<link rel="stylesheet" href="../css/boardDetail.css">
 <body>
-<table>
-  <tr>
-    <th>id</th>
-    <td th:text="${board.id}"></td>
-  </tr>
-  <tr>
-    <th>title</th>
-    <td th:text="${board.boardTitle}"></td>
-  </tr>
-  <tr>
-    <th>writer</th>
-    <td th:text="${board.boardWriter}"></td>
-  </tr>
-  <tr>
-    <th>date</th>
-    <td th:text="${board.boardCreatedTime}"></td>
-  </tr>
-  <tr>
-    <th>hits</th>
-    <td th:text="${board.boardHits}"></td>
-  </tr>
-  <tr>
-    <th>contents</th>
-    <td th:text="${board.boardContents}"></td>
-  </tr>
+<div class="wrapper">
+  <!-- Header  -->
 
-  <tr th:if="${board.fileAttached == 1}">
-    <th>image</th>
-    <td th:each="fileName: ${board.storedFileName}">
-      <img th:src="@{|/upload/${fileName}|}" alt=""></td>
-  </tr>
-</table>
-<button type="button" onclick="listReq()">목록</button>
-<button type="button" onclick="updateReq()" disabled="true" id="btn_update">수정</button>
-<button type="button" onclick="deleteReq()" disabled="true" id="btn_delete">삭제</button>
+  <header>
+    <div class="top">
+      <div class="logo">
+        <a th:href="@{/}">
+          <img th:src="@{../img/black-yagiyo.png}" alt=""
+          /></a>
+      </div>
 
-<!-- 댓글 작성 부분 -->
-<div id="comment-write">
-  작성자 : <input type="text" th:value="${session.loginMember.nick}" id="commentWriter" readonly></input><br>
-  <input type="text" id="commentContents" placeholder="내용">
-  <button id="comment-write-btn" onclick="commentWrite()">댓글작성</button>
+      <!--      검색어   -->
+      <div class="search_box">
+        <form th:action="@{/search}" method="get">
+          <input type="text" name="query" value=""/>
+          <button type="submit"></button>
+        </form>
+        <!-- <p id="recent-search"></p> -->
+      </div>
+
+      <nav class="gnb_box">
+        <a th:href="@{/name}">AI분석</a>
+        <a href="">커뮤니티</a>
+        <a href="">약국정보</a>
+        <div th:if="${!session.isEmpty()}">
+          <p th:text="${session.loginMember.gubun}"></p>
+        </div>
+        <div>
+          <th:bolck class="login" th:if="${session.isEmpty()}">
+            <a href="" th:href="@{/login}">로그인</a>
+          </th:bolck>
+          <th:bolck class="logout" th:unless="${session.isEmpty()}">
+            <a href="" th:href="@{/logout}">로그아웃</a>
+          </th:bolck>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <div class="content">
+    <div class="header">
+      <div class="title">
+        <div class="title_text" th:text="${board.boardTitle}"></div>
+      </div>
+      <div class="header_contents">
+        <div class="writer" th:text="${board.boardWriter}"></div>
+        <div class="time" th:text="${board.boardCreatedTime}"></div>
+        <div class="hits" th:text="${board.boardHits}"></div>
+      </div>
+      <div class="board_contents" th:text="${board.boardContents}">내용</div>
+
+      <div th:if="${board.fileAttached == 1}">
+        <div th:each="fileName: ${board.storedFileName}">
+          <img th:src="@{|/upload/${fileName}|}" alt=""></div>
+      </div>
+    </div>
+    <div class="btn_box">
+      <button type="button" onclick="listReq()">목록</button>
+      <button type="button" onclick="updateReq()" disabled="true" id="btn_update">수정</button>
+      <button type="button" onclick="deleteReq()" disabled="true" id="btn_delete">삭제</button>
+    </div>
+    <!-- 댓글 작성 부분 -->
+    <div id="comment-write">
+      <span class="writer">작성자</span><input type="text" th:value="${session.loginMember.nick}" id="commentWriter"
+                                            readonly></input>
+    </div>
+    <div class="comment_btn">
+      <input type="text" id="commentContents" placeholder="내용">
+      <button id="comment-write-btn" onclick="commentWrite()">댓글작성</button>
+    </div>
+
+    <!-- 댓글 출력 부분 -->
+    <div class="comment_box ">
+      <div id="comment-list">
+        <table>
+          <tr>
+            <th>댓글번호</th>
+            <th>작성자</th>
+            <th>내용</th>
+            <th>작성시간</th>
+          </tr>
+          <tr th:each="comment: ${commentList}">
+            <td th:text="${comment.id}"></td>
+            <td th:text="${comment.commentWriter}"></td>
+            <td th:text="${comment.commentContents}"></td>
+            <td th:text="${comment.commentCreatedTime}"></td>
+          </tr>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <div class="footer_area">
+      <div class="top">
+        <img
+            class="footer_img"
+            th:src="@{../img/white-yagiyo.png}"
+            alt=""
+        />
+        <div class="footer_menu">
+          <a href="">이용약관</a>
+          <a href="">개인정보처리방침</a>
+        </div>
+      </div>
+
+      <!--footer - bottom  -->
+
+      <div class="bottom">
+        <div class="info">
+          <span class="title">주(야기요)</span>
+          <p></p>
+        </div>
+      </div>
+
+      <!--footer - copyright -->
+
+      <div class="copyright">
+        <p>Copyright 2023 YAGIYO. Allrights reserved.</p>
+      </div>
+    </div>
+  </footer>
 </div>
-
-<!-- 댓글 출력 부분 -->
-<div id="comment-list">
-  <table>
-    <tr>
-      <th>댓글번호</th>
-      <th>작성자</th>
-      <th>내용</th>
-      <th>작성시간</th>
-    </tr>
-    <tr th:each="comment: ${commentList}">
-      <td th:text="${comment.id}"></td>
-      <td th:text="${comment.commentWriter}"></td>
-      <td th:text="${comment.commentContents}"></td>
-      <td th:text="${comment.commentCreatedTime}"></td>
-    </tr>
-  </table>
-</div>
-
-</body>
 <script th:inline="javascript">
     const commentWrite = () => {
         const writer = document.getElementById("commentWriter").value;
@@ -139,5 +206,38 @@
      btn_update.disabled = true;
      btn_delete.disabled = true;
      }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 </script>
+</body>
 </html>
