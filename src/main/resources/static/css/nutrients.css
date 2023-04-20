@@ -115,6 +115,7 @@ header {
 .gnb_box > a:hover::before {
   width: 100%;
 }
+
 main::before {
   width: 100%;
   position: absolute;

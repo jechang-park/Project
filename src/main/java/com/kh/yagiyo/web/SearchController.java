@@ -18,6 +18,11 @@ public class SearchController {
     } else {
       model.addAttribute("fragment", "fragments/apple :: footer");
     }
+    if (query.equals("루테인")) {
+      model.addAttribute("fragment", "fragments/apple :: footer");
+    } else {
+      model.addAttribute("fragment", "fragments/apple :: header");
+    }
 
     // 검색어를 모델에 추가합니다.
     model.addAttribute("query", query);
