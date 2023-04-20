@@ -174,16 +174,16 @@ margin-top:10px;
 position:absolute;
 }
 .board_title p:nth-of-type(1){
-left:5px;
+left:10px;
 }
 .board_title p:nth-of-type(2){
 left:350px;
 }
 .board_title p:nth-of-type(3){
-left:690px;
+left:675px;
 }
 .board_title p:nth-of-type(4){
-left:1050px;
+left:1020px;
 }
 .board_title p:nth-of-type(5){
 left:1230px;
