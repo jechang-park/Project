@@ -4,40 +4,12 @@
   text-decoration: none;
   list-style: none;
   color: inherit;
-  font-family: 'Noto Sans KR', sans-serif;
+  font-family: 'pretendard', sans-serif;
 }
 @import url('https://fonts.googleapis.com/css2?family=Gowun+Dodum&display=swap');
 
-@keyframes titleMotion {
-  0% {
-    opacity: 1;
-    transform: translateY(0);
-  }
-  1% {
-    opacity: 1; /* keep opacity at 100% */
-    transform: translateY(0);
-    animation-delay: 1s; /* add more delay when opacity is 0 */
-  }
-  100% {
-    opacity: 0;
-    transform: translateY(100%);
-  }
-}
 
-@keyframes bounce-effect {
-  0% {
-    transform: translateY(0);
-    animation-timing-function: ease-in;
-  }
-  50% {
-    transform: translateY(-7px);
-    animation-timing-function: ease-out;
-  }
-  100% {
-    transform: translateY(0);
-    animation-timing-function: ease-in;
-  }
-}
+
 
 body {
   width: 100%;

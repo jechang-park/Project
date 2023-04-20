@@ -163,9 +163,9 @@ header {
   width: 100%;
 }
 .search_text{
-    position:absolute;
-    top:-70px;
-    left:400px;
+    position: absolute;
+    top: 125px;
+    left: 5px;
 }
 /* banner */
 .banner {
@@ -208,7 +208,7 @@ font-weight: 700;
 .main {
   margin-top: 50px;
   width: 1280px;
-  margin: 30px auto 0px auto;
+  margin: 30px auto 40px auto;
 }
 .item_cards{
 width:1280px;
@@ -255,10 +255,36 @@ text-align:left;
     text-align: center;
     color: white;
 }
+/* not found 검색결과없음 */
+#not-found{
+text-align:center;
+justify-content:center;
+}
+.content{
+margin-top: 300px;
+margin-bottom:300px;
+}
+.content img{
+width: 100px;
+padding: 50px;
+}
+.content .text1{
+font-size: 30px;
+color:#9BA1AA;
+font-weight:600;
+}
+.content .text2{
+font-size: 20px;
+color:#9BA1AA;
+font-weight:600;
+}
+
 
 /* footer */
 
 footer {
+  position: block;
+  bottom: 0;
   width: 100%;
   background-color: #2d3142;
 }

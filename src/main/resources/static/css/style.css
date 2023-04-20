@@ -10,6 +10,14 @@
 
 @import url("https://fonts.googleapis.com/css2?family=Gowun+Dodum&display=swap");
 
+@keyframes slide {
+  from {
+    transform: translateX(100%);
+  }
+  to {
+    transform: translateX(-100%);
+  }
+}
 @keyframes titleMotion {
     0% {
         opacity: 1;
@@ -248,9 +256,10 @@ main {
 /* Section */
 
 .nutrients_wrap {
+    display:flex;
     position: relative;
     width: 1280px;
-    margin: 0 auto;
+    margin: 150px auto 150px auto;
 }
 .section_text {
     display: flex;
@@ -266,6 +275,7 @@ main {
     margin: 0 auto;
     display: flex;
     justify-content: center;
+
 }
 .img_box .ingredient {
     display: flex;
@@ -300,7 +310,7 @@ main {
 .health_contents{
 position:relative;
 width:1280px;
-margin:0 auto;
+margin: 50px auto 240px auto;
 }
 .health_wrap {
     position: relative;
@@ -348,6 +358,9 @@ article {
     width: 1280px;
     margin: 100px auto;
 }
+.article_text{
+    font-size: 50px;
+}
 article::before {
     width: 1280px;
     position: absolute;
@@ -385,12 +398,13 @@ article section .content {
 /* footer */
 
 footer {
+
     width: 100%;
-    background-color: #2d3142;
+    background-color:#2b3044
 }
 .footer_area {
     width: 1280px;
-    color: #999;
+    color: #fafafa;
     margin: 0 auto;
 }
 

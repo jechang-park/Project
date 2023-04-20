@@ -28,9 +28,14 @@
   s.parentNode.insertBefore(tk, s);
 })(document);
 
+
+
+
+
 const $text1 = document.querySelectorAll('.text1');
 
 let isRunning = false;
+
 
 function startAndEndRepeatedly() {
   if (!isRunning) {

@@ -1,128 +1,134 @@
 <!DOCTYPE html>
 <html lang="ko" xmlns:th="http://www.thymeleaf.org">
 <head>
-  <meta charset="UTF-8"/>
-  <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta charset="UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
-  <!--    스와이퍼 라이브러리 -->
-  <link
-      rel="stylesheet"
-      th:href="@{https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css}"
-  />
-  <!--    스타일시트(기초셋팅 css)-->
-  <link rel="stylesheet" th:href="@{../css/search.css}"/>
-  <!--    자바스크립트-->
-  <script th:src="@{../js/main.js}"></script>
-  <!--   애니메이션 라이브러리 -->
-  <link
-      th:href="@{https://unpkg.com/aos@2.3.1/dist/aos.css}"
-      rel="stylesheet"
-  />
-  <!--    <script th:src="@{https://unpkg.com/aos@2.3.1/dist/aos.js}"></script>-->
-  <title>💊YAGIYO</title>
+    <!--    스와이퍼 라이브러리 -->
+    <link
+            rel="stylesheet"
+            th:href="@{https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css}"
+    />
+    <!--    스타일시트(기초셋팅 css)-->
+    <link rel="stylesheet" th:href="@{../css/search.css}"/>
+    <!--    자바스크립트-->
+    <script th:src="@{../js/main.js}"></script>
+    <!--   애니메이션 라이브러리 -->
+    <link
+            th:href="@{https://unpkg.com/aos@2.3.1/dist/aos.css}"
+            rel="stylesheet"
+    />
+    <!--    <script th:src="@{https://unpkg.com/aos@2.3.1/dist/aos.js}"></script>-->
+    <title>💊YAGIYO</title>
 </head>
 <body>
 <div class="wrapper">
-  <!-- Header  -->
+    <!-- Header  -->
 
-  <header>
-    <div class="top">
-      <div class="logo">
-        <a th:href="@{/}">
-          <img th:src="@{../img/black-yagiyo.png}" alt=""
-          /></a>
-      </div>
-      <p id="recent-search"></p>
-      <button id="delete-recent-searches">일괄 삭제</button>
+    <header>
+        <div class="top">
+            <div class="logo">
+                <a th:href="@{/}">
+                    <img th:src="@{../img/black-yagiyo.png}" alt=""
+                    /></a>
+            </div>
+            <p id="recent-search"></p>
+            <button id="delete-recent-searches">일괄 삭제</button>
 
-      <!--      검색어   -->
-      <div class="search_box">
-        <form th:action="@{/search}" method="get">
-          <input type="text" name="query" value=""/>
-          <button type="submit"></button>
-        </form>
-      </div>
+            <!--      검색어   -->
+            <div class="search_box">
+                <form th:action="@{/search}" method="get">
+                    <input type="text" name="query" value=""/>
+                    <button type="submit"></button>
+                </form>
+            </div>
 
-      <nav class="gnb_box">
-        <a th:href="@{/name}">AI분석</a>
-        <a href="">커뮤니티</a>
-        <a href="">약국정보</a>
-        <div th:if="${!session.isEmpty()}">
-          <p th:text="${session.loginMember.gubun}"></p>
+            <nav class="gnb_box">
+                <a th:href="@{/name}">AI분석</a>
+                <a href="">커뮤니티</a>
+                <a href="">약국정보</a>
+                <div th:if="${!session.isEmpty()}">
+                    <p th:text="${session.loginMember.gubun}"></p>
+                </div>
+                <div>
+                    <th:bolck class="login" th:if="${session.isEmpty()}">
+                        <a href="" th:href="@{/login}">로그인</a>
+                    </th:bolck>
+                    <th:bolck class="logout" th:unless="${session.isEmpty()}">
+                        <a href="" th:href="@{/logout}">로그아웃</a>
+                    </th:bolck>
+                </div>
+            </nav>
         </div>
-        <div>
-          <th:bolck class="login" th:if="${session.isEmpty()}">
-            <a href="" th:href="@{/login}">로그인</a>
-          </th:bolck>
-          <th:bolck class="logout" th:unless="${session.isEmpty()}">
-            <a href="" th:href="@{/logout}">로그아웃</a>
-          </th:bolck>
+    </header>
+
+
+    <div class="main">
+        <div
+                class="item_cards"
+                th:replace="~{fragments/apple :: header}"
+
+        ></div>
+        <div
+                th:replace="~{fragments/apple :: footer}"
+
+                th:class="item_cards"
+        ></div>
+        <div th:replace="~{fragments/apple :: not_found}" id="not-found">
+
         </div>
-      </nav>
     </div>
-  </header>
-  <a class="banner" th:href="@{/nutrients/오메가3}">
-    <h3 class="search_text">'오메가3' 에 대한 제품검색 결과 <span class="text_bold">6</span>건</h3>
-    <div class="banner_text">
-      <span class="text_bold">오메가3</span>의 성분정보가 궁금하세요?<br>
-      오메가3는 생선이나 해조류에서 추출한 여러 종류의 불포화지방산을 부르는 말이에요. 그 중 가장 중요한 것은 EPA와 DHA에요.
-      EPA는 간에서 중성지방 합성을 줄여 혈중 중성지방 농도를 낮춰주고, 혈액순환 개선에 도움을 줘....<span sytle="font size:35px; font-weight:800;">더보기</span>
-    </div>
-  </a>
 
-  <div class="main">
-    <div
-        class="item_cards"
-        th:replace="~{fragments/apple :: header}"
-        id="apple-header"
-    ></div>
-    <div
-        th:replace="~{fragments/apple :: footer}"
-        id="apple-footer"
-        th:class="item_cards"
-    ></div>
-  </div>
-
-  <footer>
-    <div class="footer_area">
-      <div class="top">
-        <img
-            class="footer_img"
-            th:src="@{../img/white-yagiyo.png}"
-            alt=""
-        />
-        <div class="footer_menu">
-          <a href="">이용약관</a>
-          <a href="">개인정보처리방침</a>
+    <footer>
+        <div class="footer_area">
+            <div class="top">
+                <img
+                        class="footer_img"
+                        th:src="@{../img/white-yagiyo.png}"
+                        alt=""
+                />
+                <div class="footer_menu">
+                    <a href="">이용약관</a>
+                    <a href="">개인정보처리방침</a>
+                </div>
+            </div>
         </div>
-      </div>
-    </div>
-    <!--footer - bottom  -->
+        <!--footer - bottom  -->
 
-    <div class="bottom">
-      <div class="info">
-        <span class="title">주(야기요)</span>
-        <p></p>
-      </div>
-    </div>
+        <div class="bottom">
+            <div class="info">
+                <span class="title">주(야기요)</span>
+                <p></p>
+            </div>
+        </div>
 
-    <!--footer - copyright -->
+        <!--footer - copyright -->
 
-    <div class="copyright">
-      <p>Copyright 2023 YAGIYO. Allrights reserved.</p>
-    </div>
-  </footer>
+        <div class="copyright">
+            <p>Copyright 2023 YAGIYO. Allrights reserved.</p>
+        </div>
+    </footer>
 </div>
 <script>
-      const query = new URLSearchParams(window.location.search).get('query');
-      if (query === '오메가') {
-        document.getElementById('apple-header').style.display = 'flex';
-        document.getElementById('apple-footer').style.display = 'none';
-      } else {
-        document.getElementById('apple-header').style.display = 'none';
-        document.getElementById('apple-footer').style.display = 'flex';
-      }
+document.addEventListener('DOMContentLoaded', function() {
+  const query = new URLSearchParams(window.location.search).get('query');
+  if (query === '오메가' || query === '오' || query === '오매' || query === '오메가3') {
+    document.getElementById('not-found').style.display = 'none';
+    document.getElementById('apple-footer').style.display = 'none';
+    document.getElementById('apple-header').style.display = 'flex';
+  } else if (query === '루' || query === '루테인' || query === '루태' || query === '루테' || query === '루태인') {
+    document.getElementById('apple-header').style.display = 'none';
+    document.getElementById('apple-footer').style.display = 'flex';
+    document.getElementById('not-found').style.display = 'none';
+  } else {
+    document.getElementById('not-found').style.display = 'flex';
+    document.getElementById('apple-header').style.display = 'none';
+    document.getElementById('apple-footer').style.display = 'none';
+  }
+});
+
+
 
 
 </script>
@@ -216,6 +222,8 @@ function deleteSearchTerm(searchTerm) {
     // 최근 검색어 삭제 버튼 클릭 시 실행되는 함수 등록
     const deleteButton = document.getElementById("delete-recent-searches");
     deleteButton.addEventListener("click", deleteRecentSearches);
+
+
 
 </script>
 
