@@ -14,7 +14,7 @@
 </head>
 <body>
     <div class="wrapper">
-        <div class="logo"><a th:src="@{/}"><img th:src="@{../img/black-yagiyo.png}"></a></div>
+        <div class="logo"><a th:href="@{/}"><img th:src="@{../img/black-yagiyo.png}"></a></div>
 
         <form class="content" action="#" th:action="@{/findId}" th:method="post" th:object="${findIdForm}">
             <input type="hidden" th:field="*{id}">
