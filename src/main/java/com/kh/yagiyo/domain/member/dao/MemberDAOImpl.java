@@ -37,17 +37,17 @@ public class MemberDAOImpl implements MemberDAO {
     sql.append("    id, ");
     sql.append("    pw, ");
     sql.append("    nick, ");
-    sql.append("    email ");
-//    sql.append("    gender, ");
-//    sql.append("    age, ");
+    sql.append("    email, ");
+    sql.append("    gender, ");
+    sql.append("    age ");
     sql.append(") values( ");
     sql.append("    Memberid_seq.nextval, ");
     sql.append("    :id, ");
     sql.append("    :pw, ");
     sql.append("    :nick, ");
-    sql.append("    :email ");
-//    sql.append("    :gender, ");
-//    sql.append("    :age ");
+    sql.append("    :email, ");
+    sql.append("    :gender, ");
+    sql.append("    :age ");
     sql.append(") ");
 
     SqlParameterSource param = new BeanPropertySqlParameterSource(member);

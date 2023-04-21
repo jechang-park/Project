@@ -39,7 +39,10 @@ dependencies {
 	/* 롬복을 junit에서 사용하고자 할때 반드시 포함 */
 	testCompileOnly 'org.projectlombok:lombok'
 	testAnnotationProcessor 'org.projectlombok:lombok'
-	/******************************************/
+
+
+	implementation 'com.github.gavlyukovskiy:p6spy-spring-boot-starter:1.9.0'
+
 }
 
 tasks.named('test') {

@@ -34,13 +34,17 @@ body {
   width: 200px;
   height: 100%;
 }
+
 .main {
-margin:50px auto 0px auto;
+position:relative;
+width:1280px;
+margin:50px auto 100px auto;
 display:flex;
 justify-content:center;
 }
 .area_contents{
-margin-left:90px;}
+position:relative;
+}
 .container .title{
 display:flex;
 justify-content:center;
@@ -78,6 +82,21 @@ margin:20px 0px 20px 0px;
   height: 40px;
   padding-left:10px;
 }
+.emailArea{
+margin-top: 20px;
+position:relative;
+}
+#codeBtn{
+    background-color: #ffffff;
+    border: 1px solid #0169ff;
+    top: 435px;
+    left: 902px;
+    position: absolute;
+    width: 100px;
+    height: 40px;
+    cursor:pointer;
+
+}
 .emailArea div input{
   width: 250px;
   height: 40px;
@@ -86,24 +105,43 @@ margin:20px 0px 20px 0px;
 .emailArea .dropdown{
   width: 240px;
   height: 40px;
-
+  }
+.form-group{
+margin-top:20px;
+position: relative;
+}
+#memail{
+    position: absolute;
+    bottom: 10px;
+    left: 40px;
+}
+#memailconfirm{
+             display: none;
+             border: 2px solid #007bff;
+             width: 226px;
+             height: 40px;
+             margin-left: 269px
+}
+.genderArea{
+margin-top: 20px;
 }
 .genderArea .select_m{
     appearance: none;
     -webkit-appearance: none;
-    width: 250px;
+    width: 255px;
     height: 50px;
     outline: none;
+
 }
 .genderArea .select_m:checked{
-        border: 2px solid #f27935;
+        border: 2px solid #007bff;
         font-weight: 700;
         color: #f27935;
 }
 .genderArea .select_w{
      appearance: none;
      -webkit-appearance: none;
-     width: 250px;
+     width: 255px;
      height: 50px;
  }
  .genderArea .select_w:checked{
@@ -117,16 +155,24 @@ margin:20px 0px 20px 0px;
   position:absolute;
   }
   .genderArea .m {
+  display: inline-block;
+      position: absolute;
   left:110px;
   line-height:50px;
     }
   .genderArea .f {
+  display: inline-block;
+      position: absolute;
     left:370px;
     line-height:50px;
    }
 
+
+.ageArea{
+margin-top:20px;
+}
 .ageArea input{
-width:200px;
+width:250px;
 height:50px;
 }
 .date-selectors select{
@@ -154,7 +200,7 @@ margin-top:20px;
 text-align:center;
 }
 .join_btn button{
-  background-color: #007bff;
+  background-color: #5b1a7c;
   border: none;
   border-radius: 4px;
   color: #fff;

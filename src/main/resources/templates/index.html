@@ -41,9 +41,10 @@
         <p id="recent-search"></p>
       </div>
       <nav class="gnb_box">
-        <a th:href="@{/name}">AI분석</a>
+        <a th:href="@{/name}">📝AI분석</a>
         <a href="/board/paging">커뮤니티</a>
         <a href="">약국정보</a>
+        <a href="">마이페이지</a>
         <div th:if="${!session.isEmpty()}">
           <p th:text="${session.loginMember.gubun}"></p>
         </div>
@@ -68,7 +69,6 @@
   <!-- M a i n -->
 
   <main>
-    <div class="swiper mySwiper">
       <div class="swiper-wrapper">
         <div class="swiper-slide main_visual">
           <p class="text1">
@@ -76,12 +76,14 @@
           </p>
           <p class="text1">건강이 점점 쉬워진다</p>
           <p class="text1">잘 알고 있는걸까?</p>
+         <p class="text2"> <span style="color:#8b4ff6; font-size:50px;" id="counter">0</span> 명이<br>
+           필요한 영양성분을 확인했어요 !</p>
+
           <button>
-            <a th:href="@{/name}"><p>건강 설문 시작</p></a>
+            <a th:href="@{/name}"><p>📝건강 설문 시작</p></a>
           </button>
         </div>
       </div>
-    </div>
     <p class="section_text">인기있는 성분을 확인하세요 !</p>
 
     <section class="nutrients_wrap">
@@ -346,6 +348,28 @@
 </div>
 
 <!--        s c r i p t-->
+<!--숫자 스크립트-->
+
+<script>
+const counter = document.getElementById("counter");
+let count = 23;
+const duration = 1000; // 1000밀리초 = 1초
+const increment = 1; // 1밀리초당 숫자 증가율
+
+function incrementCounter() {
+  if (count < 999) {
+    count++;
+    counter.textContent = count.toString();
+    setTimeout(incrementCounter, increment); // 1밀리초 후에 함수를 다시 호출
+  }
+}
+
+incrementCounter();
+
+
+
+</script>
+
 
 <script
     th:src="@{https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js}"
