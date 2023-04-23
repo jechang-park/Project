@@ -1,71 +1,104 @@
 <!DOCTYPE html>
 <html lang="ko" xmlns:th="http://www.thymeleaf.org">
-<head>
-  <meta charset="UTF-8"/>
-  <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <link rel="stylesheet" th:href="@{../css/ingredient.css}"/>
-  <title>아스타잔틴</title>
-</head>
-<body>
-<div class="wrapper">
-  <header>
-    <div class="top">
-      <div class="logo">
-        <a href="/index.html" th:href="@{/}">
-          <img src="/img/black-yagiyo.png" alt=""
-          /></a>
-      </div>
-      <div class="search_box">
-        <input
-            class="searchbar"
-            type="text"
-            placeholder="영양제 성분 검색을 해보세요💊 ! "
-        />
-        <div class="search_btn">
-          <img src="/img/search_div_icn.png" alt=""/>
-        </div>
-      </div>
-      <nav class="gnb_box">
-        <a href="">AI분석</a>
-        <a href="">커뮤니티</a>
-        <a href="">약국정보</a>
-        <a href="">로그인</a>
-      </nav>
-    </div>
-  </header>
-  <main>
-    <div class="banner">
-      <p>아스타잔틴</p>
-    </div>
-    <div class="contents">
-      <article>
-        <div class="row row1">
-          <span class="title">💬 아스타잔틴</span>
-          <p>
-            붉은 색의 '카로티노이드' 색소로, 항산화력이 높아요.<br/>
-            눈의 모세혈관을 건강하게 하고 혈액 순환이 원활해져, 눈의 피로 개선에 도움을 줄 수 있어요.
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" th:href="@{../css/ingredient.css}" />
+        <title>아스타잔틴</title>
+    </head>
+    <body>
+        <div class="wrapper">
+            <header>
+                <div class="top">
+                    <div class="logo">
+                        <a th:href="@{/}">
+                            <img src="../img/black-yagiyo.png" alt=""
+                        /></a>
+                    </div>
 
-          </p>
-        </div>
-        <div class="row row2">
-          <span class="title">▪ 이런 이름으로도 불려요</span>
-          <p>헤마토코쿠스추출물</p>
-        </div>
-        <div class="row row3">
-          <span class="title">▪ 4mg 이상 섭취하시는 게 가장 좋아요!</span>
-          <p>✅자외선 때문에 시력이 손상되는 것을 막아줄 수 있고 식후에 흡수율이 높으니, 아침 식후에 드시는 걸 추천해요.<br>
+                    <!--      검색어   -->
+                    <div class="search_box">
+                        <form th:action="@{/search}" method="get">
+                            <input type="text" name="query" value="" />
+                            <button type="submit"></button>
+                        </form>
+                        <!-- <p id="recent-search"></p> -->
+                    </div>
 
-          </p>
+                    <nav class="gnb_box">
+                        <span class="hot">HOT</span>
+                        <a th:href="@{/name}">📝AI분석</a>
+                        <a href="/board/paging">커뮤니티</a>
+                        <a th:href="@{/map}">약국정보</a>
+                        <th:bolck
+                            class="mypage"
+                            th:unless="${session.isEmpty()}"
+                        >
+                            <a
+                                href=""
+                                th:href="@{|/mypage/${session.loginMember.memberId}/fix|}"
+                                >마이페이지</a
+                            >
+                        </th:bolck>
+
+                        <div>
+                            <th:bolck
+                                class="login"
+                                th:if="${session.isEmpty()}"
+                            >
+                                <a href="" th:href="@{/login}">로그인</a>
+                            </th:bolck>
+                            <th:bolck
+                                class="logout"
+                                th:unless="${session.isEmpty()}"
+                            >
+                                <a href="" th:href="@{/logout}">로그아웃</a>
+                            </th:bolck>
+                        </div>
+                    </nav>
+                </div>
+            </header>
+            <main>
+                <div class="banner">
+                    <p>아스타잔틴</p>
+                </div>
+                <div class="contents">
+                    <article>
+                        <div class="row row1">
+                            <span class="title">💬 아스타잔틴</span>
+                            <p>
+                                붉은 색의 '카로티노이드' 색소로, 항산화력이
+                                높아요.<br />
+                                눈의 모세혈관을 건강하게 하고 혈액 순환이
+                                원활해져, 눈의 피로 개선에 도움을 줄 수 있어요.
+                            </p>
+                        </div>
+                        <div class="row row2">
+                            <span class="title">▪ 이런 이름으로도 불려요</span>
+                            <p>헤마토코쿠스추출물</p>
+                        </div>
+                        <div class="row row3">
+                            <span class="title"
+                                >▪ 4mg 이상 섭취하시는 게 가장 좋아요!</span
+                            >
+                            <p>
+                                ✅자외선 때문에 시력이 손상되는 것을 막아줄 수
+                                있고 식후에 흡수율이 높으니, 아침 식후에 드시는
+                                걸 추천해요.<br />
+                            </p>
+                        </div>
+                        <div class="row row4">
+                            <span class="title">❗ 부작용 및 주의사항</span>
+                            <p>
+                                임산부 대상 연구가 부족하므로 전문가와 상담
+                                필요<br />
+                                수유부 대상 연구가 부족하므로 전문가와 상담 필요
+                            </p>
+                        </div>
+                    </article>
+                </div>
+            </main>
         </div>
-        <div class="row row4">
-          <span class="title">❗ 부작용 및 주의사항</span>
-          <p>임산부 대상 연구가 부족하므로 전문가와 상담 필요<br>
-            수유부 대상 연구가 부족하므로 전문가와 상담 필요</p>
-        </div>
-      </article>
-    </div>
-  </main>
-</div>
-</body>
+    </body>
 </html>

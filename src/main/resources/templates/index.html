@@ -1,398 +1,539 @@
 <!DOCTYPE html>
 <html lang="ko" xmlns:th="http://www.thymeleaf.org">
-<head>
-  <meta charset="UTF-8"/>
-  <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <!--    스와이퍼 라이브러리 -->
-  <link
-      rel="stylesheet"
-      th:href="@{https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css}"
-  />
-  <!--    스타일시트-->
-  <link rel="stylesheet" th:href="@{../css/style.css}"/>
-  <!--    자바스크립트-->
-  <script th:src="@{../js/main.js}"></script>
-  <!--   애니메이션 라이브러리 -->
-  <link
-      th:href="@{https://unpkg.com/aos@2.3.1/dist/aos.css}"
-      rel="stylesheet"
-  />
-  <script th:src="@{https://unpkg.com/aos@2.3.1/dist/aos.js}"></script>
-  <title>💊YAGIYO</title>
-</head>
-<body>
-<div class="wrapper">
-  <!-- Header  -->
-
-  <header>
-    <div class="top">
-      <div class="logo">
-        <a th:href="@{/}">
-          <img src="../img/black-yagiyo.png" alt=""
-          /></a>
-      </div>
-      <div class="search_box">
-        <form th:action="@{/search}" method="get">
-          <input type="text" name="query" value=""/>
-          <button type="submit"></button>
-        </form>
-        <p id="recent-search"></p>
-      </div>
-      <nav class="gnb_box">
-        <a th:href="@{/name}">📝AI분석</a>
-        <a href="/board/paging">커뮤니티</a>
-        <a href="">약국정보</a>
-        <a href="">마이페이지</a>
-        <div th:if="${!session.isEmpty()}">
-          <p th:text="${session.loginMember.gubun}"></p>
-        </div>
-        <div>
-          <th:bolck
-              class="login"
-              th:if="${session.isEmpty()}"
-          >
-            <a href="" th:href="@{/login}">로그인</a>
-          </th:bolck>
-          <th:bolck
-              class="logout"
-              th:unless="${session.isEmpty()}"
-          >
-            <a href="" th:href="@{/logout}">로그아웃</a>
-          </th:bolck>
-        </div>
-      </nav>
-    </div>
-  </header>
-
-  <!-- M a i n -->
-
-  <main>
-      <div class="swiper-wrapper">
-        <div class="swiper-slide main_visual">
-          <p class="text1">
-            오직 한사람을 위한 맞춤 건강 분석
-          </p>
-          <p class="text1">건강이 점점 쉬워진다</p>
-          <p class="text1">잘 알고 있는걸까?</p>
-         <p class="text2"> <span style="color:#8b4ff6; font-size:50px;" id="counter">0</span> 명이<br>
-           필요한 영양성분을 확인했어요 !</p>
-
-          <button>
-            <a th:href="@{/name}"><p>📝건강 설문 시작</p></a>
-          </button>
-        </div>
-      </div>
-    <p class="section_text">인기있는 성분을 확인하세요 !</p>
-
-    <section class="nutrients_wrap">
-      <div class="img_box">
-        <a class="ingredient" th:href="@{/nutrients/루테인}">
-          <p>루테인</p>
-        </a>
-
-        <a class="ingredient" th:href="@{/nutrients/마그네슘}">
-          <p>마그네슘</p>
-        </a>
-        <a class="ingredient" th:href="@{/nutrients/밀크씨슬}">
-          <p>밀크씨슬</p>
-        </a>
-        <a class="ingredient" th:href="@{/nutrients/비타민C}">
-          <p>비타민C</p>
-        </a>
-        <a class="ingredient" th:href="@{/nutrients/아연}">
-          <p>아연</p>
-        </a>
-        <a class="ingredient" th:href="@{/nutrients/비타민D}">
-          <p>비타민D</p>
-        </a>
-        <a
-            class="ingredient"
-            th:href="@{/nutrients/프로바이오틱스유산균}"
-        >
-          <p>유산균</p>
-        </a>
-        <a
-            class="ingredient"
-            th:href="@{/nutrients/큐엔자임Q10}"
-        >
-          <p>큐엔자임Q10</p>
-        </a>
-        <a class="ingredient" th:href="@{/nutrients/히알루론산}"
-        ><p>히알루론산</p>
-        </a>
-
-        <div class="more_info">
-          <a th:href="@{/nutrients}">인기 성분 더보기</a>
-        </div>
-      </div>
-    </section>
-
-    <section class="health_contents">
-      <div class="health_wrap mySwiper1">
-        <div class="swiper-wrapper">
-          <div class="health_box swiper-slide">
-            <a class="health_icon" href="">
-              <p>여성건강 / PMS</p>
-            </a>
-          </div>
-          <div class="health_box swiper-slide">
-            <a class="health_icon" href="">
-              <p>관절 / 뼈</p>
-            </a>
-          </div>
-          <div class="health_box swiper-slide">
-            <a class="health_icon" href="">
-              <p>구강관리</p>
-            </a>
-          </div>
-          <div class="health_box swiper-slide">
-            <a class="health_icon" href="">
-              <p>다이어트</p>
-            </a>
-          </div>
-          <div class="health_box swiper-slide">
-            <a class="health_icon" href="">
-              <p>마음건강</p>
-            </a>
-          </div>
-          <div class="health_box swiper-slide">
-            <a class="health_icon" href="">
-              <p>피부</p>
-            </a>
-          </div>
-          <div class="health_box swiper-slide">
-            <a class="health_icon" href="">
-              <p>노화 / 항산화</p>
-            </a>
-          </div>
-          <div class="health_box swiper-slide">
-            <a class="health_icon" href="">
-              <p>피로 / 활력</p>
-            </a>
-          </div>
-          <div class="health_box swiper-slide">
-            <a class="health_icon" href="">
-              <p>강 건강</p>
-            </a>
-          </div>
-          <div class="health_box swiper-slide">
-            <a class="health_icon" href="">
-              <p>장 건강</p>
-            </a>
-          </div>
-          <div class="health_box swiper-slide">
-            <a class="health_icon" href="">
-              <p>남성 건강</p>
-            </a>
-          </div>
-          <div class="health_box swiper-slide">
-            <a class="health_icon" href="">
-              <p>남성 건강</p>
-            </a>
-          </div>
-          <div class="health_box swiper-slide">
-            <a class="health_icon" href="">
-              <p>남성 건강</p>
-            </a>
-          </div>
-          <div class="health_box swiper-slide">
-            <a class="health_icon" href="">
-              <p>남성 건강</p>
-            </a>
-          </div>
-          <div class="health_box swiper-slide">
-            <a class="health_icon" href="">
-              <p>남성 건강</p>
-            </a>
-          </div>
-          <div class="health_box swiper-slide">
-            <a class="health_icon" href="">
-              <p>남성 건강</p>
-            </a>
-          </div>
-          <div class="health_box swiper-slide">
-            <a class="health_icon" href="">
-              <p>남성 건강</p>
-            </a>
-          </div>
-          <div class="health_box swiper-slide">
-            <a class="health_icon" href="">
-              <p>남성 건강</p>
-            </a>
-          </div>
-          <div class="health_box swiper-slide">
-            <a class="health_icon" href="">
-              <p>남성 건강</p>
-            </a>
-          </div>
-          <div class="health_box swiper-slide">
-            <a class="health_icon" href="">
-              <p>남성 건강</p>
-            </a>
-          </div>
-          <div class="health_box swiper-slide">
-            <a class="health_icon" href="">
-              <p>남성 건강</p>
-            </a>
-          </div>
-          <div class="health_box swiper-slide">
-            <a class="health_icon" href="">
-              <p>남성 건강</p>
-            </a>
-          </div>
-          <div class="health_box swiper-slide">
-            <a class="health_icon" href="">
-              <p>남성 건강</p>
-            </a>
-          </div>
-        </div>
-      </div>
-      <div class="swiper-button-next"></div>
-      <div class="swiper-button-prev"></div>
-    </section>
-    <!-- A r t i c l e -->
-
-    <article>
-      <!-- N E W S -->
-
-      <h1 class="article_text">YAGIYO NEWS</h1>
-      <section data-aos="fade-right" data-aos-delay="200">
-        <img src="/img/article_1.webp" alt=""/>
-        <div class="side-content">
-          <div class="tip">
-            <span>약사 , 영양사가 알려주는 꿀팁</span>
-          </div>
-          <div class="title">
-            4세대 유산균 포스트바이오틱스 , 무조건 좋을까?
-            약사가 알려주는 효능,부작용,추천제품
-          </div>
-          <div class="content">
-            포스트바이오틱스, 요즘 많이 들어봤는데 진짜 효과
-            좋을까? 약사가 알려주는 4세대 유산균,
-            포스트바이오틱스의 모든 것!
-          </div>
-        </div>
-      </section>
-
-      <section data-aos="fade-left" data-aos-delay="400">
-        <div class="side-content">
-          <div class="tip">
-            <span>약사 , 영양사가 알려주는 꿀팁</span>
-          </div>
-          <div class="title">
-            영양사가 추천하는 혈당낮추는 당뇨식단! (당뇨에
-            좋은 음식/ 나쁜음식)(2023)
-          </div>
-          <div class="content">
-            영양사가 알려주는 건강한 간헐적 단식 방법
-            주의사항,추천 음식을 확인하세요!
-          </div>
-        </div>
-        <img src="/img/article_2.webp" alt=""/>
-      </section>
-
-      <section data-aos="fade-right" data-aos-delay="500">
-        <img src="/img/article_3.webp" alt=""/>
-        <div class="side-content">
-          <div class="tip">
-            <span>약사 , 영양사가 알려주는 꿀팁</span>
-          </div>
-          <div class="title">
-            비타민,오메가3,유산균... 언제먹어야 좋을까?
-            약사가 알려주는 영양제 먹는 시간 총 정리!
-          </div>
-          <div class="content">
-            비타민, 오메가3, 비오틴, 아르기닌... 가장
-            효과좋은 영양제 먹는 시간 알려드릴게요!
-          </div>
-        </div>
-      </section>
-    </article>
-  </main>
-
-  <!-- F o o t e r -->
-
-  <footer>
-    <div class="footer_area">
-      <div class="top">
-        <img
-            class="footer_img"
-            th:src="@{../img/white-yagiyo.png}"
-            alt=""
+        <!--    스와이퍼 라이브러리 -->
+        <link
+            rel="stylesheet"
+            th:href="@{https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css}"
         />
-        <div class="footer_menu">
-          <a href="">이용약관</a>
-          <a href="">개인정보처리방침</a>
+        <!--    스타일시트-->
+
+        <link rel="stylesheet" th:href="@{../css/style.css}" />
+
+        <!--    자바스크립트-->
+        <script th:src="@{../js/main.js}"></script>
+
+        <!--   애니메이션 라이브러리 -->
+        <link
+            th:href="@{https://unpkg.com/aos@2.3.1/dist/aos.css}"
+            rel="stylesheet"
+        />
+
+        <!-- 슬라이드 라이브러리 -->
+        <script th:src="@{https://unpkg.com/aos@2.3.1/dist/aos.js}"></script>
+        <title>💊YAGIYO</title>
+    </head>
+    <body>
+        <div class="wrapper">
+            <button id="scrollToTopBtn"></button>
+            <a id="add-channel-button" href="javascript:addChannel()">
+                <img
+                    src="../img/btn-kakaotalk.png"
+                    alt="카카오톡 채널 추가하기 버튼"
+                />
+            </a>
+
+            <!-- Header  -->
+
+            <header>
+                <div class="top">
+                    <div class="logo">
+                        <a th:href="@{/}">
+                            <img src="../img/black-yagiyo.png" alt=""
+                        /></a>
+                    </div>
+
+                    <!--            검색          -->
+
+                    <div class="search_box">
+                        <form th:action="@{/search}" method="get">
+                            <input type="text" name="query" value="" />
+                            <button type="submit"></button>
+                        </form>
+                        <p id="recent-search"></p>
+                    </div>
+
+                    <nav class="gnb_box">
+                        <span class="hot">HOT</span>
+                        <a th:href="@{/name}">📝AI분석</a>
+                        <a href="/board/paging">커뮤니티</a>
+                        <a th:href="@{/map}">약국정보</a>
+                        <th:bolck
+                            class="mypage"
+                            th:unless="${session.isEmpty()}"
+                        >
+                            <a
+                                href=""
+                                th:href="@{|/mypage/${session.loginMember.memberId}/fix|}"
+                                >마이페이지</a
+                            >
+                        </th:bolck>
+
+                        <div>
+                            <th:bolck
+                                class="login"
+                                th:if="${session.isEmpty()}"
+                            >
+                                <a href="" th:href="@{/login}">로그인</a>
+                            </th:bolck>
+                            <th:bolck
+                                class="logout"
+                                th:unless="${session.isEmpty()}"
+                            >
+                                <a href="" th:href="@{/logout}">로그아웃</a>
+                            </th:bolck>
+                        </div>
+                    </nav>
+                </div>
+            </header>
+
+            <!-- M a i n -->
+
+            <main>
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide main_visual">
+                        <p class="text1">오직 한사람을 위한 맞춤 건강 분석</p>
+                        <p class="text1">건강이 점점 쉬워진다</p>
+                        <p class="text1">잘 알고 있는걸까?</p>
+                        <p class="text2">
+                            <span
+                                style="
+                                    color: #110dff;
+                                    font-size: 50px;
+                                    font-weight: 1000;
+                                "
+                                id="counter"
+                                >0</span
+                            >
+                            명이<br />
+                            필요한 영양성분을 확인했어요 !
+                        </p>
+
+                        <button>
+                            <a th:href="@{/name}"><p>📝건강 설문 시작</p></a>
+                        </button>
+                    </div>
+                </div>
+
+                <section class="nutrients_wrap">
+                    <p class="section_text">
+                        <span style="color: #110dff; font-size: 30px">[ </span
+                        >인기있는 성분이에요 !<span
+                            style="color: #110dff; font-size: 30px"
+                        >
+                            ]</span
+                        >
+                    </p>
+                    <div class="img_box">
+                        <a class="ingredient" th:href="@{/nutrients/루테인}">
+                            <p>루테인</p>
+                        </a>
+
+                        <a class="ingredient" th:href="@{/nutrients/마그네슘}">
+                            <p>마그네슘</p>
+                        </a>
+                        <a class="ingredient" th:href="@{/nutrients/밀크씨슬}">
+                            <p>밀크씨슬</p>
+                        </a>
+                        <a class="ingredient" th:href="@{/nutrients/비타민C}">
+                            <p>비타민C</p>
+                        </a>
+                        <a class="ingredient" th:href="@{/nutrients/아연}">
+                            <p>아연</p>
+                        </a>
+                        <a class="ingredient" th:href="@{/nutrients/비타민D}">
+                            <p>비타민D</p>
+                        </a>
+                        <a
+                            class="ingredient"
+                            th:href="@{/nutrients/프로바이오틱스유산균}"
+                        >
+                            <p>유산균</p>
+                        </a>
+                        <a
+                            class="ingredient"
+                            th:href="@{/nutrients/코엔자임Q10}"
+                        >
+                            <p>코엔자임Q10</p>
+                        </a>
+                        <a class="ingredient" th:href="@{/nutrients/히알루론산}"
+                            ><p>히알루론산</p>
+                        </a>
+
+                        <div class="more_info">
+                            <a th:href="@{/nutrients}">인기 성분 더보기</a>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="health_contents">
+                    <p class="section_text">
+                        <span style="color: #110dff; font-size: 30px">[ </span
+                        >고민별 성분이에요
+                        <span style="color: #110dff; font-size: 30px"> ]</span>
+                    </p>
+                    <div class="health_wrap mySwiper1">
+                        <div class="swiper-wrapper">
+                            <div class="health_box swiper-slide">
+                                <a class="health_icon" href="">
+                                    <img
+                                        src="../img/ic_PROP_STAT_1.svg"
+                                        alt=""
+                                    />
+                                    <span>혈당 관리</span>
+                                </a>
+                            </div>
+                            <div class="health_box swiper-slide">
+                                <a class="health_icon stress" href="">
+                                    <img
+                                        src="../img/ic_PROP_STAT_2.svg"
+                                        alt=""
+                                    />
+                                    <span>스트레스 케어</span>
+                                </a>
+                            </div>
+                            <div class="health_box swiper-slide">
+                                <a class="health_icon" href="">
+                                    <img
+                                        src="../img/ic_PROP_STAT_3.svg"
+                                        alt=""
+                                    />
+                                    <span>활력 증진</span>
+                                </a>
+                            </div>
+                            <div class="health_box swiper-slide">
+                                <a class="health_icon" href="">
+                                    <img
+                                        src="../img/ic_PROP_STAT_4.svg"
+                                        alt=""
+                                    />
+                                    <span>관절 및 연골 건강</span>
+                                </a>
+                            </div>
+                            <div class="health_box swiper-slide">
+                                <a class="health_icon" href="">
+                                    <img
+                                        src="../img/ic_PROP_STAT_5.svg"
+                                        alt=""
+                                    />
+                                    <span>항산화</span>
+                                </a>
+                            </div>
+                            <div class="health_box swiper-slide">
+                                <a class="health_icon" href="">
+                                    <img
+                                        src="../img/ic_PROP_STAT_6.svg"
+                                        alt=""
+                                    />
+                                    <span>시력 및 눈 피로감 케어</span>
+                                </a>
+                            </div>
+                            <div class="health_box swiper-slide">
+                                <a class="health_icon" href="">
+                                    <img
+                                        src="../img/ic_PROP_STAT_7.svg"
+                                        alt=""
+                                    />
+                                    <span>시력 및 눈 피로감</span>
+                                </a>
+                            </div>
+                            <div class="health_box swiper-slide">
+                                <a class="health_icon" href="">
+                                    <img
+                                        src="../img/ic_PROP_STAT_8.svg"
+                                        alt=""
+                                    />
+                                    <span>피부 건강</span>
+                                </a>
+                            </div>
+                            <div class="health_box swiper-slide">
+                                <a class="health_icon" href="">
+                                    <img
+                                        src="../img/ic_PROP_STAT_9.svg"
+                                        alt=""
+                                    />
+                                    <span>체지방 감소</span>
+                                </a>
+                            </div>
+                            <div class="health_box swiper-slide">
+                                <a class="health_icon" href="">
+                                    <img
+                                        src="../img/ic_PROP_STAT_10.svg"
+                                        alt=""
+                                    />
+                                    <span>면역력 증진</span>
+                                </a>
+                            </div>
+                            <div class="health_box swiper-slide">
+                                <a class="health_icon" href="">
+                                    <img
+                                        src="../img/ic_PROP_STAT_11.svg"
+                                        alt=""
+                                    />
+                                    <span>장 건강</span>
+                                </a>
+                            </div>
+                            <div class="health_box swiper-slide">
+                                <a class="health_icon" href="">
+                                    <img
+                                        src="../img/ic_PROP_STAT_12.svg"
+                                        alt=""
+                                    />
+                                    <span>간 건강</span>
+                                </a>
+                            </div>
+                            <div class="health_box swiper-slide">
+                                <a class="health_icon" href="">
+                                    <img
+                                        src="../img/ic_PROP_STAT_13.svg"
+                                        alt=""
+                                    />
+                                    <span>혈압 관리</span>
+                                </a>
+                            </div>
+                            <div class="health_box swiper-slide">
+                                <a class="health_icon" href="">
+                                    <img
+                                        src="../img/ic_PROP_STAT_14.svg"
+                                        alt=""
+                                    />
+                                    <span>혈행 개선</span>
+                                </a>
+                            </div>
+                            <div class="health_box swiper-slide">
+                                <a class="health_icon" href="">
+                                    <img
+                                        src="../img/ic_PROP_STAT_15.svg"
+                                        alt=""
+                                    />
+                                    <span>눈 건조감 개선</span>
+                                </a>
+                            </div>
+                            <div class="health_box swiper-slide">
+                                <a class="health_icon" href="">
+                                    <img
+                                        src="../img/ic_PROP_STAT_16.svg"
+                                        alt=""
+                                    />
+                                    <span>뼈 건강</span>
+                                </a>
+                            </div>
+                            <div class="health_box swiper-slide">
+                                <a class="health_icon" href="">
+                                    <img
+                                        src="../img/ic_PROP_STAT_17.svg"
+                                        alt=""
+                                    />
+                                    <span>콜레스테롤 수치개선</span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="swiper-button-next"></div>
+                    <div class="swiper-button-prev"></div>
+                </section>
+                <!-- A r t i c l e -->
+
+                <article>
+                    <!-- N E W S -->
+
+                    <h1 class="article_text">YAGIYO NEWS</h1>
+                    <section
+                        class="article_contents"
+                        data-aos="fade-right"
+                        data-aos-delay="200"
+                    >
+                        <img src="/img/article_1.webp" alt="" />
+                        <div class="side-content">
+                            <div class="tip">
+                                <span>약사 , 영양사가 알려주는 꿀팁</span>
+                            </div>
+                            <div class="title">
+                                4세대 유산균 포스트바이오틱스 , 무조건 좋을까?
+                                약사가 알려주는 효능,부작용,추천제품
+                            </div>
+                            <div class="content">
+                                포스트바이오틱스, 요즘 많이 들어봤는데 진짜 효과
+                                좋을까? 약사가 알려주는 4세대 유산균,
+                                포스트바이오틱스의 모든 것!
+                            </div>
+                        </div>
+                    </section>
+
+                    <section
+                        class="article_contents"
+                        data-aos="fade-left"
+                        data-aos-delay="400"
+                    >
+                        <div class="side-content">
+                            <div class="tip">
+                                <span>약사 , 영양사가 알려주는 꿀팁</span>
+                            </div>
+                            <div class="title">
+                                영양사가 추천하는 혈당낮추는 당뇨식단! (당뇨에
+                                좋은 음식/ 나쁜음식)(2023)
+                            </div>
+                            <div class="content">
+                                영양사가 알려주는 건강한 간헐적 단식 방법
+                                주의사항,추천 음식을 확인하세요!
+                            </div>
+                        </div>
+                        <img src="/img/article_2.webp" alt="" />
+                    </section>
+
+                    <section
+                        class="article_contents"
+                        data-aos="fade-right"
+                        data-aos-delay="500"
+                    >
+                        <img src="/img/article_3.webp" alt="" />
+                        <div class="side-content">
+                            <div class="tip">
+                                <span>약사 , 영양사가 알려주는 꿀팁</span>
+                            </div>
+                            <div class="title">
+                                비타민,오메가3,유산균... 언제먹어야 좋을까?
+                                약사가 알려주는 영양제 먹는 시간 총 정리!
+                            </div>
+                            <div class="content">
+                                비타민, 오메가3, 비오틴, 아르기닌... 가장
+                                효과좋은 영양제 먹는 시간 알려드릴게요!
+                            </div>
+                        </div>
+                    </section>
+                </article>
+
+                <!-- c o m p a n i e s   -->
+
+                <div class="companies">
+                    <p class="text">YAGIYO와 함께 하고 싶은 기관 이에요</p>
+                    <div data-aos="fade-up" data-aos-duration="500">
+                        <img src="../img/c-logo1.webp" alt="" />
+                    </div>
+                    <div data-aos="fade-up" data-aos-duration="1000">
+                        <img src="../img/c-logo2.webp" alt="" />
+                    </div>
+                    <div data-aos="fade-up" data-aos-duration="1500">
+                        <img src="../img/c-logo3.webp" alt="" />
+                    </div>
+                    <div data-aos="fade-up" data-aos-duration="2000">
+                        <img src="../img/c-logo4.webp" alt="" />
+                    </div>
+                    <div data-aos="fade-up" data-aos-duration="2500">
+                        <img src="../img/c-logo5.webp" alt="" />
+                    </div>
+                    <div data-aos="fade-up" data-aos-duration="3000">
+                        <img src="../img/c-logo6.webp" alt="" />
+                    </div>
+                </div>
+            </main>
+
+            <!-- F o o t e r -->
+
+            <footer>
+                <div class="footer_area">
+                    <div class="top">
+                        <img
+                            class="footer_img"
+                            th:src="@{../img/white-yagiyo.png}"
+                            alt=""
+                        />
+                        <div class="footer_menu">
+                            <a href="">이용약관</a>
+                            <a href="">개인정보처리방침</a>
+                        </div>
+                    </div>
+
+                    <!--footer - bottom  -->
+
+                    <div class="bottom">
+                        <div class="info">
+                            <span class="title">주(야기요)</span>
+                            <p></p>
+                        </div>
+                    </div>
+
+                    <!--footer - copyright -->
+
+                    <div class="copyright">
+                        <p>Copyright 2023 YAGIYO. Allrights reserved.</p>
+                    </div>
+                </div>
+            </footer>
         </div>
-      </div>
 
-      <!--footer - bottom  -->
+        <!--        s c r i p t-->
 
-      <div class="bottom">
-        <div class="info">
-          <span class="title">주(야기요)</span>
-          <p></p>
-        </div>
-      </div>
+        <script>
+const healthIcon = document.querySelector('.health_icon.stress');
 
-      <!--footer - copyright -->
-
-
-      <div class="copyright">
-        <p>Copyright 2023 YAGIYO. Allrights reserved.</p>
-      </div>
-    </div>
-  </footer>
-</div>
-
-<!--        s c r i p t-->
-<!--숫자 스크립트-->
-
-<script>
-const counter = document.getElementById("counter");
-let count = 23;
-const duration = 1000; // 1000밀리초 = 1초
-const increment = 1; // 1밀리초당 숫자 증가율
-
-function incrementCounter() {
-  if (count < 999) {
-    count++;
-    counter.textContent = count.toString();
-    setTimeout(incrementCounter, increment); // 1밀리초 후에 함수를 다시 호출
-  }
-}
-
-incrementCounter();
+healthIcon.addEventListener('click', function (event) {
+  event.preventDefault(); // 기본 동작 막기
+  const keyword = '스트레스';
+  const url = new URL(window.location.href);
+  url.pathname = '/search';
+  url.search = `?query=${keyword}`;
+  window.location.href = url.toString();
+});
 
 
+        </script>
+        <script>
+            const healthIcons = document.querySelectorAll(".health_icon");
 
-</script>
+            healthIcons.forEach((healthIcon) => {
+                healthIcon.addEventListener("mouseover", () => {
+                    const img = healthIcon.querySelector("img");
+                    const span = healthIcon.querySelector("span");
+                    if (img) {
+                        img.style.display = "none";
+                    }
+                    if (span) {
+                        span.style.display = "block";
+                    }
+                });
 
-
-<script
-    th:src="@{https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js}"
-></script>
-<script>
-            const swiper = new Swiper(".mySwiper", {
-                pagination: {
-                    el: ".swiper-pagination",
-                    dynamicBullets: true,
-                },
-                autoplay: {
-                    delay: 5000,
-                    disableOnInteraction: false,
-                },
+                healthIcon.addEventListener("mouseout", () => {
+                    const img = healthIcon.querySelector("img");
+                    const span = healthIcon.querySelector("span");
+                    if (img) {
+                        img.style.display = "block";
+                    }
+                    if (span) {
+                        span.style.display = "none";
+                    }
+                });
             });
+        </script>
 
+        <!--숫자 스크립트-->
+        <script>
+            const counter = document.getElementById("counter");
+            let count = 23;
+            const duration = 1000; // 1000밀리초 = 1초
+            const increment = 1; // 1밀리초당 숫자 증가율
 
+            function incrementCounter() {
+                if (count < 999) {
+                    count++;
+                    counter.textContent = count.toString();
+                    setTimeout(incrementCounter, increment); // 1밀리초 후에 함수를 다시 호출
+                }
+            }
+            incrementCounter();
+        </script>
 
-</script>
-<script>
+        <script
+            th:src="@{https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js}"
+        ></script>
+        <script>
             const swiper1 = new Swiper(".mySwiper1", {
-                slidesPerView: 10,
-                spaceBetween: 30,
+                slidesPerView: 7,
+                spaceBetween: 1,
                 pagination: {
                     el: ".swiper-pagination",
                     clickable: true,
@@ -402,15 +543,55 @@ incrementCounter();
                     prevEl: ".swiper-button-prev",
                 },
             });
-
-
-
-</script>
-<script>
+        </script>
+        <script>
             AOS.init();
+        </script>
+        <script>
+            // 스크롤 위치를 체크하여 버튼을 보여주거나 감추는 함수
+            function checkScrollPosition() {
+                const scrollToTopBtn =
+                    document.getElementById("scrollToTopBtn");
+                const scrollTop =
+                    window.pageYOffset || document.documentElement.scrollTop;
+                if (scrollTop > 0) {
+                    scrollToTopBtn.style.display = "block";
+                } else {
+                    scrollToTopBtn.style.display = "none";
+                }
+            }
 
+            // 버튼 클릭 시 최상단으로 스크롤 이동
+            function scrollToTop() {
+                window.scrollTo({
+                    top: 0,
+                    behavior: "auto", // 부드러운 스크롤링 적용
+                });
+            }
 
+            // 스크롤 위치를 체크하는 이벤트 리스너 등록
+            window.addEventListener("scroll", checkScrollPosition);
 
-</script>
-</body>
+            // 버튼 클릭 이벤트 리스너 등록
+            const scrollToTopBtn = document.getElementById("scrollToTopBtn");
+            scrollToTopBtn.addEventListener("click", scrollToTop);
+        </script>
+
+        <script
+            src="https://t1.kakaocdn.net/kakao_js_sdk/2.1.0/kakao.min.js"
+            integrity="sha384-dpu02ieKC6NUeKFoGMOKz6102CLEWi9+5RQjWSV0ikYSFFd8M3Wp2reIcquJOemx"
+            crossorigin="anonymous"
+        ></script>
+        <script>
+            Kakao.init("440cc097282c035428003832043b9748"); // 사용하려는 앱의 JavaScript 키 입력
+        </script>
+
+        <script>
+            function addChannel() {
+                Kakao.Channel.addChannel({
+                    channelPublicId: "_lxcxgxkxj",
+                });
+            }
+        </script>
+    </body>
 </html>

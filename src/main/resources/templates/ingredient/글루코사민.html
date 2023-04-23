@@ -1,76 +1,108 @@
 <!DOCTYPE html>
 <html lang="ko" xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta charset="UTF-8"/>
-    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <link rel="stylesheet" th:href="@{../css/ingredient.css}"/>
-    <title>글루코사민</title>
-</head>
-<body>
-<div class="wrapper">
-    <header>
-        <div class="top">
-            <div class="logo">
-                <a href="/index.html" th:href="@{/}">
-                    <img src="/img/black-yagiyo.png" alt=""
-                    /></a>
-            </div>
-            <div class="search_box">
-                <input
-                        class="searchbar"
-                        type="text"
-                        placeholder="영양제 성분 검색을 해보세요💊 ! "
-                />
-                <div class="search_btn">
-                    <img src="/img/search_div_icn.png" alt=""/>
-                </div>
-            </div>
-            <nav class="gnb_box">
-                <a href="">AI분석</a>
-                <a href="">커뮤니티</a>
-                <a href="">약국정보</a>
-                <a href="">로그인</a>
-            </nav>
-        </div>
-    </header>
-    <main>
-        <div class="banner">
-            <p>글루코사민</p>
-        </div>
-        <div class="contents">
-            <article>
-                <div class="row row1">
-                    <span class="title">💬 글루코사민</span>
-                    <p>
-                        연골을 구성하는 성분 중의 하나로, 관절을 건강하게 유지하도록 도와줄 수 있어요.
-                    </p>
-                </div>
-                <div class="row row2">
-                    <span class="title">▪ 이런 이름으로도 불려요</span>
-                    <p>에이코사펜타엔산(EPA) ㅣ 도코사헥사엔산(DHA)</p>
-                </div>
-                <div class="row row3">
-                    <span class="title">▪ 1.5g 이상 섭취하시는 게 가장 좋아요!</span>
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" th:href="@{../css/ingredient.css}" />
+        <title>글루코사민</title>
+    </head>
+    <body>
+        <div class="wrapper">
+            <header>
+                <div class="top">
+                    <div class="logo">
+                        <a th:href="@{/}">
+                            <img src="../img/black-yagiyo.png" alt=""
+                        /></a>
+                    </div>
 
+                    <!--      검색어   -->
+                    <div class="search_box">
+                        <form th:action="@{/search}" method="get">
+                            <input type="text" name="query" value="" />
+                            <button type="submit"></button>
+                        </form>
+                        <!-- <p id="recent-search"></p> -->
+                    </div>
+
+                    <nav class="gnb_box">
+                        <span class="hot">HOT</span>
+                        <a th:href="@{/name}">📝AI분석</a>
+                        <a href="/board/paging">커뮤니티</a>
+                        <a th:href="@{/map}">약국정보</a>
+                        <th:bolck
+                            class="mypage"
+                            th:unless="${session.isEmpty()}"
+                        >
+                            <a
+                                href=""
+                                th:href="@{|/mypage/${session.loginMember.memberId}/fix|}"
+                                >마이페이지</a
+                            >
+                        </th:bolck>
+
+                        <div>
+                            <th:bolck
+                                class="login"
+                                th:if="${session.isEmpty()}"
+                            >
+                                <a href="" th:href="@{/login}">로그인</a>
+                            </th:bolck>
+                            <th:bolck
+                                class="logout"
+                                th:unless="${session.isEmpty()}"
+                            >
+                                <a href="" th:href="@{/logout}">로그아웃</a>
+                            </th:bolck>
+                        </div>
+                    </nav>
                 </div>
-                <div class="row row4">
-                    <span class="title">❗ 부작용 및 주의사항</span>
-                    <p>임산부 대상 연구가 부족하므로 전문가와 상담 필요<br>
-                        혈당 조절에 영향을 줄 수 있으므로 복용 전 혈당 수치 확인 필요<br>
-                        천식이 악화될 수 있음<br>
-                        간 질환이 있는 경우 전문가와 상담 필요<br>
-                        혈압이 높아질 수 있음<br>
-                        갑각류 알러지 주의<br>
-                        혈압을 높여 심장에 무리를 줄 수 있음<br>
-                        수술 전후 지혈을 늦출 수 있음<br>
-                        안압을 높일 수 있어 녹내장이 있는 경우 주의<br>
-                        간 기능에 영향을 줄 수 있으므로 전문가 상담 필요<br>
-                        수유부 대상 연구가 부족하므로 전문가와 상담 필요</p>
+            </header>
+            <main>
+                <div class="banner">
+                    <p>글루코사민</p>
                 </div>
-            </article>
+                <div class="contents">
+                    <article>
+                        <div class="row row1">
+                            <span class="title">💬 글루코사민</span>
+                            <p>
+                                연골을 구성하는 성분 중의 하나로, 관절을
+                                건강하게 유지하도록 도와줄 수 있어요.
+                            </p>
+                        </div>
+                        <div class="row row2">
+                            <span class="title">▪ 이런 이름으로도 불려요</span>
+                            <p>에이코사펜타엔산(EPA) ㅣ 도코사헥사엔산(DHA)</p>
+                        </div>
+                        <div class="row row3">
+                            <span class="title"
+                                >▪ 1.5g 이상 섭취하시는 게 가장 좋아요!</span
+                            >
+                        </div>
+                        <div class="row row4">
+                            <span class="title">❗ 부작용 및 주의사항</span>
+                            <p>
+                                임산부 대상 연구가 부족하므로 전문가와 상담
+                                필요<br />
+                                혈당 조절에 영향을 줄 수 있으므로 복용 전 혈당
+                                수치 확인 필요<br />
+                                천식이 악화될 수 있음<br />
+                                간 질환이 있는 경우 전문가와 상담 필요<br />
+                                혈압이 높아질 수 있음<br />
+                                갑각류 알러지 주의<br />
+                                혈압을 높여 심장에 무리를 줄 수 있음<br />
+                                수술 전후 지혈을 늦출 수 있음<br />
+                                안압을 높일 수 있어 녹내장이 있는 경우 주의<br />
+                                간 기능에 영향을 줄 수 있으므로 전문가 상담
+                                필요<br />
+                                수유부 대상 연구가 부족하므로 전문가와 상담 필요
+                            </p>
+                        </div>
+                    </article>
+                </div>
+            </main>
         </div>
-    </main>
-</div>
-</body>
+    </body>
 </html>

@@ -11,12 +11,12 @@
 @import url("https://fonts.googleapis.com/css2?family=Gowun+Dodum&display=swap");
 
 @keyframes slide {
-  from {
-    transform: translateX(100%);
-  }
-  to {
-    transform: translateX(-100%);
-  }
+    from {
+        transform: translateX(100%);
+    }
+    to {
+        transform: translateX(-100%);
+    }
 }
 @keyframes titleMotion {
     0% {
@@ -61,6 +61,31 @@ body {
     margin: 0 auto;
 }
 
+#scrollToTopBtn {
+    cursor: pointer;
+    width: 50px;
+    bottom: 70px;
+    height: 50px;
+    position: fixed;
+    z-index: 1;
+    right: 0;
+    margin: 50px;
+    border: none;
+    background-image: url(../img/top.png);
+    background-size: cover;
+    background-color: inherit;
+}
+#add-channel-button {
+    z-index: 99999;
+    margin: 50px;
+    position: fixed;
+    bottom: 0;
+    right: 0;
+}
+#add-channel-button img {
+    width: 50px;
+    height: 50px;
+}
 
 /* Header */
 
@@ -100,7 +125,7 @@ header {
     width: 553px;
     height: 48px;
     border-radius: 24px;
-    border: 3px solid #067dfd;
+    border: 1px solid #067dfd;
     box-sizing: border-box;
     vertical-align: top;
 }
@@ -128,12 +153,37 @@ header {
 }
 
 /* 탑메뉴 */
-.top .gnb_box {
+.gnb_box {
     display: flex;
     position: relative;
     font-weight: 600;
     height: 30px;
     margin-top: 20px;
+}
+.gnb_box span {
+    position: absolute;
+    color: #ff5c35;
+    font-size: 10px;
+    top: -7px;
+    left: 74px;
+}
+.gnb_box > .mypage a {
+    display: block;
+    position: relative;
+    margin-left: 40px;
+    height: 30px;
+}
+.gnb_box > .mypage a::before {
+    padding-top: 5px;
+    content: "";
+    position: absolute;
+    width: 0;
+    bottom: 0;
+    background-color: #000;
+    transition: width 0.25s ease;
+}
+.gnb_box > .mypage a:hover::before {
+    width: 65px;
 }
 
 .gnb_box > a {
@@ -184,9 +234,7 @@ header {
     width: 100%;
 }
 
-
 /*  M  a  i  n */
-
 
 main {
     position: relative;
@@ -201,7 +249,7 @@ main {
     height: 100%;
 }
 .swiper-slide {
-    width:1280px;
+    width: 1280px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -211,13 +259,12 @@ main {
     animation: titleMotion 3s ease-out;
 }
 
-
 .main_visual {
     margin: 0 auto;
-    width: 1280px;
+    width: 1010px;
     height: 500px;
-    background-image: url(../img/cover.jpg);
-    border-radius:20px;
+    background-image: url(../img/main_visual03.jpg);
+    border-radius: 20px;
     background-size: cover;
 }
 
@@ -230,16 +277,15 @@ main {
     font-size: 50px;
     left: -163px;
     top: 350px;
-
 }
 .main_visual .text2 {
-      text-align: center;
-      position: absolute;
-      font-family: "pretendard", sans-serif;
-      font-weight: 600;
-      font-size: 25px;
-      left: 108px;
-      top: 88px;
+    text-align: center;
+    position: absolute;
+    font-family: "pretendard", sans-serif;
+    font-weight: 800;
+    font-size: 25px;
+    left: 108px;
+    top: 88px;
 }
 
 /* 건강설문조사  버튼*/
@@ -265,33 +311,34 @@ main {
 /* Section */
 
 .nutrients_wrap {
-    display:flex;
+    display: flex;
     position: relative;
     width: 1280px;
     margin: 150px auto 150px auto;
+    flex-direction: column;
 }
-.section_text {
+.nutrients_wrap .section_text {
     display: flex;
     position: inline;
-    margin: 20px auto;
+    margin: 60px auto;
     justify-content: center;
     width: 300px;
     font-size: 20px;
     font-weight: 600;
+    line-height: 20px;
 }
 .img_box {
     width: 1280px;
     margin: 0 auto;
     display: flex;
     justify-content: center;
-
 }
 .img_box .ingredient {
     display: flex;
     justify-content: center;
     align-items: center;
     flex: 10%;
-    outline: 1px solid #bbbbbb;
+    outline: 1px solid #000;
     border-radius: 10px;
     width: 100px;
     height: 100px;
@@ -299,9 +346,8 @@ main {
     box-shadow: 0px 5px 10px rgba(70, 56, 147, 0.1);
 }
 .img_box .ingredient:hover {
-    outline: 5px solid #bbbbbb;
+    outline: 1px solid #110dff;
     font-weight: bold;
-    box-shadow: 5px 10px 5px 5px rgba(100, 100, 100, 0.1);
 }
 .img_box div p {
     font-size: 20px;
@@ -316,10 +362,23 @@ main {
     font-weight: bold;
 }
 /* 건강에 따른 성분 */
-.health_contents{
-position:relative;
-width:1280px;
-margin: 50px auto 240px auto;
+.health_contents {
+    position: relative;
+    width: 1280px;
+    margin: 50px auto 240px auto;
+}
+.health_contents .section_text {
+    display: flex;
+    position: inline;
+    margin: 20px auto;
+    justify-content: center;
+    width: 300px;
+    font-size: 20px;
+    font-weight: 600;
+    line-height: 20px;
+    left: 487px;
+    top: 30px;
+    position: absolute;
 }
 .health_wrap {
     position: relative;
@@ -342,24 +401,27 @@ margin: 50px auto 240px auto;
 }
 .health_box {
     display: flex;
+    padding-left:50px;
+    height:200px;
 }
 .health_icon {
     display: flex;
     justify-content: center;
     align-items: center;
-    outline: 1px solid #ffdada;
-    border-radius: 30px;
-    width: 100px;
-    height: 100px;
-    background-color: #f2f2f2;
+    outline: 1px solid #000000;
+    border-radius: 255px;
+    width: 150px;
+    height: 150px;
+    background-color: #fff;
     box-shadow: 0px 5px 10px rgba(70, 56, 147, 0.1);
-    margin: 4px;
     text-align: center;
 }
 .health_icon:hover {
-    outline: 5px solid #bbbbbb;
+    outline: 1px solid #110dff;
     font-weight: bold;
-    box-shadow: 5px 10px 5px 5px rgba(100, 100, 100, 0.1);
+}
+.health_icon span {
+    display: none;
 }
 /* Article 기사 */
 
@@ -367,7 +429,10 @@ article {
     width: 1280px;
     margin: 100px auto;
 }
-.article_text{
+.article_contents {
+    margin-top: 50px;
+}
+.article_text {
     font-size: 50px;
 }
 article::before {
@@ -382,20 +447,23 @@ section {
     display: flex;
 }
 article section img {
-    width: 400px;
-    height: 300px;
+    width: 600px;
+    height: 100%;
     border-radius: 10px;
     display: flex;
 }
 article section .side-content {
     flex-direction: column;
     margin: 30px;
+    display: flex;
+    justify-content: center;
 }
 article section span {
-    outline: 1px solid #999;
-    border-radius: 10px;
     font-size: 15px;
-    color: #999;
+    padding: 10px;
+    outline: 1px solid #999;
+    font-size: 15px;
+    color: #000;
     padding: 10px;
 }
 article section .content {
@@ -403,17 +471,43 @@ article section .content {
 }
 .side-content .title {
     margin-top: 20px;
+    font-size: 20px;
+    padding-left: 10px;
 }
+
+/* companies */
+.companies {
+    text-align: center;
+    width: 1280px;
+    margin: 0 auto;
+    border-top: 1px solid #eee;
+    height: 400px;
+}
+.companies .text {
+    margin: 40px;
+    text-align: center;
+    font-weight: bold;
+    font-size: 30px;
+}
+.companies img {
+    width: 200px;
+    height: 100%;
+}
+.companies div {
+    display: inline-block;
+    margin-bottom: 250px;
+}
+
 /* footer */
 
 footer {
-
     width: 100%;
-    background-color:#2b3044
+    background-color: #2d3142;
 }
+
 .footer_area {
     width: 1280px;
-    color: #fafafa;
+    color: #999;
     margin: 0 auto;
 }
 
@@ -440,42 +534,24 @@ footer {
     padding-left: 10px;
 }
 
-/* footer - bottom */
-.footer_area .bottom {
-    margin-left: 20px;
-}
-/* .footer_area .bottom::before {
-  width: 100%;
-  position: absolute;
-  height: 1px;
-  content: '';
-  background-color: #bbbbbb;
-} */
 .footer_area .bottom .info {
     width: 1280px;
     text-align: left;
 }
 .bottom .info .title {
     font-size: 20px;
+    padding-left: 30px;
 }
 
 /* copyright */
 .footer_area .copyright {
     margin-left: 20px;
+    text-align: center;
+    font-size: 15px;
+    padding: 10px;
 }
 
-/* .footer_area .copyright::before {
-  width: 100%;
-  position: absolute;
-  height: 1px;
-  content: '';
-  background-color: #bbbbbb;
-} */
 .footer_area .copyright p {
     width: 100%;
     text-align: left;
-}
-.swiper {
-    width: 100%;
-    height: 100%;
 }

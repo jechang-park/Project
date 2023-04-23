@@ -1,82 +1,110 @@
 <!DOCTYPE html>
 <html lang="ko" xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta charset="UTF-8"/>
-    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <link rel="stylesheet" th:href="@{../css/ingredient.css}"/>
-    <title>루테인</title>
-</head>
-<body>
-<div class="wrapper">
-    <!-- Header  -->
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" th:href="@{../css/ingredient.css}" />
+        <title>루테인</title>
+    </head>
+    <body>
+        <div class="wrapper">
+            <!-- Header  -->
 
-    <header>
-        <div class="top">
-            <div class="logo">
-                <a th:href="@{/}">
-                    <img src="../img/black-yagiyo.png" alt=""
-                    /></a>
-            </div>
+            <header>
+                <div class="top">
+                    <div class="logo">
+                        <a th:href="@{/}">
+                            <img src="../img/black-yagiyo.png" alt=""
+                        /></a>
+                    </div>
 
-            <!--      검색어   -->
-            <div class="search_box">
-                <form th:action="@{/search}" method="get">
-                    <input type="text" name="query" value=""/>
-                    <button type="submit"></button>
-                </form>
-                <!-- <p id="recent-search"></p> -->
-            </div>
+                    <!--      검색어   -->
+                    <div class="search_box">
+                        <form th:action="@{/search}" method="get">
+                            <input type="text" name="query" value="" />
+                            <button type="submit"></button>
+                        </form>
+                        <!-- <p id="recent-search"></p> -->
+                    </div>
 
-            <nav class="gnb_box">
-                <a th:href="@{/name}">AI분석</a>
-                <a href="">커뮤니티</a>
-                <a href="">약국정보</a>
-                <div th:if="${!session.isEmpty()}">
-                    <p th:text="${session.loginMember.gubun}"></p>
+                    <nav class="gnb_box">
+                        <span class="hot">HOT</span>
+                        <a th:href="@{/name}">📝AI분석</a>
+                        <a href="/board/paging">커뮤니티</a>
+                        <a th:href="@{/map}">약국정보</a>
+                        <th:bolck
+                            class="mypage"
+                            th:unless="${session.isEmpty()}"
+                        >
+                            <a
+                                href=""
+                                th:href="@{|/mypage/${session.loginMember.memberId}/fix|}"
+                                >마이페이지</a
+                            >
+                        </th:bolck>
+
+                        <div>
+                            <th:bolck
+                                class="login"
+                                th:if="${session.isEmpty()}"
+                            >
+                                <a href="" th:href="@{/login}">로그인</a>
+                            </th:bolck>
+                            <th:bolck
+                                class="logout"
+                                th:unless="${session.isEmpty()}"
+                            >
+                                <a href="" th:href="@{/logout}">로그아웃</a>
+                            </th:bolck>
+                        </div>
+                    </nav>
                 </div>
-                <div>
-                    <th:bolck class="login" th:if="${session.isEmpty()}">
-                        <a href="" th:href="@{/login}">로그인</a>
-                    </th:bolck>
-                    <th:bolck class="logout" th:unless="${session.isEmpty()}">
-                        <a href="" th:href="@{/logout}">로그아웃</a>
-                    </th:bolck>
+            </header>
+            <main>
+                <div class="contents">
+                    <article>
+                        <div class="row row1">
+                            <span class="title">💬 루테인</span>
+                            <p>
+                                시력에 중요한 '황반색소' 밀도를 유지해, 눈
+                                건강에 도움이 되는 영양소에요.<br />
+                                '황반'은 빛을 인식하는 시세포가 가장 많이
+                                모여있는 곳이에요. 이 부위가 빛에 손상되지
+                                않도록 항산화작용을 하는 색소들이 황반에 많이
+                                모여 있는데, '루테인'이 그 중 하나에요.
+                            </p>
+                        </div>
+                        <div class="row row2">
+                            <span class="title">▪ 이런 이름으로도 불려요</span>
+                            <p>마리골드꽃추출물</p>
+                        </div>
+                        <div class="row row3">
+                            <span class="title"
+                                >▪ 루테인은 단독으로 들어있기도 하지만,
+                                지아잔틴과 함께 들어있는 경우도 많아요.</span
+                            >
+                            <p>
+                                ✅루테인은 하루 10-20mg 섭취하시는 것이
+                                적절해요.<br />
+                                ✅루테인과 지아잔틴이 함께 들어있는 경우에는
+                                최대 24mg까지 섭취하실 수 있어요. 4:1 정도의
+                                비율이 적절하다고 알려져 있어요.<br />
+                            </p>
+                        </div>
+                        <div class="row row4">
+                            <span class="title">❗ 부작용 및 주의사항</span>
+                            <p>
+                                장기간 고용량 복용시 흡연자 폐암 위험이 증가할
+                                수 있음<br />
+                                임산부 대상 연구가 부족하므로 전문가와 상담
+                                필요<br />
+                                수유부 대상 연구가 부족하므로 전문가와 상담 필요
+                            </p>
+                        </div>
+                    </article>
                 </div>
-            </nav>
+            </main>
         </div>
-    </header>
-    <main>
-
-        <div class="contents">
-            <article>
-                <div class="row row1">
-                    <span class="title">💬 루테인</span>
-                    <p>
-                        시력에 중요한 '황반색소' 밀도를 유지해, 눈 건강에 도움이 되는 영양소에요.<br>
-                        '황반'은 빛을 인식하는 시세포가 가장 많이 모여있는 곳이에요. 이 부위가 빛에 손상되지 않도록 항산화작용을 하는 색소들이 황반에 많이 모여 있는데, '루테인'이 그 중
-                        하나에요.
-                    </p>
-                </div>
-                <div class="row row2">
-                    <span class="title">▪ 이런 이름으로도 불려요</span>
-                    <p>마리골드꽃추출물</p>
-                </div>
-                <div class="row row3">
-                    <span class="title">▪ 루테인은 단독으로 들어있기도 하지만, 지아잔틴과 함께 들어있는 경우도 많아요.</span>
-                    <p>✅루테인은 하루 10-20mg 섭취하시는 것이 적절해요.<br>
-                        ✅루테인과 지아잔틴이 함께 들어있는 경우에는 최대 24mg까지 섭취하실 수 있어요. 4:1 정도의 비율이 적절하다고 알려져 있어요.<br>
-                    </p>
-                </div>
-                <div class="row row4">
-                    <span class="title">❗ 부작용 및 주의사항</span>
-                    <p>장기간 고용량 복용시 흡연자 폐암 위험이 증가할 수 있음<br>
-                        임산부 대상 연구가 부족하므로 전문가와 상담 필요<br>
-                        수유부 대상 연구가 부족하므로 전문가와 상담 필요</p>
-                </div>
-            </article>
-        </div>
-    </main>
-</div>
-</body>
+    </body>
 </html>

@@ -1,65 +1,100 @@
 <!DOCTYPE html>
 <html lang="ko" xmlns:th="http://www.thymeleaf.org">
-<head>
-  <meta charset="UTF-8"/>
-  <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <link rel="stylesheet" th:href="@{../css/ingredient.css}"/>
-  <title>빌베리추출물</title>
-</head>
-<body>
-<div class="wrapper">
-  <header>
-    <div class="top">
-      <div class="logo">
-        <a href="/index.html" th:href="@{/}">
-          <img src="/img/black-yagiyo.png" alt=""
-          /></a>
-      </div>
-      <div class="search_box">
-        <input
-            class="searchbar"
-            type="text"
-            placeholder="영양제 성분 검색을 해보세요💊 ! "
-        />
-        <div class="search_btn">
-          <img src="/img/search_div_icn.png" alt=""/>
-        </div>
-      </div>
-      <nav class="gnb_box">
-        <a href="">AI분석</a>
-        <a href="">커뮤니티</a>
-        <a href="">약국정보</a>
-        <a href="">로그인</a>
-      </nav>
-    </div>
-  </header>
-  <main>
-    <div class="banner">
-      <p>빌베리추출물</p>
-    </div>
-    <div class="contents">
-      <article>
-        <div class="row row1">
-          <span class="title">💬 빌베리추출물</span>
-          <p>
-            눈의 모세혈관을 건강하게 하고 혈액 순환이 원활해져, 눈의 피로를 개선해요.
-            <br/>
-          </p>
-        </div>
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" th:href="@{../css/ingredient.css}" />
+        <title>빌베리추출물</title>
+    </head>
+    <body>
+        <div class="wrapper">
+            <header>
+                <div class="top">
+                    <div class="logo">
+                        <a th:href="@{/}">
+                            <img src="../img/black-yagiyo.png" alt=""
+                        /></a>
+                    </div>
 
-        <div class="row row3">
-                    <span class="title">▪ 식물추출물 영양제는 식물이 자라는 환경이나 제조사의 기술 수준에 따라서 실제로 건강에 도움이 되는 성분 함량이 달라질 수 있어요.<br>
-                        추출물 중에서 실제로 건강에 도움이 된다고 밝혀진 지표성분을 얼마나 함유하고 있는지 확인하는 것이 좋아요.</span>
-          <p>✅빌베리추출물로는 하루 160-240mg정도를 사용하여 효과를 확인한 연구가 많아요.<br>
-            ✅빌베리추출물의 지표성분인 안토시아노사이드로는 하루 50~160mg 정도를 섭취했을 때 효과가 있었다는 결과가 많으니 참고해서 영양제를 고르시는 게 좋아요.<br>
+                    <!--      검색어   -->
+                    <div class="search_box">
+                        <form th:action="@{/search}" method="get">
+                            <input type="text" name="query" value="" />
+                            <button type="submit"></button>
+                        </form>
+                        <!-- <p id="recent-search"></p> -->
+                    </div>
 
-          </p>
+                    <nav class="gnb_box">
+                        <span class="hot">HOT</span>
+                        <a th:href="@{/name}">📝AI분석</a>
+                        <a href="/board/paging">커뮤니티</a>
+                        <a th:href="@{/map}">약국정보</a>
+                        <th:bolck
+                            class="mypage"
+                            th:unless="${session.isEmpty()}"
+                        >
+                            <a
+                                href=""
+                                th:href="@{|/mypage/${session.loginMember.memberId}/fix|}"
+                                >마이페이지</a
+                            >
+                        </th:bolck>
+
+                        <div>
+                            <th:bolck
+                                class="login"
+                                th:if="${session.isEmpty()}"
+                            >
+                                <a href="" th:href="@{/login}">로그인</a>
+                            </th:bolck>
+                            <th:bolck
+                                class="logout"
+                                th:unless="${session.isEmpty()}"
+                            >
+                                <a href="" th:href="@{/logout}">로그아웃</a>
+                            </th:bolck>
+                        </div>
+                    </nav>
+                </div>
+            </header>
+            <main>
+                <div class="banner">
+                    <p>빌베리추출물</p>
+                </div>
+                <div class="contents">
+                    <article>
+                        <div class="row row1">
+                            <span class="title">💬 빌베리추출물</span>
+                            <p>
+                                눈의 모세혈관을 건강하게 하고 혈액 순환이
+                                원활해져, 눈의 피로를 개선해요.
+                                <br />
+                            </p>
+                        </div>
+
+                        <div class="row row3">
+                            <span class="title"
+                                >▪ 식물추출물 영양제는 식물이 자라는 환경이나
+                                제조사의 기술 수준에 따라서 실제로 건강에 도움이
+                                되는 성분 함량이 달라질 수 있어요.<br />
+                                추출물 중에서 실제로 건강에 도움이 된다고 밝혀진
+                                지표성분을 얼마나 함유하고 있는지 확인하는 것이
+                                좋아요.</span
+                            >
+                            <p>
+                                ✅빌베리추출물로는 하루 160-240mg정도를 사용하여
+                                효과를 확인한 연구가 많아요.<br />
+                                ✅빌베리추출물의 지표성분인 안토시아노사이드로는
+                                하루 50~160mg 정도를 섭취했을 때 효과가 있었다는
+                                결과가 많으니 참고해서 영양제를 고르시는 게
+                                좋아요.<br />
+                            </p>
+                        </div>
+                    </article>
+                </div>
+            </main>
         </div>
-
-      </article>
-    </div>
-  </main>
-</div>
-</body>
+    </body>
 </html>

@@ -1,72 +1,112 @@
 <!DOCTYPE html>
 <html lang="ko" xmlns:th="http://www.thymeleaf.org">
-<head>
-  <meta charset="UTF-8"/>
-  <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <link rel="stylesheet" th:href="@{../css/ingredient.css}"/>
-  <title>밀크씨슬</title>
-</head>
-<body>
-<div class="wrapper">
-  <header>
-    <div class="top">
-      <div class="logo">
-        <a href="/index.html" th:href="@{/}">
-          <img src="/img/black-yagiyo.png" alt=""
-          /></a>
-      </div>
-      <div class="search_box">
-        <input
-            class="searchbar"
-            type="text"
-            placeholder="영양제 성분 검색을 해보세요💊 ! "
-        />
-        <div class="search_btn">
-          <img src="/img/search_div_icn.png" alt=""/>
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" th:href="@{../css/ingredient.css}" />
+        <title>밀크씨슬</title>
+    </head>
+    <body>
+        <div class="wrapper">
+            <header>
+                <div class="top">
+                    <div class="logo">
+                        <a th:href="@{/}">
+                            <img src="../img/black-yagiyo.png" alt=""
+                        /></a>
+                    </div>
+
+                    <!--      검색어   -->
+                    <div class="search_box">
+                        <form th:action="@{/search}" method="get">
+                            <input type="text" name="query" value="" />
+                            <button type="submit"></button>
+                        </form>
+                        <!-- <p id="recent-search"></p> -->
+                    </div>
+
+                    <nav class="gnb_box">
+                        <span class="hot">HOT</span>
+                        <a th:href="@{/name}">📝AI분석</a>
+                        <a href="/board/paging">커뮤니티</a>
+                        <a th:href="@{/map}">약국정보</a>
+                        <th:bolck
+                            class="mypage"
+                            th:unless="${session.isEmpty()}"
+                        >
+                            <a
+                                href=""
+                                th:href="@{|/mypage/${session.loginMember.memberId}/fix|}"
+                                >마이페이지</a
+                            >
+                        </th:bolck>
+
+                        <div>
+                            <th:bolck
+                                class="login"
+                                th:if="${session.isEmpty()}"
+                            >
+                                <a href="" th:href="@{/login}">로그인</a>
+                            </th:bolck>
+                            <th:bolck
+                                class="logout"
+                                th:unless="${session.isEmpty()}"
+                            >
+                                <a href="" th:href="@{/logout}">로그아웃</a>
+                            </th:bolck>
+                        </div>
+                    </nav>
+                </div>
+            </header>
+            <main>
+                <div class="banner">
+                    <p>밀크씨슬</p>
+                </div>
+                <div class="contents">
+                    <article>
+                        <div class="row row1">
+                            <span class="title">💬 밀크씨슬</span>
+                            <p>
+                                활성산소로부터 간 세포를 보호하는 항산화 작용이
+                                있어서 간 건강에 도움을 줄 수 있어요.
+                                <br />
+                            </p>
+                        </div>
+                        <div class="row row2">
+                            <span class="title">▪ 이런 이름으로도 불려요</span>
+                            <p>실리마린 ㅣ 실리빈 | 카르두스마리아누스</p>
+                        </div>
+                        <div class="row row3">
+                            <span class="title"
+                                >▪ 실리마린이나 실리빈 함량이 표기되어 있는지
+                                확인하시는 게 좋아요!</span
+                            >
+                            <p>
+                                ✅건강기능식품으로 인정받은 밀크씨슬추출물은
+                                주요 지표물질로 실리마린 130mg이 들어있어요.<br />
+                                ✅의약품으로는 실리빈 90-180mg를 사용하고
+                                있어요.<br />
+                                ✅실리마린 420~600mg 정도 섭취한 후 효과를
+                                확인한 연구 결과도 있으니 참고하여 건강 상태에
+                                따라 영양제를 고르시는 게 좋아요.
+                                <br />
+                                식물추출물 영양제는 식물이 자라는 환경이나
+                                제조사의 기술 수준에 따라서 실제로 건강에 도움이
+                                되는 성분 함량이 달라질 수 있어요.
+                            </p>
+                        </div>
+                        <div class="row row4">
+                            <span class="title">❗ 부작용 및 주의사항</span>
+                            <p>
+                                여성호르몬(에스트로겐) 유사 작용이 있으므로,
+                                호르몬 농도에 민감한 상황인 경우 전문가와 상담
+                                필요
+                            </p>
+                        </div>
+                    </article>
+                </div>
+            </main>
         </div>
-      </div>
-      <nav class="gnb_box">
-        <a href="">AI분석</a>
-        <a href="">커뮤니티</a>
-        <a href="">약국정보</a>
-        <a href="">로그인</a>
-      </nav>
-    </div>
-  </header>
-  <main>
-    <div class="banner">
-      <p>밀크씨슬</p>
-    </div>
-    <div class="contents">
-      <article>
-        <div class="row row1">
-          <span class="title">💬 밀크씨슬</span>
-          <p>
-            활성산소로부터 간 세포를 보호하는 항산화 작용이 있어서 간 건강에 도움을 줄 수 있어요.
-            <br/>
-          </p>
-        </div>
-        <div class="row row2">
-          <span class="title">▪ 이런 이름으로도 불려요</span>
-          <p>실리마린 ㅣ 실리빈 | 카르두스마리아누스 </p>
-        </div>
-        <div class="row row3">
-          <span class="title">▪ 실리마린이나 실리빈 함량이 표기되어 있는지 확인하시는 게 좋아요!</span>
-          <p>✅건강기능식품으로 인정받은 밀크씨슬추출물은 주요 지표물질로 실리마린 130mg이 들어있어요.<br>
-            ✅의약품으로는 실리빈 90-180mg를 사용하고 있어요.<br>
-            ✅실리마린 420~600mg 정도 섭취한 후 효과를 확인한 연구 결과도 있으니 참고하여 건강 상태에 따라 영양제를 고르시는 게 좋아요.
-            <br>
-            식물추출물 영양제는 식물이 자라는 환경이나 제조사의 기술 수준에 따라서 실제로 건강에 도움이 되는 성분 함량이 달라질 수 있어요.
-          </p>
-        </div>
-        <div class="row row4">
-          <span class="title">❗ 부작용 및 주의사항</span>
-          <p>여성호르몬(에스트로겐) 유사 작용이 있으므로, 호르몬 농도에 민감한 상황인 경우 전문가와 상담 필요</p>
-        </div>
-      </article>
-    </div>
-  </main>
-</div>
-</body>
+    </body>
 </html>

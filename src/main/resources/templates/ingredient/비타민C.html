@@ -1,83 +1,127 @@
 <!DOCTYPE html>
 <html lang="ko" xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta charset="UTF-8"/>
-    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <link rel="stylesheet" th:href="@{../css/ingredient.css}"/>
-    <title>비타민C</title>
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" th:href="@{../css/ingredient.css}" />
+        <title>비타민C</title>
+    </head>
+    <body>
+        <div class="wrapper">
+            <header>
+                <div class="top">
+                    <div class="logo">
+                        <a th:href="@{/}">
+                            <img src="../img/black-yagiyo.png" alt=""
+                        /></a>
+                    </div>
 
-</head>
-<body>
-<div class="wrapper">
-    <header>
-        <div class="top">
-            <div class="logo">
-                <a href="/index.html" th:href="@{/}">
-                    <img src="/img/black-yagiyo.png" alt=""
-                    /></a>
-            </div>
-            <div class="search_box">
-                <input
-                        class="searchbar"
-                        type="text"
-                        placeholder="영양제 성분 검색을 해보세요💊 ! "
-                />
-                <div class="search_btn">
-                    <img src="/img/search_div_icn.png" alt=""/>
+                    <!--      검색어   -->
+                    <div class="search_box">
+                        <form th:action="@{/search}" method="get">
+                            <input type="text" name="query" value="" />
+                            <button type="submit"></button>
+                        </form>
+                        <!-- <p id="recent-search"></p> -->
+                    </div>
+
+                    <nav class="gnb_box">
+                        <span class="hot">HOT</span>
+                        <a th:href="@{/name}">📝AI분석</a>
+                        <a href="/board/paging">커뮤니티</a>
+                        <a th:href="@{/map}">약국정보</a>
+                        <th:bolck
+                            class="mypage"
+                            th:unless="${session.isEmpty()}"
+                        >
+                            <a
+                                href=""
+                                th:href="@{|/mypage/${session.loginMember.memberId}/fix|}"
+                                >마이페이지</a
+                            >
+                        </th:bolck>
+
+                        <div>
+                            <th:bolck
+                                class="login"
+                                th:if="${session.isEmpty()}"
+                            >
+                                <a href="" th:href="@{/login}">로그인</a>
+                            </th:bolck>
+                            <th:bolck
+                                class="logout"
+                                th:unless="${session.isEmpty()}"
+                            >
+                                <a href="" th:href="@{/logout}">로그아웃</a>
+                            </th:bolck>
+                        </div>
+                    </nav>
                 </div>
-            </div>
-            <nav class="gnb_box">
-                <a href="">AI분석</a>
-                <a href="">커뮤니티</a>
-                <a href="">약국정보</a>
-                <a href="">로그인</a>
-            </nav>
+            </header>
+            <main>
+                <div class="banner">
+                    <p>비타민C</p>
+                </div>
+                <div class="contents">
+                    <article>
+                        <div class="row row1">
+                            <span class="title">💬 비타민C</span>
+                            <p>
+                                세포를 늙게 만드는 '활성산소'를 없애주는
+                                대표적인 항산화제에요.
+                                <br />
+                                콜라겐 합성을 위해서도 필요하기 때문에 피부를
+                                건강하게 만드는데 효과적인 영양소에요.
+                                <br />
+                                잇몸과 같이 손상을 입기 쉬운 신체조직을 건강하게
+                                지켜줄 수 있어요.
+                                <br />
+                                철분의 흡수율을 높여, 혈액을 통해 산소를
+                                전달하는 적혈구를 건강하게 만들 수 있도록
+                                도와줘요.
+                                <br />
+                                피부를 탱탱하게 유지하는 콜라겐을 만드는 것을
+                                돕고, 기미를 만드는 멜라닌이 만들어지지 않도록
+                                막아줘요.
+                                <br />
+                                다양한 면역 관련 세포 기능을 도와 면역 기능을
+                                유지하는데 도움을 줘요.
+                                <br />
+                            </p>
+                        </div>
+                        <div class="row row2">
+                            <span class="title">▪ 이런 이름으로도 불려요</span>
+                            <p>아스코르브산</p>
+                        </div>
+                        <div class="row row3">
+                            <span class="title"
+                                >▪ 최적의 효과를 얻을 수 있도록 나에게 맞는
+                                섭취량을 찾는 것이 좋아요</span
+                            >
+                            <p>
+                                ✅식사와 영양제를 모두 포함하여 100~2000mg
+                                섭취하도록 권장하고 있어요.<br />
+                                ✅ 최적의 효과를 얻기 위해서는 500mg 이상
+                                섭취하는 걸 추천해요.<br />
+                                ✅ 수용성 비타민으로 몸에 잘 남아있지 않고 쉽게
+                                배출되는 성질을 가지고 있어 고용량 섭취해도
+                                안전한 편이에요.<br />
+                                ✅ 한번에 너무 많이 섭취하는 것은 흡수 효율이
+                                낮으니, 한번에 1000mg이하로 여러 번 나눠서
+                                충분한 물과 함께 드시는 걸 추천해요.<br />
+                            </p>
+                        </div>
+                        <div class="row row4">
+                            <span class="title">❗ 부작용 및 주의사항</span>
+                            <p>
+                                고용량 섭취 시 신장 결석을 생성할 수 있음<br />
+                                신장결석의 위험이 있는 경우 고용량 섭취 시 주의
+                            </p>
+                        </div>
+                    </article>
+                </div>
+            </main>
         </div>
-    </header>
-    <main>
-        <div class="banner">
-            <p>비타민C</p>
-        </div>
-        <div class="contents">
-            <article>
-                <div class="row row1">
-                    <span class="title">💬 비타민C</span>
-                    <p>
-                        세포를 늙게 만드는 '활성산소'를 없애주는 대표적인 항산화제에요.
-                        <br/>
-                        콜라겐 합성을 위해서도 필요하기 때문에 피부를 건강하게 만드는데 효과적인 영양소에요.
-                        <br/>
-                        잇몸과 같이 손상을 입기 쉬운 신체조직을 건강하게 지켜줄 수 있어요.
-                        <br/>
-                        철분의 흡수율을 높여, 혈액을 통해 산소를 전달하는 적혈구를 건강하게 만들 수 있도록 도와줘요.
-                        <br/>
-                        피부를 탱탱하게 유지하는 콜라겐을 만드는 것을 돕고, 기미를 만드는 멜라닌이 만들어지지 않도록 막아줘요.
-                        <br/>
-                        다양한 면역 관련 세포 기능을 도와 면역 기능을 유지하는데 도움을 줘요.
-                        <br/>
-                    </p>
-                </div>
-                <div class="row row2">
-                    <span class="title">▪ 이런 이름으로도 불려요</span>
-                    <p>아스코르브산</p>
-                </div>
-                <div class="row row3">
-                    <span class="title">▪ 최적의 효과를 얻을 수 있도록 나에게 맞는 섭취량을 찾는 것이 좋아요</span>
-                    <p>✅식사와 영양제를 모두 포함하여 100~2000mg 섭취하도록 권장하고 있어요.<br>
-                        ✅ 최적의 효과를 얻기 위해서는 500mg 이상 섭취하는 걸 추천해요.<br>
-                        ✅ 수용성 비타민으로 몸에 잘 남아있지 않고 쉽게 배출되는 성질을 가지고 있어 고용량 섭취해도 안전한 편이에요.<br>
-                        ✅ 한번에 너무 많이 섭취하는 것은 흡수 효율이 낮으니, 한번에 1000mg이하로 여러 번 나눠서 충분한 물과 함께 드시는 걸 추천해요.<br>
-                    </p>
-                </div>
-                <div class="row row4">
-                    <span class="title">❗ 부작용 및 주의사항</span>
-                    <p>고용량 섭취 시 신장 결석을 생성할 수 있음<br>
-                        신장결석의 위험이 있는 경우 고용량 섭취 시 주의
-                </div>
-            </article>
-        </div>
-    </main>
-</div>
-</body>
+    </body>
 </html>

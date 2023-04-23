@@ -1,0 +1,416 @@
+@charset "UTF-8";
+* {
+    padding: 0px;
+    margin: 0px;
+    text-decoration: none;
+    list-style: none;
+    color: inherit;
+    font-family: "pretendard", sans-serif;
+}
+
+@import url("https://fonts.googleapis.com/css2?family=Gowun+Dodum&display=swap");
+
+@keyframes slide {
+    from {
+        transform: translateX(100%);
+    }
+    to {
+        transform: translateX(-100%);
+    }
+}
+@keyframes titleMotion {
+    0% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    50% {
+        opacity: 1; /* keep opacity at 100% */
+        transform: translateY(0);
+    }
+    70% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+        transform: translateY(100%);
+    }
+}
+
+@keyframes bounce-effect {
+    0% {
+        transform: translateY(0);
+        animation-timing-function: ease-in;
+    }
+    50% {
+        transform: translateY(-7px);
+        animation-timing-function: ease-out;
+    }
+    100% {
+        transform: translateY(0);
+        animation-timing-function: ease-in;
+    }
+}
+
+body {
+    width: 100%;
+}
+
+.wrapper {
+    width: 100%;
+    margin: 0 auto;
+}
+
+/* Header */
+
+header {
+    width: 100%;
+    position: fixed;
+    z-index: 999;
+    background-color: #fff;
+    top: 0;
+    border-bottom: 1px solid #eee;
+}
+.top {
+    width: 1280px;
+    height: 100%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* 로고이미지 */
+.logo {
+    margin-top: 15px;
+}
+.top .logo > a img {
+    width: 150px;
+}
+
+/* 검색 */
+.top .search_box {
+    display: flex;
+    height: 30px;
+}
+.search_box form {
+    display: inline-block;
+    position: relative;
+    width: 553px;
+    height: 48px;
+    border-radius: 24px;
+    border: 1px solid #067dfd;
+    box-sizing: border-box;
+    vertical-align: top;
+}
+.search_box input {
+    width: 400px;
+    height: 20px;
+    outline: transparent;
+    border: 0;
+    margin: 12px 17px 17px 17px;
+    padding-left: 5px;
+}
+.search_box button {
+    left: 510px;
+    bottom: 8px;
+    right: 0px;
+    background-color: inherit;
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    border: none;
+    box-shadow: none;
+    cursor: pointer;
+    background-image: url(../img/search.png);
+    background-size: cover;
+}
+
+/* 탑메뉴 */
+.gnb_box {
+    display: flex;
+    position: relative;
+    font-weight: 600;
+    height: 30px;
+    margin-top: 20px;
+}
+.gnb_box span {
+    position: absolute;
+    color: #ff5c35;
+    font-size: 10px;
+    top: -7px;
+    left: 74px;
+}
+.gnb_box > .mypage a{
+    display:block;
+    position: relative;
+    margin-left: 40px;
+    height:30px;
+}
+.gnb_box > .mypage a::before {
+ padding-top: 5px;
+    content: "";
+    position: absolute;
+    width: 0;
+    bottom: 0;
+    background-color: #000;
+    transition: width 0.25s ease;
+
+}
+
+.gnb_box > .mypage a:hover::before {
+    width: 65px;
+}
+
+.gnb_box > a {
+    position: relative;
+    margin-left: 40px;
+}
+.gnb_box .login,
+.logout {
+    margin-left: 40px;
+}
+
+.gnb_box .login a::before {
+    padding-top: 5px;
+    content: "";
+    position: absolute;
+    width: 0;
+    bottom: 0;
+    background-color: #000;
+    transition: width 0.25s ease;
+}
+.gnb_box .login a:hover::before {
+    width: 40px;
+}
+.gnb_box .logout a::before {
+    padding-top: 5px;
+    content: "";
+    position: absolute;
+    width: 0;
+    bottom: 0;
+    background-color: #000;
+    transition: width 0.25s ease;
+}
+.gnb_box .logout a:hover::before {
+    width: 55px;
+}
+.gnb_box > a::before {
+    padding-top: 5px;
+    content: "";
+    position: absolute;
+    width: 0;
+    bottom: 0;
+    left: 0;
+    background-color: #000;
+    transition: width 0.25s ease;
+}
+
+.gnb_box > a:hover::before {
+    width: 100%;
+}
+
+.content {
+    width: 1280px;
+    margin: 0 auto;
+    margin-top: 250px;
+}
+.header {
+    position: relative;
+    width: 100%;
+    outline: 1px solid #eee;
+    min-height: 300px;
+  }
+.header .title {
+    border-top: 1px solid #000;
+    width: 100%;
+    position: relative;
+}
+.header .header_contents {
+    background-color: #fafafa;
+    height: 50px;
+}
+.title_text {
+    font-size: 40px;
+    position: absolute;
+    top: -60px;
+}
+.board_writer {
+    padding-left: 10px;
+    font-size: 25px;
+    display: inline-block;
+}
+.board_writer::before {
+    font-size: 20px;
+    content: "작성자 ";
+}
+.time {
+    position: absolute;
+    right: 0;
+    display: inline-block;
+}
+.time::before {
+    content: "🕐";
+}
+.hits {
+    top: 20px;
+    position: absolute;
+    right: 0;
+    display: inline-block;
+}
+.hits::before {
+    content: "👁‍";
+}
+.board_contents {
+    padding-left: 10px;
+}
+.btn_box {
+    text-align: right;
+}
+.btn_box button {
+    margin-top: 10px;
+    cursor: pointer;
+    color: #fff;
+    width: 200px;
+    height: 50px;
+    font-size: 25px;
+    background-color: #999;
+}
+.btn_box button:hover {
+    background-color: #5b1a7c;
+}
+#comment-write {
+    background-color: #fff;
+    margin-top: 20px;
+    font-size: 20px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+}
+#comment-write input {
+    color: #fff;
+    margin-left: 10px;
+    width: 200px;
+    height: 50px;
+    font-size: 25px;
+    border: none;
+    background-color: transparent;
+}
+#comment-write .writer {
+    padding-left: 5px;
+}
+table {
+    width: 1280px;
+    text-align: left;
+    margin-top: 60px;
+    margin-bottom: 60px;
+}
+table th:nth-of-type(3) {
+    text-align: right;
+}
+table td:nth-of-type(3) {
+    text-align: right;
+}
+table td {
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+table th {
+    width: 1280px;
+    height: 1px;
+    background-color: #fff;
+}
+
+.comment_btn {
+    width: 100%;
+    position: relative;
+    border: 1px solid #000;
+    height: 100px;
+}
+.comment_btn input {
+    width: 100%;
+    height: 100px;
+    border: none;
+    box-sizing: border-box;
+    padding-left: 5px;
+}
+
+.comment_btn input:focus {
+    outline: none;
+}
+.comment_btn #comment-write-btn {
+    position: absolute;
+    right: 0;
+    height: 100%;
+    width: 150px;
+    border: none;
+    color: #fff;
+    cursor: pointer;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+    background-color: #999;
+}
+
+.comment_btn #comment-write-btn:hover {
+background-color: #5b1a7c;
+}
+
+/* footer */
+footer {
+    width: 100%;
+    background-color: #2d3142;
+}
+.footer_area {
+    width: 1280px;
+    color: #999;
+    margin: 0 auto;
+}
+
+/* footer top */
+
+.footer_area .top {
+    width: 100%;
+    display: flex;
+    margin: 0 auto;
+}
+
+/* 푸터 로고 이미지 */
+.footer_img {
+    width: 150px;
+    display: flex;
+    margin: 10px;
+}
+.footer_menu {
+    display: flex;
+    margin-top: 20px;
+}
+.footer_menu a {
+    display: flex;
+    padding-left: 10px;
+}
+
+.footer_area .bottom .info {
+    width: 1280px;
+    text-align: left;
+}
+.bottom .info .title {
+    font-size: 20px;
+}
+
+/* copyright */
+.footer_area .copyright {
+    margin-left: 20px;
+}
+
+/* .footer_area .copyright::before {
+  width: 100%;
+  position: absolute;
+  height: 1px;
+  content: '';
+  background-color: #bbbbbb;
+} */
+.footer_area .copyright p {
+    width: 100%;
+    text-align: left;
+}

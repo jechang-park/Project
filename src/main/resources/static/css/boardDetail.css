@@ -289,6 +289,7 @@ footer {
     width: 100%;
     background-color: #2d3142;
 }
+
 .footer_area {
     width: 1280px;
     color: #999;
@@ -324,11 +325,15 @@ footer {
 }
 .bottom .info .title {
     font-size: 20px;
+    padding-left: 30px;
 }
 
 /* copyright */
 .footer_area .copyright {
     margin-left: 20px;
+    text-align: center;
+    font-size: 15px;
+    padding: 10px;
 }
 
 /* .footer_area .copyright::before {

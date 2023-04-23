@@ -5,14 +5,14 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <link
-        rel="stylesheet"
-        href="../../static/css/signup.css"
-        th:href="@{/css/joinform.css}"
+            rel="stylesheet"
+            href="../../static/css/signup.css"
+            th:href="@{/css/joinform.css}"
     />
     <script
-        src="https://code.jquery.com/jquery-3.6.4.min.js"
-        integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8="
-        crossorigin="anonymous"
+            src="https://code.jquery.com/jquery-3.6.4.min.js"
+            integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8="
+            crossorigin="anonymous"
     ></script>
     <title>회원가입</title>
 </head>
@@ -32,7 +32,10 @@
                 인증코드받기
             </button>
             <div th:if="${#fields.hasGlobalErrors()}">
-                <p th:each="err:${#fields.globalErrors()}" th:text="${err}"></p>
+                <p
+                        th:each="err:${#fields.globalErrors()}"
+                        th:text="${err}"
+                ></p>
             </div>
             <div class="container">
                 <div class="title"><h2>회원 정보입력</h2></div>
@@ -43,129 +46,179 @@
                         <br/>
 
                         <input
-                            placeholder="영문,숫자를 이용해 만들어주세요(6~15자내외)"
-                            class="container_contents_item_input"
-                            type="text"
-                            id="id"
-                            th:field="*{id}"
+                                placeholder="영문,숫자를 이용해 만들어주세요(6~15자내외)"
+                                class="container_contents_item_input"
+                                type="text"
+                                id="id"
+                                th:field="*{id}"
                         />
                         <div class="error"></div>
                         <div th:errors="*{id}"></div>
-                        <div id="idError" class="container_contents_error"></div>
+                        <div
+                                id="idError"
+                                class="container_contents_error"
+                        ></div>
                     </div>
 
                     <div class="pwArea">
-                        <label for="pw" class="container_contents_item">비밀번호</label>
+                        <label for="pw" class="container_contents_item"
+                        >비밀번호</label
+                        >
                         <br/>
                         <input
-                            placeholder="대소문자구분 영문자, 숫자조합으로 적어주세요 (8~20자)"
-                            class="container_contents_item_input"
-                            type="password"
-                            th:field="*{pw}"
+                                placeholder="대소문자구분 영문자, 숫자조합으로 적어주세요 (8~20자)"
+                                class="container_contents_item_input"
+                                type="password"
+                                th:field="*{pw}"
                         />
                         <span class="error"></span>
                         <span th:errors="*{pw}"></span>
-                        <div id="pwError" class="continer_contents_error"></div>
+                        <div
+                                id="pwError"
+                                class="continer_contents_error"
+                        ></div>
                         <br/>
-                        <label for="pw_check" class="container_contents_item"
+                        <label
+                                for="pw_check"
+                                class="container_contents_item"
                         >비밀번호확인</label
                         >
                         <br/>
                         <input
-                            id="pw_check"
-                            name="pw_check"
-                            class="container_contents_item_input"
-                            type="password"
+                                id="pw_check"
+                                name="pw_check"
+                                class="container_contents_item_input"
+                                type="password"
                         />
-                        <div id="pwChkError" class="continer_contents_error"></div>
+                        <div
+                                id="pwChkError"
+                                class="continer_contents_error"
+                        ></div>
                     </div>
 
                     <div class="nickArea">
-                        <label for="nick" class="container_contents_item">닉네임</label>
+                        <label
+                                for="nick"
+                                class="container_contents_item"
+                        >닉네임</label
+                        >
                         <br/>
 
                         <input
-                            placeholder="영문자, 숫자, 한글조합으로 적어주세요 (10글자내외)"
-                            th:field="*{nick}"
-                            class="container_contents_item_input"
-                            type="text"
+                                placeholder="영문자, 숫자, 한글조합으로 적어주세요 (10글자내외)"
+                                th:field="*{nick}"
+                                class="container_contents_item_input"
+                                type="text"
                         />
-                        <div id="nickError" class="container_contents_error"></div>
+                        <div
+                                id="nickError"
+                                class="container_contents_error"
+                        ></div>
                     </div>
 
                     <div class="emailArea">
-
-                        <label for="email" class="container_contents_item"
+                        <label
+                                for="email"
+                                class="container_contents_item"
                         >이메일</label
                         >
                         <div>
-                            <input required type="email" th:field="*{email}"/>
+                            <input
+                                    required
+                                    type="email"
+                                    th:field="*{email}"
+                            />
                             <label for="emailSelect">
                                 <form id="emailSelectForm">
                                     <select
-                                        class="dropdown"
-                                        id="emailSelect"
-                                        name="emailSelect"
+                                            class="dropdown"
+                                            id="emailSelect"
+                                            name="emailSelect"
                                     >
-                                        <option id="directInput" value="directInput">
+                                        <option
+                                                id="directInput"
+                                                value="directInput"
+                                        >
                                             @직접입력
                                         </option>
-                                        <option id="naver" value="naver">@naver.com</option>
-                                        <option id="google" value="google">@google.com</option>
-                                        <option id="daum" value="daum">@daum.net</option>
+                                        <option
+                                                id="naver"
+                                                value="naver"
+                                        >
+                                            @naver.com
+                                        </option>
+                                        <option
+                                                id="gmail"
+                                                value="gmail"
+                                        >
+                                            @gmail.com
+                                        </option>
+                                        <option id="daum" value="daum">
+                                            @daum.net
+                                        </option>
                                     </select>
                                 </form>
                             </label>
-                            <div class="form-group last mb-4 check_input">
-
-                                <input type="text" class="form-control" id="memailconfirm">
+                            <div
+                                    class="form-group last mb-4 check_input"
+                            >
+                                <input
+                                        type="text"
+                                        class="form-control"
+                                        id="memailconfirm"
+                                />
                             </div>
                             <p id="code"></p>
                             <!--          이메일 인증 하기 끝-->
-                            <div id="mailError" class="continer_contents_error"></div>
-
-
+                            <div
+                                    id="mailError"
+                                    class="continer_contents_error"
+                            ></div>
                         </div>
-                        <div id="emailError" class="continer_contents_error"></div>
-
-
+                        <div
+                                id="emailError"
+                                class="continer_contents_error"
+                        ></div>
                     </div>
 
                     <div class="genderArea">
                         <label for="man" class="m">남자</label>
                         <input
-                            disabled
-                            type="radio"
-                            class="select_m"
-                            name="gender"
-                            value="male"
-                            id="man"
-                            th:field="*{gender}"
-
+                                disabled
+                                type="radio"
+                                class="select_m"
+                                name="gender"
+                                value="male"
+                                id="man"
+                                th:field="*{gender}"
                         />
                         <input
-                            disabled
-                            type="radio"
-                            class="select_w"
-                            name="gender"
-                            value="female"
-                            id="women"
-                            th:field="*{gender}"
+                                disabled
+                                type="radio"
+                                class="select_w"
+                                name="gender"
+                                value="female"
+                                id="women"
+                                th:field="*{gender}"
                         />
                         <label for="women" class="f">여자</label>
                     </div>
 
                     <div class="ageArea">
                         <div>
-                            <label for="age" class="container_contents_item">나이 (선택)</label><br>
+                            <label
+                                    for="age"
+                                    class="container_contents_item"
+                            >나이 (선택)</label
+                            ><br/>
                             <input
-                                disabled
-                                min="1950-01-01"
-                                max="2023-04-20"
-                                type="date"
-                                class="container_contents_item_input"
-                                th:field="*{age}"
-                                id="age"
+                                    disabled
+                                    min="1950-01-01"
+                                    max="2023-04-20"
+                                    type="date"
+                                    class="container_contents_item_input"
+                                    th:field="*{age}"
+                                    id="age"
                             />
                         </div>
                     </div>
@@ -173,19 +226,31 @@
 
                 <div class="check_term">
                     <div>
-                        <input id="checkboxAgree" disabled type="checkbox"/>
-                        <a id="agreeUrl" target="agreeUrl" th:href="@{/members/Agree}">
+                        <input
+                                id="checkboxAgree"
+                                disabled
+                                type="checkbox"
+                        />
+                        <a
+                                id="agreeUrl"
+                                target="agreeUrl"
+                                th:href="@{/members/Agree}"
+                        >
                             [필수] 서비스의 이용약관 동의</a
                         >
                     </div>
 
                     <div>
-                        <input id="checkboxIdentity" disabled type="checkbox"/>
+                        <input
+                                id="checkboxIdentity"
+                                disabled
+                                type="checkbox"
+                        />
 
                         <a
-                            id="identityUrl"
-                            target="identityUrl"
-                            th:href="@{/members/Identity}"
+                                id="identityUrl"
+                                target="identityUrl"
+                                th:href="@{/members/Identity}"
                         >
                             [필수] 개인정보 처리방침 동의</a
                         >
@@ -194,10 +259,10 @@
 
                 <div class="join_btn">
                     <button
-                        disabled
-                        id="finishBtn"
-                        type="submit"
-                        class="container_contents_submitBtn"
+                            disabled
+                            id="finishBtn"
+                            type="submit"
+                            class="container_contents_submitBtn"
                     >
                         회원가입
                     </button>
@@ -207,6 +272,5 @@
     </div>
 </form>
 <script type="text/javascript" th:src="@{../js/signup.js}"></script>
-
 </body>
 </html>

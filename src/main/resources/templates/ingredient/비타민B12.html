@@ -1,71 +1,112 @@
 <!DOCTYPE html>
 <html lang="ko" xmlns:th="http://www.thymeleaf.org">
-<head>
-  <meta charset="UTF-8"/>
-  <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <link rel="stylesheet" th:href="@{../css/ingredient.css}"/>
-  <title>비타민B12</title>
-</head>
-<body>
-<div class="wrapper">
-  <header>
-    <div class="top">
-      <div class="logo">
-        <a href="/index.html" th:href="@{/}">
-          <img src="/img/black-yagiyo.png" alt=""
-          /></a>
-      </div>
-      <div class="search_box">
-        <input
-            class="searchbar"
-            type="text"
-            placeholder="영양제 성분 검색을 해보세요💊 ! "
-        />
-        <div class="search_btn">
-          <img src="/img/search_div_icn.png" alt=""/>
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" th:href="@{../css/ingredient.css}" />
+        <title>비타민B12</title>
+    </head>
+    <body>
+        <div class="wrapper">
+            <header>
+                <div class="top">
+                    <div class="logo">
+                        <a th:href="@{/}">
+                            <img src="../img/black-yagiyo.png" alt=""
+                        /></a>
+                    </div>
+
+                    <!--      검색어   -->
+                    <div class="search_box">
+                        <form th:action="@{/search}" method="get">
+                            <input type="text" name="query" value="" />
+                            <button type="submit"></button>
+                        </form>
+                        <!-- <p id="recent-search"></p> -->
+                    </div>
+
+                    <nav class="gnb_box">
+                        <span class="hot">HOT</span>
+                        <a th:href="@{/name}">📝AI분석</a>
+                        <a href="/board/paging">커뮤니티</a>
+                        <a th:href="@{/map}">약국정보</a>
+                        <th:bolck
+                            class="mypage"
+                            th:unless="${session.isEmpty()}"
+                        >
+                            <a
+                                href=""
+                                th:href="@{|/mypage/${session.loginMember.memberId}/fix|}"
+                                >마이페이지</a
+                            >
+                        </th:bolck>
+
+                        <div>
+                            <th:bolck
+                                class="login"
+                                th:if="${session.isEmpty()}"
+                            >
+                                <a href="" th:href="@{/login}">로그인</a>
+                            </th:bolck>
+                            <th:bolck
+                                class="logout"
+                                th:unless="${session.isEmpty()}"
+                            >
+                                <a href="" th:href="@{/logout}">로그아웃</a>
+                            </th:bolck>
+                        </div>
+                    </nav>
+                </div>
+            </header>
+            <main>
+                <div class="banner">
+                    <p>비타민B12</p>
+                </div>
+                <div class="contents">
+                    <article>
+                        <div class="row row1">
+                            <span class="title">💬 비타민B12</span>
+                            <p>
+                                · 엽산과 함께 세포와 혈액을 건강하게 만드는데 꼭
+                                필요한 영양소에요. <br />
+                                · 혈관을 손상시킬 수 있는 '호모시스테인'이 너무
+                                많아지지 않도록 조절해줘요.
+                            </p>
+                        </div>
+                        <div class="row row2">
+                            <span class="title">▪ 이런 이름으로도 불려요</span>
+                            <p>
+                                코발라민 ㅣ 시아노코발라민 | 히드록소코발라민 |
+                                메코발라민
+                            </p>
+                        </div>
+                        <div class="row row3">
+                            <span class="title"
+                                >▪ 최적의 효과를 얻을 수 있도록 나에게 맞는
+                                섭취량을 찾는 것이 좋아요</span
+                            >
+                            <p>
+                                ✅식사와 영양제를 모두 포함하여 2.4μg이상
+                                섭취하도록 권장하고 있어요.<br />
+                                ✅최적의 효과를 얻기 위해서는 50μg 이상 섭취하는
+                                걸 추천해요.<br />
+                                수용성 비타민으로 몸에 잘 남아있지 않고 쉽게
+                                배출되는 성질을 가지고 있는 편이에요. 고용량
+                                섭취했을 때 나타날 수 있는 부작용이 보고된 바가
+                                거의 없어 상한섭취량이 정해져 있지 않아요.
+                            </p>
+                        </div>
+                        <div class="row row4">
+                            <span class="title">❗ 부작용 및 주의사항</span>
+                            <p>
+                                장기간 고용량 복용시 남성 흡연자 폐암 위험
+                                증가할 수 있음
+                            </p>
+                        </div>
+                    </article>
+                </div>
+            </main>
         </div>
-      </div>
-      <nav class="gnb_box">
-        <a href="">AI분석</a>
-        <a href="">커뮤니티</a>
-        <a href="">약국정보</a>
-        <a href="">로그인</a>
-      </nav>
-    </div>
-  </header>
-  <main>
-    <div class="banner">
-      <p>비타민B12</p>
-    </div>
-    <div class="contents">
-      <article>
-        <div class="row row1">
-          <span class="title">💬 비타민B12</span>
-          <p>
-            · 엽산과 함께 세포와 혈액을 건강하게 만드는데 꼭 필요한 영양소에요. <br/>
-            · 혈관을 손상시킬 수 있는 '호모시스테인'이 너무 많아지지 않도록 조절해줘요.
-          </p>
-        </div>
-        <div class="row row2">
-          <span class="title">▪ 이런 이름으로도 불려요</span>
-          <p>코발라민 ㅣ 시아노코발라민 | 히드록소코발라민 | 메코발라민 </p>
-        </div>
-        <div class="row row3">
-          <span class="title">▪ 최적의 효과를 얻을 수 있도록 나에게 맞는 섭취량을 찾는 것이 좋아요</span>
-          <p>✅식사와 영양제를 모두 포함하여 2.4μg이상 섭취하도록 권장하고 있어요.<br>
-            ✅최적의 효과를 얻기 위해서는 50μg 이상 섭취하는 걸 추천해요.<br>
-            수용성 비타민으로 몸에 잘 남아있지 않고 쉽게 배출되는 성질을 가지고 있는 편이에요.
-            고용량 섭취했을 때 나타날 수 있는 부작용이 보고된 바가 거의 없어 상한섭취량이 정해져 있지 않아요.
-          </p>
-        </div>
-        <div class="row row4">
-          <span class="title">❗ 부작용 및 주의사항</span>
-          <p>장기간 고용량 복용시 남성 흡연자 폐암 위험 증가할 수 있음</p>
-        </div>
-      </article>
-    </div>
-  </main>
-</div>
-</body>
+    </body>
 </html>

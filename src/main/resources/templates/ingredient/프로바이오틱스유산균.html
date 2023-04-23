@@ -12,25 +12,46 @@
     <header>
         <div class="top">
             <div class="logo">
-                <a href="/index.html" th:href="@{/}">
-                    <img src="/img/black-yagiyo.png" alt=""
+                <a th:href="@{/}">
+                    <img src="../img/black-yagiyo.png" alt=""
                     /></a>
             </div>
+
+            <!--      검색어   -->
             <div class="search_box">
-                <input
-                        class="searchbar"
-                        type="text"
-                        placeholder="영양제 성분 검색을 해보세요💊 ! "
-                />
-                <div class="search_btn">
-                    <img src="/img/search_div_icn.png" alt=""/>
-                </div>
+                <form th:action="@{/search}" method="get">
+                    <input type="text" name="query" value=""/>
+                    <button type="submit"></button>
+                </form>
+                <!-- <p id="recent-search"></p> -->
             </div>
+
             <nav class="gnb_box">
-                <a href="">AI분석</a>
-                <a href="">커뮤니티</a>
-                <a href="">약국정보</a>
-                <a href="">로그인</a>
+                <span class="hot">HOT</span>
+                <a th:href="@{/name}">📝AI분석</a>
+                <a href="/board/paging">커뮤니티</a>
+                <a th:href="@{/map}">약국정보</a>
+                <th:bolck
+                        class="mypage"
+                        th:unless="${session.isEmpty()}"
+                >
+                    <a href="" th:href="@{|/mypage/${session.loginMember.memberId}/fix|}">마이페이지</a>
+                </th:bolck>
+
+                <div>
+                    <th:bolck
+                            class="login"
+                            th:if="${session.isEmpty()}"
+                    >
+                        <a href="" th:href="@{/login}">로그인</a>
+                    </th:bolck>
+                    <th:bolck
+                            class="logout"
+                            th:unless="${session.isEmpty()}"
+                    >
+                        <a href="" th:href="@{/logout}">로그아웃</a>
+                    </th:bolck>
+                </div>
             </nav>
         </div>
     </header>

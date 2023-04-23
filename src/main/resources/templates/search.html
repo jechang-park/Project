@@ -33,15 +33,24 @@
                     <img th:src="@{../img/black-yagiyo.png}" alt=""
                     /></a>
             </div>
-            <p id="recent-search"></p>
-            <button id="delete-recent-searches">일괄 삭제</button>
 
             <!--      검색어   -->
             <div class="search_box">
                 <form th:action="@{/search}" method="get">
-                    <input type="text" name="query" value=""/>
-                    <button type="submit"></button>
+                    <input
+                            class="search_input"
+                            type="text"
+                            name="query"
+                            value=""
+                    />
+                    <button class="submit_btn" type="submit"></button>
                 </form>
+                <div class="dropdown">
+                    <p id="recent-search"></p>
+                    <button id="delete-recent-searches">
+                        일괄 삭제
+                    </button>
+                </div>
             </div>
 
             <nav class="gnb_box">
@@ -52,10 +61,16 @@
                     <p th:text="${session.loginMember.gubun}"></p>
                 </div>
                 <div>
-                    <th:bolck class="login" th:if="${session.isEmpty()}">
+                    <th:bolck
+                            class="login"
+                            th:if="${session.isEmpty()}"
+                    >
                         <a href="" th:href="@{/login}">로그인</a>
                     </th:bolck>
-                    <th:bolck class="logout" th:unless="${session.isEmpty()}">
+                    <th:bolck
+                            class="logout"
+                            th:unless="${session.isEmpty()}"
+                    >
                         <a href="" th:href="@{/logout}">로그아웃</a>
                     </th:bolck>
                 </div>
@@ -63,22 +78,25 @@
         </div>
     </header>
 
-
     <div class="main">
         <div
                 class="item_cards"
                 th:replace="~{fragments/apple :: header}"
-
         ></div>
         <div
                 th:replace="~{fragments/apple :: footer}"
-
                 th:class="item_cards"
         ></div>
-        <div th:replace="~{fragments/apple :: not_found}" id="not-found">
-
-        </div>
+        <div
+                th:replace="~{fragments/apple :: not_found}"
+                id="not-found"
+        ></div>
+        <div
+                th:replace="~{fragments/apple :: stress}"
+                id="stress"
+        ></div>
     </div>
+
 
     <footer>
         <div class="footer_area">
@@ -93,137 +111,185 @@
                     <a href="">개인정보처리방침</a>
                 </div>
             </div>
-        </div>
-        <!--footer - bottom  -->
 
-        <div class="bottom">
-            <div class="info">
-                <span class="title">주(야기요)</span>
-                <p></p>
+            <!--footer - bottom  -->
+
+            <div class="bottom">
+                <div class="info">
+                    <span class="title">주(야기요)</span>
+                    <p></p>
+                </div>
             </div>
-        </div>
 
-        <!--footer - copyright -->
+            <!--footer - copyright -->
 
-        <div class="copyright">
-            <p>Copyright 2023 YAGIYO. Allrights reserved.</p>
+            <div class="copyright">
+                <p>Copyright 2023 YAGIYO. Allrights reserved.</p>
+            </div>
         </div>
     </footer>
 </div>
+<!--s c r i p t -->
 <script>
-document.addEventListener('DOMContentLoaded', function() {
-  const query = new URLSearchParams(window.location.search).get('query');
-  if (query === '오메가' || query === '오' || query === '오매' || query === '오메' || query === '오메가3') {
-    document.getElementById('not-found').style.display = 'none';
-    document.getElementById('apple-footer').style.display = 'none';
-    document.getElementById('apple-header').style.display = 'flex';
-  } else if (query === '루' || query === '루테인' || query === '루태' || query === '루테' || query === '루태인') {
-    document.getElementById('apple-header').style.display = 'none';
-    document.getElementById('apple-footer').style.display = 'flex';
-    document.getElementById('not-found').style.display = 'none';
-  } else {
-    document.getElementById('not-found').style.display = 'flex';
-    document.getElementById('apple-header').style.display = 'none';
-    document.getElementById('apple-footer').style.display = 'none';
-  }
-});
+            const searchInput = document.querySelector(".search_input");
+            const dropdown = document.querySelector(".dropdown");
 
+            searchInput.addEventListener("click", function (event) {
+                dropdown.style.display = "block";
+                event.stopPropagation();
+            });
 
+            document.addEventListener("click", function () {
+                dropdown.style.display = "none";
+            });
 
+</script>
+<script>
+            document.addEventListener("DOMContentLoaded", function () {
+                const query = new URLSearchParams(window.location.search).get(
+                    "query"
+                );
+                if (
+                    query === "오메가" ||
+                    query === "오" ||
+                    query === "오매" ||
+                    query === "오메" ||
+                    query === "오메가3"
+                ) {
+                    document.getElementById("stress").style.display = "none";
+
+                    document.getElementById("not-found").style.display = "none";
+                    document.getElementById("apple-footer").style.display =
+                        "none";
+                    document.getElementById("apple-header").style.display =
+                        "flex";
+                } else if (
+                    query === "루" ||
+                    query === "루테인" ||
+                    query === "루태" ||
+                    query === "루테" ||
+                    query === "루태인"
+                ) {
+                    document.getElementById("stress").style.display = "none";
+
+                    document.getElementById("apple-header").style.display =
+                        "none";
+                    document.getElementById("apple-footer").style.display =
+                        "flex";
+                    document.getElementById("not-found").style.display = "none";
+                } else if (
+                    query === "스" ||
+                    query === "스트" ||
+                    query === "스트레스" ||
+                    query === "스트레스케어"
+                ) {
+                    document.getElementById("not-found").style.display = "none";
+                    document.getElementById("apple-header").style.display =
+                        "none";
+                    document.getElementById("apple-footer").style.display =
+                        "none";
+                    document.getElementById("stress").style.display = "flex";
+                } else {
+                    document.getElementById("stress").style.display = "none";
+                    document.getElementById("apple-header").style.display =
+                        "none";
+                    document.getElementById("apple-footer").style.display =
+                        "none";
+                    document.getElementById("not-found").style.display = "flex";
+                }
+            });
 
 </script>
 
-
 <script>
-    // 검색어를 localStorage에 저장하는 함수
-    function saveSearch(query) {
-      // 최근 검색어 배열을 가져옴
-      const recentSearches =
-        JSON.parse(localStorage.getItem("recentSearches")) || [];
+            // 검색어를 localStorage에 저장하는 함수
+            function saveSearch(query) {
+                // 최근 검색어 배열을 가져옴
+                const recentSearches =
+                    JSON.parse(localStorage.getItem("recentSearches")) || [];
 
-      // 검색어가 이미 최근 검색어에 있으면 삭제
-      const index = recentSearches.indexOf(query);
-      if (index !== -1) {
-        recentSearches.splice(index, 1);
-      }
+                // 검색어가 이미 최근 검색어에 있으면 삭제
+                const index = recentSearches.indexOf(query);
+                if (index !== -1) {
+                    recentSearches.splice(index, 1);
+                }
 
-      // 검색어를 최근 검색어 배열 맨 앞에 추가
-      recentSearches.unshift(query);
+                // 검색어를 최근 검색어 배열 맨 앞에 추가
+                recentSearches.unshift(query);
 
-      // 최근 검색어 배열을 localStorage에 저장
-      localStorage.setItem("recentSearches", JSON.stringify(recentSearches));
-    }
+                // 최근 검색어 배열을 localStorage에 저장
+                localStorage.setItem(
+                    "recentSearches",
+                    JSON.stringify(recentSearches)
+                );
+            }
 
-    // 최근 검색어를 보여주는 함수
-   function showRecentSearches() {
-  // Get an array of recent search terms
-  const recentSearches =
-    JSON.parse(localStorage.getItem("recentSearches")) || [];
+            // 최근 검색어를 보여주는 함수
+            function showRecentSearches() {
+                // Get an array of recent search terms
+                const recentSearches =
+                    JSON.parse(localStorage.getItem("recentSearches")) || [];
 
-  // add recent search terms to p tags with span tags
-  const recentSearchEl = document.getElementById("recent-search");
-  recentSearchEl.innerHTML = "🕐 최근 검색어 : ";
-  recentSearches.forEach(function (searchTerm) {
-    const p = document.createElement("p");
-    const span = document.createElement("span");
-    span.innerText = "  ❌ ";
+                // add recent search terms to p tags with span tags
+                const recentSearchEl = document.getElementById("recent-search");
+                recentSearchEl.innerHTML = "🕐 최근 검색어 : ";
+                recentSearches.forEach(function (searchTerm) {
+                    const p = document.createElement("p");
+                    const span = document.createElement("span");
+                    span.innerText = "  ❌ ";
 
+                    span.style.cursor = "pointer";
+                    span.addEventListener("click", function () {
+                        deleteSearchTerm(searchTerm);
+                    });
+                    p.innerText = searchTerm;
+                    p.appendChild(span);
+                    recentSearchEl.appendChild(p);
+                });
+            }
 
-    span.style.cursor = "pointer";
-    span.addEventListener("click", function () {
-      deleteSearchTerm(searchTerm);
-    });
-    p.innerText = searchTerm;
-    p.appendChild(span);
-    recentSearchEl.appendChild(p);
-  });
-}
+            // 페이지 로드시 최근 검색어를 보여줌
+            showRecentSearches();
 
+            // 검색어를 submit 할 때 최근 검색어를 localStorage에 저장하고 보여줌
+            const form = document.querySelector("form");
+            form.addEventListener("submit", function (e) {
+                e.preventDefault();
+                const query = this.querySelector('input[name="query"]').value;
+                saveSearch(query);
+                showRecentSearches();
+                this.submit();
+            });
 
+            // 최근 검색어를 삭제하는 함수
+            function deleteRecentSearches() {
+                // localStorage에서 최근 검색어 배열 삭제
+                localStorage.removeItem("recentSearches");
+                // 최근 검색어 p 태그 삭제
+                const recentSearchEl = document.getElementById("recent-search");
+                recentSearchEl.innerText = "";
+            }
 
+            function deleteSearchTerm(searchTerm) {
+                const recentSearches =
+                    JSON.parse(localStorage.getItem("recentSearches")) || [];
 
+                const index = recentSearches.indexOf(searchTerm);
+                if (index !== -1) {
+                    recentSearches.splice(index, 1);
+                    localStorage.setItem(
+                        "recentSearches",
+                        JSON.stringify(recentSearches)
+                    );
+                    showRecentSearches();
+                }
+            }
 
-
-    // 페이지 로드시 최근 검색어를 보여줌
-    showRecentSearches();
-
-    // 검색어를 submit 할 때 최근 검색어를 localStorage에 저장하고 보여줌
-    const form = document.querySelector("form");
-    form.addEventListener("submit", function (e) {
-      e.preventDefault();
-      const query = this.querySelector('input[name="query"]').value;
-      saveSearch(query);
-      showRecentSearches();
-      this.submit();
-    });
-
-    // 최근 검색어를 삭제하는 함수
-    function deleteRecentSearches() {
-      // localStorage에서 최근 검색어 배열 삭제
-      localStorage.removeItem("recentSearches");
-      // 최근 검색어 p 태그 삭제
-      const recentSearchEl = document.getElementById("recent-search");
-      recentSearchEl.innerText = "";
-    }
-
-
-function deleteSearchTerm(searchTerm) {
-  const recentSearches =
-    JSON.parse(localStorage.getItem("recentSearches")) || [];
-
-  const index = recentSearches.indexOf(searchTerm);
-  if (index !== -1) {
-    recentSearches.splice(index, 1);
-    localStorage.setItem("recentSearches", JSON.stringify(recentSearches));
-    showRecentSearches();
-  }
-}
-
-    // 최근 검색어 삭제 버튼 클릭 시 실행되는 함수 등록
-    const deleteButton = document.getElementById("delete-recent-searches");
-    deleteButton.addEventListener("click", deleteRecentSearches);
-
-
+            // 최근 검색어 삭제 버튼 클릭 시 실행되는 함수 등록
+            const deleteButton = document.getElementById(
+                "delete-recent-searches"
+            );
+            deleteButton.addEventListener("click", deleteRecentSearches);
 
 </script>
 

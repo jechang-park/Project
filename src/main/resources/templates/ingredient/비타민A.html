@@ -1,74 +1,118 @@
 <!DOCTYPE html>
 <html lang="ko" xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta charset="UTF-8"/>
-    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <link rel="stylesheet" th:href="@{../css/ingredient.css}"/>
-    <title>비타민A</title>
-</head>
-<body>
-<div class="wrapper">
-    <header>
-        <div class="top">
-            <div class="logo">
-                <a href="/index.html" th:href="@{/}">
-                    <img src="/img/black-yagiyo.png" alt=""
-                    /></a>
-            </div>
-            <div class="search_box">
-                <input
-                        class="searchbar"
-                        type="text"
-                        placeholder="영양제 성분 검색을 해보세요💊 ! "
-                />
-                <div class="search_btn">
-                    <img src="/img/search_div_icn.png" alt=""/>
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" th:href="@{../css/ingredient.css}" />
+        <title>비타민A</title>
+    </head>
+    <body>
+        <div class="wrapper">
+            <header>
+                <div class="top">
+                    <div class="logo">
+                        <a th:href="@{/}">
+                            <img src="../img/black-yagiyo.png" alt=""
+                        /></a>
+                    </div>
+
+                    <!--      검색어   -->
+                    <div class="search_box">
+                        <form th:action="@{/search}" method="get">
+                            <input type="text" name="query" value="" />
+                            <button type="submit"></button>
+                        </form>
+                        <!-- <p id="recent-search"></p> -->
+                    </div>
+
+                    <nav class="gnb_box">
+                        <span class="hot">HOT</span>
+                        <a th:href="@{/name}">📝AI분석</a>
+                        <a href="/board/paging">커뮤니티</a>
+                        <a th:href="@{/map}">약국정보</a>
+                        <th:bolck
+                            class="mypage"
+                            th:unless="${session.isEmpty()}"
+                        >
+                            <a
+                                href=""
+                                th:href="@{|/mypage/${session.loginMember.memberId}/fix|}"
+                                >마이페이지</a
+                            >
+                        </th:bolck>
+
+                        <div>
+                            <th:bolck
+                                class="login"
+                                th:if="${session.isEmpty()}"
+                            >
+                                <a href="" th:href="@{/login}">로그인</a>
+                            </th:bolck>
+                            <th:bolck
+                                class="logout"
+                                th:unless="${session.isEmpty()}"
+                            >
+                                <a href="" th:href="@{/logout}">로그아웃</a>
+                            </th:bolck>
+                        </div>
+                    </nav>
                 </div>
-            </div>
-            <nav class="gnb_box">
-                <a href="">AI분석</a>
-                <a href="">커뮤니티</a>
-                <a href="">약국정보</a>
-                <a href="">로그인</a>
-            </nav>
+            </header>
+            <main>
+                <div class="banner">
+                    <p>비타민A</p>
+                </div>
+                <div class="contents">
+                    <article>
+                        <div class="row row1">
+                            <span class="title">💬 비타민A</span>
+                            <p>
+                                · 세포의 성장과 재생에 꼭 필요한 영양소에요.<br />
+                                · 피부와 점막을 건강하게 유지하는데 중요해요.<br />
+                                · 눈에서 빛을 흡수하는 세포를 만드는데 필요해요.
+                                <br />
+                            </p>
+                        </div>
+                        <div class="row row2">
+                            <span class="title">▪ 이런 이름으로도 불려요</span>
+                            <p>
+                                레티노이드 | 레티놀 | 레티닐팔미테이트 |
+                                레티닐아세테이트 | 베타카로틴 | 알파카로틴 |
+                                감마카로틴
+                            </p>
+                        </div>
+                        <div class="row row3">
+                            <span class="title"
+                                >▪ 비타민A 영양제를 드실 때는 식사와 영양제를
+                                모두 포함해서 권장 범위에 맞출 수 있도록 본인의
+                                식습관에 따라 영양제 섭취량을 조절하시는 게
+                                좋아요.</span
+                            >
+                            <p>
+                                ✅영양제로 섭취하는 경우 210~1000μg을 권장하고
+                                있어요.<br />
+                                ✅ 식사와 영양제를 모두 포함하여 600~3000μg를
+                                섭취하도록 권장하고 있어요. 나이와 성별에 따라
+                                범위가 달라지지만, 일반적으로 700μg을 기준으로
+                                정하고 있어요.<br />
+                                ✅ 베타카로틴 형태로 섭취하는 경우, 일반적으로
+                                섭취량의 약 1/2 정도가 비타민A로 바뀌어요.<br />
+                            </p>
+                        </div>
+                        <div class="row row4">
+                            <span class="title">❗ 부작용 및 주의사항</span>
+                            <p>
+                                장기간 고용량 복용시 흡연자 폐암 위험이 증가할
+                                수 있음<br />
+                                임신 중 과다 복용시 기형 발생 위험 있음<br />
+                                고용량 복용 시 간 기능이 저하될 수 있으므로, 간
+                                질환이 있는 경우 전문가와 상담 필요
+                            </p>
+                        </div>
+                    </article>
+                </div>
+            </main>
         </div>
-    </header>
-    <main>
-        <div class="banner">
-            <p>비타민A</p>
-        </div>
-        <div class="contents">
-            <article>
-                <div class="row row1">
-                    <span class="title">💬 비타민A</span>
-                    <p>
-                        · 세포의 성장과 재생에 꼭 필요한 영양소에요.<br/>
-                        · 피부와 점막을 건강하게 유지하는데 중요해요.<br/>
-                        · 눈에서 빛을 흡수하는 세포를 만드는데 필요해요.
-                        <br/>
-                    </p>
-                </div>
-                <div class="row row2">
-                    <span class="title">▪ 이런 이름으로도 불려요</span>
-                    <p>레티노이드 | 레티놀 | 레티닐팔미테이트 | 레티닐아세테이트 | 베타카로틴 | 알파카로틴 | 감마카로틴</p>
-                </div>
-                <div class="row row3">
-                    <span class="title">▪ 비타민A 영양제를 드실 때는 식사와 영양제를 모두 포함해서 권장 범위에 맞출 수 있도록 본인의 식습관에 따라 영양제 섭취량을 조절하시는 게 좋아요.</span>
-                    <p>✅영양제로 섭취하는 경우 210~1000μg을 권장하고 있어요.<br>
-                        ✅ 식사와 영양제를 모두 포함하여 600~3000μg를 섭취하도록 권장하고 있어요. 나이와 성별에 따라 범위가 달라지지만, 일반적으로 700μg을 기준으로 정하고 있어요.<br>
-                        ✅ 베타카로틴 형태로 섭취하는 경우, 일반적으로 섭취량의 약 1/2 정도가 비타민A로 바뀌어요.<br>
-                    </p>
-                </div>
-                <div class="row row4">
-                    <span class="title">❗ 부작용 및 주의사항</span>
-                    <p>장기간 고용량 복용시 흡연자 폐암 위험이 증가할 수 있음<br>
-                        임신 중 과다 복용시 기형 발생 위험 있음<br>
-                        고용량 복용 시 간 기능이 저하될 수 있으므로, 간 질환이 있는 경우 전문가와 상담 필요</p>
-                </div>
-            </article>
-        </div>
-    </main>
-</div>
-</body>
+    </body>
 </html>

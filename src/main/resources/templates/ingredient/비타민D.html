@@ -1,80 +1,128 @@
 <!DOCTYPE html>
 <html lang="ko" xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta charset="UTF-8"/>
-    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <link rel="stylesheet" th:href="@{../css/ingredient.css}"/>
-    <title>비타민D</title>
-</head>
-<body>
-<div class="wrapper">
-    <header>
-        <div class="top">
-            <div class="logo">
-                <a href="/index.html" th:href="@{/}">
-                    <img src="/img/black-yagiyo.png" alt=""
-                    /></a>
-            </div>
-            <div class="search_box">
-                <input
-                        class="searchbar"
-                        type="text"
-                        placeholder="영양제 성분 검색을 해보세요💊 ! "
-                />
-                <div class="search_btn">
-                    <img src="/img/search_div_icn.png" alt=""/>
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" th:href="@{../css/ingredient.css}" />
+        <title>비타민D</title>
+    </head>
+    <body>
+        <div class="wrapper">
+            <header>
+                <div class="top">
+                    <div class="logo">
+                        <a th:href="@{/}">
+                            <img src="../img/black-yagiyo.png" alt=""
+                        /></a>
+                    </div>
+
+                    <!--      검색어   -->
+                    <div class="search_box">
+                        <form th:action="@{/search}" method="get">
+                            <input type="text" name="query" value="" />
+                            <button type="submit"></button>
+                        </form>
+                        <!-- <p id="recent-search"></p> -->
+                    </div>
+
+                    <nav class="gnb_box">
+                        <span class="hot">HOT</span>
+                        <a th:href="@{/name}">📝AI분석</a>
+                        <a href="/board/paging">커뮤니티</a>
+                        <a th:href="@{/map}">약국정보</a>
+                        <th:bolck
+                            class="mypage"
+                            th:unless="${session.isEmpty()}"
+                        >
+                            <a
+                                href=""
+                                th:href="@{|/mypage/${session.loginMember.memberId}/fix|}"
+                                >마이페이지</a
+                            >
+                        </th:bolck>
+
+                        <div>
+                            <th:bolck
+                                class="login"
+                                th:if="${session.isEmpty()}"
+                            >
+                                <a href="" th:href="@{/login}">로그인</a>
+                            </th:bolck>
+                            <th:bolck
+                                class="logout"
+                                th:unless="${session.isEmpty()}"
+                            >
+                                <a href="" th:href="@{/logout}">로그아웃</a>
+                            </th:bolck>
+                        </div>
+                    </nav>
                 </div>
-            </div>
-            <nav class="gnb_box">
-                <a href="">AI분석</a>
-                <a href="">커뮤니티</a>
-                <a href="">약국정보</a>
-                <a href="">로그인</a>
-            </nav>
+            </header>
+            <main>
+                <div class="banner">
+                    <p>비타민D</p>
+                </div>
+                <div class="contents">
+                    <article>
+                        <div class="row row1">
+                            <span class="title">💬 비타민D</span>
+                            <p>
+                                · 칼슘 흡수를 도와주는 영양소에요. 우리 몸에서
+                                칼슘이 가장 많이 존재하는 뼈와 치아를 튼튼하게
+                                유지해줘요.<br />
+                                · 면역 기능을 조절하는 데에도 중요한 역할을 하고
+                                있다는 연구들이 많이 나오고 있어요. 면역 기능이
+                                너무 낮으면 세균이나 바이러스에 감염될 수 있어서
+                                문제지만, <br />
+                                너무 높아도 '자가면역질환'과 같은 문제가 생기기
+                                때문에 적절하게 조절되는 것이 중요해요.
+                                <br />
+                            </p>
+                        </div>
+                        <div class="row row2">
+                            <span class="title">▪ 이런 이름으로도 불려요</span>
+                            <p>콜레칼시페롤(D3)ㅣ 에르고칼시페롤(D2)</p>
+                        </div>
+                        <div class="row row3">
+                            <span class="title"
+                                >▪ 적당한 양을 꾸준히 섭취하시는 게 가장 좋지만,
+                                상황에 따라서는 고용량을 섭취하시는 것도
+                                가능해요.</span
+                            >
+                            <p>
+                                ✅ [영양제]로서 일일섭취량은 3~10μg을 권장하고
+                                있어요.<br />
+                                ✅[식품]으로서 1일 영양성분 기준치는
+                                10μg이에요.<br />
+                                ✅[한국인 영양소 섭취기준]에 따르면, 식사와
+                                영양제를 모두 포함해서 10~100μg를 섭취하도록
+                                권장하고 있어요. 나이와 성별에 따라 범위가
+                                달라져요.<br />
+                                ✅혈중 중성지방 개선: 0.5~2g<br />
+                                건강한 사람이 매일 적당히 섭취하려면 25~50μg의
+                                제품을 고르는 걸 추천해요. 50~100μg 정도
+                                고용량의 비타민D를 드실때에는 혈액검사를 통해
+                                비타민D 수치를 확인하시는 것이 좋아요!<br />
+                                비타민D는 섭취했을 때 간이나 지방세포에 저장돼,
+                                몸에 오래 남아 있는 영양소에요. 그래서 적당한
+                                용량을 매일매일 복용해도 되지만, 고용량을 며칠에
+                                한번씩 섭취하는 것도 가능해요.
+                            </p>
+                        </div>
+                        <div class="row row4">
+                            <span class="title">❗ 부작용 및 주의사항</span>
+                            <p>
+                                칼슘 흡수가 증가함<br />
+                                고용량 복용 시 고칼슘혈증으로 인해 신장 기능이
+                                저하될 수 있음<br />
+                                요로결석을 만드는 칼슘의 흡수를 높이기 때문에,
+                                신장결석의 위험이 있는 경우 고용량 섭취 시 주의
+                            </p>
+                        </div>
+                    </article>
+                </div>
+            </main>
         </div>
-    </header>
-    <main>
-        <div class="banner">
-            <p>비타민D</p>
-        </div>
-        <div class="contents">
-            <article>
-                <div class="row row1">
-                    <span class="title">💬 비타민D</span>
-                    <p>
-                        · 칼슘 흡수를 도와주는 영양소에요. 우리 몸에서 칼슘이 가장 많이 존재하는 뼈와 치아를 튼튼하게 유지해줘요.<br>
-                        · 면역 기능을 조절하는 데에도 중요한 역할을 하고 있다는 연구들이 많이 나오고 있어요. 면역 기능이 너무 낮으면 세균이나 바이러스에 감염될 수 있어서 문제지만, <br>
-                        너무 높아도 '자가면역질환'과 같은 문제가 생기기 때문에 적절하게 조절되는 것이 중요해요.
-                        <br/>
-                    </p>
-                </div>
-                <div class="row row2">
-                    <span class="title">▪ 이런 이름으로도 불려요</span>
-                    <p>콜레칼시페롤(D3)ㅣ 에르고칼시페롤(D2)</p>
-                </div>
-                <div class="row row3">
-                    <span class="title">▪ 적당한 양을 꾸준히 섭취하시는 게 가장 좋지만, 상황에 따라서는 고용량을 섭취하시는 것도 가능해요.</span>
-                    <p>✅ [영양제]로서 일일섭취량은 3~10μg을 권장하고 있어요.<br>
-                        ✅[식품]으로서 1일 영양성분 기준치는 10μg이에요.<br>
-                        ✅[한국인 영양소 섭취기준]에 따르면,
-                        식사와 영양제를 모두 포함해서 10~100μg를 섭취하도록 권장하고 있어요. 나이와 성별에 따라 범위가 달라져요.<br>
-                        ✅혈중 중성지방 개선: 0.5~2g<br>
-                        건강한 사람이 매일 적당히 섭취하려면 25~50μg의 제품을 고르는 걸 추천해요. 50~100μg 정도 고용량의 비타민D를 드실때에는 혈액검사를 통해 비타민D 수치를
-                        확인하시는 것이 좋아요!<br>
-                        비타민D는 섭취했을 때 간이나 지방세포에 저장돼, 몸에 오래 남아 있는 영양소에요. 그래서 적당한 용량을 매일매일 복용해도 되지만, 고용량을 며칠에 한번씩 섭취하는 것도
-                        가능해요.
-                    </p>
-                </div>
-                <div class="row row4">
-                    <span class="title">❗ 부작용 및 주의사항</span>
-                    <p>칼슘 흡수가 증가함<br>
-                        고용량 복용 시 고칼슘혈증으로 인해 신장 기능이 저하될 수 있음<br>
-                        요로결석을 만드는 칼슘의 흡수를 높이기 때문에, 신장결석의 위험이 있는 경우 고용량 섭취 시 주의</p>
-                </div>
-            </article>
-        </div>
-    </main>
-</div>
-</body>
+    </body>
 </html>

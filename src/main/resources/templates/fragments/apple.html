@@ -1,180 +1,344 @@
 <!DOCTYPE html>
 <html lang="ko" xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta charset="UTF-8"/>
-    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>apple</title>
-</head>
-<style>
-
-
-</style>
-<body>
-<!-- 오 메 가 3-->
-<div th:fragment="header" id="apple-header" th:class="item_cards">
-    <a class="banner" th:href="@{/nutrients/오메가3}">
-        <h3 class="search_text">'오메가3' 에 대한 제품검색 결과 <span class="text_bold">6</span>건</h3>
-        <div class="banner_text">
-            <span class="text_bold">오메가3</span>의 성분정보가 궁금하세요?<br>
-            오메가3는 생선이나 해조류에서 추출한 여러 종류의 불포화지방산을 부르는 말이에요. 그 중 가장 중요한 것은 EPA와 DHA에요.
-            EPA는 간에서 중성지방 합성을 줄여 혈중 중성지방 농도를 낮춰주고, 혈액순환 개선에 도움을 줘....<span
-                sytle="font size:35px; font-weight:800;">더보기</span>
-        </div>
-    </a>
-    <div class="item_box">
-        <div class="left_content">
-            <a href=""><img src="../img/item01.jpg" alt=""/>
-                <div class="text_1">나우푸드 <span style="color:blue">오메가3</span></div>
-                <div class="text_2">▪눈건강<br> ▪혈액순환 개선<br> ▪눈건강 혈중중성지방 개선</div>
-            </a>
-        </div>
-        <a href="https://search.shopping.naver.com/search/all?query=%EB%82%98%EC%9A%B0%ED%91%B8%EB%93%9C%EC%98%A4%EB%A9%94%EA%B0%803&cat_id=&frm=NVSHATC">
-            <div class="go_buy">구매하기</div>
-        </a>
-    </div>
-
-
-    <div class="item_box">
-        <div class="left_content">
-            <a href=""><img src="../img/item02.jpg" alt=""/>
-                <div class="text_1">혈행건강 프로메가
-                    <알티지></알티지>
-                    <span style="color:blue">오메가3</span> 듀얼
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>apple</title>
+    </head>
+    <style></style>
+    <body>
+        <!-- 오 메 가 3-->
+        <div th:fragment="header" id="apple-header" th:class="item_cards">
+            <a class="banner" th:href="@{/nutrients/오메가3}">
+                <h3 class="search_text">
+                    '오메가3' 에 대한 제품검색 결과
+                    <span class="text_bold">6</span>건
+                </h3>
+                <div class="banner_text">
+                    <span class="text_bold">오메가3</span>의 성분정보가
+                    궁금하세요?<br />
+                    오메가3는 생선이나 해조류에서 추출한 여러 종류의
+                    불포화지방산을 부르는 말이에요. 그 중 가장 중요한 것은 EPA와
+                    DHA에요. EPA는 간에서 중성지방 합성을 줄여 혈중 중성지방
+                    농도를 낮춰주고, 혈액순환 개선에 도움을 줘....<span
+                        sytle="font size:35px; font-weight:800;"
+                        >더보기</span
+                    >
                 </div>
-                <div class="text_2">▪눈건강<br> ▪혈액순환 개선<br> ▪혈중중성지방 개선</div>
             </a>
-        </div>
-        <a href="https://search.shopping.naver.com/search/all?query=%ED%98%88%ED%96%89%EA%B1%B4%EA%B0%95%20%ED%94%84%EB%A1%9C%EB%A9%94%EA%B0%80">
-            <div class="go_buy">구매하기</div>
-        </a>
-    </div>
-    <div class="item_box">
-        <div class="left_content">
-            <a href=""><img src="../img/item03.jpg" alt=""/>
-                <div class="text_1">트리플 스트렝스
-                    <알티지></알티지>
-                    <span style="color:blue">오메가3</span> 피쉬오일 1055mg
+            <div class="item_box">
+                <div class="left_content">
+                    <a href=""
+                        ><img src="../img/item01.jpg" alt="" />
+                        <div class="text_1">
+                            나우푸드 <span style="color: blue">오메가3</span>
+                        </div>
+                        <div class="text_2">
+                            ▪눈건강<br />
+                            ▪혈액순환 개선<br />
+                            ▪눈건강 혈중중성지방 개선
+                        </div>
+                    </a>
                 </div>
-                <div class="text_2">▪눈건강<br> ▪두뇌건강<br> ▪혈액순환 개선</div>
-            </a>
-        </div>
-        <a href="https://search.shopping.naver.com/search/all?query=%ED%8A%B8%EB%A6%AC%ED%94%8C%20%EC%8A%A4%ED%8A%B8%EB%A0%9D%EC%8A%A4%20%EC%98%A4%EB%A9%94%EA%B0%80">
-            <div class="go_buy">구매하기</div>
-        </a>
-    </div>
-    <div class="item_box">
-        <div class="left_content">
-            <a href=""><img src="../img/item04.jpg" alt=""/>
-                <div class="text_1"><span style="color:blue">오메가3</span> 프리미엄 피쉬오일</div>
-                <div class="text_2">▪눈건강<br> ▪혈액순환 개선<br> ▪눈건강 혈중중성지방 개선</div>
-            </a>
-        </div>
-        <a href="https://search.shopping.naver.com/search/all?query=%ED%94%84%EB%A6%AC%EB%AF%B8%EC%97%84%20%ED%94%BC%EC%89%AC%EC%98%A4%EC%9D%BC">
-            <div class="go_buy">구매하기</div>
-        </a>
-    </div>
-    <div class="item_box">
-        <div class="left_content">
-            <a href=""><img src="../img/item05.jpg" alt=""/>
-                <div class="text_1">트리플 스트렝스 <span style="color:blue">오메가3</span> 피쉬오일</div>
-                <div class="text_2">▪눈건강<br> ▪두뇌건강<br> ▪혈액순환 개선</div>
-            </a>
-        </div>
-        <a href="https://search.shopping.naver.com/search/all?query=%ED%8A%B8%EB%A6%AC%ED%94%8C%20%EC%8A%A4%ED%8A%B8%EB%A0%9D%EC%8A%A4%20%EC%98%A4%EB%A9%94%EA%B0%803">
-            <div class="go_buy">구매하기</div>
-        </a>
-    </div>
-    <div class="item_box">
-        <div class="left_content">
-            <a href=""><img src="../img/item06.jpg" alt=""/>
-                <div class="text_1">초임계 알티지 <span style="color:blue">오메가3</span></div>
-                <div class="text_2">▪눈건강<br> ▪혈액순환 개선<br> ▪눈건강 혈중중성지방 개선</div>
-            </a>
-        </div>
-        <a href="https://search.shopping.naver.com/search/all?query=%EB%8B%A5%ED%84%B0%EB%A6%B0%20%EC%B4%88%EC%9E%84%EA%B3%84%20%EC%95%8C%ED%8B%B0%EC%A7%80%20%EC%98%A4%EB%A9%94%EA%B0%80">
-            <div class="go_buy">구매하기</div>
-        </a>
-    </div>
-</div>
+                <a
+                    href="https://search.shopping.naver.com/search/all?query=%EB%82%98%EC%9A%B0%ED%91%B8%EB%93%9C%EC%98%A4%EB%A9%94%EA%B0%803&cat_id=&frm=NVSHATC"
+                >
+                    <div class="go_buy">구매하기</div>
+                </a>
+            </div>
 
-
-<!--  루  테  인 -->
-<div th:fragment="footer" id="apple-footer" th:class="item_cards">
-    <a class="banner" th:href="@{/nutrients/루테인}">
-        <h3 class="search_text">'루테인' 에 대한 제품검색 결과 <span class="text_bold">4</span>건</h3>
-        <div class="banner_text">
-            <span class="text_bold">루테인</span>의 성분정보가 궁금하세요?<br>
-            시력에 중요한 '황반색소' 밀도를 유지해, 눈 건강에 도움되는 영양소에요. '황반'은 빛을 인식하는 시세포가 가장 많이
-            모여 있는...<span
-                sytle="font size:35px; font-weight:800;">더보기</span>
-        </div>
-    </a>
-    <div class="item_box">
-        <div class="left_content">
-            <a href=""><img src="../img/item07.jpg" alt=""/>
-                <div class="text_1"><span style="color:blue">루테인</span> 골드</div>
-                <div class="text_2">▪눈건강<br> ▪안구 건조<br> ▪황반색소 유지 </div>
-            </a>
-        </div>
-        <a href="https://search.shopping.naver.com/search/all?query=%EB%85%B9%EC%8B%AD%EC%B4%88%20%EB%A3%A8%ED%85%8C%EC%9D%B8%20%EA%B3%A8%EB%93%9C">
-            <div class="go_buy">구매하기</div>
-        </a>
-    </div>
-
-    <div class="item_box">
-        <div class="left_content">
-            <a href=""><img src="../img/item08.jpg" alt=""/>
-                <div class="text_1">안국<span style="color:blue">루테인</span> 지아잔틴 미니
+            <div class="item_box">
+                <div class="left_content">
+                    <a href=""
+                        ><img src="../img/item02.jpg" alt="" />
+                        <div class="text_1">
+                            혈행건강 프로메가 알티지
+                            <span style="color: blue">오메가3</span>듀얼
+                        </div>
+                        <div class="text_2">
+                            ▪눈건강<br />
+                            ▪혈액순환 개선<br />
+                            ▪혈중중성지방 개선
+                        </div>
+                    </a>
                 </div>
-                <div class="text_2">▪눈건강<br> ▪황반색소 유지<br></div>
-            </a>
-        </div>
-        <a href="https://search.shopping.naver.com/search/all?query=%EC%95%88%EA%B5%AD%20%EB%A3%A8%ED%85%8C%EC%9D%B8%EC%A7%80%EC%95%84%EC%9E%94%ED%8B%B4%20%EB%AF%B8%EB%8B%88&prevQuery=%EB%85%B9%EC%8B%AD%EC%B4%88%20%EB%A3%A8%ED%85%8C%EC%9D%B8%20%EA%B3%A8%EB%93%9C">
-            <div class="go_buy">구매하기</div>
-        </a>
-    </div>
-    <div class="item_box">
-        <div class="left_content">
-            <a href=""><img src="../img/item09.jpg" alt=""/>
-                <div class="text_1">나우푸드 <span style="color:blue">루테인</span>
+                <a
+                    href="https://search.shopping.naver.com/search/all?query=%ED%98%88%ED%96%89%EA%B1%B4%EA%B0%95%20%ED%94%84%EB%A1%9C%EB%A9%94%EA%B0%80"
+                >
+                    <div class="go_buy">구매하기</div>
+                </a>
+            </div>
+
+            <div class="item_box">
+                <div class="left_content">
+                    <a href=""
+                        ><img src="../img/item03.jpg" alt="" />
+                        <div class="text_1">
+                            트리플 스트렝스 알티지
+                            <span style="color: blue">오메가3</span> 피쉬오일
+                            1055mg
+                        </div>
+                        <div class="text_2">
+                            ▪눈건강<br />
+                            ▪두뇌건강<br />
+                            ▪혈액순환 개선
+                        </div>
+                    </a>
                 </div>
-                <div class="text_2">▪눈건강<br> ▪황반색소 유지</div>
-            </a>
+                <a
+                    href="https://search.shopping.naver.com/search/all?query=%ED%8A%B8%EB%A6%AC%ED%94%8C%20%EC%8A%A4%ED%8A%B8%EB%A0%9D%EC%8A%A4%20%EC%98%A4%EB%A9%94%EA%B0%80"
+                >
+                    <div class="go_buy">구매하기</div>
+                </a>
+            </div>
+            <div class="item_box">
+                <div class="left_content">
+                    <a href=""
+                        ><img src="../img/item04.jpg" alt="" />
+                        <div class="text_1">
+                            <span style="color: blue">오메가3</span> 프리미엄
+                            피쉬오일
+                        </div>
+                        <div class="text_2">
+                            ▪눈건강<br />
+                            ▪혈액순환 개선<br />
+                            ▪눈건강 혈중중성지방 개선
+                        </div>
+                    </a>
+                </div>
+                <a
+                    href="https://search.shopping.naver.com/search/all?query=%ED%94%84%EB%A6%AC%EB%AF%B8%EC%97%84%20%ED%94%BC%EC%89%AC%EC%98%A4%EC%9D%BC"
+                >
+                    <div class="go_buy">구매하기</div>
+                </a>
+            </div>
+            <div class="item_box">
+                <div class="left_content">
+                    <a href=""
+                        ><img src="../img/item05.jpg" alt="" />
+                        <div class="text_1">
+                            트리플 스트렝스
+                            <span style="color: blue">오메가3</span> 피쉬오일
+                        </div>
+                        <div class="text_2">
+                            ▪눈건강<br />
+                            ▪두뇌건강<br />
+                            ▪혈액순환 개선
+                        </div>
+                    </a>
+                </div>
+                <a
+                    href="https://search.shopping.naver.com/search/all?query=%ED%8A%B8%EB%A6%AC%ED%94%8C%20%EC%8A%A4%ED%8A%B8%EB%A0%9D%EC%8A%A4%20%EC%98%A4%EB%A9%94%EA%B0%803"
+                >
+                    <div class="go_buy">구매하기</div>
+                </a>
+            </div>
+            <div class="item_box">
+                <div class="left_content">
+                    <a href=""
+                        ><img src="../img/item06.jpg" alt="" />
+                        <div class="text_1">
+                            초임계 알티지
+                            <span style="color: blue">오메가3</span>
+                        </div>
+                        <div class="text_2">
+                            ▪눈건강<br />
+                            ▪혈액순환 개선<br />
+                            ▪눈건강 혈중중성지방 개선
+                        </div>
+                    </a>
+                </div>
+                <a
+                    href="https://search.shopping.naver.com/search/all?query=%EB%8B%A5%ED%84%B0%EB%A6%B0%20%EC%B4%88%EC%9E%84%EA%B3%84%20%EC%95%8C%ED%8B%B0%EC%A7%80%20%EC%98%A4%EB%A9%94%EA%B0%80"
+                >
+                    <div class="go_buy">구매하기</div>
+                </a>
+            </div>
         </div>
-        <a href="https://search.shopping.naver.com/search/all?query=%EB%82%98%EC%9A%B0%ED%91%B8%EB%93%9C%20%EB%A3%A8%ED%85%8C%EC%9D%B8&prevQuery=%EC%95%88%EA%B5%AD%20%EB%A3%A8%ED%85%8C%EC%9D%B8%EC%A7%80%EC%95%84%EC%9E%94%ED%8B%B4%20%EB%AF%B8%EB%8B%88">
-            <div class="go_buy">구매하기</div>
-        </a>
-    </div>
-    <div class="item_box">
-        <div class="left_content">
-            <a href=""><img src="../img/item10.jpg" alt=""/>
-                <div class="text_1">뉴트리원라이프 <span style="color:blue">루테인</span> 지아잔틴 164</div>
-                <div class="text_2">▪눈건강<br> ▪황반색소 유지<br></div>
+
+        <!--  루  테  인 -->
+        <div th:fragment="footer" id="apple-footer" th:class="item_cards">
+            <a class="banner" th:href="@{/nutrients/루테인}">
+                <h3 class="search_text">
+                    '루테인' 에 대한 제품검색 결과
+                    <span class="text_bold">4</span>건
+                </h3>
+                <div class="banner_text">
+                    <span class="text_bold">루테인</span>의 성분정보가
+                    궁금하세요?<br />
+                    시력에 중요한 '황반색소' 밀도를 유지해, 눈 건강에 도움되는
+                    영양소에요. '황반'은 빛을 인식하는 시세포가 가장 많이 모여
+                    있는...<span sytle="font size:35px; font-weight:800;"
+                        >더보기</span
+                    >
+                </div>
             </a>
+            <div class="item_box">
+                <div class="left_content">
+                    <a href=""
+                        ><img src="../img/item07.jpg" alt="" />
+                        <div class="text_1">
+                            <span style="color: blue">루테인</span> 골드
+                        </div>
+                        <div class="text_2">
+                            ▪눈건강<br />
+                            ▪안구 건조<br />
+                            ▪황반색소 유지
+                        </div>
+                    </a>
+                </div>
+                <a
+                    href="https://search.shopping.naver.com/search/all?query=%EB%85%B9%EC%8B%AD%EC%B4%88%20%EB%A3%A8%ED%85%8C%EC%9D%B8%20%EA%B3%A8%EB%93%9C"
+                >
+                    <div class="go_buy">구매하기</div>
+                </a>
+            </div>
+
+            <div class="item_box">
+                <div class="left_content">
+                    <a href=""
+                        ><img src="../img/item08.jpg" alt="" />
+                        <div class="text_1">
+                            안국<span style="color: blue">루테인</span> 지아잔틴
+                            미니
+                        </div>
+                        <div class="text_2">
+                            ▪눈건강<br />
+                            ▪황반색소 유지<br />
+                        </div>
+                    </a>
+                </div>
+                <a
+                    href="https://search.shopping.naver.com/search/all?query=%EC%95%88%EA%B5%AD%20%EB%A3%A8%ED%85%8C%EC%9D%B8%EC%A7%80%EC%95%84%EC%9E%94%ED%8B%B4%20%EB%AF%B8%EB%8B%88&prevQuery=%EB%85%B9%EC%8B%AD%EC%B4%88%20%EB%A3%A8%ED%85%8C%EC%9D%B8%20%EA%B3%A8%EB%93%9C"
+                >
+                    <div class="go_buy">구매하기</div>
+                </a>
+            </div>
+            <div class="item_box">
+                <div class="left_content">
+                    <a href=""
+                        ><img src="../img/item09.jpg" alt="" />
+                        <div class="text_1">
+                            나우푸드 <span style="color: blue">루테인</span>
+                        </div>
+                        <div class="text_2">
+                            ▪눈건강<br />
+                            ▪황반색소 유지
+                        </div>
+                    </a>
+                </div>
+                <a
+                    href="https://search.shopping.naver.com/search/all?query=%EB%82%98%EC%9A%B0%ED%91%B8%EB%93%9C%20%EB%A3%A8%ED%85%8C%EC%9D%B8&prevQuery=%EC%95%88%EA%B5%AD%20%EB%A3%A8%ED%85%8C%EC%9D%B8%EC%A7%80%EC%95%84%EC%9E%94%ED%8B%B4%20%EB%AF%B8%EB%8B%88"
+                >
+                    <div class="go_buy">구매하기</div>
+                </a>
+            </div>
+            <div class="item_box">
+                <div class="left_content">
+                    <a href=""
+                        ><img src="../img/item10.jpg" alt="" />
+                        <div class="text_1">
+                            뉴트리원라이프
+                            <span style="color: blue">루테인</span> 지아잔틴 164
+                        </div>
+                        <div class="text_2">
+                            ▪눈건강<br />
+                            ▪황반색소 유지<br />
+                        </div>
+                    </a>
+                </div>
+                <a
+                    href="https://search.shopping.naver.com/search/all?query=%EB%89%B4%ED%8A%B8%EB%A6%AC%EC%9B%90%EB%A3%A8%ED%85%8C%EC%9D%B8%EC%A7%80%EC%95%84%EC%9E%94%ED%8B%B4&prevQuery=%EB%89%B4%ED%8A%B8%EB%A6%AC%EC%9B%90%20%ED%85%8C%EC%9D%B8%EC%A7%80%EC%95%84%EC%9E%94%ED%8B%B4"
+                >
+                    <div class="go_buy">구매하기</div>
+                </a>
+            </div>
         </div>
-        <a href="https://search.shopping.naver.com/search/all?query=%EB%89%B4%ED%8A%B8%EB%A6%AC%EC%9B%90%EB%A3%A8%ED%85%8C%EC%9D%B8%EC%A7%80%EC%95%84%EC%9E%94%ED%8B%B4&prevQuery=%EB%89%B4%ED%8A%B8%EB%A6%AC%EC%9B%90%20%ED%85%8C%EC%9D%B8%EC%A7%80%EC%95%84%EC%9E%94%ED%8B%B4">
-            <div class="go_buy">구매하기</div>
-        </a>
-    </div>
-</div>
+
+        <!--   검색어 기본값-->
+        <!-- <div th:fragment="default">
+</div> -->
+
+        <!--    검색결과 찾을 수 없을 때-->
+        <div th:fragment="not_found" id="not-found">
+            <div class="content">
+                <img src="../img/cancel.png" alt="" />
+                <p class="text text1">
+                    앗! 검색결과가 없습니다 제품등록을 요청해주세요
+                </p>
+                <p class="text text2">support@yagiyo.com</p>
+            </div>
+        </div>
 
 
-<!--   검색어 기본값-->
-<div th:fragment="default">
-</div>
+        <!-- 스트레스 케어 검색했을때 -->
+        <div th:fragment="stress" class="item_cards card03" id="stress">
+            <h3 class="search_text text03">
+                '스트레스 케어' 에 대한 제품검색 결과
+                <span class="text_bold">3</span>건
+            </h3>
+            <div class="item_box">
+                <div class="left_content">
+                    <a href=""
+                        ><img src="../img/item11.jpg" alt="" />
+                        <div class="text_1">마그네슘 위드
+                            <span style="color: blue">비타민B6</span> (해외)
+                        </div>
+                        <div class="text_2">
+                            ▪근육 & 신경 안정<br />
+                            ▪피로 개선<br />
+                            ▪마그네슘
+                        </div>
+                    </a>
+                </div>
+                <a
+                    href="https://search.shopping.naver.com/search/all?query=%EC%86%94%EA%B0%80%20%EB%A7%88%EA%B7%B8%EB%84%A4%EC%8A%98%20%EC%9C%84%EB%93%9C%20%EB%B9%84%ED%83%80%EB%AF%BC&prevQuery=%EB%A7%88%EA%B7%B8%EB%84%A4%EC%8A%98%20%EC%9C%84%EB%93%9C%20%EB%B9%84%ED%83%80%EB%AF%BC"
+                >
+                    <div class="go_buy">구매하기</div>
+                </a>
+            </div>
 
+            <div class="item_box">
+                <div class="left_content">
+                    <a href=""
+                        ><img src="../img/item12.jpg" alt="" />
+                        <div class="text_1">
 
+                            <span style="color: blue">마그네슘</span>      비스글리시네이트 킬레이트 200mg
+                        </div>
+                        <div class="text_2">
+                            ▪근육 & 신경 안정<br />
+                            ▪피로 개선<br />
+                            ▪마그네슘
+                        </div>
+                    </a>
+                </div>
+                <a
+                    href="https://search.shopping.naver.com/search/all?origQuery=%EB%89%B4%ED%8A%B8%EB%A6%AC%EC%85%98%20%EB%A7%88%EA%B7%B8%EB%84%A4%EC%8A%98%20%EB%B9%84%EC%8A%A4%EA%B8%80%EB%A6%AC%EC%8B%9C%EB%84%A4%EC%9D%B4%ED%8A%B8&pagingIndex=1&pagingSize=40&productSet=total&query=%EB%89%B4%ED%8A%B8%EB%A6%AC%EC%85%98%20%EB%A7%88%EA%B7%B8%EB%84%A4%EC%8A%98%20%EB%B9%84%EC%8A%A4%EA%B8%80%EB%A6%AC%EC%8B%9C%EB%84%A4%EC%9D%B4%ED%8A%B8&sort=review&timestamp=&viewType=list"
+                >
+                    <div class="go_buy">구매하기</div>
+                </a>
+            </div>
 
-
-
-<!--    검색결과 찾을 수 없을 때-->
-<div th:fragment="not_found" id="not-found">
-    <div class="content"><img src="../img/cancel.png" alt="">
-        <p class="text text1">앗! 검색결과가 없습니다
-            제품등록을 요청해주세요</p>
-        <p class="text text2">support@yagiyo.com</p>
-    </div>
-</div>
-</body>
+            <div class="item_box">
+                <div class="left_content">
+                    <a href=""
+                        ><img src="../img/item13.jpg" alt="" />
+                        <div class="text_1">나우푸드 <span style="color: blue">L-테아닌</span> 200mg
+                        </div>
+                        <div class="text_2">
+                            ▪긴장 완화<br />
+                            ▪테아닌<br />
+                        </div>
+                    </a>
+                </div>
+                <a
+                    href="https://search.shopping.naver.com/search/all?query=%EB%82%98%EC%9A%B0%ED%91%B8%EB%93%9C%20l%ED%85%8C%EC%95%84%EB%8B%8C&prevQuery=%EC%86%94%EA%B0%80%20%EB%A7%88%EA%B7%B8%EB%84%A4%EC%8A%98%20%EC%9C%84%EB%93%9C%20%EB%B9%84%ED%83%80%EB%AF%BC"
+                >
+                    <div class="go_buy">구매하기</div>
+                </a>
+            </div>
+        </div>
+    </body>
 </html>
